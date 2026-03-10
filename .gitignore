@@ -1,0 +1,6 @@
+.ipynb_checkpoints/
+venv/
+myFiles/
+*.ipnyb
+*.pdf
+*.fdb_latexmk
