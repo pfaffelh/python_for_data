@@ -6,7 +6,7 @@ quarto render 00_Getting_started.qmd
 ```
 If you are brave, you can get the complete notes by 
 ```
-./quarto_all.sh
+./render_notebooks.sh
 ```
 This takes a few minutes. 
 

@@ -9,7 +9,6 @@ project:
 book:
   chapters:
     - index.qmd
-    - 00_getting_started.qmd
     - 01_simple_data_types.qmd
     - 02_container_data_types.qmd
     - 03_functions.qmd
@@ -21,7 +20,10 @@ execute:
   enable: true
 
 format:
-  pdf: default
+  pdf: 
+    toc: true
+    toc-depth: 2
   html:
     notebook-links: true
-
+    toc: true
+    toc-depth: 2

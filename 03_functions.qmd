@@ -10,3 +10,16 @@ jupyter: python3
 
 docstrings
 
+strip() 
+len(x)
+x.replace("s", "o")
+x.split(",")
+", ".join
+str.lower(s)
+s.isalpha()
+s.isdigit()
+s.isalnum()
+s.isspace()
+s.islower()
+s.isupper()
+x.count("y")

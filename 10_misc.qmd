@@ -30,3 +30,22 @@ Sometimes, when operating on the command line, one wants to ask for user input. 
 name = input("What is your name?")
 print(f"Hello, {name}!")
 ```
+
+## Regular expressions 
+
+ask the AI!
+
+
+## git and github
+These course notes are organized using the version control system `git`. If this does not mean anything to you, don't mind. At the moment, this only means that you need to [install `git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on your system, and run in the folder where you want to have the course notes
+```
+git clone https://github.com/pfaffelh/python_for_data/
+```
+With this command, you are _cloning_ the repository of the course notes from github. You can also look at this repository [online](https://github.com/pfaffelh/python_for_data/). 
+
+There is a good chance that the course notes will be updated during the upcoming weeks. In order to obtain the most current version, you need to run
+```
+git pull
+```
+There is (at least) one catch for using `git`: If you are changing one of the course files locally on your system, but the file has updated, `git pull` realizes the different versions and rejects to do `git pull`. The best way out is to do all changes to the files in the folder `myFiles`, or only change the files `...ipynb`. All these files are excluded from any update with `git pull`. 
+
