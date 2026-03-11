@@ -34,19 +34,27 @@ x = 7
 y = 2
 print("x + y = ", x + y)
 print("x * y =  ", x * y)
-# x to the poewr of y
+```
+```{python}
+# x to the power of y
 print("x ** y = ", x ** y)
+```
+```{python}
 # x divided by y (which gives a float)
 print("x / y = ", x / y)
+```
+```{python}
 # integer-valued division of x by y 
 print("x // y = ", x // y)
+```
+```{python}
 # x modulo y
 print("x % y = ", x % y)
 ```
 
 ## Floats 
 
-Generally speaking, floats are decomal numbers, which come with an exponent and a mantissa, e.g. $1.2 \cdot 10^2$. Python can do the same computations as with ints, but the following should be kept in mind:
+Generally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. $1.2 \cdot 10^2$. Python can do the same computations as with ints, but the following should be kept in mind:
 
 - If you type `1`, Python thinks this is an int, but if you type `1.0` or `1.`, Python thinks this is a float. 
 - Unlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about $ ~10^{-324}$ to $10^{308}$. 
@@ -57,29 +65,41 @@ Generally speaking, floats are decomal numbers, which come with an exponent and 
 x = 1.0
 y = 1
 print("x + y = ", x + y)
+```
+```{python}
 print("0.1 + 0.2 = ", 0.1 + 0.2)
 ```
 
 Special floats are `inf`, `-inf` and `nan` (not a number). Let us see them in action:
 
 ```{python}
-(10. ** 308) * 10
-(10 ** 308) * 10
-(10 ** (-323)) / 10
-(10. ** 308) * 10 - (10. ** 308) * 10
+print((10. ** 308) * 10)
+```
+```{python}
+print((10 ** 308) * 10)
+```
+```{python}
+print((10 ** (-323)) / 10)
+```
+```{python}
+print((10. ** 308) * 10 - (10. ** 308) * 10)
 ```
 
-You can transform ints to floats by using 
+You can transform ints to floats and vice versa by using `float()` and `int()`.
 ```{python}
-float(0)
-int(0.0)
-int(0.5)
+print(float(0))
+```
+```{python}
+print(int(0.0))
+```
+```{python}
+print(int(0.5))
 ```
 
 If you deliberately want to introduce `nan` or `inf`, you can do this: 
 ```{python}
-float("inf")
-float("nan")
+print(float("inf"))
+print(float("nan"))
 ```
 
 ## bool
@@ -90,19 +110,39 @@ There are exactly two boolean values, known as `True` and `False`. You can compu
 x = True
 y = False
 print("not x =", not x)
+```
+```{python}
 print("x and y =", x and y)
+```
+```{python}
 print("x or y =", x or y)
+```
+```{python}
 print("x xor y =", x ^ y)
+```
+```{python}
 print("((not x) == y) =", (not x) == y)
+```
+```{python}
 print("(1 == 2) =", 1 == 2)
+```
+```{python}
 # Python converts `bool` into `int`
 print("x + y =", x + y)
+```
+```{python}
 # != means "not equal"
 print("(1 != 2) =", 1 != 2)
-# Of course, < refers to less than
+```
+```{python}
+# < refers to less than
 print("(1 < 1) =", 1 < 1)
+```
+```{python}
 # <= refers to less than or equal
 print("(1 <= 1) =", 1 <= 1)
+```
+```{python}
 z = float("nan")
 print("(z == z) =", z == z)
 ```
@@ -124,19 +164,29 @@ x = "Hello,"
 y = "world"
 # Concatenating two (or more) strings
 print(x + y + "!")
+```
+```{python}
 # repeating a string 
 z = "bla"
 print(z*3)
+```
+```{python}
 # a special character
 print("\U0001F60E")
+```
+```{python}
 # an example of an f-string
 name = "Alice"
 print(f"Hello {name} 😀")
+```
+```{python}
 # a multiline string
 text = """This is a multiline string.
 It can span several lines.
 Each line break is preserved."""
 print(text)
+```
+```{python}
 # determine if a given substring occurs within a string
 print("Is 'th' a substring of 'Python'? ", 'th' in 'Python')
 print("Is 'the' a substring of 'Python'? ", 'the' in 'Python')
@@ -144,13 +194,19 @@ print("Is 'the' a substring of 'Python'? ", 'the' in 'Python')
 
 ## NoneType
 
-When analysing datam it is common to have missing values. These usually come as `None`. This is different from anything else we encountered so far (including `nan` and `False`).
+When analysing data, it is common to have missing values. These usually come as `None`. This is different from anything else we encountered so far (including `nan` and `False`).
 
 ```{python}
 x = None
 print(x)
+```
+```{python}
 print("(x is None) =", x is None)
+```
+```{python}
 print("(None == False) =", None == False)
+```
+```{python}
 print("(None == nan) =", None == float("nan"))
 ```
 
@@ -168,15 +224,9 @@ Print `"Hello, world!"` including the quotation marks in the output.
 **Exercise 4:**
 If you are on Windows, it is annoying that file paths come with `\`, which is interpreted as the start of a special character. Find out two ways how to give the string of the file path `C:\Users\Alice\Documents\file.txt`.
 
-<!-- path = r"C:\Users\Alice\Documents\file.txt" -->
-<!--path = "C:\\Users\\Alice\\Documents\\file.txt" -->
-
 **Exercise 5:**
 What is `bool(None)`? What is `int(None)`?
 
 **Exercise 6:**
 In tables, we often have `""` for a missing value. Is this the same as `None`?
-
-<!-- "" is not None -->
-<!-- gives True -->
 

@@ -1,5 +1,5 @@
 ---
-title: Preliminaries
+title: Python for Data Analysis
 format: 
     pdf: default
     ipynb: default
@@ -8,21 +8,20 @@ jupyter: python3
 
 These are the materials which are used for a course on _Python for Data Analysis_ at the University of Freiburg in summer 2026. It does not assume any prior knowledge of python (although this might help). The goal of the course is some literacy in python, including basic knowledge such as data types and control flow, but also using libraries and APIs, reading and dealing with data, up to some methods such as PCA and regression. 
 
-## Learning goals  
-- Install `git` and clone the course repository from `github`
-- Install an Integrated Development Environment (IDE), if needed
-- Learn about text and cells in a jupyter notebook
+Basically, the course has three parts: 
+1. Python basics: data types, functions, loops, conditions etc; (Lessons 01, 02, 03, 04)
+2. Tools for data analysis: numpy, matplotlib, pandas; (Lessons 05, 05, 07, 08)
+3: Project: choose data that interests you and creat a dashboard
 
-## Your python environment
-We will assume that python is installed on your system. These course notes are written with python 3.13, but other versions might work as well. In addition to plan `python`, we will need some libraries. Which ones we need (including their versions) is written in the file `requirements.txt` in the main folder of these notes. We recomment that you do the following: 
+Let us discuss some preliminairies.
 
-1. Create a virtual environment using `python -m venv venv` or `python3 -m venv venv`. 
-2. Activate this environment by `source venv/bin/activate`,
-3. Install the libraries using `pip3 install -r requirements.txt` (or `pip install -r requirements.txt`).
+### Your python environment
+We will assume that python and jupyter is installed on your system. These course notes are written with python 3.13, but other versions might work as well. In addition to plain `python`, we will need some libraries. Which ones we need (including their versions) is written in the file [`requirements.txt`](https://github.com/pfaffelh/python_for_data/requirements.txt). Some jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the jupyter server which runs the notebools.)
 
-General note: We avoid repeating the distinction between the commands `python` and `python3`, and will simply write `python3` in the sequel.
 
 ## Starting a Jupyter notebook
+
+General note: We avoid repeating the distinction between the commands `python` and `python3`, and will simply write `python3` in the sequel.
 
 There are basically three ways `python` commands can be run: 
 
@@ -55,12 +54,5 @@ In order to execute this code, press the play bottom on the left (or hit `Contro
 ## Using AI (ChatGPT, Gemini etc)
 During the last years, AI has increasingly improved in code writing. You are encouraged to use this new technology! As usual when learning new things, this new tool can help a lot, and will be able to solve the exercises within the Jupyter notebooks. However, you still have to undestand the code, and what might go wrong during execution. As a first course in Python, you will end up having up to a few hundred lines of code, which has to be coherent. You must know the structure of that code, and in order to extend it, fix bugs etc. If you are ever involved in bigger projects, this is even more important. 
 
-## Overview of the course
-
-Basically, the course has three parts: 
-
-1. Python basics: data types, functions, loops, conditions etc; (Lessons 01, 02, 03, 04)
-2. Tools for data analysis: numpy, matplotlib, pandas; (Lessons 05, 05, 07, 08)
-3: Project: choose data that interests you and creat a dashboard
 
 

@@ -49,3 +49,13 @@ git pull
 ```
 There is (at least) one catch for using `git`: If you are changing one of the course files locally on your system, but the file has updated, `git pull` realizes the different versions and rejects to do `git pull`. The best way out is to do all changes to the files in the folder `myFiles`, or only change the files `...ipynb`. All these files are excluded from any update with `git pull`. 
 
+We recommend that you do the following: 
+
+1. Clone the repository of these notes using 
+```
+git clone https://github.com/pfaffelh/python_for_data
+```
+Hit `cd python_for_data`. 
+2. Create a virtual environment using `python -m venv venv` or `python3 -m venv venv`. 
+3. Activate this environment by `source venv/bin/activate`,
+4. Install the libraries using `pip3 install -r requirements.txt` (or `pip install -r requirements.txt`).
