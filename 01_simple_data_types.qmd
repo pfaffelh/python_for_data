@@ -1,5 +1,5 @@
 ---
-title: Simple Data types
+title: 1 Simple Data types
 format: 
     pdf: default
     ipynb: default

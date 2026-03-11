@@ -15,6 +15,7 @@ book:
     - 04_loops_and_conditions.qmd
     - 05_libraries.qmd
     - 10_misc.qmd
+number-sections: false
 
 execute:
   enable: true
