@@ -4,9 +4,9 @@ The notes use `quarto`. This means, after install [`quarto`](https://quarto.org/
 ```
 quarto render 00_Getting_started.qmd
 ```
-If you are brave, you can get the complete notes by 
+If you want all in one go, type
 ```
-./render_notebooks.sh
+quarto render
 ```
 This takes a few minutes. 
 

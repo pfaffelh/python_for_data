@@ -20,3 +20,9 @@ for strings:
 x[0] x[1:4] 
 immutable 
 x[0] = "Z"
+
+
+Lists - These are collections of values in the CSV format. Lists are mutable objects.
+Tuples - These are like lists, but immutable.
+Dictionaries - These are collections of key-value pairs defined using curly braces.
+Sets - They can’t have duplicates, and are mutable.

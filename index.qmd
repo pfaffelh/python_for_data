@@ -13,6 +13,8 @@ Basically, the course has three parts:
 2. Tools for data analysis: numpy, matplotlib, pandas; (Lessons 05, 05, 07, 08)
 3: Project: choose data that interests you and creat a dashboard
 
+Within the first two parts, you will be assigned homeworks, which you can find at the end of each section. For the third part, you will have to find a project by yourself. 
+
 Let us discuss some preliminairies.
 
 ### Your python environment
@@ -21,7 +23,7 @@ We will assume that python and jupyter is installed on your system. These course
 
 ## Starting a Jupyter notebook
 
-General note: We avoid repeating the distinction between the commands `python` and `python3`, and will simply write `python3` in the sequel.
+_General note: We avoid repeating the distinction between the commands `python` and `python3`, and will simply write `python3` in the sequel._
 
 There are basically three ways `python` commands can be run: 
 
@@ -29,13 +31,13 @@ There are basically three ways `python` commands can be run:
 2. In `python`-scripts, usually ending with `myScript.py`. You can run these using `python3 myScript.py`.
 3. Jupyter notebooks have the opportunity to mix usual text with `python` commands. We will use these in this course. 
 
-For Jupyter notebooks, there are basically two ways to run them: 
+For Jupyter notebooks, there are at least two ways to run them: 
 
 1. Start the Jupyter server using `jupyter lab` (hopefully, it is already installed), which opens your browser where you can edit and save what you have done;
 2. Use `vscode` as you IDE and work from there; see below.
 
-## vscode
-When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as [`vscode`](https://code.visualstudio.com/). It is best to acticvate your vertual environment using `source venv/bin/activate` before starting vscode. In order to start vscode, go to the main folder of the course notes, and type `code .` vscode can be used for all three ways to write Python commands: 
+## Integrated Development Environment (IDE)
+When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as [`vscode`](https://code.visualstudio.com/) or [pycharm](https://www.jetbrains.com/de-de/pycharm/). It is best to acticvate your vertual environment using `source venv/bin/activate` before starting your IDE. In order to start vscode, go to the main folder of the course notes, and type `code .` E.g., vscode can be used for all three ways to write Python commands: 
 
 1. Use `Terminal -> New Terminal` in order to open a terminal, type `python3` and you are in interactive mode,
 2. Write a Python script and run it using the opoened terminal,
@@ -49,7 +51,7 @@ x = "Hello, "
 y = "world!"
 print(x+y)
 ```
-In order to execute this code, press the play bottom on the left (or hit `Control + Enter` within the Python-cell).
+If you are working within the jupyter notebook (and not just in the html-file), you can execute this piece of code: Press the play bottom on the left (or hit `Control + Enter` within the Python-cell).
 
 ## Using AI (ChatGPT, Gemini etc)
 During the last years, AI has increasingly improved in code writing. You are encouraged to use this new technology! As usual when learning new things, this new tool can help a lot, and will be able to solve the exercises within the Jupyter notebooks. However, you still have to undestand the code, and what might go wrong during execution. As a first course in Python, you will end up having up to a few hundred lines of code, which has to be coherent. You must know the structure of that code, and in order to extend it, fix bugs etc. If you are ever involved in bigger projects, this is even more important. 

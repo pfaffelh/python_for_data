@@ -1,10 +1,6 @@
 .ipynb_checkpoints/
 venv/
-_book/
 myFiles/
-*.ipnyb
-*.pdf
 *.fdb_latexmk
-
 /.quarto/
 **/*.quarto_ipynb
