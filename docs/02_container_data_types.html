@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Miscellaneous</title>
+<title>3&nbsp; Container data types</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -68,7 +33,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05_libraries.html" rel="prev">
+<link href="./03_functions.html" rel="next">
+<link href="./01_simple_data_types.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -119,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_misc.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_container_data_types.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Container data types</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -153,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_container_data_types.html" class="sidebar-item-text sidebar-link">
+  <a href="./02_container_data_types.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Container data types</span></span></a>
   </div>
 </li>
@@ -177,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_misc.html" class="sidebar-item-text sidebar-link active">
+  <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
@@ -191,11 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#comments" id="toc-comments" class="nav-link active" data-scroll-target="#comments"><span class="header-section-number">7.1</span> Comments</a></li>
-  <li><a href="#two-equality-signs" id="toc-two-equality-signs" class="nav-link" data-scroll-target="#two-equality-signs"><span class="header-section-number">7.2</span> Two equality signs</a></li>
-  <li><a href="#user-input" id="toc-user-input" class="nav-link" data-scroll-target="#user-input"><span class="header-section-number">7.3</span> User input</a></li>
-  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="header-section-number">7.4</span> Regular expressions</a></li>
-  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github"><span class="header-section-number">7.5</span> git and github</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">3.1</span> Overview</a></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Container data types</span></h1>
 </div>
 
 
@@ -221,48 +183,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>We collect here some stuff, which does not really fit anywhere else. We use the material in this section without notice in the whole course.</p>
-<section id="comments" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="comments"><span class="header-section-number">7.1</span> Comments</h2>
-<p>In Python, the key for a comment is #.</p>
-<div id="5594f1a2" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This line is a comment.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This line is not a comment."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>This line is not a comment.</code></pre>
-</div>
-</div>
-</section>
-<section id="two-equality-signs" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="two-equality-signs"><span class="header-section-number">7.2</span> Two equality signs</h2>
-<p>In Python (and many other programming languages), there are assignments such as <code>x = 0</code>, which says that <code>x</code> should from now on have the value <code>0</code>, and <code>x == 0</code>. The latter is a condition, which results in <code>True</code> if <code>x</code> is indeed <code>0</code>, and `False otherwise.</p>
-</section>
-<section id="user-input" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="user-input"><span class="header-section-number">7.3</span> User input</h2>
-<p>Sometimes, when operating on the command line, one wants to ask for user input. This works as follows:</p>
-<pre><code>name = input("What is your name?")
-print(f"Hello, {name}!")</code></pre>
-</section>
-<section id="regular-expressions" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="regular-expressions"><span class="header-section-number">7.4</span> Regular expressions</h2>
-<p>ask the AI!</p>
-</section>
-<section id="git-and-github" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="git-and-github"><span class="header-section-number">7.5</span> git and github</h2>
-<p>These course notes are organized using the version control system <code>git</code>. If this does not mean anything to you, don’t mind. At the moment, this only means that you need to <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">install <code>git</code></a> on your system, and run in the folder where you want to have the course notes</p>
-<pre><code>git clone https://github.com/pfaffelh/python_for_data/</code></pre>
-<p>With this command, you are <em>cloning</em> the repository of the course notes from github. You can also look at this repository <a href="https://github.com/pfaffelh/python_for_data/">online</a>.</p>
-<p>There is a good chance that the course notes will be updated during the upcoming weeks. In order to obtain the most current version, you need to run</p>
-<pre><code>git pull</code></pre>
-<p>There is (at least) one catch for using <code>git</code>: If you are changing one of the course files locally on your system, but the file has updated, <code>git pull</code> realizes the different versions and rejects to do <code>git pull</code>. The best way out is to do all changes to the files in the folder <code>myFiles</code>, or only change the files <code>...ipynb</code>. All these files are excluded from any update with <code>git pull</code>.</p>
-<p>We recommend that you do the following:</p>
-<ol type="1">
-<li>Clone the repository of these notes using</li>
-</ol>
-<pre><code>git clone https://github.com/pfaffelh/python_for_data</code></pre>
-<p>Hit <code>cd python_for_data</code>. 2. Create a virtual environment using <code>python -m venv venv</code> or <code>python3 -m venv venv</code>. 3. Activate this environment by <code>source venv/bin/activate</code>, 4. Install the libraries using <code>pip3 install -r requirements.txt</code> (or <code>pip install -r requirements.txt</code>).</p>
+<section id="overview" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">3.1</span> Overview</h2>
+<p>list set dict tuple</p>
+<section id="mathematical-angle" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="mathematical-angle"><span class="header-section-number">3.1.1</span> Mathematical angle</h3>
+<p>This is a good moment to compare: - lists with finite sequences, - tuples with fixed records, - dictionaries with finite maps.</p>
+<p>for strings: x[0] x[1:4] immutable x[0] = “Z”</p>
+<p>Lists - These are collections of values in the CSV format. Lists are mutable objects. Tuples - These are like lists, but immutable. Dictionaries - These are collections of key-value pairs defined using curly braces. Sets - They can’t have duplicates, and are mutable.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -668,11 +599,14 @@ print(f"Hello, {name}!")</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05_libraries.html" class="pagination-link" aria-label="Using libraries and modules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span>
+      <a href="./01_simple_data_types.html" class="pagination-link" aria-label="Simple Data types">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Simple Data types</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./03_functions.html" class="pagination-link" aria-label="Functions">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

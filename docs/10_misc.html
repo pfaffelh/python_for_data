@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Python for Data Analysis</title>
+<title>7&nbsp; Miscellaneous</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_simple_data_types.html" rel="next">
+<link href="./05_libraries.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Data Analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_misc.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Data Analysis</span></span></a>
   </div>
 </li>
@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_misc.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
@@ -191,10 +191,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#starting-a-jupyter-notebook" id="toc-starting-a-jupyter-notebook" class="nav-link active" data-scroll-target="#starting-a-jupyter-notebook"><span class="header-section-number">0.1</span> Starting a Jupyter notebook</a></li>
-  <li><a href="#integrated-development-environment-ide" id="toc-integrated-development-environment-ide" class="nav-link" data-scroll-target="#integrated-development-environment-ide"><span class="header-section-number">0.2</span> Integrated Development Environment (IDE)</a></li>
-  <li><a href="#a-first-python-cell" id="toc-a-first-python-cell" class="nav-link" data-scroll-target="#a-first-python-cell"><span class="header-section-number">0.3</span> A first Python cell</a></li>
-  <li><a href="#using-ai-chatgpt-gemini-etc" id="toc-using-ai-chatgpt-gemini-etc" class="nav-link" data-scroll-target="#using-ai-chatgpt-gemini-etc"><span class="header-section-number">0.4</span> Using AI (ChatGPT, Gemini etc)</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link active" data-scroll-target="#comments"><span class="header-section-number">7.1</span> Comments</a></li>
+  <li><a href="#two-equality-signs" id="toc-two-equality-signs" class="nav-link" data-scroll-target="#two-equality-signs"><span class="header-section-number">7.2</span> Two equality signs</a></li>
+  <li><a href="#user-input" id="toc-user-input" class="nav-link" data-scroll-target="#user-input"><span class="header-section-number">7.3</span> User input</a></li>
+  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="header-section-number">7.4</span> Regular expressions</a></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github"><span class="header-section-number">7.5</span> git and github</a></li>
   </ul>
 </nav>
     </div>
@@ -203,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Data Analysis</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></h1>
 </div>
 
 
@@ -220,54 +221,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>These are the materials which are used for a course on <em>Python for Data Analysis</em> at the University of Freiburg in summer 2026. It does not assume any prior knowledge of python (although this might help). The goal of the course is some literacy in python, including basic knowledge such as data types and control flow, but also using libraries and APIs, reading and dealing with data, up to some methods such as PCA and regression.</p>
-<p>Basically, the course has three parts: 1. Python basics: data types, functions, loops, conditions etc; (Lessons 01, 02, 03, 04) 2. Tools for data analysis: numpy, matplotlib, pandas; (Lessons 05, 05, 07, 08) 3: Project: choose data that interests you and creat a dashboard</p>
-<p>Within the first two parts, you will be assigned homeworks, which you can find at the end of each section. For the third part, you will have to find a project by yourself.</p>
-<p>Let us discuss some preliminairies.</p>
-<section id="your-python-environment" class="level3" data-number="0.0.1">
-<h3 data-number="0.0.1" class="anchored" data-anchor-id="your-python-environment"><span class="header-section-number">0.0.1</span> Your python environment</h3>
-<p>We will assume that python and jupyter is installed on your system. These course notes are written with python 3.13, but other versions might work as well. In addition to plain <code>python</code>, we will need some libraries. Which ones we need (including their versions) is written in the file <a href="https://github.com/pfaffelh/python_for_data/requirements.txt"><code>requirements.txt</code></a>. Some jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the jupyter server which runs the notebools.)</p>
-</section>
-<section id="starting-a-jupyter-notebook" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="starting-a-jupyter-notebook"><span class="header-section-number">0.1</span> Starting a Jupyter notebook</h2>
-<p><em>General note: We avoid repeating the distinction between the commands <code>python</code> and <code>python3</code>, and will simply write <code>python3</code> in the sequel.</em></p>
-<p>There are basically three ways <code>python</code> commands can be run:</p>
-<ol type="1">
-<li>In interactive mode on the command line by typing <code>python3</code> in your shell,</li>
-<li>In <code>python</code>-scripts, usually ending with <code>myScript.py</code>. You can run these using <code>python3 myScript.py</code>.</li>
-<li>Jupyter notebooks have the opportunity to mix usual text with <code>python</code> commands. We will use these in this course.</li>
-</ol>
-<p>For Jupyter notebooks, there are at least two ways to run them:</p>
-<ol type="1">
-<li>Start the Jupyter server using <code>jupyter lab</code> (hopefully, it is already installed), which opens your browser where you can edit and save what you have done;</li>
-<li>Use <code>vscode</code> as you IDE and work from there; see below.</li>
-</ol>
-</section>
-<section id="integrated-development-environment-ide" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="integrated-development-environment-ide"><span class="header-section-number">0.2</span> Integrated Development Environment (IDE)</h2>
-<p>When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as <a href="https://code.visualstudio.com/"><code>vscode</code></a> or <a href="https://www.jetbrains.com/de-de/pycharm/">pycharm</a>. It is best to acticvate your vertual environment using <code>source venv/bin/activate</code> before starting your IDE. In order to start vscode, go to the main folder of the course notes, and type <code>code .</code> E.g., vscode can be used for all three ways to write Python commands:</p>
-<ol type="1">
-<li>Use <code>Terminal -&gt; New Terminal</code> in order to open a terminal, type <code>python3</code> and you are in interactive mode,</li>
-<li>Write a Python script and run it using the opoened terminal,</li>
-<li>Click on some Jupyther notebook, and vscode starts the Jupyter server for you.</li>
-</ol>
-</section>
-<section id="a-first-python-cell" class="level2" data-number="0.3">
-<h2 data-number="0.3" class="anchored" data-anchor-id="a-first-python-cell"><span class="header-section-number">0.3</span> A first Python cell</h2>
-<p>Here is the first cell of Python-code:</p>
-<div id="b22f2153" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Hello, "</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"world!"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x<span class="op">+</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We collect here some stuff, which does not really fit anywhere else. We use the material in this section without notice in the whole course.</p>
+<section id="comments" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="comments"><span class="header-section-number">7.1</span> Comments</h2>
+<p>In Python, the key for a comment is #.</p>
+<div id="eee35200" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This line is a comment.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This line is not a comment."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello, world!</code></pre>
+<pre><code>This line is not a comment.</code></pre>
 </div>
 </div>
-<p>If you are working within the jupyter notebook (and not just in the html-file), you can execute this piece of code: Press the play bottom on the left (or hit <code>Control + Enter</code> within the Python-cell).</p>
 </section>
-<section id="using-ai-chatgpt-gemini-etc" class="level2" data-number="0.4">
-<h2 data-number="0.4" class="anchored" data-anchor-id="using-ai-chatgpt-gemini-etc"><span class="header-section-number">0.4</span> Using AI (ChatGPT, Gemini etc)</h2>
-<p>During the last years, AI has increasingly improved in code writing. You are encouraged to use this new technology! As usual when learning new things, this new tool can help a lot, and will be able to solve the exercises within the Jupyter notebooks. However, you still have to undestand the code, and what might go wrong during execution. As a first course in Python, you will end up having up to a few hundred lines of code, which has to be coherent. You must know the structure of that code, and in order to extend it, fix bugs etc. If you are ever involved in bigger projects, this is even more important.</p>
+<section id="two-equality-signs" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="two-equality-signs"><span class="header-section-number">7.2</span> Two equality signs</h2>
+<p>In Python (and many other programming languages), there are assignments such as <code>x = 0</code>, which says that <code>x</code> should from now on have the value <code>0</code>, and <code>x == 0</code>. The latter is a condition, which results in <code>True</code> if <code>x</code> is indeed <code>0</code>, and `False otherwise.</p>
+</section>
+<section id="user-input" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="user-input"><span class="header-section-number">7.3</span> User input</h2>
+<p>Sometimes, when operating on the command line, one wants to ask for user input. This works as follows:</p>
+<pre><code>name = input("What is your name?")
+print(f"Hello, {name}!")</code></pre>
+</section>
+<section id="regular-expressions" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="regular-expressions"><span class="header-section-number">7.4</span> Regular expressions</h2>
+<p>ask the AI!</p>
+</section>
+<section id="git-and-github" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="git-and-github"><span class="header-section-number">7.5</span> git and github</h2>
+<p>These course notes are organized using the version control system <code>git</code>. If this does not mean anything to you, don’t mind. At the moment, this only means that you need to <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">install <code>git</code></a> on your system, and run in the folder where you want to have the course notes</p>
+<pre><code>git clone https://github.com/pfaffelh/python_for_data/</code></pre>
+<p>With this command, you are <em>cloning</em> the repository of the course notes from github. You can also look at this repository <a href="https://github.com/pfaffelh/python_for_data/">online</a>.</p>
+<p>There is a good chance that the course notes will be updated during the upcoming weeks. In order to obtain the most current version, you need to run</p>
+<pre><code>git pull</code></pre>
+<p>There is (at least) one catch for using <code>git</code>: If you are changing one of the course files locally on your system, but the file has updated, <code>git pull</code> realizes the different versions and rejects to do <code>git pull</code>. The best way out is to do all changes to the files in the folder <code>myFiles</code>, or only change the files <code>...ipynb</code>. All these files are excluded from any update with <code>git pull</code>.</p>
+<p>We recommend that you do the following:</p>
+<ol type="1">
+<li>Clone the repository of these notes using</li>
+</ol>
+<pre><code>git clone https://github.com/pfaffelh/python_for_data</code></pre>
+<p>Hit <code>cd python_for_data</code>. 2. Create a virtual environment using <code>python -m venv venv</code> or <code>python3 -m venv venv</code>. 3. Activate this environment by <code>source venv/bin/activate</code>, 4. Install the libraries using <code>pip3 install -r requirements.txt</code> (or <code>pip install -r requirements.txt</code>).</p>
 
 
 </section>
@@ -675,11 +668,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./05_libraries.html" class="pagination-link" aria-label="Using libraries and modules">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_simple_data_types.html" class="pagination-link" aria-label="Simple Data types">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Simple Data types</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

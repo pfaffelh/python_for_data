@@ -144,7 +144,7 @@
     "href": "02_container_data_types.html#overview",
     "title": "3  Container data types",
     "section": "",
-    "text": "3.1.1 Mathematical angle\nThis is a good moment to compare: - lists with finite sequences, - tuples with fixed records, - dictionaries with finite maps.\nfor strings: x[0] x[1:4] immutable x[0] = “Z”",
+    "text": "3.1.1 Mathematical angle\nThis is a good moment to compare: - lists with finite sequences, - tuples with fixed records, - dictionaries with finite maps.\nfor strings: x[0] x[1:4] immutable x[0] = “Z”\nLists - These are collections of values in the CSV format. Lists are mutable objects. Tuples - These are like lists, but immutable. Dictionaries - These are collections of key-value pairs defined using curly braces. Sets - They can’t have duplicates, and are mutable.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Container data types</span>"
     ]
