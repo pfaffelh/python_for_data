@@ -1,5 +1,5 @@
 ---
-title: 00 – Getting started
+title: Getting started
 format: 
     pdf: default
     ipynb: default

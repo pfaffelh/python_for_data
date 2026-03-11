@@ -1,0 +1,12 @@
+---
+title: Functions
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+## Overview
+
+docstrings
+

@@ -1,0 +1,32 @@
+---
+title: Miscellaneous
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+We collect here some stuff, which does not really fit anywhere else. We use the material in this section without notice in the whole course.
+
+## Comments
+
+In Python, the key for a comment is #.
+
+```{python}
+# This line is a comment.
+print("This line is not a comment.")
+```
+
+## Two equality signs
+In Python (and many other programming languages), there are assignments such as `x = 0`, which says that `x` should from now on have the value `0`, and `x == 0`. The latter is a condition, which results in `True` if `x` is indeed `0`, and `False otherwise. 
+
+
+
+## User input
+
+Sometimes, when operating on the command line, one wants to ask for user input. This works as follows:
+
+```
+name = input("What is your name?")
+print(f"Hello, {name}!")
+```

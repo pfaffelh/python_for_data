@@ -1,0 +1,27 @@
+project:
+  type: book
+  output-dir: _book
+  post-render:
+    - ./render_notebooks.sh
+  resources:
+    - notebooks/*.ipynb
+
+book:
+  chapters:
+    - index.qmd
+    - 00_getting_started.qmd
+    - 01_simple_data_types.qmd
+    - 02_container_data_types.qmd
+    - 03_functions.qmd
+    - 04_loops_and_conditions.qmd
+    - 05_libraries.qmd
+    - 10_misc.qmd
+
+execute:
+  enable: true
+
+format:
+  pdf: default
+  html:
+    notebook-links: true
+

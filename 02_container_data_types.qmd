@@ -1,0 +1,17 @@
+---
+title: Container data types
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+## Overview
+
+list set dict tuple
+
+### Mathematical angle
+This is a good moment to compare:
+- lists with finite sequences,
+- tuples with fixed records,
+- dictionaries with finite maps.

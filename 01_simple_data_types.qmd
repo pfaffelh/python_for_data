@@ -1,0 +1,185 @@
+---
+title: Simple Data types
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+[Download notebook](notebooks/01_simple_data_types.ipynb).
+
+## Overview
+
+Every variable or other object in python has a type. This is the kind of information which is stored insice the variable or object Here is an overview over the most important simple data types. 
+
+
+| Type       | Example   | Description              |
+|------------|-----------|--------------------------|
+| `int`      | `5`       | Integer                  |
+| `float`    | `3.14`    | Floating-point number    |
+| `complex`  | `2+3j`    | Complex number           |
+| `bool`     | `True`    | Boolean value            |
+| `str`      | `"hello"` | Text string              |
+| `NoneType` | `None`    | No value / null value    |
+
+You can find about the type of any expression `x` in Python using `type(x)`. 
+
+## Integers 
+
+Integers (int) are numbers ...,-2,-1,0,1,2,... In most programming languages, like `C++`, there is a minimal and a maximal possible value for an int. Python, however, does not have this limitation. Only the amount of available memory restricts the numbers which can be stored in an int. With int, we can compute as usual.
+
+```{python}
+x = 7
+y = 2
+print("x + y = ", x + y)
+print("x * y =  ", x * y)
+# x to the poewr of y
+print("x ** y = ", x ** y)
+# x divided by y (which gives a float)
+print("x / y = ", x / y)
+# integer-valued division of x by y 
+print("x // y = ", x // y)
+# x modulo y
+print("x % y = ", x % y)
+```
+
+## Floats 
+
+Generally speaking, floats are decomal numbers, which come with an exponent and a mantissa, e.g. $1.2 \cdot 10^2$. Python can do the same computations as with ints, but the following should be kept in mind:
+
+- If you type `1`, Python thinks this is an int, but if you type `1.0` or `1.`, Python thinks this is a float. 
+- Unlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about $ ~10^{-324}$ to $10^{308}$. 
+- When doing mixed computations with floats and int, e.g. `1.0 + 1`, the int is changed into a float. 
+- It is not possible to perform exact computations with some floats; see the example below.
+
+```{python}
+x = 1.0
+y = 1
+print("x + y = ", x + y)
+print("0.1 + 0.2 = ", 0.1 + 0.2)
+```
+
+Special floats are `inf`, `-inf` and `nan` (not a number). Let us see them in action:
+
+```{python}
+(10. ** 308) * 10
+(10 ** 308) * 10
+(10 ** (-323)) / 10
+(10. ** 308) * 10 - (10. ** 308) * 10
+```
+
+You can transform ints to floats by using 
+```{python}
+float(0)
+int(0.0)
+int(0.5)
+float("inf")
+float("nan")
+```
+
+## bool
+
+There are exactly two boolean values, known as `True` and `False`. You can compute with them using `not`, `and`, `or` and 'xor'. In addition, `True` and `False` can be the result of a condition, such as the expression `1 == 2`. 
+
+```{python}
+x = True
+y = False
+print("not x =", not x)
+print("((not x) == y) =", (not x) == y)
+print("x + y =", x + y)
+print("(1 == 2) =", 1 == 2)
+# != means "not equal"
+print("(1 != 2) =", 1 != 2)
+print("x xor y =", x ^ y)
+z = float("nan")
+print("(z == z) =", z == z)
+```
+
+## string
+
+
+
+f-strings 
+
+multiline-strings
+
+Strings are names, text, etc. 
+
+\n \t + * strip() x[0] x[1:4] len(x)
+
+
+
+x.replace("s", "o")
+x.split(",")
+", ".join
+
+
+s.isalpha()
+s.isdigit()
+s.isalnum()
+s.isspace()
+s.islower()
+s.isupper()
+
+"th" in "Python"
+
+x.count("y")
+
+immutable 
+
+x[0] = "Z"
+
+str.lower(s)
+
+
+## NoneType
+
+
+## Exercises 
+
+1. Find out how to use scientific notation in Python. (If you don't know what this is, please find out!)
+2. Is there a Python package which can compute $0.1 + 0.2 = 0.3$ without error?
+
+
+
+
+bool
+
+int 
+
+float 
+
+complex 
+
+string 
+
+NoneType  
+
+
+
+
+## Conversion between types
+
+
+check for a type
+
+isdigit
+
+
+date and time 
+
+
+
+
+
+list
+
+tuple
+
+set
+
+dict
+
+
+
+
