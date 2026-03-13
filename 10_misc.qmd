@@ -35,6 +35,9 @@ print(f"Hello, {name}!")
 
 ask the AI!
 
+## dot-notation
+
+Here is another very useful notation convention, known as dot-notation: For a function `str.something(s,...)`, where `s` is of type `str`, you can as well write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. 
 
 ## git and github
 These course notes are organized using the version control system `git`. If this does not mean anything to you, don't mind. At the moment, this only means that you need to [install `git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on your system, and run in the folder where you want to have the course notes

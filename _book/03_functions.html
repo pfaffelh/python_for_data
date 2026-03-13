@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.31">
+<meta name="generator" content="quarto-1.9.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2 Control flow – conditions, loops, and functions</title>
+<title>4&nbsp; Functions</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,18 +33,18 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05_libraries.html" rel="next">
-<link href="./03_functions.html" rel="prev">
+<link href="./04_loops_and_conditions.html" rel="next">
+<link href="./02_container_data_types.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7c69b197886ae2a34062761d21e44731.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-352f0346a3070dd3b7340e73962f3721.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b5c49d451f14625acf1737a92055c052.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_loops_and_conditions.html"><span class="chapter-title">2 Control flow – conditions, loops, and functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_functions.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -107,37 +107,44 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python for Data Analysis</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Data Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_simple_data_types.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Simple Data types</span></a>
+  <a href="./01_simple_data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Simple Data types</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_container_data_types.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Container data types</span></a>
+  <a href="./02_container_data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Container data types</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Functions</span></a>
+  <a href="./03_functions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_loops_and_conditions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">2 Control flow – conditions, loops, and functions</span></a>
+  <a href="./04_loops_and_conditions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loops and conditions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_libraries.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using libraries and modules</span></a>
+  <a href="./05_libraries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_misc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Miscellaneous</span></a>
+  <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -150,9 +157,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#if-elif-else" id="toc-if-elif-else" class="nav-link active" data-scroll-target="#if-elif-else">If elif else</a></li>
-  <li><a href="#for" id="toc-for" class="nav-link" data-scroll-target="#for">for</a></li>
-  <li><a href="#while" id="toc-while" class="nav-link" data-scroll-target="#while">while</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">4.1</span> Overview</a></li>
   </ul>
 </nav>
     </div>
@@ -161,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">2 Control flow – conditions, loops, and functions</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></h1>
 </div>
 
 
@@ -178,82 +183,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Coding starts to become interesting when we can control how variables change, and repeat operations.</p>
-<section id="if-elif-else" class="level2">
-<h2 class="anchored" data-anchor-id="if-elif-else">If elif else</h2>
-<p>As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an <code>if</code>-condition:</p>
-<pre class="{python3}"><code>a = 2
-b = 5
-if a &lt; b:
-    res = a
-else:
-    res = b
-print(f"The minimum of {a} and {b} is:", res)</code></pre>
-<p>In general, the structure of an <code>if</code>-statement reads:</p>
-<pre><code>if _condition1_:
-    case1
-elif _condition2_:
-    case2
-elif _condition3_:
-    case3
-...
-else:
-    case_else</code></pre>
-<p>Here, read <code>elif</code> alse <code>else if</code>, which means that the code jumps into this case if the respective condition is the first to hold. The <code>else</code> case only applied if both the <code>if</code> and all <code>elif</code> conditions do not apply.</p>
-<p>In fact, there are abbreviations in python3 which are very handy. In particular, look at this piece of code.</p>
-<pre class="{python3}"><code>res = a if a &lt; b else b
-print(f"The minimum of {a} and {b} is:", res)</code></pre>
-<p>Let us make another example, also using <code>elif</code>. Given some <code>n</code>, the task is to print <code>Fizz</code> if <code>n</code> is a multiple of 3, <code>Buzz</code>, if it is a multiple of 5, and <code>FizzBuzz</code> if both conditions are satisfied.</p>
-<pre class="{python3}"><code>n = 165
-res = ""
-if n % 3 == 0 and n % 5 == 0:
-    res = "FizzBuzz"
-elif n % 3 == 0:
-    res = "Fizz"
-elif n % 5 == 0:
-    res = "Buzz"
-print(res)</code></pre>
-<p>Exercise</p>
-<p>Can you code the <code>FizzBuzz</code> example in a single line of code? (So, dependent on some <code>n</code>, give one line of code, which gives <code>Fizz</code> if <code>n</code> is a multiple of 3, <code>Buzz</code>, if it is a multiple of 5, and <code>FizzBuzz</code> if both conditions are satisfied.</p>
-<p>Exercise</p>
-<p>Multiple <code>elif</code>s in a row are not very elegant. Python3 (since version 3.10) comes with <code>match</code>. Find out how you can change the <code>FizzBuzz</code> example of the main text by using <code>match</code> instead of <code>elif</code>s.</p>
-</section>
-<section id="for" class="level2">
-<h2 class="anchored" data-anchor-id="for">for</h2>
-<p>There are <code>for</code>-loops in Python3, as discussed in this section, and <code>while</code>-loops in the next section. The basic use-case of a <code>for</code>-loop is repeating a task several times. As a simple example, adding <code>b</code> a number of <code>a</code> times, results in <code>a * b</code>.</p>
-<pre class="{python3}"><code>a = 3
-b = 7
-res = 0
-for i in range(a):
-    res = res + b
-print(f"{a} * {b} = {res}")</code></pre>
-<p>Importantly, <code>range(a)</code> is a synonym for the numbers <code>0,..., a-1</code>. (In particular, note that Python3 usually starts counting at <code>0</code> and not at <code>1</code>, which will also be important in the next chapter.)</p>
-<p>The general structure of a <code>for</code>-loop is as follows:</p>
-<pre><code>for _var_ in _iterable:
-    _sequence of instiuctions_</code></pre>
-<p>Let us look at a more interesting example, computing the greatest common divisor of two numbers, <code>a</code> and <code>b</code>. A very simple algorithm is going through all numbers <code>1,...,</code> in order, and update result each time we encounter a number which divides both, <code>a</code> and <code>b</code>. (Here, <code>range(1,a+1)</code> is a synoym for the numbers <code>1,...,a</code>.)</p>
-<pre class="{python3}"><code># Basic algorithm for finding the greatest common divisor (gcd) of two numbers
-a = 105
-b = 33
-
-res = 1
-for i in range(1,a+1):
-    if a % i == 0 and b % i == 0:
-        res = i
-print(f"The gcd of {a} and {b} is {res}.")</code></pre>
-</section>
-<section id="while" class="level2">
-<h2 class="anchored" data-anchor-id="while">while</h2>
-<p>def gcd(a, b): a, b = abs(a), abs(b)</p>
-<pre><code>while b != 0:
-    r = a % b
-    print(f"a = {a}, b = {b}, remainder = {r}")
-
-    a = b
-    b = r
-
-return a</code></pre>
-<p>print(“gcd =”, gcd(252, 105))</p>
+<section id="overview" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">4.1</span> Overview</h2>
+<p>docstrings</p>
+<p>strip() len(x) x.replace(“s”, “o”) x.split(“,”) “,”.join str.lower(s) s.isalpha() s.isdigit() s.isalnum() s.isspace() s.islower() s.isupper() x.count(“y”)</p>
 
 
 </section>
@@ -661,13 +594,13 @@ return a</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03_functions.html" class="pagination-link" aria-label="Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Functions</span></span>
+      <a href="./02_container_data_types.html" class="pagination-link" aria-label="Container data types">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Container data types</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05_libraries.html" class="pagination-link" aria-label="Using libraries and modules">
-        <span class="nav-page-text"><span class="chapter-title">Using libraries and modules</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04_loops_and_conditions.html" class="pagination-link" aria-label="Loops and conditions">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loops and conditions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

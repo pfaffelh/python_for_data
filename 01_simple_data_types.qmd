@@ -1,5 +1,5 @@
 ---
-title: 1 Simple Data types
+title: Simple Data types
 format: 
     pdf: default
     ipynb: default
@@ -22,7 +22,12 @@ Every variable or other object in python has a type. This is the kind of informa
 | `NoneType` | `None`    | No value / null value    |
 
 - You can find about the type of any expression `x` in Python using `type(x)`. 
-- There are conversions between some types. For example, `"0"` is a string, but `int("0")` the integer `0`. Conversely, `str(0)` is the string `"0"`. We will have more examples below. 
+- In fact, `type(x)` is already the first example of a built-in-function. The function `type` takes a single value as input, and returns its type. We will encounter various more functions already in this section. We will learn more about functions (built-in and self-written) in  @sec-functions.
+- There are conversions between some types. For example, `"0"` is a string, but `int("0")` (again a function, taking a single value, and returning its integer value) the integer `0`. Conversely, `str(0)` is the string `"0"`. We will have more examples below. 
+
+$$
+E = mc^2
+$$ {#eq-einstein}
 
 
 ## int
@@ -57,7 +62,7 @@ print("x % y = ", x % y)
 Generally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. $1.2 \cdot 10^2$. Python can do the same computations as with ints, but the following should be kept in mind:
 
 - If you type `1`, Python thinks this is an int, but if you type `1.0` or `1.`, Python thinks this is a float. 
-- Unlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about $ ~10^{-324}$ to $10^{308}$. 
+- Unlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about $10^{-324}$ to $10^{308}$. 
 - When doing mixed computations with floats and int, e.g. `1.0 + 1`, the int is changed into a float. 
 - It is not possible to perform exact computations with some floats; see the example below.
 
@@ -192,6 +197,26 @@ print("Is 'th' a substring of 'Python'? ", 'th' in 'Python')
 print("Is 'the' a substring of 'Python'? ", 'the' in 'Python')
 ```
 
+For strings, there are various build-in functions. We mention some of them. Here, `s` is a string. 
+
+* `str.strip(s)`: Deletes spaces in the front and back. 
+* `len(s)`: gives the length of the string. 
+* `str.replace(s, "x", "y")`: Replaces each occurrence of `"x"` in `s` by `"y"`.
+* `str.split(s, "x")`: Splits `s` at each occurrence of `"x". The result is a `list`, which we will encounter in @sec-list.
+", ".join
+* `str.lower(s)`: Return the same string, but all letters are lowercase. 
+* `str.upper(s)`: Return the same string, but all letters are uppercase. 
+* `str.isalpha(s)`: 
+* `str.isdigit(s)`: Returns `True` if the string is actually a number, and `False` otherwise.
+* `str.isalnum(s)`: Returns `True` if the string consists only of letters and numbers, and `False` otherwise.
+* `str.isspace(s)`: Returns `True` if the string consists only empty spaces, and `False` otherwise.
+* `str.islower(s)`: Returns `True` if the string consists only of lower case letters, and `False` otherwise.
+* `str.isupper(s)`: Returns `True` if the string consists only of upper case letters, and `False` otherwise.
+* `str.count(s, "x")`: Counts how ofter `"x"` appears in `s`. 
+
+Here is another very useful notation convention, known as dot-notation: For a function `str.something(s,...)`, where `s` is of type `str`, you can as well write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. 
+
+
 ## NoneType
 
 When analysing data, it is common to have missing values. These usually come as `None`. This is different from anything else we encountered so far (including `nan` and `False`).
@@ -222,11 +247,15 @@ Is there a Python package which can compute `0.1 + 0.2 == 0.3` without error?
 Print `"Hello, world!"` including the quotation marks in the output.
 
 **Exercise 4:**
-If you are on Windows, it is annoying that file paths come with `\`, which is interpreted as the start of a special character. Find out two ways how to give the string of the file path `C:\Users\Alice\Documents\file.txt`.
+Do newlines and tabs `\n`, `\t` count in `str.isspacce()`? How do numbers interact with `str.islower()`? If `s` is the strign of a number, what is `s.lower()`? Play around a bit with these fucntions and edge cases you might see in data. 
 
 **Exercise 5:**
-What is `bool(None)`? What is `int(None)`?
+If you are on Windows, it is annoying that file paths come with `\`, which is interpreted as the start of a special character. Find out two ways how to give the string of the file path `C:\Users\Alice\Documents\file.txt`.
 
 **Exercise 6:**
+What is `bool(None)`? What is `int(None)`?
+
+**Exercise 7:**
 In tables, we often have `""` for a missing value. Is this the same as `None`?
+
 
