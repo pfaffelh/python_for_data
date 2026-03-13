@@ -10,6 +10,27 @@ jupyter: python3
 
 ## list {#sec-list}
 
+list[bool] any and all
+
+
+## set {#sec-set}
+
+## dict {#sec-dict}
+
+## tuple {#sec-tuple}
+
+## iterating through list/set/dict/tuple {#sec-iterating}
+
+## list/set/dict/tuple comprehensions {#sec-iterating}
+
+expression for variable in iterable if condition
+[x*x for x in range(10) if x % 2 == 0]
+
+## list/set/dict as mutable datatypes {#sec-mutable}
+
+
+
+
 list set dict tuple
 
 ### Mathematical angle

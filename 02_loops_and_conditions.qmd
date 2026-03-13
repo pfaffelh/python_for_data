@@ -95,10 +95,6 @@ Let us make some remarks on `for`-loops:
 * Within a `for`-loop, you can use `continue` in order to stop the execution of the current iteration, and immediately jump to the next `i`. 
 * Within a `for`-loop, you can use `break` in order to stop the whole execution of the `for`-loop. 
 
-Exercise 
-
-Write a version of the code for finding the gcd by running (not from 1 to `a`, but) from `a` to `1`, and see if the corresponding number divides both, `a` and `b`. Apparently, you can break the `for`-loop when you found the first such number. Implement that breaking of the `for`-loop. 
-
 
 ## while
 The `for`-loop directly iterates over some variable (`i` above). The `while`-loop instead comes with a condition, which is checked everytime it is started new. The general structure is:
@@ -147,25 +143,74 @@ while a != 0:
     print(f"b = {b}, a = {a}, remainder = {r}")
     b = a
     a = r
-print(f"The gcd of {a_input} and {b_input} is {a}.")
+print(f"The gcd of {a_input} and {b_input} is {b}.")
 ```
-
-
-functions (built-in and self-written) in  @sec-functions.
-
 
 ## def (Functions) {#sec-functions}
 
-docstrings
+Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid's algorithm, this would look as follows:
+
+```{python}
+a = 105
+b = 33
+
+def gcd(a,b):
+    """ Compute the greatest common divisor of a and b."""
+    while a != 0:
+        r = b % a
+        b = a
+        a = r
+    return b
+
+print(f"The gcd of {a} and {b} is {gcd(a,b)}.")
+```
+The general structure is 
+``` 
+def name_of_the_funcion(arg1, arg2, arg3 = default3, arg4=default4):
+    some instructions
+    return something
+```
+Not all functions return something. Those who don't usually produce some output. Here is an example 
+```{python}
+def greeting(name, prefix="Hello"):
+    """ Return a greeting for name."""
+    print(f"{prefix}, {name}!")
+
+greeting("Alice")
+greeting("Bob", prefix="Hi")
+greeting(prefix="Welcome", name="Charlie")
+```
 
 
+Here are some important remarks on functions: 
 
+* Variables within functions are private to them. (There will be exceptions to this) In the gcd example, variable names `a` and `b` occur both, within and outside of the function. Although the variables `a` and `b`, which are private to the function, are changed within the function, the `print`-statement still knowns their value from before the function definition.
+* Variables which are given to functions might have default values, as the `prefix = "Hello"` in the `greeting` example. 
+* For giving variables, there are two options: 
+    - you can rely on the position they have in the definition of the function. (Example: `greeting("Bob", prefix="Hi")`, where you rely on `"Bob"` being in the `name` position.) These are called positional variables. 
+    - you can give it the explicite variable name it has in the function definition. In this case, the order of variable names does not matter. (Example: In `greeting(prefix="Welcome", name="Charlie")`, the output was correct although the order of the two variables differs from the function definition.)
+* All positional arguments must come before keyword aguments. 
+* Both functions from above have a _docstring_, which is the multiline string after the `def`-line. They indicate what this function is doing and are displayed in various places, e.g. when you hover over a function in your jupyter notebook.
 
-Exercise 
+## Exercises
 
-Can you code the `FizzBuzz` example in a single line of code? (So, dependent on some `n`, give one line of code, which gives `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
+**Exercise 1**
+Can you code the `FizzBuzz` example in a single line of code? So, dependent on some `n`, give one line of code, which gives `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
 
-Exercise 
-
+**Exercise 2**
 Multiple `elif`s in a row are not very elegant. Python3 (since version 3.10) comes with `match`. Find out how you can change the `FizzBuzz` example of the main text by using `match` instead of `elif`s.  
 
+**Exercise 3**
+Write a version of the code for finding the gcd by running (not from 1 to `a`, but) from `a` to `1`, and see if the corresponding number divides both, `a` and `b`. Apparently, you can break the `for`-loop when you found the first such number. Implement that breaking of the `for`-loop. 
+
+**Exercise 4**
+Compute $\sum_{i=1}^{100} i$ using a `for`-loop. 
+
+**Exercise 5**
+Find the largest $n$ such that $\sum_{i=1}^n i < 1000$.  
+
+**Exercise 6**
+`for`-loops can also become nested. Compute $\sum_{i=1}^{100} \sum_{j=1}^i j$. (Note the double indentation for the inner `for`-loop!)
+
+**Exercise 7**
+Define a function computing the sum of the first `n` integers. 
