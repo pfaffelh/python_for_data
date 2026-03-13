@@ -26,3 +26,9 @@ Lists - These are collections of values in the CSV format. Lists are mutable obj
 Tuples - These are like lists, but immutable.
 Dictionaries - These are collections of key-value pairs defined using curly braces.
 Sets - They can’t have duplicates, and are mutable.
+
+
+```{python3}
+mi, ma = a if a < b else b, b if a < b else a
+print(f"Mminimum and maximum are {mi} and {ma}.")
+```

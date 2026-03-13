@@ -25,7 +25,7 @@ Every variable or other object in python has a type. This is the kind of informa
 - There are conversions between some types. For example, `"0"` is a string, but `int("0")` the integer `0`. Conversely, `str(0)` is the string `"0"`. We will have more examples below. 
 
 
-## Integers 
+## int
 
 Integers (int) are numbers ...,-2,-1,0,1,2,... In most programming languages (e.g. `C++`), there is a minimal and a maximal possible value for an int. Python, however, does not have this limitation. Only the amount of available memory restricts the numbers which can be stored in an int. With int, we can compute as usual.
 
@@ -52,7 +52,7 @@ print("x // y = ", x // y)
 print("x % y = ", x % y)
 ```
 
-## Floats 
+## float
 
 Generally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. $1.2 \cdot 10^2$. Python can do the same computations as with ints, but the following should be kept in mind:
 

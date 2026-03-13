@@ -30,21 +30,21 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#integers",
-    "href": "01_simple_data_types.html#integers",
+    "objectID": "01_simple_data_types.html#int",
+    "href": "01_simple_data_types.html#int",
     "title": "1 Simple Data types",
-    "section": "Integers",
-    "text": "Integers\nIntegers (int) are numbers …,-2,-1,0,1,2,… In most programming languages (e.g. C++), there is a minimal and a maximal possible value for an int. Python, however, does not have this limitation. Only the amount of available memory restricts the numbers which can be stored in an int. With int, we can compute as usual.\n\nx = 7\ny = 2\nprint(\"x + y = \", x + y)\nprint(\"x * y =  \", x * y)\n\nx + y =  9\nx * y =   14\n\n\n\n# x to the power of y\nprint(\"x ** y = \", x ** y)\n\nx ** y =  49\n\n\n\n# x divided by y (which gives a float)\nprint(\"x / y = \", x / y)\n\nx / y =  3.5\n\n\n\n# integer-valued division of x by y \nprint(\"x // y = \", x // y)\n\nx // y =  3\n\n\n\n# x modulo y\nprint(\"x % y = \", x % y)\n\nx % y =  1",
+    "section": "int",
+    "text": "int\nIntegers (int) are numbers …,-2,-1,0,1,2,… In most programming languages (e.g. C++), there is a minimal and a maximal possible value for an int. Python, however, does not have this limitation. Only the amount of available memory restricts the numbers which can be stored in an int. With int, we can compute as usual.\n\nx = 7\ny = 2\nprint(\"x + y = \", x + y)\nprint(\"x * y =  \", x * y)\n\nx + y =  9\nx * y =   14\n\n\n\n# x to the power of y\nprint(\"x ** y = \", x ** y)\n\nx ** y =  49\n\n\n\n# x divided by y (which gives a float)\nprint(\"x / y = \", x / y)\n\nx / y =  3.5\n\n\n\n# integer-valued division of x by y \nprint(\"x // y = \", x // y)\n\nx // y =  3\n\n\n\n# x modulo y\nprint(\"x % y = \", x % y)\n\nx % y =  1",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>1 Simple Data types</span>"
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#floats",
-    "href": "01_simple_data_types.html#floats",
+    "objectID": "01_simple_data_types.html#float",
+    "href": "01_simple_data_types.html#float",
     "title": "1 Simple Data types",
-    "section": "Floats",
-    "text": "Floats\nGenerally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. \\(1.2 \\cdot 10^2\\). Python can do the same computations as with ints, but the following should be kept in mind:\n\nIf you type 1, Python thinks this is an int, but if you type 1.0 or 1., Python thinks this is a float.\nUnlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about $ ~10^{-324}$ to \\(10^{308}\\).\nWhen doing mixed computations with floats and int, e.g. 1.0 + 1, the int is changed into a float.\nIt is not possible to perform exact computations with some floats; see the example below.\n\n\nx = 1.0\ny = 1\nprint(\"x + y = \", x + y)\n\nx + y =  2.0\n\n\n\nprint(\"0.1 + 0.2 = \", 0.1 + 0.2)\n\n0.1 + 0.2 =  0.30000000000000004\n\n\nSpecial floats are inf, -inf and nan (not a number). Let us see them in action:\n\nprint((10. ** 308) * 10)\n\ninf\n\n\n\nprint((10 ** 308) * 10)\n\n1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\nprint((10 ** (-323)) / 10)\n\n0.0\n\n\n\nprint((10. ** 308) * 10 - (10. ** 308) * 10)\n\nnan\n\n\nYou can transform ints to floats and vice versa by using float() and int().\n\nprint(float(0))\n\n0.0\n\n\n\nprint(int(0.0))\n\n0\n\n\n\nprint(int(0.5))\n\n0\n\n\nIf you deliberately want to introduce nan or inf, you can do this:\n\nprint(float(\"inf\"))\nprint(float(\"nan\"))\n\ninf\nnan",
+    "section": "float",
+    "text": "float\nGenerally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. \\(1.2 \\cdot 10^2\\). Python can do the same computations as with ints, but the following should be kept in mind:\n\nIf you type 1, Python thinks this is an int, but if you type 1.0 or 1., Python thinks this is a float.\nUnlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about $ ~10^{-324}$ to \\(10^{308}\\).\nWhen doing mixed computations with floats and int, e.g. 1.0 + 1, the int is changed into a float.\nIt is not possible to perform exact computations with some floats; see the example below.\n\n\nx = 1.0\ny = 1\nprint(\"x + y = \", x + y)\n\nx + y =  2.0\n\n\n\nprint(\"0.1 + 0.2 = \", 0.1 + 0.2)\n\n0.1 + 0.2 =  0.30000000000000004\n\n\nSpecial floats are inf, -inf and nan (not a number). Let us see them in action:\n\nprint((10. ** 308) * 10)\n\ninf\n\n\n\nprint((10 ** 308) * 10)\n\n1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\nprint((10 ** (-323)) / 10)\n\n0.0\n\n\n\nprint((10. ** 308) * 10 - (10. ** 308) * 10)\n\nnan\n\n\nYou can transform ints to floats and vice versa by using float() and int().\n\nprint(float(0))\n\n0.0\n\n\n\nprint(int(0.0))\n\n0\n\n\n\nprint(int(0.5))\n\n0\n\n\nIf you deliberately want to introduce nan or inf, you can do this:\n\nprint(float(\"inf\"))\nprint(float(\"nan\"))\n\ninf\nnan",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>1 Simple Data types</span>"
     ]
@@ -104,7 +104,7 @@
     "href": "02_container_data_types.html#overview",
     "title": "Container data types",
     "section": "",
-    "text": "Mathematical angle\nThis is a good moment to compare: - lists with finite sequences, - tuples with fixed records, - dictionaries with finite maps.\nfor strings: x[0] x[1:4] immutable x[0] = “Z”\nLists - These are collections of values in the CSV format. Lists are mutable objects. Tuples - These are like lists, but immutable. Dictionaries - These are collections of key-value pairs defined using curly braces. Sets - They can’t have duplicates, and are mutable.",
+    "text": "Mathematical angle\nThis is a good moment to compare: - lists with finite sequences, - tuples with fixed records, - dictionaries with finite maps.\nfor strings: x[0] x[1:4] immutable x[0] = “Z”\nLists - These are collections of values in the CSV format. Lists are mutable objects. Tuples - These are like lists, but immutable. Dictionaries - These are collections of key-value pairs defined using curly braces. Sets - They can’t have duplicates, and are mutable.\nmi, ma = a if a &lt; b else b, b if a &lt; b else a\nprint(f\"Mminimum and maximum are {mi} and {ma}.\")",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Container data types</span>"
     ]
@@ -122,11 +122,41 @@
   {
     "objectID": "04_loops_and_conditions.html",
     "href": "04_loops_and_conditions.html",
-    "title": "Loops and conditions",
+    "title": "2 Control flow – conditions, loops, and functions",
     "section": "",
-    "text": "Overview\nrange()",
+    "text": "If elif else\nCoding starts to become interesting when we can control how variables change, and repeat operations.\nAs a simple (mathematical) example, let us compute the minimum of two numbers., which works by an if-condition:\nIn general, the structure of an if-statement reads:\nHere, read elif alse else if, which means that the code jumps into this case if the respective condition is the first to hold. The else case only applied if both the if and all elif conditions do not apply.\nIn fact, there are abbreviations in python3 which are very handy. In particular, look at this piece of code.\nLet us make another example, also using elif. Given some n, the task is to print Fizz if n is a multiple of 3, Buzz, if it is a multiple of 5, and FizzBuzz if both conditions are satisfied.\nExercise\nCan you code the FizzBuzz example in a single line of code? (So, dependent on some n, give one line of code, which gives Fizz if n is a multiple of 3, Buzz, if it is a multiple of 5, and FizzBuzz if both conditions are satisfied.\nExercise\nMultiple elifs in a row are not very elegant. Python3 (since version 3.10) comes with match. Find out how you can change the FizzBuzz example of the main text by using match instead of elifs.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Loops and conditions</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>2 Control flow -- conditions, loops, and functions</span>"
+    ]
+  },
+  {
+    "objectID": "04_loops_and_conditions.html#if-elif-else",
+    "href": "04_loops_and_conditions.html#if-elif-else",
+    "title": "2 Control flow – conditions, loops, and functions",
+    "section": "",
+    "text": "a = 2\nb = 5\nif a &lt; b:\n    res = a\nelse:\n    res = b\nprint(f\"The minimum of {a} and {b} is:\", res)\n\nif _condition1_:\n    case1\nelif _condition2_:\n    case2\nelif _condition3_:\n    case3\n...\nelse:\n    case_else\n\n\nres = a if a &lt; b else b\nprint(f\"The minimum of {a} and {b} is:\", res)\n\nn = 165\nres = \"\"\nif n % 3 == 0 and n % 5 == 0:\n    res = \"FizzBuzz\"\nelif n % 3 == 0:\n    res = \"Fizz\"\nelif n % 5 == 0:\n    res = \"Buzz\"\nprint(res)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>2 Control flow -- conditions, loops, and functions</span>"
+    ]
+  },
+  {
+    "objectID": "04_loops_and_conditions.html#for",
+    "href": "04_loops_and_conditions.html#for",
+    "title": "2 Control flow – conditions, loops, and functions",
+    "section": "for",
+    "text": "for\nThere are for-loops in Python3, as discussed in this section, and while-loops in the next section. The basic use-case of a for-loop is repeating a task several times. As a simple example, adding b a number of a times, results in a * b.\na = 3\nb = 7\nres = 0\nfor i in range(a):\n    res = res + b\nprint(f\"{a} * {b} = {res}\")\nImportantly, range(a) is a synonym for the numbers 0,..., a-1. (In particular, note that Python3 usually starts counting at 0 and not at 1, which will also be important in the next chapter.)\nThe general structure of a for-loop is as follows:\nfor _var_ in _iterable:\n    _sequence of instiuctions_\nLet us look at a more interesting example, computing the greatest common divisor of two numbers, a and b. A very simple algorithm is going through all numbers 1,..., in order, and update result each time we encounter a number which divides both, a and b. (Here, range(1,a+1) is a synoym for the numbers 1,...,a.)\n# Basic algorithm for finding the greatest common divisor (gcd) of two numbers\na = 105\nb = 33\n\nres = 1\nfor i in range(1,a+1):\n    if a % i == 0 and b % i == 0:\n        res = i\nprint(f\"The gcd of {a} and {b} is {res}.\")",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>2 Control flow -- conditions, loops, and functions</span>"
+    ]
+  },
+  {
+    "objectID": "04_loops_and_conditions.html#while",
+    "href": "04_loops_and_conditions.html#while",
+    "title": "2 Control flow – conditions, loops, and functions",
+    "section": "while",
+    "text": "while\ndef gcd(a, b): a, b = abs(a), abs(b)\nwhile b != 0:\n    r = a % b\n    print(f\"a = {a}, b = {b}, remainder = {r}\")\n\n    a = b\n    b = r\n\nreturn a\nprint(“gcd =”, gcd(252, 105))",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>2 Control flow -- conditions, loops, and functions</span>"
     ]
   },
   {
