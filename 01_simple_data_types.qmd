@@ -25,14 +25,9 @@ Every variable or other object in python has a type. This is the kind of informa
 - In fact, `type(x)` is already the first example of a built-in-function. The function `type` takes a single value as input, and returns its type. We will encounter various more functions already in this section. We will learn more about functions (built-in and self-written) in  @sec-functions.
 - There are conversions between some types. For example, `"0"` is a string, but `int("0")` (again a function, taking a single value, and returning its integer value) the integer `0`. Conversely, `str(0)` is the string `"0"`. We will have more examples below. 
 
-$$
-E = mc^2
-$$ {#eq-einstein}
-
-
 ## int
 
-Integers (int) are numbers ...,-2,-1,0,1,2,... In most programming languages (e.g. `C++`), there is a minimal and a maximal possible value for an int. Python, however, does not have this limitation. Only the amount of available memory restricts the numbers which can be stored in an int. With int, we can compute as usual.
+With `int`s (numbers ...,-2,-1,0,1,2,... ), you can compute as usual. 
 
 ```{python}
 x = 7
@@ -45,7 +40,7 @@ print("x * y =  ", x * y)
 print("x ** y = ", x ** y)
 ```
 ```{python}
-# x divided by y (which gives a float)
+# x divided by y (which gives a `float`)
 print("x / y = ", x / y)
 ```
 ```{python}
@@ -56,6 +51,9 @@ print("x // y = ", x // y)
 # x modulo y
 print("x % y = ", x % y)
 ```
+
+In most programming languages (e.g. `C++`), there is a minimal and a maximal possible value for an int. Python, however, does not have this limitation. Only the amount of available memory restricts the numbers which can be stored in an `int`.
+
 
 ## float
 
@@ -106,6 +104,13 @@ If you deliberately want to introduce `nan` or `inf`, you can do this:
 print(float("inf"))
 print(float("nan"))
 ```
+
+On `float`, you can use many functions. We only name two at the moment, for some float `x`:
+
+* `abs(x)`: The absolute value of `x`.
+* `round(x)` and `round(x,n)`: Round `x` to the next `int`, or after `n` digits.
+
+In @sec-math, we will encounter that many more usual functions (like `sqrt`) can be used on floats, but we need to `import` the mathematical library for this. 
 
 ## bool
 

@@ -6,11 +6,13 @@ format:
 jupyter: python3
 ---
 
+[Download notebook](notebooks/02_loops_and_conditions.ipynb).
+
 Coding starts to become interesting when we can control how variables change, and repeat operations. 
 
 ## If elif else
 As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an `if`-condition:
-```{python3}
+```{python}
 a = 2
 b = 5
 if a < b:
@@ -34,13 +36,13 @@ else:
 Here, read `elif` alse `else if`, which means that the code jumps into this case if the respective condition is the first to hold. The `else` case only applied if both the `if` and all `elif` conditions do not apply. 
 
 In fact, there are abbreviations in python3 which are very handy. In particular, look at this piece of code.
-```{python3}
+```{python}
 res = a if a < b else b
 print(f"The minimum of {a} and {b} is:", res)
 ```
 
 Let us make another example, also using `elif`. Given some `n`, the task is to print `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
-```{python3}
+```{python}
 n = 165
 res = ""
 if n % 3 == 0 and n % 5 == 0:
@@ -52,19 +54,11 @@ elif n % 5 == 0:
 print(res)
 ```
 
-Exercise 
-
-Can you code the `FizzBuzz` example in a single line of code? (So, dependent on some `n`, give one line of code, which gives `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
-
-Exercise 
-
-Multiple `elif`s in a row are not very elegant. Python3 (since version 3.10) comes with `match`. Find out how you can change the `FizzBuzz` example of the main text by using `match` instead of `elif`s.  
-
 ## for
 
 There are `for`-loops in Python3, as discussed in this section, and `while`-loops in the next section. The basic use-case of a  `for`-loop is repeating a task several times. As a simple example, adding `b` a number of `a` times, results in `a * b`.
 
-```{python3}
+```{python}
 a = 3
 b = 7
 res = 0
@@ -81,10 +75,11 @@ for _var_ in _iterable:
     _sequence of instructions_
 ```
 
-Let us look at a more interesting example, computing the greatest common divisor of two numbers, `a` and `b`. A very simple algorithm is going through all numbers `1,...,` in order, and update result each time we encounter a number which divides both, `a` and `b`. (Here, `range(1,a+1)` is a synoym for the numbers `1,...,a`.)
+### Greatest common divisor I
+Let us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, `a` and `b`. A very simple algorithm is going through all numbers `1,...,` in order, and update result each time we encounter a number which divides both, `a` and `b`. (Here, `range(1,a+1)` is a synoym for the numbers `1,...,a`.)
 
-```{python3}
-# Basic algorithm for finding the greatest common divisor (gcd) of two numbers
+```{python}
+# Basic algorithm for finding the gcd of two numbers
 a = 105
 b = 33
 
@@ -102,7 +97,7 @@ Let us make some remarks on `for`-loops:
 
 Exercise 
 
-Write a version of the code for finding the greatest common divisor by running (not from 1 to `a`, but) from `a` to `1`, and see if the corresponding number divides both, `a` and `b`. Apparently, you can break the `for`-loop when you found the first such number. Implement that breaking of the `for`-loop. 
+Write a version of the code for finding the gcd by running (not from 1 to `a`, but) from `a` to `1`, and see if the corresponding number divides both, `a` and `b`. Apparently, you can break the `for`-loop when you found the first such number. Implement that breaking of the `for`-loop. 
 
 
 ## while
@@ -113,20 +108,45 @@ while _condition_:
     instructions which might change the value of _condition_
 ```
 
+Let us make two examples: finding $\sqrt{2}$ and computing the gcd using Euclid's algorithm. 
 
-```{python3}
-# Euclid's algorithm for finding the greatest common divisor (gcd) of two numbers
+### Finding $\sqrt{2}$
+For finding $\sqrt{2}$, note that this is a fixed point for the iteration
+$$ x_{n+1} = \frac {x_n} 2 - \frac 1 {x_n}.$$
+(In order to see this, assume that $x = x_n = x_{n+1}$, and multiply the recursion by $x$.) We can use this as follows. 
+
+```{python}
+x = 1
+eps = 1e-10
+x_prev = 0
+
+while abs(x - x_prev) > eps:
+    x_prev = x
+    x = x/2 + 1 / x
+print(x)
+```
+
+### Finding the greatest common divisor II
+The above algorithm (using `for`-loops) for finding the gcd were not particulary efficient. (You might want to test them with some large numbers.) Euclid's algorithm is much more efficient. It is based on the observation that 
+`c % a == 0` (`c` divides `a`) and `c % b == 0` iff `c % a == 0` and `c % (b % a)`. 
+
+In order to see this, note that `c % a == 0` and `c % b == 0` iff `c % a == 0` and `c % (b - da) == 0` for any `d`. Then, the result follows from choosing `d = b \\ a` since `b - (b \\ a) * a = b % a`. Moreover, every number divides `0`, so if `b % a == 0`, the gcd of `a` and `b` is `a`.
+
+We can use these insights, taking `a < b` for simplicity. Starting with `a` and `b`, we compute if `b % a == 0`. If yes, we are done, and return `a`. If not, we compute the gcd of `a` and `b % a` instead. 
+
+```{python}
+# Euclid's algorithm for finding the gcd of two numbers
 a_input = 105
 b_input = 33
 # Copy the input to new variables
 a = a_input
 b = b_input
 # Run Euclid's algorithm
-while b != 0:
-    r = a % b
-    print(f"a = {a}, b = {b}, remainder = {r}")
-    a = b
-    b = r
+while a != 0:
+    r = b % a
+    print(f"b = {b}, a = {a}, remainder = {r}")
+    b = a
+    a = r
 print(f"The gcd of {a_input} and {b_input} is {a}.")
 ```
 
@@ -137,3 +157,15 @@ functions (built-in and self-written) in  @sec-functions.
 ## def (Functions) {#sec-functions}
 
 docstrings
+
+
+
+
+Exercise 
+
+Can you code the `FizzBuzz` example in a single line of code? (So, dependent on some `n`, give one line of code, which gives `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
+
+Exercise 
+
+Multiple `elif`s in a row are not very elegant. Python3 (since version 3.10) comes with `match`. Find out how you can change the `FizzBuzz` example of the main text by using `match` instead of `elif`s.  
+

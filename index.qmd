@@ -54,6 +54,3 @@ If you are working within the jupyter notebook (and not just in the html-file), 
 
 **Using AI (ChatGPT, Gemini etc, Copilot, Claude, etc):**
 During the last years, AI has increasingly improved in code writing. You are encouraged to use this new technology! As usual when learning new things, this new tool can help a lot, and will be able to solve the exercises within the Jupyter notebooks. However, you still have to undestand the code, and what might go wrong during execution. As a first course in Python, you will end up having up to a few hundred lines of code, which has to be coherent. You must know the structure of that code, and in order to extend it, fix bugs etc. If you are ever involved in bigger projects, this is even more important. 
-
-
-

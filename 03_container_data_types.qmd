@@ -34,3 +34,8 @@ Sets - They can’t have duplicates, and are mutable.
 mi, ma = a if a < b else b, b if a < b else a
 print(f"Mminimum and maximum are {mi} and {ma}.")
 ```
+
+
+Exercise
+
+For two strings `s` and `t`, write a function `myCount(s, t)`, which counts the numbers of occurrences of `t` in `s`. Unlike `count`, it should count the number of positions in `s` starting with `t`. For example, `"bababab".count("bab")` gives 2, but `"bababab".myCount("bab")` should give 3. 

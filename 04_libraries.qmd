@@ -6,9 +6,9 @@ format:
 jupyter: python3
 ---
 
-## Overview
+## math {#sec-math}
 
-import math
+## numpy {#sec-numpy}
 
 gives math.pi
 
