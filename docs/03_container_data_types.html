@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -151,8 +186,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">4.1</span> Overview</a></li>
-  <li><a href="#sec-list" id="toc-sec-list" class="nav-link" data-scroll-target="#sec-list"><span class="header-section-number">4.2</span> list</a></li>
+  <li><a href="#sec-list" id="toc-sec-list" class="nav-link active" data-scroll-target="#sec-list"><span class="header-section-number">4.1</span> list</a></li>
+  <li><a href="#sec-tuple" id="toc-sec-tuple" class="nav-link" data-scroll-target="#sec-tuple"><span class="header-section-number">4.2</span> tuple</a></li>
+  <li><a href="#sec-set" id="toc-sec-set" class="nav-link" data-scroll-target="#sec-set"><span class="header-section-number">4.3</span> set</a></li>
+  <li><a href="#sec-dict" id="toc-sec-dict" class="nav-link" data-scroll-target="#sec-dict"><span class="header-section-number">4.4</span> dict</a></li>
+  <li><a href="#sec-iterating" id="toc-sec-iterating" class="nav-link" data-scroll-target="#sec-iterating"><span class="header-section-number">4.5</span> iterating through list/set/dict/tuple</a></li>
+  <li><a href="#sec-iterating" id="toc-sec-iterating" class="nav-link" data-scroll-target="#sec-iterating"><span class="header-section-number">4.6</span> list/set/dict/tuple comprehensions</a></li>
+  <li><a href="#sec-mutable" id="toc-sec-mutable" class="nav-link" data-scroll-target="#sec-mutable"><span class="header-section-number">4.7</span> list/set/dict as mutable datatypes</a></li>
   </ul>
 </nav>
     </div>
@@ -178,21 +218,187 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="overview" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">4.1</span> Overview</h2>
+<p>When working with data, we usually not only have <em>one</em> int or <em>one</em> str, but many of them. For this situation, there are the container data types, <code>list</code>, ’’tuple<code>,</code>set<code>, and</code>dict`.</p>
+<section id="sec-list" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-list"><span class="header-section-number">4.1</span> list</h2>
+<p>The notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is <code>[1,2,3]</code>. A list of names is e.g.&nbsp;<code>["Alice", "Bob", "Charlie", "Donna"]</code>. So, for a <code>list</code>, the entries have simple (or again container) data types.</p>
+<ul>
+<li>We can access the entries of a list using square brackets. However, we have to be careful if the length of the list is too short.</li>
+<li>We can access sublists by using <code>i:j</code> for the entries <code>i,...,j-1</code>. If we want to have the beginning until <code>j-1</code>, we use <code>:j</code>. If we want everything after <code>i</code>, we use <code>i:</code>.</li>
+<li>Elements of a list can be lists (or other container data types) themselves.</li>
+<li>The types of elements of a list can be mixed.</li>
+<li>When talking about <code>for</code>-loops, we already had <code>range(n)</code>, which stands for <code>0,...,n-1</code>. This is not exactly a list, but can be turned into one by <code>list(range(n))</code>. (More precisely, there is also <code>range(start, stop, step)</code> for <code>start, start + step, start + 2*step,...</code>, which stops at <code>stop-1</code> at the latest.)</li>
+</ul>
+<div id="05dbab4a" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a list of ints</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>])</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">3</span>] <span class="cf">if</span> <span class="bu">len</span>(x) <span class="op">&gt;</span> <span class="dv">3</span> <span class="cf">else</span> <span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+None</code></pre>
+</div>
+</div>
+<p>Slicing refers to sublists.</p>
+<div id="e48447e7" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The first and second element: </span><span class="sc">{</span>x[<span class="dv">0</span>:<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The first two elements: </span><span class="sc">{</span>x[:<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"All elements after the first element: </span><span class="sc">{</span>x[<span class="dv">1</span>:]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The first and second element: [1, 2]
+The first two elements: [1, 2]
+All elements after the first element: [2, 3]</code></pre>
+</div>
+</div>
+<p>Playing around with <code>range</code>.</p>
+<div id="e60b1b8d" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The first and second odd number: </span><span class="sc">{</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>))<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The first and second odd number: </span><span class="sc">{</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">2</span>))[:<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The first and second odd number: [1, 3]
+The first and second odd number: [1, 3]</code></pre>
+</div>
+</div>
+<p>The elements of a list can be lists themselves.</p>
+<div id="4079272e" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>], <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y[<span class="dv">1</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y[<span class="dv">1</span>][<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[3, 4, 5]
+3</code></pre>
+</div>
+</div>
+<p>A list can have mixed types.</p>
+<div id="6de82ddc" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [<span class="dv">1</span>, <span class="st">"two"</span>, [<span class="dv">3</span>,<span class="dv">4</span>], <span class="fl">5.0</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(z[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>two</code></pre>
+</div>
+</div>
+<p>Here are some functions on lists.</p>
+<ul>
+<li><code>len(l)</code>: length of <code>l</code>.</li>
+<li><code>sum(l)</code>: sums all elements of <code>l</code>, if possible.</li>
+<li><code>min(l)</code>, <code>max(l)</code>: computes the minimum/maximum of <code>l</code>.</li>
+<li><code>sorted(l)</code>: returns a sorted version of <code>l</code>.</li>
+<li><code>filter(fun, l)</code>: returns a filtered list, which only contains elements <code>x</code> of <code>l</code> with <code>fun x == True</code>.</li>
+<li><code>list.append(l, x)</code> (or <code>l.append(x)</code>) (where <code>x</code> is any object) appends the element <code>x</code> to the list <code>l</code>.</li>
+<li><code>list.extend(l, x)</code> (or <code>l.extend(x)</code>) (where <code>x</code> is a list) extends <code>l</code> by all elements of <code>x</code>. (You can also write <code>l + x</code> for this.)</li>
+<li><code>list.insert(l, i, x)</code> (or <code>l.insert(i,x)</code>) inserts <code>x</code> at position <code>min(i, len(l))</code> in <code>l</code>.</li>
+<li><code>list.remove(l, x)</code> (or <code>l.remove(x)</code>) removes the first occurrence of <code>x</code> in <code>l</code>.</li>
+<li><code>list.pop(l)</code> (or <code>l.pop()</code>) removes the last element from <code>l</code>.</li>
+<li><code>list.index(l, x)</code> (or <code>l.index(x)</code>) gives the index of the first occurrence of <code>x</code> in <code>l</code>.</li>
+<li><code>list.count(x)</code> (or <code>l.count(x)</code>) counts the number of occurrences of <code>x</code> in <code>l</code>.</li>
+<li><code>list.sort(l)</code> (or <code>l.sort()</code>) sorts the list. (descending xxx)</li>
+<li><code>list.reverse(l)</code> (or <code>l.reverse()</code>) reverses the list.</li>
+</ul>
+<p>For the functions starting with <code>list</code>, there is a catch: While we mentioned that a function takes its input (here the list), and does not alter it, <code>list</code>s are mutable objects, which means that they are changed when calling such a function on them. So, e.g.&nbsp;after <code>l.sort()</code>, the list <code>l</code> itself is sorted, and there is no return value of that function (more precisely, the return value is <code>None</code>.) This can be counterintuitive:</p>
+<div id="618ae1fb" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This gives none since the return value of l.sort() is None</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(l.sort())</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># This changes l and makes it sorted.</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>l.sort()</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can print it </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"l = </span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># In contrast, sorted() does not change the list but returns a new sorted list.</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>(l))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>None
+l = [1, 2, 3]
+[1, 2, 3]</code></pre>
+</div>
+</div>
+<p>Assume you want to sort a <code>list</code> not as usual. In this situation, you will find out about the <code>key</code>-parameter in <code>sorted</code>. It takes a function, we sorts the list according to the values of this function. As an example, assume we want to sort a list of <code>int</code>s according to their abolute value:</p>
+<div id="052ad819" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>(l, key <span class="op">=</span> <span class="kw">lambda</span> x: <span class="bu">abs</span>(x)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0, 2, -3, -4, 5, 7]</code></pre>
+</div>
+</div>
+<p>Similarly, you can e.g.&nbsp;filter the list by only taking numbers which are at least one:</p>
+<div id="1e2d15e9" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">&gt;=</span> <span class="dv">1</span>, l)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[5, 7, 2]</code></pre>
+</div>
+</div>
+<p>Let us shortly describe two functions on a list of <code>bool</code>s <code>l</code>.</p>
+<ul>
+<li><code>all(l)</code> gives <code>True</code> if all entries of <code>l</code> are `True.</li>
+<li><code>any(l)</code> gives <code>True</code> if at least one entry of <code>l</code> is `True.</li>
+</ul>
 </section>
-<section id="sec-list" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="sec-list"><span class="header-section-number">4.2</span> list</h2>
+<section id="sec-tuple" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-tuple"><span class="header-section-number">4.2</span> tuple</h2>
+<p>At first glance, a <code>tuple</code> is like a <code>list</code>, but comes with normal brackets <code>()</code> instead of square brackets <code>[]</code>. So, <code>(1,2,3)</code> is the tuple of these three numbers, and <code>("Alice", "Bob", "Charlie") is a tuple of three names. For the tuple</code>l<code>, still,</code>l[0]<code>gives the first entry etc. The main difference between</code>tuple<code>and</code>list<code>is that</code>list<code>s are more flexible when adding or changing entries, and</code>tuple`s are fixed (immutable) once they have been created.</p>
+<div id="bb2d5117" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> (<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The next line does not work, since l is immutable</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># l[0] = "Anna"</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The next line works, since l is mutable. </span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>l[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"Anna"</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"l = </span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>l = ['Anna', 'Bob', 'Charlie']</code></pre>
+</div>
+</div>
+<p>An important aspect of tuples is that single values can easily be packed into a tuple. An important example is to use a tuple in order to assign two or more values at the same time:</p>
+<pre class="{python3}"><code>def min_max(a,b):
+    (mi, ma) = (a if a &lt; b else b, b if a &lt; b else a)
+    return mi, ma
+
+a = 20
+b = 10
+res = min_max(a,b)
+print(f"Minimum and maximum are {res[0]} and {res[1]}.")</code></pre>
+</section>
+<section id="sec-set" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-set"><span class="header-section-number">4.3</span> set</h2>
+<p>As in mathematics, sets have no special order, and there are noduplicates within a set. In Python3, they can be created using curly brackets, so e.g.&nbsp;<code>{1,2,3}</code> as well as <code>{1,3,2,3,1}</code> is the set of the numbers <code>1,2,3</code>. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a <code>list</code>, which can contain duplicates, <code>list(set(l))</code> is the same list (maybe the order changed) but with duplicates removed.</p>
+<p>Here are some functions on some <code>s</code> and <code>t</code>: * <code>len(s)</code>: returns the number of unique elements in <code>s</code>. * <code>s | t</code>: The union of <code>s</code> and <code>t</code>. * <code>s &amp; t</code>: The intersection of <code>s</code> and <code>t</code>. * <code>s - t</code>: The difference of <code>s</code> and <code>t</code>.</p>
+<pre class="{python3}"><code>l = [1,3,2,4,3,2]
+print(f"There are {len(set(l))} unique elements in {l}.")</code></pre>
+<p>Unions, intersection, and set differences work as expected:</p>
+<pre class="{python3}"><code>s = {1,2,3}
+t = {5,4,3}
+print(f"The union of {s} and {t} is {s | t}.")
+print(f"The intersection of {s} and {t} is {s &amp; t}.")
+print(f"The difference of {s} and {t} is {s - t}.")</code></pre>
+</section>
+<section id="sec-dict" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-dict"><span class="header-section-number">4.4</span> dict</h2>
+</section>
+<section id="sec-iterating" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-iterating"><span class="header-section-number">4.5</span> iterating through list/set/dict/tuple</h2>
+</section>
+<section id="sec-iterating" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-iterating"><span class="header-section-number">4.6</span> list/set/dict/tuple comprehensions</h2>
+<p>expression for variable in iterable if condition [x*x for x in range(10) if x % 2 == 0]</p>
+</section>
+<section id="sec-mutable" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sec-mutable"><span class="header-section-number">4.7</span> list/set/dict as mutable datatypes</h2>
 <p>list set dict tuple</p>
-<section id="mathematical-angle" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="mathematical-angle"><span class="header-section-number">4.2.1</span> Mathematical angle</h3>
+<section id="mathematical-angle" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="mathematical-angle"><span class="header-section-number">4.7.1</span> Mathematical angle</h3>
 <p>This is a good moment to compare: - lists with finite sequences, - tuples with fixed records, - dictionaries with finite maps.</p>
 <p>for strings: x[0] x[1:4] immutable x[0] = “Z”</p>
 <p>Lists - These are collections of values in the CSV format. Lists are mutable objects. Tuples - These are like lists, but immutable. Dictionaries - These are collections of key-value pairs defined using curly braces. Sets - They can’t have duplicates, and are mutable.</p>
-<pre class="{python3}"><code>mi, ma = a if a &lt; b else b, b if a &lt; b else a
-print(f"Mminimum and maximum are {mi} and {ma}.")</code></pre>
 <p>Exercise</p>
 <p>For two strings <code>s</code> and <code>t</code>, write a function <code>myCount(s, t)</code>, which counts the numbers of occurrences of <code>t</code> in <code>s</code>. Unlike <code>count</code>, it should count the number of positions in <code>s</code> starting with <code>t</code>. For example, <code>"bababab".count("bab")</code> gives 2, but <code>"bababab".myCount("bab")</code> should give 3.</p>
+<p>Exercise</p>
+<p>Find out how you can sort a list descendingly.</p>
+<p>Exercise: Write a function which removes duplicates from a list (you might want to use <code>set</code> here), but keeps the order of the list.</p>
 
 
 </section>

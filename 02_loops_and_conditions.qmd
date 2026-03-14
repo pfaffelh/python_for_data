@@ -181,7 +181,6 @@ greeting("Bob", prefix="Hi")
 greeting(prefix="Welcome", name="Charlie")
 ```
 
-
 Here are some important remarks on functions: 
 
 * Variables within functions are private to them. (There will be exceptions to this) In the gcd example, variable names `a` and `b` occur both, within and outside of the function. Although the variables `a` and `b`, which are private to the function, are changed within the function, the `print`-statement still knowns their value from before the function definition.
@@ -191,6 +190,9 @@ Here are some important remarks on functions:
     - you can give it the explicite variable name it has in the function definition. In this case, the order of variable names does not matter. (Example: In `greeting(prefix="Welcome", name="Charlie")`, the output was correct although the order of the two variables differs from the function definition.)
 * All positional arguments must come before keyword aguments. 
 * Both functions from above have a _docstring_, which is the multiline string after the `def`-line. They indicate what this function is doing and are displayed in various places, e.g. when you hover over a function in your jupyter notebook.
+* Sometimes, it is too much to define an own function for a very simple task. In this case, Python3 comes with `lambda`-functions, which are very quick: 
+`lambda x: x * x`. Most use cases are with container data types, and we will have one in @sec-list. 
+
 
 ## Exercises
 

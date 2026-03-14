@@ -6,21 +6,33 @@ format:
 jupyter: python3
 ---
 
-When working with data, we usually not only have *one* int or *one* str, but many of them. For this situation, there are the container data types, `list`, `set`, `dict` and `tuple`. 
+When working with data, we usually not only have *one* int or *one* str, but many of them. For this situation, there are the container data types, `list`, ''tuple`, `set`, and `dict`. 
 
 ## list {#sec-list}
-The notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is `[1,2,3]`. A list of names is e.g. `["Alice", "Bob", "Charlie", "Donna"]`. So, for the container data type, the entries have simple (or again container) data types. 
+The notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is `[1,2,3]`. A list of names is e.g. `["Alice", "Bob", "Charlie", "Donna"]`. So, for a `list`, the entries have simple (or again container) data types. 
 
-* We can access the entries of a list again using square brackets. However, we have to be careful if the length of the list is too short. 
-* We can access sublists 
+* We can access the entries of a list using square brackets. However, we have to be careful if the length of the list is too short. 
+* We can access sublists by using `i:j` for the entries `i,...,j-1`. If we want to have the beginning until `j-1`, we use `:j`. If we want everything after `i`, we use `i:`. 
 * Elements of a list can be lists (or other container data types) themselves. 
 * The types of elements of a list can be mixed. 
-
+* When talking about `for`-loops, we already had `range(n)`, which stands for `0,...,n-1`. This is not exactly a list, but can be turned into one by `list(range(n))`. (More precisely, there is also `range(start, stop, step)` for `start, start + step, start + 2*step,...`, which stops at `stop-1` at the latest.)
 ```{python}
 # a list of ints
 x = [1,2,3]
 print(x[0])
 print(x[3] if len(x) > 3 else None)
+```
+Slicing refers to sublists. 
+```{python}
+x = [1,2,3]
+print(f"The first and second element: {x[0:2]}")
+print(f"The first two elements: {x[:2]}")
+print(f"All elements after the first element: {x[1:]}")
+```
+Playing around with `range`.
+```{python}
+print(f"The first and second odd number: {list(range(1, 5, 2))}")
+print(f"The first and second odd number: {list(range(1, 100, 2))[:2]}")
 ```
 The elements of a list can be lists themselves.
 ```{python}
@@ -36,9 +48,10 @@ print(z[1])
 Here are some functions on lists. 
 
 * `len(l)`: length of `l`.
-* `sum(l)`: sums all elementsof `l`, if possible. 
+* `sum(l)`: sums all elements of `l`, if possible. 
 * `min(l)`, `max(l)`: computes the minimum/maximum of `l`.
-* `sorted(l)`: gives a sorted version of `l`.
+* `sorted(l)`: returns a sorted version of `l`.
+* `filter(fun, l)`: returns a filtered list, which only contains elements `x` of `l` with `fun x == True`. 
 * `list.append(l, x)` (or `l.append(x)`) (where `x` is any object) appends the element `x` to the list `l`. 
 * `list.extend(l, x)` (or `l.extend(x)`) (where `x` is a list) extends `l` by all elements of `x`. (You can also write `l + x` for this.)
 * `list.insert(l, i, x)` (or `l.insert(i,x)`) inserts `x` at position `min(i, len(l))` in `l`.
@@ -48,24 +61,89 @@ Here are some functions on lists.
 * `list.count(x)` (or `l.count(x)`) counts the number of occurrences of `x` in `l`.
 * `list.sort(l)` (or `l.sort()`) sorts the list. (descending xxx)
 * `list.reverse(l)` (or `l.reverse()`) reverses the list. 
-```{python}
 
+For the functions starting with `list`, there is a catch: While we mentioned that a function takes its input (here the list), and does not alter it, `list`s are mutable objects, which means that they are changed when calling such a function on them. So, e.g. after `l.sort()`, the list `l` itself is sorted, and there is no return value of that function (more precisely, the return value is `None`.) This can be counterintuitive:
+```{python}
+l = [3,2,1]
+# This gives none since the return value of l.sort() is None
+print(l.sort())
+
+l = [3,2,1]
+# This changes l and makes it sorted.
+l.sort()
+# Now we can print it 
+print(f"l = {l}")
+
+# In contrast, sorted() does not change the list but returns a new sorted list.
+l = [3,2,1]
+print(sorted(l))
+```
+Assume you want to sort a `list` not as usual. In this situation, you will find out about the `key`-parameter in `sorted`. It takes a function, we sorts the list according to the values of this function. As an example, assume we want to sort a list of `int`s according to their abolute value:
+```{python}
+l = [5, -4, 0, 7, -3, 2]
+print(sorted(l, key = lambda x: abs(x)))
+```
+Similarly, you can e.g. filter the list by only taking numbers which are at least one:
+```{python}
+l = [5, -4, 0, 7, -3, 2]
+print(list(filter(lambda x: x >= 1, l)))
 ```
 
+Let us shortly describe two functions on a list of `bool`s `l`. 
 
+* `all(l)` gives `True` if all entries of `l` are `True.
+* `any(l)` gives `True` if at least one entry of `l` is `True.
 
+## tuple {#sec-tuple}
 
+At first glance, a `tuple` is like a `list`, but comes with normal brackets `()` instead of square brackets `[]`. So, `(1,2,3)` is the tuple of these three numbers, and `("Alice", "Bob", "Charlie") is a tuple of three names. For the tuple `l`, still, `l[0]` gives the first entry etc. The main difference between `tuple` and `list` is that `list`s are more flexible when adding or changing entries, and `tuple`s are fixed (immutable) once they have been created.
+```{python}
+l = ("Alice", "Bob", "Charlie")
+# The next line does not work, since l is immutable
+# l[0] = "Anna"
+l = ["Alice", "Bob", "Charlie"]
+# The next line works, since l is mutable. 
+l[0] = "Anna"
+print(f"l = {l}")
+```
+An important aspect of tuples is that single values can easily be packed into a tuple. An important example is to use a tuple in order to assign two or more values at the same time:
+```{python3}
+def min_max(a,b):
+    (mi, ma) = (a if a < b else b, b if a < b else a)
+    return mi, ma
 
-
-
-list[bool] any and all
-
+a = 20
+b = 10
+res = min_max(a,b)
+print(f"Minimum and maximum are {res[0]} and {res[1]}.")
+```
 
 ## set {#sec-set}
 
-## dict {#sec-dict}
+As in mathematics, sets have no special order, and there are noduplicates within a set. In Python3, they can be created using curly brackets, so e.g. `{1,2,3}` as well as `{1,3,2,3,1}` is the set of the numbers `1,2,3`. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a `list`, which can contain duplicates, `list(set(l))` is the same list (maybe the order changed) but with duplicates removed.
 
-## tuple {#sec-tuple}
+Here are some functions on some `s` and `t`:
+* `len(s)`: returns the number of unique elements in `s`.
+* `s | t`: The union of `s` and `t`.
+* `s & t`: The intersection of `s` and `t`.
+* `s - t`: The difference of `s` and `t`.
+
+
+```{python3}
+l = [1,3,2,4,3,2]
+print(f"There are {len(set(l))} unique elements in {l}.")
+```
+Unions, intersection, and set differences work as expected:
+```{python3}
+s = {1,2,3}
+t = {5,4,3}
+print(f"The union of {s} and {t} is {s | t}.")
+print(f"The intersection of {s} and {t} is {s & t}.")
+print(f"The difference of {s} and {t} is {s - t}.")
+```
+
+
+## dict {#sec-dict}
 
 ## iterating through list/set/dict/tuple {#sec-iterating}
 
@@ -99,12 +177,16 @@ Dictionaries - These are collections of key-value pairs defined using curly brac
 Sets - They can’t have duplicates, and are mutable.
 
 
-```{python3}
-mi, ma = a if a < b else b, b if a < b else a
-print(f"Mminimum and maximum are {mi} and {ma}.")
-```
 
 
 Exercise
 
 For two strings `s` and `t`, write a function `myCount(s, t)`, which counts the numbers of occurrences of `t` in `s`. Unlike `count`, it should count the number of positions in `s` starting with `t`. For example, `"bababab".count("bab")` gives 2, but `"bababab".myCount("bab")` should give 3. 
+
+
+Exercise
+
+Find out how you can sort a list descendingly. 
+
+
+Exercise: Write a function which removes duplicates from a list (you might want to use `set` here), but keeps the order of the list. 
