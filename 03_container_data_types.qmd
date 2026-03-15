@@ -142,8 +142,81 @@ print(f"The intersection of {s} and {t} is {s & t}.")
 print(f"The difference of {s} and {t} is {s - t}.")
 ```
 
-
 ## dict {#sec-dict}
+
+Dictionaries (`dict`) are nothing but a collection of key-value pairs. Here is an example:
+```{python}
+d = {
+        "first_name": "Alice",
+        "last_name": "Müller",
+        "age": 29,
+        "hobbies": ["reading", "cycling", "chess"]
+    }
+print(f"{d['first_name']} {d['last_name']} is {d['age']} and likes {', '.join(d['hobbies'])}")
+```
+
+* As you see in the example, the f-string uses nested quotation marks, `"...'...'..."`. For this reason, we use single quotation marks `''` as inner separators and double quotation marks `""` for the outer quotation marks. If there is no nesting, there is no difference in using single/double quotation marks. 
+* keys in a dict can be any immutable data type (like `int`, `str`, `float`, `tuple`).
+
+As you see, accessing field `'age'` in the `dict` `p` is done using `p['age']`. However, assume `'age'` is not a field in `p`. Then, `p['age']` gives an error. For this reason, it is often better to use the `get`-function: 
+```{python}
+print(f"{p['first_name']} {p['last_name']} lives in {p.get('address')}".)
+# This version uses a default field in get
+print(f"{p['first_name']} {p['last_name']} lives in {p.get('address', 'unknown')}".)
+```
+Some of the most important functions on `d` as a `dict`s are:
+* `dict.keys(d)` (or `d.keys()`): Returns the list of all keys. 
+* `dict.values(d)` (or `d.values()`): Returns the list of all values. 
+* `dict.items(d)` (or `d.items()`): Returns the list of tuples (key, value).
+
+```{python}
+print(f"The keys are {', '.join(d.keys())}.")
+print(f"The values are {d.values()}.")
+print(f"The key-value-pairs are {d.items()}.")
+```
+
+
+
+Let us mention some more functions on `dict`s:
+```{python}
+
+```
+
+
+
+Here is a last example for a list of dicts. 
+```{python}
+people = [
+    {
+        "first_name": "Alice",
+        "last_name": "Müller",
+        "age": 29,
+        "hobbies": ["reading", "cycling", "chess"]
+    },
+    {
+        "first_name": "Bob",
+        "last_name": "Schmidt",
+        "age": 35,
+        "hobbies": ["hiking", "photography", "cooking"]
+    },
+    {
+        "first_name": "Clara",
+        "last_name": "Weber",
+        "age": 22,
+        "hobbies": ["painting", "piano", "running"]
+    },
+    {
+        "first_name": "David",
+        "last_name": "Fischer",
+        "age": 41,
+        "hobbies": ["gardening", "woodworking", "cycling"]
+    }
+]
+for p in people:
+    print(f"{p["first_name"]} {p["last_name"]} is {p["age"]} and likes {", ".join(p["hobbies"])}")
+
+```
+
 
 ## iterating through list/set/dict/tuple {#sec-iterating}
 
