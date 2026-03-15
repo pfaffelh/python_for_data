@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03_container_data_types.html" rel="next">
-<link href="./01_simple_data_types.html" rel="prev">
+<link href="./04_container_data_types.html" rel="next">
+<link href="./02_simple_data_types.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -149,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_loops_and_conditions.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, and functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_loops_and_conditions.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, and functions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -177,25 +177,25 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_simple_data_types.html" class="sidebar-item-text sidebar-link">
+  <a href="./02_simple_data_types.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Simple Data types</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_loops_and_conditions.html" class="sidebar-item-text sidebar-link active">
+  <a href="./03_loops_and_conditions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, and functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_container_data_types.html" class="sidebar-item-text sidebar-link">
+  <a href="./04_container_data_types.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Container data types</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_libraries.html" class="sidebar-item-text sidebar-link">
+  <a href="./05_libraries.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
   </div>
 </li>
@@ -250,7 +250,7 @@ window.Quarto = {
 <section id="if-elif-else" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="if-elif-else"><span class="header-section-number">3.1</span> If elif else</h2>
 <p>As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an <code>if</code>-condition:</p>
-<div id="9c5ca39c" class="cell" data-execution_count="1">
+<div id="12bad024" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&lt;</span> b:</span>
@@ -274,7 +274,7 @@ else:
     case_else</code></pre>
 <p>Here, read <code>elif</code> alse <code>else if</code>, which means that the code jumps into this case if the respective condition is the first to hold. The <code>else</code> case only applied if both the <code>if</code> and all <code>elif</code> conditions do not apply.</p>
 <p>In fact, there are abbreviations in python3 which are very handy. In particular, look at this piece of code.</p>
-<div id="4df6cb1b" class="cell" data-execution_count="2">
+<div id="240dc24d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> a <span class="cf">if</span> a <span class="op">&lt;</span> b <span class="cf">else</span> b</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The minimum of </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> is:"</span>, res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -282,7 +282,7 @@ else:
 </div>
 </div>
 <p>Let us make another example, also using <code>elif</code>. Given some <code>n</code>, the task is to print <code>Fizz</code> if <code>n</code> is a multiple of 3, <code>Buzz</code>, if it is a multiple of 5, and <code>FizzBuzz</code> if both conditions are satisfied.</p>
-<div id="597a73f5" class="cell" data-execution_count="3">
+<div id="c54bb70e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">165</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -300,7 +300,7 @@ else:
 <section id="for" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="for"><span class="header-section-number">3.2</span> for</h2>
 <p>There are <code>for</code>-loops in Python3, as discussed in this section, and <code>while</code>-loops in the next section. The basic use-case of a <code>for</code>-loop is repeating a task several times. As a simple example, adding <code>b</code> a number of <code>a</code> times, results in <code>a * b</code>.</p>
-<div id="653bbdda" class="cell" data-execution_count="4">
+<div id="b4271b5d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">7</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="dv">0</span></span>
@@ -318,7 +318,7 @@ else:
 <section id="greatest-common-divisor-i" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="greatest-common-divisor-i"><span class="header-section-number">3.2.1</span> Greatest common divisor I</h3>
 <p>Let us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, <code>a</code> and <code>b</code>. A very simple algorithm is going through all numbers <code>1,...,</code> in order, and update result each time we encounter a number which divides both, <code>a</code> and <code>b</code>. (Here, <code>range(1,a+1)</code> is a synoym for the numbers <code>1,...,a</code>.)</p>
-<div id="afcdac1c" class="cell" data-execution_count="5">
+<div id="89507806" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic algorithm for finding the gcd of two numbers</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">33</span></span>
@@ -344,7 +344,7 @@ else:
 <section id="finding-sqrt2" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="finding-sqrt2"><span class="header-section-number">3.3.1</span> Finding <span class="math inline">\(\sqrt{2}\)</span></h3>
 <p>For finding <span class="math inline">\(\sqrt{2}\)</span>, note that this is a fixed point for the iteration <span class="math display">\[ x_{n+1} = \frac {x_n} 2 - \frac 1 {x_n}.\]</span> (In order to see this, assume that <span class="math inline">\(x = x_n = x_{n+1}\)</span>, and multiply the recursion by <span class="math inline">\(x\)</span>.) We can use this as follows.</p>
-<div id="69351cae" class="cell" data-execution_count="6">
+<div id="aaa55e29" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1e-10</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x_prev <span class="op">=</span> <span class="dv">0</span></span>
@@ -363,7 +363,7 @@ else:
 <p>The above algorithm (using <code>for</code>-loops) for finding the gcd were not particulary efficient. (You might want to test them with some large numbers.) Euclid’s algorithm is much more efficient. It is based on the observation that <code>c % a == 0</code> (<code>c</code> divides <code>a</code>) and <code>c % b == 0</code> iff <code>c % a == 0</code> and <code>c % (b % a)</code>.</p>
 <p>In order to see this, note that <code>c % a == 0</code> and <code>c % b == 0</code> iff <code>c % a == 0</code> and <code>c % (b - da) == 0</code> for any <code>d</code>. Then, the result follows from choosing <code>d = b \\ a</code> since <code>b - (b \\ a) * a = b % a</code>. Moreover, every number divides <code>0</code>, so if <code>b % a == 0</code>, the gcd of <code>a</code> and <code>b</code> is <code>a</code>.</p>
 <p>We can use these insights, taking <code>a &lt; b</code> for simplicity. Starting with <code>a</code> and <code>b</code>, we compute if <code>b % a == 0</code>. If yes, we are done, and return <code>a</code>. If not, we compute the gcd of <code>a</code> and <code>b % a</code> instead.</p>
-<div id="1ff1ee7a" class="cell" data-execution_count="7">
+<div id="7b918965" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Euclid's algorithm for finding the gcd of two numbers</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a_input <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>b_input <span class="op">=</span> <span class="dv">33</span></span>
@@ -390,7 +390,7 @@ The gcd of 105 and 33 is 3.</code></pre>
 <section id="sec-functions" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="sec-functions"><span class="header-section-number">3.4</span> def (Functions)</h2>
 <p>Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid’s algorithm, this would look as follows:</p>
-<div id="e29d641e" class="cell" data-execution_count="8">
+<div id="14f3e402" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">33</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -412,7 +412,7 @@ The gcd of 105 and 33 is 3.</code></pre>
     some instructions
     return something</code></pre>
 <p>Not all functions return something. Those who don’t usually produce some output. Here is an example</p>
-<div id="5b9813d1" class="cell" data-execution_count="9">
+<div id="dcbf71c7" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greeting(name, prefix<span class="op">=</span><span class="st">"Hello"</span>):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Return a greeting for name."""</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span>
@@ -437,7 +437,7 @@ Welcome, Charlie!</code></pre>
 </ul></li>
 <li>All positional arguments must come before keyword aguments.</li>
 <li>Both functions from above have a <em>docstring</em>, which is the multiline string after the <code>def</code>-line. They indicate what this function is doing and are displayed in various places, e.g.&nbsp;when you hover over a function in your jupyter notebook.</li>
-<li>Sometimes, it is too much to define an own function for a very simple task. In this case, Python3 comes with <code>lambda</code>-functions, which are very quick: <code>lambda x: x * x</code>. Most use cases are with container data types, and we will have one in <a href="03_container_data_types.html#sec-list" class="quarto-xref"><span>Section 4.1</span></a>.</li>
+<li>Sometimes, it is too much to define an own function for a very simple task. In this case, Python3 comes with <code>lambda</code>-functions, which are very quick: <code>lambda x: x * x</code>. Most use cases are with container data types, and we will have one in <a href="04_container_data_types.html#sec-list" class="quarto-xref"><span>Section 4.1</span></a>.</li>
 </ul>
 </section>
 <section id="exercises" class="level2" data-number="3.5">
@@ -449,6 +449,7 @@ Welcome, Charlie!</code></pre>
 <p><strong>Exercise 5</strong> Find the largest <span class="math inline">\(n\)</span> such that <span class="math inline">\(\sum_{i=1}^n i &lt; 1000\)</span>.</p>
 <p><strong>Exercise 6</strong> <code>for</code>-loops can also become nested. Compute <span class="math inline">\(\sum_{i=1}^{100} \sum_{j=1}^i j\)</span>. (Note the double indentation for the inner <code>for</code>-loop!)</p>
 <p><strong>Exercise 7</strong> Define a function computing the sum of the first <code>n</code> integers.</p>
+<p><strong>Exercise 8</strong> Write a function (without using imports) which computes the sum of all digits (cross sum) of an int.</p>
 
 
 </section>
@@ -856,12 +857,12 @@ Welcome, Charlie!</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01_simple_data_types.html" class="pagination-link" aria-label="Simple Data types">
+      <a href="./02_simple_data_types.html" class="pagination-link" aria-label="Simple Data types">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Simple Data types</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03_container_data_types.html" class="pagination-link" aria-label="Container data types">
+      <a href="./04_container_data_types.html" class="pagination-link" aria-label="Container data types">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Container data types</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

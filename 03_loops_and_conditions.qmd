@@ -216,3 +216,7 @@ Find the largest $n$ such that $\sum_{i=1}^n i < 1000$.
 
 **Exercise 7**
 Define a function computing the sum of the first `n` integers. 
+
+**Exercise 8**
+Write a function (without using imports) which computes the sum of all digits (cross sum) of an int. 
+

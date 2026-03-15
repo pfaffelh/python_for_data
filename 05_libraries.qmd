@@ -15,3 +15,32 @@ gives math.pi
 import numpy as np
 
 date and time 
+
+statistics
+
+scipy.stats
+
+random
+
+decimal
+
+json
+
+csv
+
+sqlite3
+
+pickle
+
+datetime
+
+time
+
+unittest
+
+os 
+
+sys 
+
+try except 
+

@@ -6,7 +6,7 @@ format:
 jupyter: python3
 ---
 
-When working with data, we usually not only have *one* int or *one* str, but many of them. For this situation, there are the container data types, `list`, ''tuple`, `set`, and `dict`. 
+When working with data, we usually not only have *one* int or *one* str, but many of them. For this situation, there are the container data types, `list`, `tuple`, `set`, and `dict`. 
 
 ## list {#sec-list}
 The notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is `[1,2,3]`. A list of names is e.g. `["Alice", "Bob", "Charlie", "Donna"]`. So, for a `list`, the entries have simple (or again container) data types. 
@@ -59,7 +59,7 @@ Here are some functions on lists.
 * `list.pop(l)` (or `l.pop()`) removes the last element from `l`.
 * `list.index(l, x)` (or `l.index(x)`) gives the index of the first occurrence of `x` in `l`. 
 * `list.count(x)` (or `l.count(x)`) counts the number of occurrences of `x` in `l`.
-* `list.sort(l)` (or `l.sort()`) sorts the list. (descending xxx)
+* `list.sort(l)` (or `l.sort()`) sorts the list. 
 * `list.reverse(l)` (or `l.reverse()`) reverses the list. 
 
 For the functions starting with `list`, there is a catch: While we mentioned that a function takes its input (here the list), and does not alter it, `list`s are mutable objects, which means that they are changed when calling such a function on them. So, e.g. after `l.sort()`, the list `l` itself is sorted, and there is no return value of that function (more precisely, the return value is `None`.) This can be counterintuitive:
@@ -107,7 +107,7 @@ l[0] = "Anna"
 print(f"l = {l}")
 ```
 An important aspect of tuples is that single values can easily be packed into a tuple. An important example is to use a tuple in order to assign two or more values at the same time:
-```{python3}
+```{python}
 def min_max(a,b):
     (mi, ma) = (a if a < b else b, b if a < b else a)
     return mi, ma
@@ -152,7 +152,8 @@ d = {
         "age": 29,
         "hobbies": ["reading", "cycling", "chess"]
     }
-print(f"{d['first_name']} {d['last_name']} is {d['age']} and likes {', '.join(d['hobbies'])}")
+print(f"""{d['first_name']} {d['last_name']} is {d['age']} and likes 
+    {', '.join(d['hobbies'])}.""")
 ```
 
 * As you see in the example, the f-string uses nested quotation marks, `"...'...'..."`. For this reason, we use single quotation marks `''` as inner separators and double quotation marks `""` for the outer quotation marks. If there is no nesting, there is no difference in using single/double quotation marks. 
@@ -160,9 +161,14 @@ print(f"{d['first_name']} {d['last_name']} is {d['age']} and likes {', '.join(d[
 
 As you see, accessing field `'age'` in the `dict` `p` is done using `p['age']`. However, assume `'age'` is not a field in `p`. Then, `p['age']` gives an error. For this reason, it is often better to use the `get`-function: 
 ```{python}
-print(f"{p['first_name']} {p['last_name']} lives in {p.get('address')}".)
+print(f"{d['first_name']} {d['last_name']} lives in {d.get('address')}.")
 # This version uses a default field in get
-print(f"{p['first_name']} {p['last_name']} lives in {p.get('address', 'unknown')}".)
+print(f"""{d['first_name']} {d['last_name']} lives 
+    in {d.get('address', 'unknown')}.""")
+# We can also add "address" to the dict
+d["address"] = "Freiburg, Germany"
+print(f"""{d['first_name']} {d['last_name']} lives 
+    in {d.get('address', 'unknown')}.""")
 ```
 Some of the most important functions on `d` as a `dict`s are:
 * `dict.keys(d)` (or `d.keys()`): Returns the list of all keys. 
@@ -171,19 +177,29 @@ Some of the most important functions on `d` as a `dict`s are:
 
 ```{python}
 print(f"The keys are {', '.join(d.keys())}.")
-print(f"The values are {d.values()}.")
-print(f"The key-value-pairs are {d.items()}.")
+print(f"The values are:")
+for v in d.values():
+    print(str(v))
+print(f"The key-value-pairs are:")
+for key, value in d.items():
+    print((key, str(value)))
 ```
-
-
 
 Let us mention some more functions on `dict`s:
+
+* `dict.update(d, d')` (or `d.update(d'))`: extends `d` by the keys in `d'`, and overwrites entries in `d` by the values of `d'`. Another possibility is `d |= d'` (similar to a set-union).
+* `dict.pop(d, key, default)` (or `d.pop(key, default)`): removes the key `key` from `d` and returs its value (or `default`, if the key isn't found).
+* `del d[key]`: Deletes the entry with key `key` from `d`. 
+
 ```{python}
-
+d |= {
+    "profession" : "student",
+    "subject" : "Mathematics"
+}
+del d["age"]
+for key, value in d.items():
+    print((key, str(value)))
 ```
-
-
-
 Here is a last example for a list of dicts. 
 ```{python}
 people = [
@@ -213,53 +229,50 @@ people = [
     }
 ]
 for p in people:
-    print(f"{p["first_name"]} {p["last_name"]} is {p["age"]} and likes {", ".join(p["hobbies"])}")
-
+    print(f"{p["first_name"]} {p["last_name"]} is {p["age"]} and likes "
+        + ", ".join(p["hobbies"]) + ".")
 ```
-
-
-## iterating through list/set/dict/tuple {#sec-iterating}
 
 ## list/set/dict/tuple comprehensions {#sec-iterating}
 
-expression for variable in iterable if condition
-[x*x for x in range(10) if x % 2 == 0]
+Python3 has very expressive (i.e. short) ways to alter container data types. The general form is (where "iterable" is a container data type):
+```
+[expression for variable in list if condition]
+[expression_if_true if condition else expression_if_false for variable in list]
+{key: value for item in dict if condition}
+```
 
-## list/set/dict as mutable datatypes {#sec-mutable}
+Let us make some examples, and you will see how powerful these complehensions are!
 
-
-
-
-list set dict tuple
-
-### Mathematical angle
-This is a good moment to compare:
-- lists with finite sequences,
-- tuples with fixed records,
-- dictionaries with finite maps.
-
-for strings: 
-x[0] x[1:4] 
-immutable 
-x[0] = "Z"
+```{python}
+# The squares of all even numbers below 10
+print([x*x for x in range(10) if x % 2 == 0])
+# The names of people who like cycling
+print("People who like cycling are " + 
+    ', '.join([f'{p["first_name"]} {p["last_name"]}' for p in people 
+        if "cycling" in p['hobbies']]) + ".")
+```
 
 
-Lists - These are collections of values in the CSV format. Lists are mutable objects.
-Tuples - These are like lists, but immutable.
-Dictionaries - These are collections of key-value pairs defined using curly braces.
-Sets - They can’t have duplicates, and are mutable.
+## Exercises
 
-
-
-
-Exercise
-
+**Exercise 1**
 For two strings `s` and `t`, write a function `myCount(s, t)`, which counts the numbers of occurrences of `t` in `s`. Unlike `count`, it should count the number of positions in `s` starting with `t`. For example, `"bababab".count("bab")` gives 2, but `"bababab".myCount("bab")` should give 3. 
 
-
-Exercise
-
+**Exercise 2**
 Find out how you can sort a list descendingly. 
 
+**Exercise 3**
+Write a function which removes duplicates from a list (you might want to use `set` here), but keeps the order of the list. 
 
-Exercise: Write a function which removes duplicates from a list (you might want to use `set` here), but keeps the order of the list. 
+**Exercise 4**
+Given a list of names ["ALICE", "BOB", "CHARLIE"], convert them all to lowercase.
+
+**Exercise 5**
+From a list of fruits ["apple", "banana", "kiwi", "mango", "pear"], create a list of fruits that have exactly 5 letters.
+
+**Exercise 6**
+Create a list of tuples representing all possible `(x, y)` coordinates where `x` is from `[1, 2, 3]` and `y` is from `[4, 5]`.
+
+**Exercise 7**
+Given the dict `{"a": 1, "b": 2, "c": 3}`, create a new dictionary that swaps keys and values `{1: "a", ...}`.

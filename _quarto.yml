@@ -9,10 +9,10 @@ project:
 book:
   chapters:
     - index.qmd
-    - 01_simple_data_types.qmd
-    - 02_loops_and_conditions.qmd
-    - 03_container_data_types.qmd
-    - 04_libraries.qmd
+    - 02_simple_data_types.qmd
+    - 03_loops_and_conditions.qmd
+    - 04_container_data_types.qmd
+    - 05_libraries.qmd
     - 10_misc.qmd
 number-sections: true
 

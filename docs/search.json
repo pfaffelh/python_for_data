@@ -10,8 +10,8 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html",
-    "href": "01_simple_data_types.html",
+    "objectID": "02_simple_data_types.html",
+    "href": "02_simple_data_types.html",
     "title": "2  Simple Data types",
     "section": "",
     "text": "2.1 Overview\nDownload notebook.\nEvery variable or other object in python has a type. This is the kind of information which is stored insice the variable or object Here is an overview over the most important simple data types.",
@@ -20,8 +20,8 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#overview",
-    "href": "01_simple_data_types.html#overview",
+    "objectID": "02_simple_data_types.html#overview",
+    "href": "02_simple_data_types.html#overview",
     "title": "2  Simple Data types",
     "section": "",
     "text": "Type\nExample\nDescription\n\n\n\n\nint\n5\nInteger\n\n\nfloat\n3.14\nFloating-point number\n\n\nbool\nTrue\nBoolean value\n\n\nstr\n\"hello\"\nText string\n\n\nNoneType\nNone\nNo value / null value\n\n\n\n\nYou can find about the type of any expression x in Python using type(x).\nIn fact, type(x) is already the first example of a built-in-function. The function type takes a single value as input, and returns its type. We will encounter various more functions already in this section. We will learn more about functions (built-in and self-written) in Section 3.4.\nThere are conversions between some types. For example, \"0\" is a string, but int(\"0\") (again a function, taking a single value, and returning its integer value) the integer 0. Conversely, str(0) is the string \"0\". We will have more examples below.",
@@ -30,8 +30,8 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#int",
-    "href": "01_simple_data_types.html#int",
+    "objectID": "02_simple_data_types.html#int",
+    "href": "02_simple_data_types.html#int",
     "title": "2  Simple Data types",
     "section": "2.2 int",
     "text": "2.2 int\nWith ints (numbers …,-2,-1,0,1,2,… ), you can compute as usual.\n\nx = 7\ny = 2\nprint(\"x + y = \", x + y)\nprint(\"x * y =  \", x * y)\n\nx + y =  9\nx * y =   14\n\n\n\n# x to the power of y\nprint(\"x ** y = \", x ** y)\n\nx ** y =  49\n\n\n\n# x divided by y (which gives a `float`)\nprint(\"x / y = \", x / y)\n\nx / y =  3.5\n\n\n\n# integer-valued division of x by y \nprint(\"x // y = \", x // y)\n\nx // y =  3\n\n\n\n# x modulo y\nprint(\"x % y = \", x % y)\n\nx % y =  1\n\n\nIn most programming languages (e.g. C++), there is a minimal and a maximal possible value for an int. Python, however, does not have this limitation. Only the amount of available memory restricts the numbers which can be stored in an int.",
@@ -40,8 +40,8 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#float",
-    "href": "01_simple_data_types.html#float",
+    "objectID": "02_simple_data_types.html#float",
+    "href": "02_simple_data_types.html#float",
     "title": "2  Simple Data types",
     "section": "2.3 float",
     "text": "2.3 float\nGenerally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. \\(1.2 \\cdot 10^2\\). Python can do the same computations as with ints, but the following should be kept in mind:\n\nIf you type 1, Python thinks this is an int, but if you type 1.0 or 1., Python thinks this is a float.\nUnlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about \\(10^{-324}\\) to \\(10^{308}\\).\nWhen doing mixed computations with floats and int, e.g. 1.0 + 1, the int is changed into a float.\nIt is not possible to perform exact computations with some floats; see the example below.\n\n\nx = 1.0\ny = 1\nprint(\"x + y = \", x + y)\n\nx + y =  2.0\n\n\n\nprint(\"0.1 + 0.2 = \", 0.1 + 0.2)\n\n0.1 + 0.2 =  0.30000000000000004\n\n\nSpecial floats are inf, -inf and nan (not a number). Let us see them in action:\n\nprint((10. ** 308) * 10)\n\ninf\n\n\n\nprint((10 ** 308) * 10)\n\n1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\nprint((10 ** (-323)) / 10)\n\n0.0\n\n\n\nprint((10. ** 308) * 10 - (10. ** 308) * 10)\n\nnan\n\n\nYou can transform ints to floats and vice versa by using float() and int().\n\nprint(float(0))\n\n0.0\n\n\n\nprint(int(0.0))\n\n0\n\n\n\nprint(int(0.5))\n\n0\n\n\nIf you deliberately want to introduce nan or inf, you can do this:\n\nprint(float(\"inf\"))\nprint(float(\"nan\"))\n\ninf\nnan\n\n\nOn float, you can use many functions. We only name two at the moment, for some float x:\n\nabs(x): The absolute value of x.\nround(x) and round(x,n): Round x to the next int, or after n digits.\n\nIn Section 5.1, we will encounter that many more usual functions (like sqrt) can be used on floats, but we need to import the mathematical library for this.",
@@ -50,8 +50,8 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#bool",
-    "href": "01_simple_data_types.html#bool",
+    "objectID": "02_simple_data_types.html#bool",
+    "href": "02_simple_data_types.html#bool",
     "title": "2  Simple Data types",
     "section": "2.4 bool",
     "text": "2.4 bool\nThere are exactly two boolean values, known as True and False. You can compute with them using not, and, or and ‘xor’. In addition, True and False can be the result of a condition, such as the expression 1 == 2.\n\nx = True\ny = False\nprint(\"not x =\", not x)\n\nnot x = False\n\n\n\nprint(\"x and y =\", x and y)\n\nx and y = False\n\n\n\nprint(\"x or y =\", x or y)\n\nx or y = True\n\n\n\nprint(\"x xor y =\", x ^ y)\n\nx xor y = True\n\n\n\nprint(\"((not x) == y) =\", (not x) == y)\n\n((not x) == y) = True\n\n\n\nprint(\"(1 == 2) =\", 1 == 2)\n\n(1 == 2) = False\n\n\n\n# Python converts `bool` into `int`\nprint(\"x + y =\", x + y)\n\nx + y = 1\n\n\n\n# != means \"not equal\"\nprint(\"(1 != 2) =\", 1 != 2)\n\n(1 != 2) = True\n\n\n\n# &lt; refers to less than\nprint(\"(1 &lt; 1) =\", 1 &lt; 1)\n\n(1 &lt; 1) = False\n\n\n\n# &lt;= refers to less than or equal\nprint(\"(1 &lt;= 1) =\", 1 &lt;= 1)\n\n(1 &lt;= 1) = True\n\n\n\nz = float(\"nan\")\nprint(\"(z == z) =\", z == z)\n\n(z == z) = False",
@@ -60,8 +60,8 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#string",
-    "href": "01_simple_data_types.html#string",
+    "objectID": "02_simple_data_types.html#string",
+    "href": "02_simple_data_types.html#string",
     "title": "2  Simple Data types",
     "section": "2.5 string",
     "text": "2.5 string\nIn many cases, strings are objects in quotation markes, such as in `“Hello, world!”.\n\nOperations on strings: You can concencatenate strings using + as in `“Python” + “for” + “Data” + “Analysis” (but you cannot subtract strings). You can also repeat a string by multiplying it with an int.\nf-strings: They were introduced in Python 3.6. They are the way to go if you want to mix description and variables. They are written as f\"Hello, {name}\". The f introduces the f-string. Within curly braces, there is a variable, which should be printed instead of the variable name.\nSpecial characters: There are many of them, we only mention \\t (tabulator) and \\n (new line) here.\nMultiline strings: Usually, python interprets a new line such that all commands are finished. However, if you want to use a sttring spanning multiple lines, you don’t want this. Multiline strings start and end with \"\"\" (a triple quotation mark).\nQuotation marks: In various cases, you can use ' instead of \". Sometimes this is useful when nesting quotation marks.\nSubstrings: We will learn more about substrings, but here is already a way to see if a substring occurs within a string or not. The value of \"th\" in \"Python\" amount to True.\n\n\nx = \"Hello,\" \ny = \"world\"\n# Concatenating two (or more) strings\nprint(x + y + \"!\")\n\nHello,world!\n\n\n\n# repeating a string \nz = \"bla\"\nprint(z*3)\n\nblablabla\n\n\n\n# a special character\nprint(\"\\U0001F60E\")\n\n😎\n\n\n\n# an example of an f-string\nname = \"Alice\"\nprint(f\"Hello {name} 😀\")\n\nHello Alice 😀\n\n\n\n# a multiline string\ntext = \"\"\"This is a multiline string.\nIt can span several lines.\nEach line break is preserved.\"\"\"\nprint(text)\n\nThis is a multiline string.\nIt can span several lines.\nEach line break is preserved.\n\n\n\n# determine if a given substring occurs within a string\nprint(\"Is 'th' a substring of 'Python'? \", 'th' in 'Python')\nprint(\"Is 'the' a substring of 'Python'? \", 'the' in 'Python')\n\nIs 'th' a substring of 'Python'?  True\nIs 'the' a substring of 'Python'?  False\n\n\nFor strings, there are various build-in functions. We mention some of them. Here, s is a string.\n\nstr.strip(s): Deletes spaces in the front and back.\nlen(s): gives the length of the string.\nstr.replace(s, \"x\", \"y\"): Replaces each occurrence of \"x\" in s by \"y\".\nstr.split(s, \"x\"): Splits s at each occurrence of \"x\". The result is alist`, which we will encounter in Section 4.1. “,”.join\nstr.lower(s): Return the same string, but all letters are lowercase.\nstr.upper(s): Return the same string, but all letters are uppercase.\nstr.isalpha(s):\nstr.isdigit(s): Returns True if the string is actually a number, and False otherwise.\nstr.isalnum(s): Returns True if the string consists only of letters and numbers, and False otherwise.\nstr.isspace(s): Returns True if the string consists only empty spaces, and False otherwise.\nstr.islower(s): Returns True if the string consists only of lower case letters, and False otherwise.\nstr.isupper(s): Returns True if the string consists only of upper case letters, and False otherwise.\nstr.count(s, \"x\"): Counts how ofter \"x\" appears in s.\n\nHere is another very useful notation convention, known as dot-notation: For a function str.something(s,...), where s is of type str, you can as well write s.something(). For example, s.strip() is the same as str.strip(s).",
@@ -70,8 +70,8 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#nonetype",
-    "href": "01_simple_data_types.html#nonetype",
+    "objectID": "02_simple_data_types.html#nonetype",
+    "href": "02_simple_data_types.html#nonetype",
     "title": "2  Simple Data types",
     "section": "2.6 NoneType",
     "text": "2.6 NoneType\nWhen analysing data, it is common to have missing values. These usually come as None. This is different from anything else we encountered so far (including nan and False).\n\nx = None\nprint(x)\n\nNone\n\n\n\nprint(\"(x is None) =\", x is None)\n\n(x is None) = True\n\n\n\nprint(\"(None == False) =\", None == False)\n\n(None == False) = False\n\n\n\nprint(\"(None == nan) =\", None == float(\"nan\"))\n\n(None == nan) = False",
@@ -80,8 +80,8 @@
     ]
   },
   {
-    "objectID": "01_simple_data_types.html#exercises",
-    "href": "01_simple_data_types.html#exercises",
+    "objectID": "02_simple_data_types.html#exercises",
+    "href": "02_simple_data_types.html#exercises",
     "title": "2  Simple Data types",
     "section": "2.7 Exercises",
     "text": "2.7 Exercises\nExercise 1: Find out how to use scientific notation in Python. (If you don’t know what this is, please find out!)\nExercise 2: Is there a Python package which can compute 0.1 + 0.2 == 0.3 without error?\nExercise 3: Print \"Hello, world!\" including the quotation marks in the output.\nExercise 4: Do newlines and tabs \\n, \\t count in str.isspacce()? How do numbers interact with str.islower()? If s is the strign of a number, what is s.lower()? Play around a bit with these fucntions and edge cases you might see in data.\nExercise 5: If you are on Windows, it is annoying that file paths come with \\, which is interpreted as the start of a special character. Find out two ways how to give the string of the file path C:\\Users\\Alice\\Documents\\file.txt.\nExercise 6: What is bool(None)? What is int(None)?\nExercise 7: In tables, we often have \"\" for a missing value. Is this the same as None?",
@@ -90,8 +90,8 @@
     ]
   },
   {
-    "objectID": "02_loops_and_conditions.html",
-    "href": "02_loops_and_conditions.html",
+    "objectID": "03_loops_and_conditions.html",
+    "href": "03_loops_and_conditions.html",
     "title": "3  Control flow – conditions, loops, and functions",
     "section": "",
     "text": "3.1 If elif else\nDownload notebook.\nCoding starts to become interesting when we can control how variables change, and repeat operations.\nAs a simple (mathematical) example, let us compute the minimum of two numbers., which works by an if-condition:\na = 2\nb = 5\nif a &lt; b:\n    res = a\nelse:\n    res = b\nprint(f\"The minimum of {a} and {b} is:\", res)\n\nThe minimum of 2 and 5 is: 2\nIn general, the structure of an if-statement reads:\nHere, read elif alse else if, which means that the code jumps into this case if the respective condition is the first to hold. The else case only applied if both the if and all elif conditions do not apply.\nIn fact, there are abbreviations in python3 which are very handy. In particular, look at this piece of code.\nres = a if a &lt; b else b\nprint(f\"The minimum of {a} and {b} is:\", res)\n\nThe minimum of 2 and 5 is: 2\nLet us make another example, also using elif. Given some n, the task is to print Fizz if n is a multiple of 3, Buzz, if it is a multiple of 5, and FizzBuzz if both conditions are satisfied.\nn = 165\nres = \"\"\nif n % 3 == 0 and n % 5 == 0:\n    res = \"FizzBuzz\"\nelif n % 3 == 0:\n    res = \"Fizz\"\nelif n % 5 == 0:\n    res = \"Buzz\"\nprint(res)\n\nFizzBuzz",
@@ -100,8 +100,8 @@
     ]
   },
   {
-    "objectID": "02_loops_and_conditions.html#if-elif-else",
-    "href": "02_loops_and_conditions.html#if-elif-else",
+    "objectID": "03_loops_and_conditions.html#if-elif-else",
+    "href": "03_loops_and_conditions.html#if-elif-else",
     "title": "3  Control flow – conditions, loops, and functions",
     "section": "",
     "text": "if _condition1_:\n    case1\nelif _condition2_:\n    case2\nelif _condition3_:\n    case3\n...\nelse:\n    case_else",
@@ -110,8 +110,8 @@
     ]
   },
   {
-    "objectID": "02_loops_and_conditions.html#for",
-    "href": "02_loops_and_conditions.html#for",
+    "objectID": "03_loops_and_conditions.html#for",
+    "href": "03_loops_and_conditions.html#for",
     "title": "3  Control flow – conditions, loops, and functions",
     "section": "3.2 for",
     "text": "3.2 for\nThere are for-loops in Python3, as discussed in this section, and while-loops in the next section. The basic use-case of a for-loop is repeating a task several times. As a simple example, adding b a number of a times, results in a * b.\n\na = 3\nb = 7\nres = 0\nfor i in range(a):\n    res = res + b\nprint(f\"{a} * {b} = {res}\")\n\n3 * 7 = 21\n\n\nImportantly, range(a) is a synonym for the numbers 0,..., a-1. (In particular, note that Python3 usually starts counting at 0 and not at 1, which will also be important in the next chapter.)\nThe general structure of a for-loop is as follows:\nfor _var_ in _iterable:\n    _sequence of instructions_\n\n3.2.1 Greatest common divisor I\nLet us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, a and b. A very simple algorithm is going through all numbers 1,..., in order, and update result each time we encounter a number which divides both, a and b. (Here, range(1,a+1) is a synoym for the numbers 1,...,a.)\n\n# Basic algorithm for finding the gcd of two numbers\na = 105\nb = 33\n\nres = 1\nfor i in range(1,a+1):\n    if a % i == 0 and b % i == 0:\n        res = i\nprint(f\"The gcd of {a} and {b} is {res}.\")\n\nThe gcd of 105 and 33 is 3.\n\n\nLet us make some remarks on for-loops: * In the last example, note that the instructios within the for-loop depend on i. * Within a for-loop, you can use continue in order to stop the execution of the current iteration, and immediately jump to the next i. * Within a for-loop, you can use break in order to stop the whole execution of the for-loop.",
@@ -120,8 +120,8 @@
     ]
   },
   {
-    "objectID": "02_loops_and_conditions.html#while",
-    "href": "02_loops_and_conditions.html#while",
+    "objectID": "03_loops_and_conditions.html#while",
+    "href": "03_loops_and_conditions.html#while",
     "title": "3  Control flow – conditions, loops, and functions",
     "section": "3.3 while",
     "text": "3.3 while\nThe for-loop directly iterates over some variable (i above). The while-loop instead comes with a condition, which is checked everytime it is started new. The general structure is:\nwhile _condition_:\n    instructions which might change the value of _condition_\nLet us make two examples: finding \\(\\sqrt{2}\\) and computing the gcd using Euclid’s algorithm.\n\n3.3.1 Finding \\(\\sqrt{2}\\)\nFor finding \\(\\sqrt{2}\\), note that this is a fixed point for the iteration \\[ x_{n+1} = \\frac {x_n} 2 - \\frac 1 {x_n}.\\] (In order to see this, assume that \\(x = x_n = x_{n+1}\\), and multiply the recursion by \\(x\\).) We can use this as follows.\n\nx = 1\neps = 1e-10\nx_prev = 0\n\nwhile abs(x - x_prev) &gt; eps:\n    x_prev = x\n    x = x/2 + 1 / x\nprint(x)\n\n1.414213562373095\n\n\n\n\n3.3.2 Finding the greatest common divisor II\nThe above algorithm (using for-loops) for finding the gcd were not particulary efficient. (You might want to test them with some large numbers.) Euclid’s algorithm is much more efficient. It is based on the observation that c % a == 0 (c divides a) and c % b == 0 iff c % a == 0 and c % (b % a).\nIn order to see this, note that c % a == 0 and c % b == 0 iff c % a == 0 and c % (b - da) == 0 for any d. Then, the result follows from choosing d = b \\\\ a since b - (b \\\\ a) * a = b % a. Moreover, every number divides 0, so if b % a == 0, the gcd of a and b is a.\nWe can use these insights, taking a &lt; b for simplicity. Starting with a and b, we compute if b % a == 0. If yes, we are done, and return a. If not, we compute the gcd of a and b % a instead.\n\n# Euclid's algorithm for finding the gcd of two numbers\na_input = 105\nb_input = 33\n# Copy the input to new variables\na = a_input\nb = b_input\n# Run Euclid's algorithm\nwhile a != 0:\n    r = b % a\n    print(f\"b = {b}, a = {a}, remainder = {r}\")\n    b = a\n    a = r\nprint(f\"The gcd of {a_input} and {b_input} is {b}.\")\n\nb = 33, a = 105, remainder = 33\nb = 105, a = 33, remainder = 6\nb = 33, a = 6, remainder = 3\nb = 6, a = 3, remainder = 0\nThe gcd of 105 and 33 is 3.",
@@ -130,8 +130,8 @@
     ]
   },
   {
-    "objectID": "02_loops_and_conditions.html#sec-functions",
-    "href": "02_loops_and_conditions.html#sec-functions",
+    "objectID": "03_loops_and_conditions.html#sec-functions",
+    "href": "03_loops_and_conditions.html#sec-functions",
     "title": "3  Control flow – conditions, loops, and functions",
     "section": "3.4 def (Functions)",
     "text": "3.4 def (Functions)\nOnce we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid’s algorithm, this would look as follows:\n\na = 105\nb = 33\n\ndef gcd(a,b):\n    \"\"\" Compute the greatest common divisor of a and b.\"\"\"\n    while a != 0:\n        r = b % a\n        b = a\n        a = r\n    return b\n\nprint(f\"The gcd of {a} and {b} is {gcd(a,b)}.\")\n\nThe gcd of 105 and 33 is 3.\n\n\nThe general structure is\ndef name_of_the_funcion(arg1, arg2, arg3 = default3, arg4=default4):\n    some instructions\n    return something\nNot all functions return something. Those who don’t usually produce some output. Here is an example\n\ndef greeting(name, prefix=\"Hello\"):\n    \"\"\" Return a greeting for name.\"\"\"\n    print(f\"{prefix}, {name}!\")\n\ngreeting(\"Alice\")\ngreeting(\"Bob\", prefix=\"Hi\")\ngreeting(prefix=\"Welcome\", name=\"Charlie\")\n\nHello, Alice!\nHi, Bob!\nWelcome, Charlie!\n\n\nHere are some important remarks on functions:\n\nVariables within functions are private to them. (There will be exceptions to this) In the gcd example, variable names a and b occur both, within and outside of the function. Although the variables a and b, which are private to the function, are changed within the function, the print-statement still knowns their value from before the function definition.\nVariables which are given to functions might have default values, as the prefix = \"Hello\" in the greeting example.\nFor giving variables, there are two options:\n\nyou can rely on the position they have in the definition of the function. (Example: greeting(\"Bob\", prefix=\"Hi\"), where you rely on \"Bob\" being in the name position.) These are called positional variables.\nyou can give it the explicite variable name it has in the function definition. In this case, the order of variable names does not matter. (Example: In greeting(prefix=\"Welcome\", name=\"Charlie\"), the output was correct although the order of the two variables differs from the function definition.)\n\nAll positional arguments must come before keyword aguments.\nBoth functions from above have a docstring, which is the multiline string after the def-line. They indicate what this function is doing and are displayed in various places, e.g. when you hover over a function in your jupyter notebook.\nSometimes, it is too much to define an own function for a very simple task. In this case, Python3 comes with lambda-functions, which are very quick: lambda x: x * x. Most use cases are with container data types, and we will have one in Section 4.1.",
@@ -140,48 +140,48 @@
     ]
   },
   {
-    "objectID": "02_loops_and_conditions.html#exercises",
-    "href": "02_loops_and_conditions.html#exercises",
+    "objectID": "03_loops_and_conditions.html#exercises",
+    "href": "03_loops_and_conditions.html#exercises",
     "title": "3  Control flow – conditions, loops, and functions",
     "section": "3.5 Exercises",
-    "text": "3.5 Exercises\nExercise 1 Can you code the FizzBuzz example in a single line of code? So, dependent on some n, give one line of code, which gives Fizz if n is a multiple of 3, Buzz, if it is a multiple of 5, and FizzBuzz if both conditions are satisfied.\nExercise 2 Multiple elifs in a row are not very elegant. Python3 (since version 3.10) comes with match. Find out how you can change the FizzBuzz example of the main text by using match instead of elifs.\nExercise 3 Write a version of the code for finding the gcd by running (not from 1 to a, but) from a to 1, and see if the corresponding number divides both, a and b. Apparently, you can break the for-loop when you found the first such number. Implement that breaking of the for-loop.\nExercise 4 Compute \\(\\sum_{i=1}^{100} i\\) using a for-loop.\nExercise 5 Find the largest \\(n\\) such that \\(\\sum_{i=1}^n i &lt; 1000\\).\nExercise 6 for-loops can also become nested. Compute \\(\\sum_{i=1}^{100} \\sum_{j=1}^i j\\). (Note the double indentation for the inner for-loop!)\nExercise 7 Define a function computing the sum of the first n integers.",
+    "text": "3.5 Exercises\nExercise 1 Can you code the FizzBuzz example in a single line of code? So, dependent on some n, give one line of code, which gives Fizz if n is a multiple of 3, Buzz, if it is a multiple of 5, and FizzBuzz if both conditions are satisfied.\nExercise 2 Multiple elifs in a row are not very elegant. Python3 (since version 3.10) comes with match. Find out how you can change the FizzBuzz example of the main text by using match instead of elifs.\nExercise 3 Write a version of the code for finding the gcd by running (not from 1 to a, but) from a to 1, and see if the corresponding number divides both, a and b. Apparently, you can break the for-loop when you found the first such number. Implement that breaking of the for-loop.\nExercise 4 Compute \\(\\sum_{i=1}^{100} i\\) using a for-loop.\nExercise 5 Find the largest \\(n\\) such that \\(\\sum_{i=1}^n i &lt; 1000\\).\nExercise 6 for-loops can also become nested. Compute \\(\\sum_{i=1}^{100} \\sum_{j=1}^i j\\). (Note the double indentation for the inner for-loop!)\nExercise 7 Define a function computing the sum of the first n integers.\nExercise 8 Write a function (without using imports) which computes the sum of all digits (cross sum) of an int.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow -- conditions, loops, and functions</span>"
     ]
   },
   {
-    "objectID": "03_container_data_types.html",
-    "href": "03_container_data_types.html",
+    "objectID": "04_container_data_types.html",
+    "href": "04_container_data_types.html",
     "title": "4  Container data types",
     "section": "",
-    "text": "4.1 list\nWhen working with data, we usually not only have one int or one str, but many of them. For this situation, there are the container data types, list, ’’tuple,set, anddict`.\nThe notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is [1,2,3]. A list of names is e.g. [\"Alice\", \"Bob\", \"Charlie\", \"Donna\"]. So, for a list, the entries have simple (or again container) data types.\n# a list of ints\nx = [1,2,3]\nprint(x[0])\nprint(x[3] if len(x) &gt; 3 else None)\n\n1\nNone\nSlicing refers to sublists.\nx = [1,2,3]\nprint(f\"The first and second element: {x[0:2]}\")\nprint(f\"The first two elements: {x[:2]}\")\nprint(f\"All elements after the first element: {x[1:]}\")\n\nThe first and second element: [1, 2]\nThe first two elements: [1, 2]\nAll elements after the first element: [2, 3]\nPlaying around with range.\nprint(f\"The first and second odd number: {list(range(1, 5, 2))}\")\nprint(f\"The first and second odd number: {list(range(1, 100, 2))[:2]}\")\n\nThe first and second odd number: [1, 3]\nThe first and second odd number: [1, 3]\nThe elements of a list can be lists themselves.\ny = [[1,2], [3,4,5], 6, 7, 8]\nprint(y[1])\nprint(y[1][0])\n\n[3, 4, 5]\n3\nA list can have mixed types.\nz = [1, \"two\", [3,4], 5.0]\nprint(z[1])\n\ntwo\nHere are some functions on lists.\nFor the functions starting with list, there is a catch: While we mentioned that a function takes its input (here the list), and does not alter it, lists are mutable objects, which means that they are changed when calling such a function on them. So, e.g. after l.sort(), the list l itself is sorted, and there is no return value of that function (more precisely, the return value is None.) This can be counterintuitive:\nl = [3,2,1]\n# This gives none since the return value of l.sort() is None\nprint(l.sort())\n\nl = [3,2,1]\n# This changes l and makes it sorted.\nl.sort()\n# Now we can print it \nprint(f\"l = {l}\")\n\n# In contrast, sorted() does not change the list but returns a new sorted list.\nl = [3,2,1]\nprint(sorted(l))\n\nNone\nl = [1, 2, 3]\n[1, 2, 3]\nAssume you want to sort a list not as usual. In this situation, you will find out about the key-parameter in sorted. It takes a function, we sorts the list according to the values of this function. As an example, assume we want to sort a list of ints according to their abolute value:\nl = [5, -4, 0, 7, -3, 2]\nprint(sorted(l, key = lambda x: abs(x)))\n\n[0, 2, -3, -4, 5, 7]\nSimilarly, you can e.g. filter the list by only taking numbers which are at least one:\nl = [5, -4, 0, 7, -3, 2]\nprint(list(filter(lambda x: x &gt;= 1, l)))\n\n[5, 7, 2]\nLet us shortly describe two functions on a list of bools l.",
+    "text": "4.1 list\nWhen working with data, we usually not only have one int or one str, but many of them. For this situation, there are the container data types, list, tuple, set, and dict.\nThe notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is [1,2,3]. A list of names is e.g. [\"Alice\", \"Bob\", \"Charlie\", \"Donna\"]. So, for a list, the entries have simple (or again container) data types.\n# a list of ints\nx = [1,2,3]\nprint(x[0])\nprint(x[3] if len(x) &gt; 3 else None)\n\n1\nNone\nSlicing refers to sublists.\nx = [1,2,3]\nprint(f\"The first and second element: {x[0:2]}\")\nprint(f\"The first two elements: {x[:2]}\")\nprint(f\"All elements after the first element: {x[1:]}\")\n\nThe first and second element: [1, 2]\nThe first two elements: [1, 2]\nAll elements after the first element: [2, 3]\nPlaying around with range.\nprint(f\"The first and second odd number: {list(range(1, 5, 2))}\")\nprint(f\"The first and second odd number: {list(range(1, 100, 2))[:2]}\")\n\nThe first and second odd number: [1, 3]\nThe first and second odd number: [1, 3]\nThe elements of a list can be lists themselves.\ny = [[1,2], [3,4,5], 6, 7, 8]\nprint(y[1])\nprint(y[1][0])\n\n[3, 4, 5]\n3\nA list can have mixed types.\nz = [1, \"two\", [3,4], 5.0]\nprint(z[1])\n\ntwo\nHere are some functions on lists.\nFor the functions starting with list, there is a catch: While we mentioned that a function takes its input (here the list), and does not alter it, lists are mutable objects, which means that they are changed when calling such a function on them. So, e.g. after l.sort(), the list l itself is sorted, and there is no return value of that function (more precisely, the return value is None.) This can be counterintuitive:\nl = [3,2,1]\n# This gives none since the return value of l.sort() is None\nprint(l.sort())\n\nl = [3,2,1]\n# This changes l and makes it sorted.\nl.sort()\n# Now we can print it \nprint(f\"l = {l}\")\n\n# In contrast, sorted() does not change the list but returns a new sorted list.\nl = [3,2,1]\nprint(sorted(l))\n\nNone\nl = [1, 2, 3]\n[1, 2, 3]\nAssume you want to sort a list not as usual. In this situation, you will find out about the key-parameter in sorted. It takes a function, we sorts the list according to the values of this function. As an example, assume we want to sort a list of ints according to their abolute value:\nl = [5, -4, 0, 7, -3, 2]\nprint(sorted(l, key = lambda x: abs(x)))\n\n[0, 2, -3, -4, 5, 7]\nSimilarly, you can e.g. filter the list by only taking numbers which are at least one:\nl = [5, -4, 0, 7, -3, 2]\nprint(list(filter(lambda x: x &gt;= 1, l)))\n\n[5, 7, 2]\nLet us shortly describe two functions on a list of bools l.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Container data types</span>"
     ]
   },
   {
-    "objectID": "03_container_data_types.html#sec-list",
-    "href": "03_container_data_types.html#sec-list",
+    "objectID": "04_container_data_types.html#sec-list",
+    "href": "04_container_data_types.html#sec-list",
     "title": "4  Container data types",
     "section": "",
-    "text": "We can access the entries of a list using square brackets. However, we have to be careful if the length of the list is too short.\nWe can access sublists by using i:j for the entries i,...,j-1. If we want to have the beginning until j-1, we use :j. If we want everything after i, we use i:.\nElements of a list can be lists (or other container data types) themselves.\nThe types of elements of a list can be mixed.\nWhen talking about for-loops, we already had range(n), which stands for 0,...,n-1. This is not exactly a list, but can be turned into one by list(range(n)). (More precisely, there is also range(start, stop, step) for start, start + step, start + 2*step,..., which stops at stop-1 at the latest.)\n\n\n\n\n\n\n\n\n\n\n\n\nlen(l): length of l.\nsum(l): sums all elements of l, if possible.\nmin(l), max(l): computes the minimum/maximum of l.\nsorted(l): returns a sorted version of l.\nfilter(fun, l): returns a filtered list, which only contains elements x of l with fun x == True.\nlist.append(l, x) (or l.append(x)) (where x is any object) appends the element x to the list l.\nlist.extend(l, x) (or l.extend(x)) (where x is a list) extends l by all elements of x. (You can also write l + x for this.)\nlist.insert(l, i, x) (or l.insert(i,x)) inserts x at position min(i, len(l)) in l.\nlist.remove(l, x) (or l.remove(x)) removes the first occurrence of x in l.\nlist.pop(l) (or l.pop()) removes the last element from l.\nlist.index(l, x) (or l.index(x)) gives the index of the first occurrence of x in l.\nlist.count(x) (or l.count(x)) counts the number of occurrences of x in l.\nlist.sort(l) (or l.sort()) sorts the list. (descending xxx)\nlist.reverse(l) (or l.reverse()) reverses the list.\n\n\n\n\n\n\n\n\n\nall(l) gives True if all entries of l are `True.\nany(l) gives True if at least one entry of l is `True.",
+    "text": "We can access the entries of a list using square brackets. However, we have to be careful if the length of the list is too short.\nWe can access sublists by using i:j for the entries i,...,j-1. If we want to have the beginning until j-1, we use :j. If we want everything after i, we use i:.\nElements of a list can be lists (or other container data types) themselves.\nThe types of elements of a list can be mixed.\nWhen talking about for-loops, we already had range(n), which stands for 0,...,n-1. This is not exactly a list, but can be turned into one by list(range(n)). (More precisely, there is also range(start, stop, step) for start, start + step, start + 2*step,..., which stops at stop-1 at the latest.)\n\n\n\n\n\n\n\n\n\n\n\n\nlen(l): length of l.\nsum(l): sums all elements of l, if possible.\nmin(l), max(l): computes the minimum/maximum of l.\nsorted(l): returns a sorted version of l.\nfilter(fun, l): returns a filtered list, which only contains elements x of l with fun x == True.\nlist.append(l, x) (or l.append(x)) (where x is any object) appends the element x to the list l.\nlist.extend(l, x) (or l.extend(x)) (where x is a list) extends l by all elements of x. (You can also write l + x for this.)\nlist.insert(l, i, x) (or l.insert(i,x)) inserts x at position min(i, len(l)) in l.\nlist.remove(l, x) (or l.remove(x)) removes the first occurrence of x in l.\nlist.pop(l) (or l.pop()) removes the last element from l.\nlist.index(l, x) (or l.index(x)) gives the index of the first occurrence of x in l.\nlist.count(x) (or l.count(x)) counts the number of occurrences of x in l.\nlist.sort(l) (or l.sort()) sorts the list.\nlist.reverse(l) (or l.reverse()) reverses the list.\n\n\n\n\n\n\n\n\n\nall(l) gives True if all entries of l are `True.\nany(l) gives True if at least one entry of l is `True.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Container data types</span>"
     ]
   },
   {
-    "objectID": "03_container_data_types.html#sec-tuple",
-    "href": "03_container_data_types.html#sec-tuple",
+    "objectID": "04_container_data_types.html#sec-tuple",
+    "href": "04_container_data_types.html#sec-tuple",
     "title": "4  Container data types",
     "section": "4.2 tuple",
-    "text": "4.2 tuple\nAt first glance, a tuple is like a list, but comes with normal brackets () instead of square brackets []. So, (1,2,3) is the tuple of these three numbers, and (\"Alice\", \"Bob\", \"Charlie\") is a tuple of three names. For the tuplel, still,l[0]gives the first entry etc. The main difference betweentupleandlistis thatlists are more flexible when adding or changing entries, andtuple`s are fixed (immutable) once they have been created.\n\nl = (\"Alice\", \"Bob\", \"Charlie\")\n# The next line does not work, since l is immutable\n# l[0] = \"Anna\"\nl = [\"Alice\", \"Bob\", \"Charlie\"]\n# The next line works, since l is mutable. \nl[0] = \"Anna\"\nprint(f\"l = {l}\")\n\nl = ['Anna', 'Bob', 'Charlie']\n\n\nAn important aspect of tuples is that single values can easily be packed into a tuple. An important example is to use a tuple in order to assign two or more values at the same time:\ndef min_max(a,b):\n    (mi, ma) = (a if a &lt; b else b, b if a &lt; b else a)\n    return mi, ma\n\na = 20\nb = 10\nres = min_max(a,b)\nprint(f\"Minimum and maximum are {res[0]} and {res[1]}.\")",
+    "text": "4.2 tuple\nAt first glance, a tuple is like a list, but comes with normal brackets () instead of square brackets []. So, (1,2,3) is the tuple of these three numbers, and (\"Alice\", \"Bob\", \"Charlie\") is a tuple of three names. For the tuplel, still,l[0]gives the first entry etc. The main difference betweentupleandlistis thatlists are more flexible when adding or changing entries, andtuple`s are fixed (immutable) once they have been created.\n\nl = (\"Alice\", \"Bob\", \"Charlie\")\n# The next line does not work, since l is immutable\n# l[0] = \"Anna\"\nl = [\"Alice\", \"Bob\", \"Charlie\"]\n# The next line works, since l is mutable. \nl[0] = \"Anna\"\nprint(f\"l = {l}\")\n\nl = ['Anna', 'Bob', 'Charlie']\n\n\nAn important aspect of tuples is that single values can easily be packed into a tuple. An important example is to use a tuple in order to assign two or more values at the same time:\n\ndef min_max(a,b):\n    (mi, ma) = (a if a &lt; b else b, b if a &lt; b else a)\n    return mi, ma\n\na = 20\nb = 10\nres = min_max(a,b)\nprint(f\"Minimum and maximum are {res[0]} and {res[1]}.\")\n\nMinimum and maximum are 10 and 20.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Container data types</span>"
     ]
   },
   {
-    "objectID": "03_container_data_types.html#sec-set",
-    "href": "03_container_data_types.html#sec-set",
+    "objectID": "04_container_data_types.html#sec-set",
+    "href": "04_container_data_types.html#sec-set",
     "title": "4  Container data types",
     "section": "4.3 set",
     "text": "4.3 set\nAs in mathematics, sets have no special order, and there are noduplicates within a set. In Python3, they can be created using curly brackets, so e.g. {1,2,3} as well as {1,3,2,3,1} is the set of the numbers 1,2,3. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a list, which can contain duplicates, list(set(l)) is the same list (maybe the order changed) but with duplicates removed.\nHere are some functions on some s and t: * len(s): returns the number of unique elements in s. * s | t: The union of s and t. * s & t: The intersection of s and t. * s - t: The difference of s and t.\nl = [1,3,2,4,3,2]\nprint(f\"There are {len(set(l))} unique elements in {l}.\")\nUnions, intersection, and set differences work as expected:\ns = {1,2,3}\nt = {5,4,3}\nprint(f\"The union of {s} and {t} is {s | t}.\")\nprint(f\"The intersection of {s} and {t} is {s & t}.\")\nprint(f\"The difference of {s} and {t} is {s - t}.\")",
@@ -190,38 +190,38 @@
     ]
   },
   {
-    "objectID": "03_container_data_types.html#sec-dict",
-    "href": "03_container_data_types.html#sec-dict",
+    "objectID": "04_container_data_types.html#sec-dict",
+    "href": "04_container_data_types.html#sec-dict",
     "title": "4  Container data types",
     "section": "4.4 dict",
-    "text": "4.4 dict",
+    "text": "4.4 dict\nDictionaries (dict) are nothing but a collection of key-value pairs. Here is an example:\n\nd = {\n        \"first_name\": \"Alice\",\n        \"last_name\": \"Müller\",\n        \"age\": 29,\n        \"hobbies\": [\"reading\", \"cycling\", \"chess\"]\n    }\nprint(f\"\"\"{d['first_name']} {d['last_name']} is {d['age']} and likes \n    {', '.join(d['hobbies'])}.\"\"\")\n\nAlice Müller is 29 and likes \n    reading, cycling, chess.\n\n\n\nAs you see in the example, the f-string uses nested quotation marks, \"...'...'...\". For this reason, we use single quotation marks '' as inner separators and double quotation marks \"\" for the outer quotation marks. If there is no nesting, there is no difference in using single/double quotation marks.\nkeys in a dict can be any immutable data type (like int, str, float, tuple).\n\nAs you see, accessing field 'age' in the dict p is done using p['age']. However, assume 'age' is not a field in p. Then, p['age'] gives an error. For this reason, it is often better to use the get-function:\n\nprint(f\"{d['first_name']} {d['last_name']} lives in {d.get('address')}.\")\n# This version uses a default field in get\nprint(f\"\"\"{d['first_name']} {d['last_name']} lives \n    in {d.get('address', 'unknown')}.\"\"\")\n# We can also add \"address\" to the dict\nd[\"address\"] = \"Freiburg, Germany\"\nprint(f\"\"\"{d['first_name']} {d['last_name']} lives \n    in {d.get('address', 'unknown')}.\"\"\")\n\nAlice Müller lives in None.\nAlice Müller lives \n    in unknown.\nAlice Müller lives \n    in Freiburg, Germany.\n\n\nSome of the most important functions on d as a dicts are: * dict.keys(d) (or d.keys()): Returns the list of all keys. * dict.values(d) (or d.values()): Returns the list of all values. * dict.items(d) (or d.items()): Returns the list of tuples (key, value).\n\nprint(f\"The keys are {', '.join(d.keys())}.\")\nprint(f\"The values are:\")\nfor v in d.values():\n    print(str(v))\nprint(f\"The key-value-pairs are:\")\nfor key, value in d.items():\n    print((key, str(value)))\n\nThe keys are first_name, last_name, age, hobbies, address.\nThe values are:\nAlice\nMüller\n29\n['reading', 'cycling', 'chess']\nFreiburg, Germany\nThe key-value-pairs are:\n('first_name', 'Alice')\n('last_name', 'Müller')\n('age', '29')\n('hobbies', \"['reading', 'cycling', 'chess']\")\n('address', 'Freiburg, Germany')\n\n\nLet us mention some more functions on dicts:\n\ndict.update(d, d') (or d.update(d')): extends d by the keys in d', and overwrites entries in d by the values of d'. Another possibility is d |= d' (similar to a set-union).\ndict.pop(d, key, default) (or d.pop(key, default)): removes the key key from d and returs its value (or default, if the key isn’t found).\ndel d[key]: Deletes the entry with key key from d.\n\n\nd |= {\n    \"profession\" : \"student\",\n    \"subject\" : \"Mathematics\"\n}\ndel d[\"age\"]\nfor key, value in d.items():\n    print((key, str(value)))\n\n('first_name', 'Alice')\n('last_name', 'Müller')\n('hobbies', \"['reading', 'cycling', 'chess']\")\n('address', 'Freiburg, Germany')\n('profession', 'student')\n('subject', 'Mathematics')\n\n\nHere is a last example for a list of dicts.\n\npeople = [\n    {\n        \"first_name\": \"Alice\",\n        \"last_name\": \"Müller\",\n        \"age\": 29,\n        \"hobbies\": [\"reading\", \"cycling\", \"chess\"]\n    },\n    {\n        \"first_name\": \"Bob\",\n        \"last_name\": \"Schmidt\",\n        \"age\": 35,\n        \"hobbies\": [\"hiking\", \"photography\", \"cooking\"]\n    },\n    {\n        \"first_name\": \"Clara\",\n        \"last_name\": \"Weber\",\n        \"age\": 22,\n        \"hobbies\": [\"painting\", \"piano\", \"running\"]\n    },\n    {\n        \"first_name\": \"David\",\n        \"last_name\": \"Fischer\",\n        \"age\": 41,\n        \"hobbies\": [\"gardening\", \"woodworking\", \"cycling\"]\n    }\n]\nfor p in people:\n    print(f\"{p[\"first_name\"]} {p[\"last_name\"]} is {p[\"age\"]} and likes \"\n        + \", \".join(p[\"hobbies\"]) + \".\")\n\nAlice Müller is 29 and likes reading, cycling, chess.\nBob Schmidt is 35 and likes hiking, photography, cooking.\nClara Weber is 22 and likes painting, piano, running.\nDavid Fischer is 41 and likes gardening, woodworking, cycling.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Container data types</span>"
     ]
   },
   {
-    "objectID": "03_container_data_types.html#sec-iterating",
-    "href": "03_container_data_types.html#sec-iterating",
+    "objectID": "04_container_data_types.html#sec-iterating",
+    "href": "04_container_data_types.html#sec-iterating",
     "title": "4  Container data types",
-    "section": "4.6 list/set/dict/tuple comprehensions",
-    "text": "4.6 list/set/dict/tuple comprehensions\nexpression for variable in iterable if condition [x*x for x in range(10) if x % 2 == 0]",
+    "section": "4.5 list/set/dict/tuple comprehensions",
+    "text": "4.5 list/set/dict/tuple comprehensions\nPython3 has very expressive (i.e. short) ways to alter container data types. The general form is (where “iterable” is a container data type):\n[expression for variable in list if condition]\n[expression_if_true if condition else expression_if_false for variable in list]\n{key: value for item in dict if condition}\nLet us make some examples, and you will see how powerful these complehensions are!\n\n# The squares of all even numbers below 10\nprint([x*x for x in range(10) if x % 2 == 0])\n# The names of people who like cycling\nprint(\"People who like cycling are \" + \n    ', '.join([f'{p[\"first_name\"]} {p[\"last_name\"]}' for p in people \n        if \"cycling\" in p['hobbies']]) + \".\")\n\n[0, 4, 16, 36, 64]\nPeople who like cycling are Alice Müller, David Fischer.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Container data types</span>"
     ]
   },
   {
-    "objectID": "03_container_data_types.html#sec-mutable",
-    "href": "03_container_data_types.html#sec-mutable",
+    "objectID": "04_container_data_types.html#exercises",
+    "href": "04_container_data_types.html#exercises",
     "title": "4  Container data types",
-    "section": "4.7 list/set/dict as mutable datatypes",
-    "text": "4.7 list/set/dict as mutable datatypes\nlist set dict tuple\n\n4.7.1 Mathematical angle\nThis is a good moment to compare: - lists with finite sequences, - tuples with fixed records, - dictionaries with finite maps.\nfor strings: x[0] x[1:4] immutable x[0] = “Z”\nLists - These are collections of values in the CSV format. Lists are mutable objects. Tuples - These are like lists, but immutable. Dictionaries - These are collections of key-value pairs defined using curly braces. Sets - They can’t have duplicates, and are mutable.\nExercise\nFor two strings s and t, write a function myCount(s, t), which counts the numbers of occurrences of t in s. Unlike count, it should count the number of positions in s starting with t. For example, \"bababab\".count(\"bab\") gives 2, but \"bababab\".myCount(\"bab\") should give 3.\nExercise\nFind out how you can sort a list descendingly.\nExercise: Write a function which removes duplicates from a list (you might want to use set here), but keeps the order of the list.",
+    "section": "4.6 Exercises",
+    "text": "4.6 Exercises\nExercise 1 For two strings s and t, write a function myCount(s, t), which counts the numbers of occurrences of t in s. Unlike count, it should count the number of positions in s starting with t. For example, \"bababab\".count(\"bab\") gives 2, but \"bababab\".myCount(\"bab\") should give 3.\nExercise 2 Find out how you can sort a list descendingly.\nExercise 3 Write a function which removes duplicates from a list (you might want to use set here), but keeps the order of the list.\nExercise 4 Given a list of names [“ALICE”, “BOB”, “CHARLIE”], convert them all to lowercase.\nExercise 5 From a list of fruits [“apple”, “banana”, “kiwi”, “mango”, “pear”], create a list of fruits that have exactly 5 letters.\nExercise 6 Create a list of tuples representing all possible (x, y) coordinates where x is from [1, 2, 3] and y is from [4, 5].\nExercise 7 Given the dict {\"a\": 1, \"b\": 2, \"c\": 3}, create a new dictionary that swaps keys and values {1: \"a\", ...}.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Container data types</span>"
     ]
   },
   {
-    "objectID": "04_libraries.html",
-    "href": "04_libraries.html",
+    "objectID": "05_libraries.html",
+    "href": "05_libraries.html",
     "title": "5  Using libraries and modules",
     "section": "",
     "text": "5.1 math",
@@ -230,11 +230,11 @@
     ]
   },
   {
-    "objectID": "04_libraries.html#sec-numpy",
-    "href": "04_libraries.html#sec-numpy",
+    "objectID": "05_libraries.html#sec-numpy",
+    "href": "05_libraries.html#sec-numpy",
     "title": "5  Using libraries and modules",
     "section": "5.2 numpy",
-    "text": "5.2 numpy\ngives math.pi\nimport numpy as np\ndate and time",
+    "text": "5.2 numpy\ngives math.pi\nimport numpy as np\ndate and time\nstatistics\nscipy.stats\nrandom\ndecimal\njson\ncsv\nsqlite3\npickle\ndatetime\ntime\nunittest\nos\nsys\ntry except",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Using libraries and modules</span>"
     ]
