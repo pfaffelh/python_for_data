@@ -19,40 +19,125 @@ As in all programming languages, not all python programs come in a single file. 
 | `from module import *`    | everything (avoid) |
 | `import module.submodule` | submodule          |
 
+Generally, there are packages (folders), modules (a `.py`-file within a package, or a single `py`-file), and submodules. Every submodule is a module. In any case, the import loads the (sub-)module, and executes all top-level code inside it (i.e. everything which is not inside a function). 
+
 There are three cases: 
 
-1. You wrote some code in file `1.py` (e.g. some functions) which you want to use in file `2.py`.  
-2. You want to use functions from a built-in library.
-3. You want to use functions from a library, which needs to be installed.
+1. You wrote some code in file `one.py` (e.g. some functions) which you want to use in file `two.py`. (Note, btw, that the first digit in `one.py` must be a letter.) Assume `one.py` is as follows: 
 
+```
+one.py
+
+def myconst():
+    return 42
+```
+Then, the import in `two.py` is either `import one` (both files must be in the same folder), or `from one import myconst` or (not recommended) `from one import *`. In the first case, you must prefix `myconst()` by `one`:
+
+```
+import one
+print(f"My constant is {one.myconst()}.")
+```
+In the second case, there is no prefix:
+```
+from one import myconst
+# or 
+from one import *
+print(f"My constant is {myconst()}.")
+```
+Observe that the latter option comes with the disadvantage that you cannot see from the call of `myconst()`, if it is defined in `two.py` or in`one.py`, so it becomes harder to keep track of your code if things become more complicated.
+
+If you have a folder `myPackage`, which holds `one.py`, you can must write `import myPackage`, `import myPackage.one` or `import myPackage.one as myNameOne` with differing ways to use `myConst()`:
+```
+import myPackage 
+print(f"My constant is {myPackage.one.myconst()}.")
+```
+```
+import myPackage.one
+print(f"My constant is {one.myConst()}.")
+```
+```
+import myPackage.one as myName
+print(f"My constant is {myName.myConst()}.")
+```
+
+2. You want to use functions from a built-in library. Then, a simple `import module` is often the best choice. We will see examples in @sec-math. 
+
+3. You want to use functions from a library, which needs to be installed. Here, before the `import module` even works, you need to install the module in your python environment. In a terminal, within your python environment, use
+```
+pip3 install module
+```
+and then, the `import` works. We will see examples for this e.g. in @sec-loading. 
 
 ## math {#sec-math}
-import math
-
-Here, several mathematical constants and functions are described. They might not need an explantion. 
-
-math.sqrt(x)
-math.exp(x)
-math.log(x)
-math.sin(x)
-math.cos(x)
-math.pi
-math.e
-
-
-gives math.pi
-
+The mathematical library in Python is used by `import math`. Then, you have e.g. the following functions, which are self-explanatory: `math.sqrt()`, `math.exp()`, `math.log()`, `math.sin()`, `math.cos()`, and constants like `math.pi` and `math.e`. 
 
 ## numpy {#sec-numpy}
 
-
 import numpy as np
 
-date and time 
+## datetime
+
+In data science, we often have to handle dates. Their disadvantage is that there is no standard way to write these as strings. In Python3, this and various other problems around dates and times is solved by the `datetime`-library. 
+
+Submodules (in fact, these are `class`es in this case) of this package are 
+
+* `date`: handling dates 
+* `time`: handling times
+* `datetime.datetime`: handling `datetimes`, i.e. dates and times together
+* `timedelta`: time differences
+* `tzinfo` and `timezone`: handling timezones 
+
+We will here use
+```{python}
+import datetime 
+```
+at the cost that `datetime`-objects are only accessible by saying `datetime.datetime` (the first `datetime` being the package`, the second `datetime` being the class/submodule).
+
+Let us create a `datetime`-object`: 
+```{python}
+dt = datetime.datetime(2026, 4, 21, 12, 15)
+print(dt)
+print(f"year: {dt.year}")
+print(f"month: {dt.month}")
+print(f"day: {dt.day}")
+print(f"hour: {dt.hour}")
+print(f"minutes: {dt.minute}")
+print(f"second: {dt.second}")
+print(f"microsecond: {dt.microsecond}")
+print(f"date: {dt.date()}")
+print(f"time: {dt.time()}")
+```
+which is the starting time of the first session in this course. As we see here, we can extract year,..., microseconds from the `datetime`-object. 
+
+Often, we are given strings such as `"21.4.26, 12:15"`, and want to convert this into a `datetime` object. For this, we have `datetime.strptime`:
+```{python}
+dt = datetime.strptime("21.4.26, 12:15", "%y.%m.%d, %H:%M")
+print(s + f" is converted to {dt}.")
+```
+(For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.) 
+
+Reversely, we want to print a `datetime`-object in a certain way. For this, we have `datetime.strftime`:
+```{python}
+print(dt.strftime("%-m/%-d/%y, %H:%M"))
+```
+which is the US-style output. 
+
+Next, assume we want to compute the same time 12 weeks from now. For this, we use `datetime.timedelta`. 
+```{python}
+print(dt + timedelta(days=84))
+```
+
+Here are some more remarks: 
+
+* `datetime.date` is not used very often. The reason is that you can recover a `date` from a `datetime`, but not the other way round. 
+* `datetime.time` has the same limitations.
+* We will not cover time-zones here, but if you have global data, they will become important!
+
+## scipy.stats
 
 statistics
 
-scipy.stats
+
 
 random
 
@@ -76,5 +161,32 @@ os
 
 sys 
 
-try except 
 
+
+scipy.stats
+
+Exercise with datetime
+
+date,sales
+2026-01-01,120
+2026-01-02,135
+2026-01-03,128
+2026-01-08,150
+2026-02-01,210
+2026-02-03,215
+
+We want to:
+
+load the data
+
+convert the date column to datetime
+
+extract year/month/weekday
+
+filter by date
+
+compute time differences
+
+resample by month
+
+create rolling averages

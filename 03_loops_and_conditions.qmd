@@ -146,6 +146,11 @@ while a != 0:
 print(f"The gcd of {a_input} and {b_input} is {b}.")
 ```
 
+## try except 
+
+xxx Exception handling! 
+
+
 ## def (Functions) {#sec-functions}
 
 Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid's algorithm, this would look as follows:
