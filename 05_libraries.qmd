@@ -9,7 +9,7 @@ jupyter: python3
 
 ## imports
 
-As in all programming languages, not all python programs come in a single file. If a python project spans multiple files, an `import` becomes necessary. In Python3, there is syntax for `import`s as follows:
+As in all programming languages, not all python programs come in a single file. If a Python3 project spans multiple files, an `import` becomes necessary. In Python3, there is syntax for `import`s as follows:
 
 | Syntax                    | Meaning            |
 | ------------------------- | ------------------ |
@@ -28,28 +28,28 @@ There are three cases:
 ```
 one.py
 
-def myconst():
+def myConst():
     return 42
 ```
-Then, the import in `two.py` is either `import one` (both files must be in the same folder), or `from one import myconst` or (not recommended) `from one import *`. In the first case, you must prefix `myconst()` by `one`:
+Then, the import in `two.py` is either `import one` (both files must be in the same folder), or `from one import myConst` or (not recommended) `from one import *`. In the first case, you must prefix `myconst()` by `one`:
 
 ```
 import one
-print(f"My constant is {one.myconst()}.")
+print(f"My constant is {one.myConst()}.")
 ```
 In the second case, there is no prefix:
 ```
-from one import myconst
+from one import myConst
 # or 
 from one import *
-print(f"My constant is {myconst()}.")
+print(f"My constant is {myConst()}.")
 ```
 Observe that the latter option comes with the disadvantage that you cannot see from the call of `myconst()`, if it is defined in `two.py` or in`one.py`, so it becomes harder to keep track of your code if things become more complicated.
 
 If you have a folder `myPackage`, which holds `one.py`, you can must write `import myPackage`, `import myPackage.one` or `import myPackage.one as myNameOne` with differing ways to use `myConst()`:
 ```
 import myPackage 
-print(f"My constant is {myPackage.one.myconst()}.")
+print(f"My constant is {myPackage.one.myConst()}.")
 ```
 ```
 import myPackage.one
@@ -151,8 +151,6 @@ sqlite3
 
 pickle
 
-datetime
-
 time
 
 unittest
@@ -160,8 +158,6 @@ unittest
 os 
 
 sys 
-
-
 
 scipy.stats
 
