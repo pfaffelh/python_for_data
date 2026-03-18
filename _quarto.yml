@@ -13,6 +13,7 @@ book:
     - 03_loops_and_conditions.qmd
     - 04_container_data_types.qmd
     - 05_libraries.qmd
+    - 06_handling_data.qmd
     - 10_misc.qmd
 number-sections: true
 

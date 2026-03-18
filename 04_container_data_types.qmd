@@ -6,6 +6,8 @@ format:
 jupyter: python3
 ---
 
+[Download notebook](notebooks/04_container_data_types.ipynb).
+
 When working with data, we usually not only have *one* int or *one* str, but many of them. For this situation, there are the container data types, `list`, `tuple`, `set`, and `dict`. 
 
 ## list {#sec-list}

@@ -1,0 +1,46 @@
+---
+title: Using libraries and modules
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+## math {#sec-math}
+
+## numpy {#sec-numpy}
+
+gives math.pi
+
+import numpy as np
+
+date and time 
+
+statistics
+
+scipy.stats
+
+random
+
+decimal
+
+json
+
+csv
+
+sqlite3
+
+pickle
+
+datetime
+
+time
+
+unittest
+
+os 
+
+sys 
+
+try except 
+

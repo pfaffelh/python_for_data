@@ -6,11 +6,45 @@ format:
 jupyter: python3
 ---
 
+
+## imports
+
+As in all programming languages, not all python programs come in a single file. If a python project spans multiple files, an `import` becomes necessary. In Python3, there is syntax for `import`s as follows:
+
+| Syntax                    | Meaning            |
+| ------------------------- | ------------------ |
+| `import module`           | full module        |
+| `import module as name`   | alias              |
+| `from module import x`    | specific objects   |
+| `from module import *`    | everything (avoid) |
+| `import module.submodule` | submodule          |
+
+There are three cases: 
+
+1. You wrote some code in file `1.py` (e.g. some functions) which you want to use in file `2.py`.  
+2. You want to use functions from a built-in library.
+3. You want to use functions from a library, which needs to be installed.
+
+
 ## math {#sec-math}
+import math
+
+Here, several mathematical constants and functions are described. They might not need an explantion. 
+
+math.sqrt(x)
+math.exp(x)
+math.log(x)
+math.sin(x)
+math.cos(x)
+math.pi
+math.e
+
+
+gives math.pi
+
 
 ## numpy {#sec-numpy}
 
-gives math.pi
 
 import numpy as np
 

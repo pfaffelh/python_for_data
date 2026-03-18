@@ -6,7 +6,7 @@ format:
 jupyter: python3
 ---
 
-[Download notebook](notebooks/02_loops_and_conditions.ipynb).
+[Download notebook](notebooks/03_loops_and_conditions.ipynb).
 
 Coding starts to become interesting when we can control how variables change, and repeat operations. 
 
