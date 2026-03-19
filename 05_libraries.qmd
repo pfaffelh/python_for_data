@@ -109,14 +109,15 @@ print(f"time: {dt.time()}")
 ```
 which is the starting time of the first session in this course. As we see here, we can extract year,..., microseconds from the `datetime`-object. 
 
-Often, we are given strings such as `"21.4.26, 12:15"`, and want to convert this into a `datetime` object. For this, we have `datetime.strptime`:
+Often, we are given strings such as `"21.4.26, 12:15"`, and want to convert this into a `datetime` object. For this, we have `datetime.datetime.strptime`:
 ```{python}
-dt = datetime.strptime("21.4.26, 12:15", "%y.%m.%d, %H:%M")
+s = "21.4.26, 12:15"
+dt = datetime.datetime.strptime(s, "%y.%m.%d, %H:%M")
 print(s + f" is converted to {dt}.")
 ```
 (For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.) 
 
-Reversely, we want to print a `datetime`-object in a certain way. For this, we have `datetime.strftime`:
+Reversely, we want to print a `datetime`-object in a certain way. For this, we have `datetime.datetime.strftime`:
 ```{python}
 print(dt.strftime("%-m/%-d/%y, %H:%M"))
 ```
@@ -124,7 +125,7 @@ which is the US-style output.
 
 Next, assume we want to compute the same time 12 weeks from now. For this, we use `datetime.timedelta`. 
 ```{python}
-print(dt + timedelta(days=84))
+print(dt + datetime.timedelta(days=84))
 ```
 
 Here are some more remarks: 

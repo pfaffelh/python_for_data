@@ -10,3 +10,4 @@ quarto render
 ```
 This takes a few minutes. 
 
+python -m http.server

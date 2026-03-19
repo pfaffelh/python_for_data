@@ -24,7 +24,7 @@
     "href": "02_simple_data_types.html#overview",
     "title": "2  Simple Data types",
     "section": "",
-    "text": "Type\nExample\nDescription\n\n\n\n\nint\n5\nInteger\n\n\nfloat\n3.14\nFloating-point number\n\n\nbool\nTrue\nBoolean value\n\n\nstr\n\"hello\"\nText string\n\n\nNoneType\nNone\nNo value / null value\n\n\n\n\nYou can find about the type of any expression x in Python using type(x).\nIn fact, type(x) is already the first example of a built-in-function. The function type takes a single value as input, and returns its type. We will encounter various more functions already in this section. We will learn more about functions (built-in and self-written) in Section 3.4.\nThere are conversions between some types. For example, \"0\" is a string, but int(\"0\") (again a function, taking a single value, and returning its integer value) the integer 0. Conversely, str(0) is the string \"0\". We will have more examples below.",
+    "text": "Type\nExample\nDescription\n\n\n\n\nint\n5\nInteger\n\n\nfloat\n3.14\nFloating-point number\n\n\nbool\nTrue\nBoolean value\n\n\nstr\n\"hello\"\nText string\n\n\nNoneType\nNone\nNo value / null value\n\n\n\n\nYou can find about the type of any expression x in Python using type(x).\nIn fact, type(x) is already the first example of a built-in-function. The function type takes a single value as input, and returns its type. We will encounter various more functions already in this section. We will learn more about functions (built-in and self-written) in Section 3.5.\nThere are conversions between some types. For example, \"0\" is a string, but int(\"0\") (again a function, taking a single value, and returning its integer value) the integer 0. Conversely, str(0) is the string \"0\". We will have more examples below.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Simple Data types</span>"
     ]
@@ -44,7 +44,7 @@
     "href": "02_simple_data_types.html#float",
     "title": "2  Simple Data types",
     "section": "2.3 float",
-    "text": "2.3 float\nGenerally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. \\(1.2 \\cdot 10^2\\). Python can do the same computations as with ints, but the following should be kept in mind:\n\nIf you type 1, Python thinks this is an int, but if you type 1.0 or 1., Python thinks this is a float.\nUnlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about \\(10^{-324}\\) to \\(10^{308}\\).\nWhen doing mixed computations with floats and int, e.g. 1.0 + 1, the int is changed into a float.\nIt is not possible to perform exact computations with some floats; see the example below.\n\n\nx = 1.0\ny = 1\nprint(\"x + y = \", x + y)\n\nx + y =  2.0\n\n\n\nprint(\"0.1 + 0.2 = \", 0.1 + 0.2)\n\n0.1 + 0.2 =  0.30000000000000004\n\n\nSpecial floats are inf, -inf and nan (not a number). Let us see them in action:\n\nprint((10. ** 308) * 10)\n\ninf\n\n\n\nprint((10 ** 308) * 10)\n\n1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\nprint((10 ** (-323)) / 10)\n\n0.0\n\n\n\nprint((10. ** 308) * 10 - (10. ** 308) * 10)\n\nnan\n\n\nYou can transform ints to floats and vice versa by using float() and int().\n\nprint(float(0))\n\n0.0\n\n\n\nprint(int(0.0))\n\n0\n\n\n\nprint(int(0.5))\n\n0\n\n\nIf you deliberately want to introduce nan or inf, you can do this:\n\nprint(float(\"inf\"))\nprint(float(\"nan\"))\n\ninf\nnan\n\n\nOn float, you can use many functions. We only name two at the moment, for some float x:\n\nabs(x): The absolute value of x.\nround(x) and round(x,n): Round x to the next int, or after n digits.\n\nIn Section 5.1, we will encounter that many more usual functions (like sqrt) can be used on floats, but we need to import the mathematical library for this.",
+    "text": "2.3 float\nGenerally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. \\(1.2 \\cdot 10^2\\). Python can do the same computations as with ints, but the following should be kept in mind:\n\nIf you type 1, Python thinks this is an int, but if you type 1.0 or 1., Python thinks this is a float.\nUnlike ints, floats do have a maximal and minimal element. The reason is that every float is stored in 64 bits, one for the sign, 11 for the exponent and 52 for the mantissa. As a result, floats range from about \\(10^{-324}\\) to \\(10^{308}\\).\nWhen doing mixed computations with floats and int, e.g. 1.0 + 1, the int is changed into a float.\nIt is not possible to perform exact computations with some floats; see the example below.\n\n\nx = 1.0\ny = 1\nprint(\"x + y = \", x + y)\n\nx + y =  2.0\n\n\n\nprint(\"0.1 + 0.2 = \", 0.1 + 0.2)\n\n0.1 + 0.2 =  0.30000000000000004\n\n\nSpecial floats are inf, -inf and nan (not a number). Let us see them in action:\n\nprint((10. ** 308) * 10)\n\ninf\n\n\n\nprint((10 ** 308) * 10)\n\n1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\nprint((10 ** (-323)) / 10)\n\n0.0\n\n\n\nprint((10. ** 308) * 10 - (10. ** 308) * 10)\n\nnan\n\n\nYou can transform ints to floats and vice versa by using float() and int().\n\nprint(float(0))\n\n0.0\n\n\n\nprint(int(0.0))\n\n0\n\n\n\nprint(int(0.5))\n\n0\n\n\nIf you deliberately want to introduce nan or inf, you can do this:\n\nprint(float(\"inf\"))\nprint(float(\"nan\"))\n\ninf\nnan\n\n\nOn float, you can use many functions. We only name two at the moment, for some float x:\n\nabs(x): The absolute value of x.\nround(x) and round(x,n): Round x to the next int, or after n digits.\n\nIn Section 6.1, we will encounter that many more usual functions (like sqrt) can be used on floats, but we need to import the mathematical library for this.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Simple Data types</span>"
     ]
@@ -130,11 +130,21 @@
     ]
   },
   {
+    "objectID": "03_loops_and_conditions.html#try-except",
+    "href": "03_loops_and_conditions.html#try-except",
+    "title": "3  Control flow – conditions, loops, and functions",
+    "section": "3.4 try except",
+    "text": "3.4 try except\nxxx Exception handling!",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow -- conditions, loops, and functions</span>"
+    ]
+  },
+  {
     "objectID": "03_loops_and_conditions.html#sec-functions",
     "href": "03_loops_and_conditions.html#sec-functions",
     "title": "3  Control flow – conditions, loops, and functions",
-    "section": "3.4 def (Functions)",
-    "text": "3.4 def (Functions)\nOnce we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid’s algorithm, this would look as follows:\n\na = 105\nb = 33\n\ndef gcd(a,b):\n    \"\"\" Compute the greatest common divisor of a and b.\"\"\"\n    while a != 0:\n        r = b % a\n        b = a\n        a = r\n    return b\n\nprint(f\"The gcd of {a} and {b} is {gcd(a,b)}.\")\n\nThe gcd of 105 and 33 is 3.\n\n\nThe general structure is\ndef name_of_the_funcion(arg1, arg2, arg3 = default3, arg4=default4):\n    some instructions\n    return something\nNot all functions return something. Those who don’t usually produce some output. Here is an example\n\ndef greeting(name, prefix=\"Hello\"):\n    \"\"\" Return a greeting for name.\"\"\"\n    print(f\"{prefix}, {name}!\")\n\ngreeting(\"Alice\")\ngreeting(\"Bob\", prefix=\"Hi\")\ngreeting(prefix=\"Welcome\", name=\"Charlie\")\n\nHello, Alice!\nHi, Bob!\nWelcome, Charlie!\n\n\nHere are some important remarks on functions:\n\nVariables within functions are private to them. (There will be exceptions to this) In the gcd example, variable names a and b occur both, within and outside of the function. Although the variables a and b, which are private to the function, are changed within the function, the print-statement still knowns their value from before the function definition.\nVariables which are given to functions might have default values, as the prefix = \"Hello\" in the greeting example.\nFor giving variables, there are two options:\n\nyou can rely on the position they have in the definition of the function. (Example: greeting(\"Bob\", prefix=\"Hi\"), where you rely on \"Bob\" being in the name position.) These are called positional variables.\nyou can give it the explicite variable name it has in the function definition. In this case, the order of variable names does not matter. (Example: In greeting(prefix=\"Welcome\", name=\"Charlie\"), the output was correct although the order of the two variables differs from the function definition.)\n\nAll positional arguments must come before keyword aguments.\nBoth functions from above have a docstring, which is the multiline string after the def-line. They indicate what this function is doing and are displayed in various places, e.g. when you hover over a function in your jupyter notebook.\nSometimes, it is too much to define an own function for a very simple task. In this case, Python3 comes with lambda-functions, which are very quick: lambda x: x * x. Most use cases are with container data types, and we will have one in Section 4.1.",
+    "section": "3.5 def (Functions)",
+    "text": "3.5 def (Functions)\nOnce we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid’s algorithm, this would look as follows:\n\na = 105\nb = 33\n\ndef gcd(a,b):\n    \"\"\" Compute the greatest common divisor of a and b.\"\"\"\n    while a != 0:\n        r = b % a\n        b = a\n        a = r\n    return b\n\nprint(f\"The gcd of {a} and {b} is {gcd(a,b)}.\")\n\nThe gcd of 105 and 33 is 3.\n\n\nThe general structure is\ndef name_of_the_funcion(arg1, arg2, arg3 = default3, arg4=default4):\n    some instructions\n    return something\nNot all functions return something. Those who don’t usually produce some output. Here is an example\n\ndef greeting(name, prefix=\"Hello\"):\n    \"\"\" Return a greeting for name.\"\"\"\n    print(f\"{prefix}, {name}!\")\n\ngreeting(\"Alice\")\ngreeting(\"Bob\", prefix=\"Hi\")\ngreeting(prefix=\"Welcome\", name=\"Charlie\")\n\nHello, Alice!\nHi, Bob!\nWelcome, Charlie!\n\n\nHere are some important remarks on functions:\n\nVariables within functions are private to them. (There will be exceptions to this) In the gcd example, variable names a and b occur both, within and outside of the function. Although the variables a and b, which are private to the function, are changed within the function, the print-statement still knowns their value from before the function definition.\nVariables which are given to functions might have default values, as the prefix = \"Hello\" in the greeting example.\nFor giving variables, there are two options:\n\nyou can rely on the position they have in the definition of the function. (Example: greeting(\"Bob\", prefix=\"Hi\"), where you rely on \"Bob\" being in the name position.) These are called positional variables.\nyou can give it the explicite variable name it has in the function definition. In this case, the order of variable names does not matter. (Example: In greeting(prefix=\"Welcome\", name=\"Charlie\"), the output was correct although the order of the two variables differs from the function definition.)\n\nAll positional arguments must come before keyword aguments.\nBoth functions from above have a docstring, which is the multiline string after the def-line. They indicate what this function is doing and are displayed in various places, e.g. when you hover over a function in your jupyter notebook.\nSometimes, it is too much to define an own function for a very simple task. In this case, Python3 comes with lambda-functions, which are very quick: lambda x: x * x. Most use cases are with container data types, and we will have one in Section 4.1.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow -- conditions, loops, and functions</span>"
     ]
@@ -143,8 +153,8 @@
     "objectID": "03_loops_and_conditions.html#exercises",
     "href": "03_loops_and_conditions.html#exercises",
     "title": "3  Control flow – conditions, loops, and functions",
-    "section": "3.5 Exercises",
-    "text": "3.5 Exercises\nExercise 1 Can you code the FizzBuzz example in a single line of code? So, dependent on some n, give one line of code, which gives Fizz if n is a multiple of 3, Buzz, if it is a multiple of 5, and FizzBuzz if both conditions are satisfied.\nExercise 2 Multiple elifs in a row are not very elegant. Python3 (since version 3.10) comes with match. Find out how you can change the FizzBuzz example of the main text by using match instead of elifs.\nExercise 3 Write a version of the code for finding the gcd by running (not from 1 to a, but) from a to 1, and see if the corresponding number divides both, a and b. Apparently, you can break the for-loop when you found the first such number. Implement that breaking of the for-loop.\nExercise 4 Compute \\(\\sum_{i=1}^{100} i\\) using a for-loop.\nExercise 5 Find the largest \\(n\\) such that \\(\\sum_{i=1}^n i &lt; 1000\\).\nExercise 6 for-loops can also become nested. Compute \\(\\sum_{i=1}^{100} \\sum_{j=1}^i j\\). (Note the double indentation for the inner for-loop!)\nExercise 7 Define a function computing the sum of the first n integers.\nExercise 8 Write a function (without using imports) which computes the sum of all digits (cross sum) of an int.",
+    "section": "3.6 Exercises",
+    "text": "3.6 Exercises\nExercise 1 Can you code the FizzBuzz example in a single line of code? So, dependent on some n, give one line of code, which gives Fizz if n is a multiple of 3, Buzz, if it is a multiple of 5, and FizzBuzz if both conditions are satisfied.\nExercise 2 Multiple elifs in a row are not very elegant. Python3 (since version 3.10) comes with match. Find out how you can change the FizzBuzz example of the main text by using match instead of elifs.\nExercise 3 Write a version of the code for finding the gcd by running (not from 1 to a, but) from a to 1, and see if the corresponding number divides both, a and b. Apparently, you can break the for-loop when you found the first such number. Implement that breaking of the for-loop.\nExercise 4 Compute \\(\\sum_{i=1}^{100} i\\) using a for-loop.\nExercise 5 Find the largest \\(n\\) such that \\(\\sum_{i=1}^n i &lt; 1000\\).\nExercise 6 for-loops can also become nested. Compute \\(\\sum_{i=1}^{100} \\sum_{j=1}^i j\\). (Note the double indentation for the inner for-loop!)\nExercise 7 Define a function computing the sum of the first n integers.\nExercise 8 Write a function (without using imports) which computes the sum of all digits (cross sum) of an int.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow -- conditions, loops, and functions</span>"
     ]
@@ -154,7 +164,7 @@
     "href": "04_container_data_types.html",
     "title": "4  Container data types",
     "section": "",
-    "text": "4.1 list\nWhen working with data, we usually not only have one int or one str, but many of them. For this situation, there are the container data types, list, tuple, set, and dict.\nThe notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is [1,2,3]. A list of names is e.g. [\"Alice\", \"Bob\", \"Charlie\", \"Donna\"]. So, for a list, the entries have simple (or again container) data types.\n# a list of ints\nx = [1,2,3]\nprint(x[0])\nprint(x[3] if len(x) &gt; 3 else None)\n\n1\nNone\nSlicing refers to sublists.\nx = [1,2,3]\nprint(f\"The first and second element: {x[0:2]}\")\nprint(f\"The first two elements: {x[:2]}\")\nprint(f\"All elements after the first element: {x[1:]}\")\n\nThe first and second element: [1, 2]\nThe first two elements: [1, 2]\nAll elements after the first element: [2, 3]\nPlaying around with range.\nprint(f\"The first and second odd number: {list(range(1, 5, 2))}\")\nprint(f\"The first and second odd number: {list(range(1, 100, 2))[:2]}\")\n\nThe first and second odd number: [1, 3]\nThe first and second odd number: [1, 3]\nThe elements of a list can be lists themselves.\ny = [[1,2], [3,4,5], 6, 7, 8]\nprint(y[1])\nprint(y[1][0])\n\n[3, 4, 5]\n3\nA list can have mixed types.\nz = [1, \"two\", [3,4], 5.0]\nprint(z[1])\n\ntwo\nHere are some functions on lists.\nFor the functions starting with list, there is a catch: While we mentioned that a function takes its input (here the list), and does not alter it, lists are mutable objects, which means that they are changed when calling such a function on them. So, e.g. after l.sort(), the list l itself is sorted, and there is no return value of that function (more precisely, the return value is None.) This can be counterintuitive:\nl = [3,2,1]\n# This gives none since the return value of l.sort() is None\nprint(l.sort())\n\nl = [3,2,1]\n# This changes l and makes it sorted.\nl.sort()\n# Now we can print it \nprint(f\"l = {l}\")\n\n# In contrast, sorted() does not change the list but returns a new sorted list.\nl = [3,2,1]\nprint(sorted(l))\n\nNone\nl = [1, 2, 3]\n[1, 2, 3]\nAssume you want to sort a list not as usual. In this situation, you will find out about the key-parameter in sorted. It takes a function, we sorts the list according to the values of this function. As an example, assume we want to sort a list of ints according to their abolute value:\nl = [5, -4, 0, 7, -3, 2]\nprint(sorted(l, key = lambda x: abs(x)))\n\n[0, 2, -3, -4, 5, 7]\nSimilarly, you can e.g. filter the list by only taking numbers which are at least one:\nl = [5, -4, 0, 7, -3, 2]\nprint(list(filter(lambda x: x &gt;= 1, l)))\n\n[5, 7, 2]\nLet us shortly describe two functions on a list of bools l.",
+    "text": "4.1 list\nDownload notebook.\nWhen working with data, we usually not only have one int or one str, but many of them. For this situation, there are the container data types, list, tuple, set, and dict.\nThe notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is [1,2,3]. A list of names is e.g. [\"Alice\", \"Bob\", \"Charlie\", \"Donna\"]. So, for a list, the entries have simple (or again container) data types.\n# a list of ints\nx = [1,2,3]\nprint(x[0])\nprint(x[3] if len(x) &gt; 3 else None)\n\n1\nNone\nSlicing refers to sublists.\nx = [1,2,3]\nprint(f\"The first and second element: {x[0:2]}\")\nprint(f\"The first two elements: {x[:2]}\")\nprint(f\"All elements after the first element: {x[1:]}\")\n\nThe first and second element: [1, 2]\nThe first two elements: [1, 2]\nAll elements after the first element: [2, 3]\nPlaying around with range.\nprint(f\"The first and second odd number: {list(range(1, 5, 2))}\")\nprint(f\"The first and second odd number: {list(range(1, 100, 2))[:2]}\")\n\nThe first and second odd number: [1, 3]\nThe first and second odd number: [1, 3]\nThe elements of a list can be lists themselves.\ny = [[1,2], [3,4,5], 6, 7, 8]\nprint(y[1])\nprint(y[1][0])\n\n[3, 4, 5]\n3\nA list can have mixed types.\nz = [1, \"two\", [3,4], 5.0]\nprint(z[1])\n\ntwo\nHere are some functions on lists.\nFor the functions starting with list, there is a catch: While we mentioned that a function takes its input (here the list), and does not alter it, lists are mutable objects, which means that they are changed when calling such a function on them. So, e.g. after l.sort(), the list l itself is sorted, and there is no return value of that function (more precisely, the return value is None.) This can be counterintuitive:\nl = [3,2,1]\n# This gives none since the return value of l.sort() is None\nprint(l.sort())\n\nl = [3,2,1]\n# This changes l and makes it sorted.\nl.sort()\n# Now we can print it \nprint(f\"l = {l}\")\n\n# In contrast, sorted() does not change the list but returns a new sorted list.\nl = [3,2,1]\nprint(sorted(l))\n\nNone\nl = [1, 2, 3]\n[1, 2, 3]\nAssume you want to sort a list not as usual. In this situation, you will find out about the key-parameter in sorted. It takes a function, we sorts the list according to the values of this function. As an example, assume we want to sort a list of ints according to their abolute value:\nl = [5, -4, 0, 7, -3, 2]\nprint(sorted(l, key = lambda x: abs(x)))\n\n[0, 2, -3, -4, 5, 7]\nSimilarly, you can e.g. filter the list by only taking numbers which are at least one:\nl = [5, -4, 0, 7, -3, 2]\nprint(list(filter(lambda x: x &gt;= 1, l)))\n\n[5, 7, 2]\nLet us shortly describe two functions on a list of bools l.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Container data types</span>"
     ]
@@ -224,7 +234,27 @@
     "href": "05_libraries.html",
     "title": "5  Using libraries and modules",
     "section": "",
-    "text": "5.1 math",
+    "text": "5.1 imports\nAs in all programming languages, not all python programs come in a single file. If a Python3 project spans multiple files, an import becomes necessary. In Python3, there is syntax for imports as follows:\nGenerally, there are packages (folders), modules (a .py-file within a package, or a single py-file), and submodules. Every submodule is a module. In any case, the import loads the (sub-)module, and executes all top-level code inside it (i.e. everything which is not inside a function).\nThere are three cases:\nThen, the import in two.py is either import one (both files must be in the same folder), or from one import myConst or (not recommended) from one import *. In the first case, you must prefix myconst() by one:\nIn the second case, there is no prefix:\nObserve that the latter option comes with the disadvantage that you cannot see from the call of myconst(), if it is defined in two.py or inone.py, so it becomes harder to keep track of your code if things become more complicated.\nIf you have a folder myPackage, which holds one.py, you can must write import myPackage, import myPackage.one or import myPackage.one as myNameOne with differing ways to use myConst():\nand then, the import works. We will see examples for this e.g. in ?sec-loading.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Using libraries and modules</span>"
+    ]
+  },
+  {
+    "objectID": "05_libraries.html#imports",
+    "href": "05_libraries.html#imports",
+    "title": "5  Using libraries and modules",
+    "section": "",
+    "text": "Syntax\nMeaning\n\n\n\n\nimport module\nfull module\n\n\nimport module as name\nalias\n\n\nfrom module import x\nspecific objects\n\n\nfrom module import *\neverything (avoid)\n\n\nimport module.submodule\nsubmodule\n\n\n\n\n\n\nYou wrote some code in file one.py (e.g. some functions) which you want to use in file two.py. (Note, btw, that the first digit in one.py must be a letter.) Assume one.py is as follows:\n\none.py\n\ndef myConst():\n    return 42\n\nimport one\nprint(f\"My constant is {one.myConst()}.\")\n\nfrom one import myConst\n# or \nfrom one import *\nprint(f\"My constant is {myConst()}.\")\n\n\nimport myPackage \nprint(f\"My constant is {myPackage.one.myConst()}.\")\nimport myPackage.one\nprint(f\"My constant is {one.myConst()}.\")\nimport myPackage.one as myName\nprint(f\"My constant is {myName.myConst()}.\")\n\nYou want to use functions from a built-in library. Then, a simple import module is often the best choice. We will see examples in Section 6.1.\nYou want to use functions from a library, which needs to be installed. Here, before the import module even works, you need to install the module in your python environment. In a terminal, within your python environment, use\n\npip3 install module",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Using libraries and modules</span>"
+    ]
+  },
+  {
+    "objectID": "05_libraries.html#sec-math",
+    "href": "05_libraries.html#sec-math",
+    "title": "5  Using libraries and modules",
+    "section": "5.2 math",
+    "text": "5.2 math\nThe mathematical library in Python is used by import math. Then, you have e.g. the following functions, which are self-explanatory: math.sqrt(), math.exp(), math.log(), math.sin(), math.cos(), and constants like math.pi and math.e.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Using libraries and modules</span>"
     ]
@@ -233,70 +263,110 @@
     "objectID": "05_libraries.html#sec-numpy",
     "href": "05_libraries.html#sec-numpy",
     "title": "5  Using libraries and modules",
-    "section": "5.2 numpy",
-    "text": "5.2 numpy\ngives math.pi\nimport numpy as np\ndate and time\nstatistics\nscipy.stats\nrandom\ndecimal\njson\ncsv\nsqlite3\npickle\ndatetime\ntime\nunittest\nos\nsys\ntry except",
+    "section": "5.3 numpy",
+    "text": "5.3 numpy\nimport numpy as np",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Using libraries and modules</span>"
     ]
   },
   {
+    "objectID": "05_libraries.html#datetime",
+    "href": "05_libraries.html#datetime",
+    "title": "5  Using libraries and modules",
+    "section": "5.4 datetime",
+    "text": "5.4 datetime\nIn data science, we often have to handle dates. Their disadvantage is that there is no standard way to write these as strings. In Python3, this and various other problems around dates and times is solved by the datetime-library.\nSubmodules (in fact, these are classes in this case) of this package are\n\ndate: handling dates\ntime: handling times\ndatetime.datetime: handling datetimes, i.e. dates and times together\ntimedelta: time differences\ntzinfo and timezone: handling timezones\n\nWe will here use\n\nimport datetime \n\nat the cost that datetime-objects are only accessible by saying datetime.datetime (the first datetime being the package, the seconddatetime` being the class/submodule).\nLet us create a datetime-object`:\n\ndt = datetime.datetime(2026, 4, 21, 12, 15)\nprint(dt)\nprint(f\"year: {dt.year}\")\nprint(f\"month: {dt.month}\")\nprint(f\"day: {dt.day}\")\nprint(f\"hour: {dt.hour}\")\nprint(f\"minutes: {dt.minute}\")\nprint(f\"second: {dt.second}\")\nprint(f\"microsecond: {dt.microsecond}\")\nprint(f\"date: {dt.date()}\")\nprint(f\"time: {dt.time()}\")\n\n2026-04-21 12:15:00\nyear: 2026\nmonth: 4\nday: 21\nhour: 12\nminutes: 15\nsecond: 0\nmicrosecond: 0\ndate: 2026-04-21\ntime: 12:15:00\n\n\nwhich is the starting time of the first session in this course. As we see here, we can extract year,…, microseconds from the datetime-object.\nOften, we are given strings such as \"21.4.26, 12:15\", and want to convert this into a datetime object. For this, we have datetime.datetime.strptime:\n\ns = \"21.4.26, 12:15\"\ndt = datetime.datetime.strptime(s, \"%y.%m.%d, %H:%M\")\nprint(s + f\" is converted to {dt}.\")\n\n21.4.26, 12:15 is converted to 2021-04-26 12:15:00.\n\n\n(For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.)\nReversely, we want to print a datetime-object in a certain way. For this, we have datetime.datetime.strftime:\n\nprint(dt.strftime(\"%-m/%-d/%y, %H:%M\"))\n\n4/26/21, 12:15\n\n\nwhich is the US-style output.\nNext, assume we want to compute the same time 12 weeks from now. For this, we use datetime.timedelta.\n\nprint(dt + datetime.timedelta(days=84))\n\n2021-07-19 12:15:00\n\n\nHere are some more remarks:\n\ndatetime.date is not used very often. The reason is that you can recover a date from a datetime, but not the other way round.\ndatetime.time has the same limitations.\nWe will not cover time-zones here, but if you have global data, they will become important!",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Using libraries and modules</span>"
+    ]
+  },
+  {
+    "objectID": "05_libraries.html#scipy.stats",
+    "href": "05_libraries.html#scipy.stats",
+    "title": "5  Using libraries and modules",
+    "section": "5.5 scipy.stats",
+    "text": "5.5 scipy.stats\nstatistics\nrandom\ndecimal\njson\ncsv\nsqlite3\npickle\ntime\nunittest\nos\nsys\nscipy.stats\nExercise with datetime\ndate,sales 2026-01-01,120 2026-01-02,135 2026-01-03,128 2026-01-08,150 2026-02-01,210 2026-02-03,215\nWe want to:\nload the data\nconvert the date column to datetime\nextract year/month/weekday\nfilter by date\ncompute time differences\nresample by month\ncreate rolling averages",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Using libraries and modules</span>"
+    ]
+  },
+  {
+    "objectID": "06_handling_data.html",
+    "href": "06_handling_data.html",
+    "title": "6  Using libraries and modules",
+    "section": "",
+    "text": "6.1 math",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Using libraries and modules</span>"
+    ]
+  },
+  {
+    "objectID": "06_handling_data.html#sec-numpy",
+    "href": "06_handling_data.html#sec-numpy",
+    "title": "6  Using libraries and modules",
+    "section": "6.2 numpy",
+    "text": "6.2 numpy\ngives math.pi\nimport numpy as np\ndate and time\nstatistics\nscipy.stats\nrandom\ndecimal\njson\ncsv\nsqlite3\npickle\ndatetime\ntime\nunittest\nos\nsys\ntry except",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Using libraries and modules</span>"
+    ]
+  },
+  {
     "objectID": "10_misc.html",
     "href": "10_misc.html",
-    "title": "6  Miscellaneous",
+    "title": "7  Miscellaneous",
     "section": "",
-    "text": "6.1 Comments\nWe collect here some stuff, which does not really fit anywhere else. We use the material in this section without notice in the whole course.\nIn Python, the key for a comment is #.\n# This line is a comment.\nprint(\"This line is not a comment.\")\n\nThis line is not a comment.",
+    "text": "7.1 Comments\nWe collect here some stuff, which does not really fit anywhere else. We use the material in this section without notice in the whole course.\nIn Python, the key for a comment is #.\n# This line is a comment.\nprint(\"This line is not a comment.\")\n\nThis line is not a comment.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   },
   {
     "objectID": "10_misc.html#two-equality-signs",
     "href": "10_misc.html#two-equality-signs",
-    "title": "6  Miscellaneous",
-    "section": "6.2 Two equality signs",
-    "text": "6.2 Two equality signs\nIn Python (and many other programming languages), there are assignments such as x = 0, which says that x should from now on have the value 0, and x == 0. The latter is a condition, which results in True if x is indeed 0, and `False otherwise.",
+    "title": "7  Miscellaneous",
+    "section": "7.2 Two equality signs",
+    "text": "7.2 Two equality signs\nIn Python (and many other programming languages), there are assignments such as x = 0, which says that x should from now on have the value 0, and x == 0. The latter is a condition, which results in True if x is indeed 0, and `False otherwise.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   },
   {
     "objectID": "10_misc.html#user-input",
     "href": "10_misc.html#user-input",
-    "title": "6  Miscellaneous",
-    "section": "6.3 User input",
-    "text": "6.3 User input\nSometimes, when operating on the command line, one wants to ask for user input. This works as follows:\nname = input(\"What is your name?\")\nprint(f\"Hello, {name}!\")",
+    "title": "7  Miscellaneous",
+    "section": "7.3 User input",
+    "text": "7.3 User input\nSometimes, when operating on the command line, one wants to ask for user input. This works as follows:\nname = input(\"What is your name?\")\nprint(f\"Hello, {name}!\")",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   },
   {
     "objectID": "10_misc.html#regular-expressions",
     "href": "10_misc.html#regular-expressions",
-    "title": "6  Miscellaneous",
-    "section": "6.4 Regular expressions",
-    "text": "6.4 Regular expressions\nask the AI!",
+    "title": "7  Miscellaneous",
+    "section": "7.4 Regular expressions",
+    "text": "7.4 Regular expressions\nask the AI!",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   },
   {
     "objectID": "10_misc.html#dot-notation",
     "href": "10_misc.html#dot-notation",
-    "title": "6  Miscellaneous",
-    "section": "6.5 dot-notation",
-    "text": "6.5 dot-notation\nHere is another very useful notation convention, known as dot-notation: For a function str.something(s,...), where s is of type str, you can as well write s.something(). For example, s.strip() is the same as str.strip(s).",
+    "title": "7  Miscellaneous",
+    "section": "7.5 dot-notation",
+    "text": "7.5 dot-notation\nHere is another very useful notation convention, known as dot-notation: For a function str.something(s,...), where s is of type str, you can as well write s.something(). For example, s.strip() is the same as str.strip(s).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   },
   {
     "objectID": "10_misc.html#git-and-github",
     "href": "10_misc.html#git-and-github",
-    "title": "6  Miscellaneous",
-    "section": "6.6 git and github",
-    "text": "6.6 git and github\nThese course notes are organized using the version control system git. If this does not mean anything to you, don’t mind. At the moment, this only means that you need to install git on your system, and run in the folder where you want to have the course notes\ngit clone https://github.com/pfaffelh/python_for_data/\nWith this command, you are cloning the repository of the course notes from github. You can also look at this repository online.\nThere is a good chance that the course notes will be updated during the upcoming weeks. In order to obtain the most current version, you need to run\ngit pull\nThere is (at least) one catch for using git: If you are changing one of the course files locally on your system, but the file has updated, git pull realizes the different versions and rejects to do git pull. The best way out is to do all changes to the files in the folder myFiles, or only change the files ...ipynb. All these files are excluded from any update with git pull.\nWe recommend that you do the following:\n\nClone the repository of these notes using\n\ngit clone https://github.com/pfaffelh/python_for_data\nHit cd python_for_data. 2. Create a virtual environment using python -m venv venv or python3 -m venv venv. 3. Activate this environment by source venv/bin/activate, 4. Install the libraries using pip3 install -r requirements.txt (or pip install -r requirements.txt).",
+    "title": "7  Miscellaneous",
+    "section": "7.6 git and github",
+    "text": "7.6 git and github\nThese course notes are organized using the version control system git. If this does not mean anything to you, don’t mind. At the moment, this only means that you need to install git on your system, and run in the folder where you want to have the course notes\ngit clone https://github.com/pfaffelh/python_for_data/\nWith this command, you are cloning the repository of the course notes from github. You can also look at this repository online.\nThere is a good chance that the course notes will be updated during the upcoming weeks. In order to obtain the most current version, you need to run\ngit pull\nThere is (at least) one catch for using git: If you are changing one of the course files locally on your system, but the file has updated, git pull realizes the different versions and rejects to do git pull. The best way out is to do all changes to the files in the folder myFiles, or only change the files ...ipynb. All these files are excluded from any update with git pull.\nWe recommend that you do the following:\n\nClone the repository of these notes using\n\ngit clone https://github.com/pfaffelh/python_for_data\nHit cd python_for_data. 2. Create a virtual environment using python -m venv venv or python3 -m venv venv. 3. Activate this environment by source venv/bin/activate, 4. Install the libraries using pip3 install -r requirements.txt (or pip install -r requirements.txt).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   }
 ]

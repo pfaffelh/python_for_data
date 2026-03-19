@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.31">
+<meta name="generator" content="quarto-1.9.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10_misc.html" rel="next">
+<link href="./06_handling_data.html" rel="next">
 <link href="./04_container_data_types.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -41,10 +76,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7c69b197886ae2a34062761d21e44731.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-352f0346a3070dd3b7340e73962f3721.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b5c49d451f14625acf1737a92055c052.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -137,8 +172,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./06_handling_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -151,8 +192,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#sec-math" id="toc-sec-math" class="nav-link active" data-scroll-target="#sec-math"><span class="header-section-number">5.1</span> math</a></li>
-  <li><a href="#sec-numpy" id="toc-sec-numpy" class="nav-link" data-scroll-target="#sec-numpy"><span class="header-section-number">5.2</span> numpy</a></li>
+  <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports"><span class="header-section-number">5.1</span> imports</a></li>
+  <li><a href="#sec-math" id="toc-sec-math" class="nav-link" data-scroll-target="#sec-math"><span class="header-section-number">5.2</span> math</a></li>
+  <li><a href="#sec-numpy" id="toc-sec-numpy" class="nav-link" data-scroll-target="#sec-numpy"><span class="header-section-number">5.3</span> numpy</a></li>
+  <li><a href="#datetime" id="toc-datetime" class="nav-link" data-scroll-target="#datetime"><span class="header-section-number">5.4</span> datetime</a></li>
+  <li><a href="#scipy.stats" id="toc-scipy.stats" class="nav-link" data-scroll-target="#scipy.stats"><span class="header-section-number">5.5</span> scipy.stats</a></li>
   </ul>
 </nav>
     </div>
@@ -178,28 +222,178 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sec-math" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="sec-math"><span class="header-section-number">5.1</span> math</h2>
+<section id="imports" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="imports"><span class="header-section-number">5.1</span> imports</h2>
+<p>As in all programming languages, not all python programs come in a single file. If a Python3 project spans multiple files, an <code>import</code> becomes necessary. In Python3, there is syntax for <code>import</code>s as follows:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Syntax</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>import module</code></td>
+<td>full module</td>
+</tr>
+<tr class="even">
+<td><code>import module as name</code></td>
+<td>alias</td>
+</tr>
+<tr class="odd">
+<td><code>from module import x</code></td>
+<td>specific objects</td>
+</tr>
+<tr class="even">
+<td><code>from module import *</code></td>
+<td>everything (avoid)</td>
+</tr>
+<tr class="odd">
+<td><code>import module.submodule</code></td>
+<td>submodule</td>
+</tr>
+</tbody>
+</table>
+<p>Generally, there are packages (folders), modules (a <code>.py</code>-file within a package, or a single <code>py</code>-file), and submodules. Every submodule is a module. In any case, the import loads the (sub-)module, and executes all top-level code inside it (i.e.&nbsp;everything which is not inside a function).</p>
+<p>There are three cases:</p>
+<ol type="1">
+<li>You wrote some code in file <code>one.py</code> (e.g.&nbsp;some functions) which you want to use in file <code>two.py</code>. (Note, btw, that the first digit in <code>one.py</code> must be a letter.) Assume <code>one.py</code> is as follows:</li>
+</ol>
+<pre><code>one.py
+
+def myConst():
+    return 42</code></pre>
+<p>Then, the import in <code>two.py</code> is either <code>import one</code> (both files must be in the same folder), or <code>from one import myConst</code> or (not recommended) <code>from one import *</code>. In the first case, you must prefix <code>myconst()</code> by <code>one</code>:</p>
+<pre><code>import one
+print(f"My constant is {one.myConst()}.")</code></pre>
+<p>In the second case, there is no prefix:</p>
+<pre><code>from one import myConst
+# or 
+from one import *
+print(f"My constant is {myConst()}.")</code></pre>
+<p>Observe that the latter option comes with the disadvantage that you cannot see from the call of <code>myconst()</code>, if it is defined in <code>two.py</code> or in<code>one.py</code>, so it becomes harder to keep track of your code if things become more complicated.</p>
+<p>If you have a folder <code>myPackage</code>, which holds <code>one.py</code>, you can must write <code>import myPackage</code>, <code>import myPackage.one</code> or <code>import myPackage.one as myNameOne</code> with differing ways to use <code>myConst()</code>:</p>
+<pre><code>import myPackage 
+print(f"My constant is {myPackage.one.myConst()}.")</code></pre>
+<pre><code>import myPackage.one
+print(f"My constant is {one.myConst()}.")</code></pre>
+<pre><code>import myPackage.one as myName
+print(f"My constant is {myName.myConst()}.")</code></pre>
+<ol start="2" type="1">
+<li><p>You want to use functions from a built-in library. Then, a simple <code>import module</code> is often the best choice. We will see examples in <a href="06_handling_data.html#sec-math" class="quarto-xref"><span>Section 6.1</span></a>.</p></li>
+<li><p>You want to use functions from a library, which needs to be installed. Here, before the <code>import module</code> even works, you need to install the module in your python environment. In a terminal, within your python environment, use</p></li>
+</ol>
+<pre><code>pip3 install module</code></pre>
+<p>and then, the <code>import</code> works. We will see examples for this e.g.&nbsp;in <span class="quarto-unresolved-ref">?sec-loading</span>.</p>
 </section>
-<section id="sec-numpy" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="sec-numpy"><span class="header-section-number">5.2</span> numpy</h2>
-<p>gives math.pi</p>
+<section id="sec-math" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-math"><span class="header-section-number">5.2</span> math</h2>
+<p>The mathematical library in Python is used by <code>import math</code>. Then, you have e.g.&nbsp;the following functions, which are self-explanatory: <code>math.sqrt()</code>, <code>math.exp()</code>, <code>math.log()</code>, <code>math.sin()</code>, <code>math.cos()</code>, and constants like <code>math.pi</code> and <code>math.e</code>.</p>
+</section>
+<section id="sec-numpy" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-numpy"><span class="header-section-number">5.3</span> numpy</h2>
 <p>import numpy as np</p>
-<p>date and time</p>
+</section>
+<section id="datetime" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="datetime"><span class="header-section-number">5.4</span> datetime</h2>
+<p>In data science, we often have to handle dates. Their disadvantage is that there is no standard way to write these as strings. In Python3, this and various other problems around dates and times is solved by the <code>datetime</code>-library.</p>
+<p>Submodules (in fact, these are <code>class</code>es in this case) of this package are</p>
+<ul>
+<li><code>date</code>: handling dates</li>
+<li><code>time</code>: handling times</li>
+<li><code>datetime.datetime</code>: handling <code>datetimes</code>, i.e.&nbsp;dates and times together</li>
+<li><code>timedelta</code>: time differences</li>
+<li><code>tzinfo</code> and <code>timezone</code>: handling timezones</li>
+</ul>
+<p>We will here use</p>
+<div id="0f0a7482" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>at the cost that <code>datetime</code>-objects are only accessible by saying <code>datetime.datetime</code> (the first <code>datetime</code> being the package<code>, the second</code>datetime` being the class/submodule).</p>
+<p>Let us create a <code>datetime</code>-object`:</p>
+<div id="5d143518" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime(<span class="dv">2026</span>, <span class="dv">4</span>, <span class="dv">21</span>, <span class="dv">12</span>, <span class="dv">15</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"year: </span><span class="sc">{</span>dt<span class="sc">.</span>year<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"month: </span><span class="sc">{</span>dt<span class="sc">.</span>month<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"day: </span><span class="sc">{</span>dt<span class="sc">.</span>day<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"hour: </span><span class="sc">{</span>dt<span class="sc">.</span>hour<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"minutes: </span><span class="sc">{</span>dt<span class="sc">.</span>minute<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"second: </span><span class="sc">{</span>dt<span class="sc">.</span>second<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"microsecond: </span><span class="sc">{</span>dt<span class="sc">.</span>microsecond<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"date: </span><span class="sc">{</span>dt<span class="sc">.</span>date()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"time: </span><span class="sc">{</span>dt<span class="sc">.</span>time()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2026-04-21 12:15:00
+year: 2026
+month: 4
+day: 21
+hour: 12
+minutes: 15
+second: 0
+microsecond: 0
+date: 2026-04-21
+time: 12:15:00</code></pre>
+</div>
+</div>
+<p>which is the starting time of the first session in this course. As we see here, we can extract year,…, microseconds from the <code>datetime</code>-object.</p>
+<p>Often, we are given strings such as <code>"21.4.26, 12:15"</code>, and want to convert this into a <code>datetime</code> object. For this, we have <code>datetime.datetime.strptime</code>:</p>
+<div id="80871ebc" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"21.4.26, 12:15"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime.strptime(s, <span class="st">"%y.%m.</span><span class="sc">%d</span><span class="st">, %H:%M"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s <span class="op">+</span> <span class="ss">f" is converted to </span><span class="sc">{</span>dt<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>21.4.26, 12:15 is converted to 2021-04-26 12:15:00.</code></pre>
+</div>
+</div>
+<p>(For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.)</p>
+<p>Reversely, we want to print a <code>datetime</code>-object in a certain way. For this, we have <code>datetime.datetime.strftime</code>:</p>
+<div id="934def0b" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt.strftime(<span class="st">"%-m/</span><span class="sc">%-d</span><span class="st">/%y, %H:%M"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4/26/21, 12:15</code></pre>
+</div>
+</div>
+<p>which is the US-style output.</p>
+<p>Next, assume we want to compute the same time 12 weeks from now. For this, we use <code>datetime.timedelta</code>.</p>
+<div id="fe9aa6dc" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt <span class="op">+</span> datetime.timedelta(days<span class="op">=</span><span class="dv">84</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2021-07-19 12:15:00</code></pre>
+</div>
+</div>
+<p>Here are some more remarks:</p>
+<ul>
+<li><code>datetime.date</code> is not used very often. The reason is that you can recover a <code>date</code> from a <code>datetime</code>, but not the other way round.</li>
+<li><code>datetime.time</code> has the same limitations.</li>
+<li>We will not cover time-zones here, but if you have global data, they will become important!</li>
+</ul>
+</section>
+<section id="scipy.stats" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="scipy.stats"><span class="header-section-number">5.5</span> scipy.stats</h2>
 <p>statistics</p>
-<p>scipy.stats</p>
 <p>random</p>
 <p>decimal</p>
 <p>json</p>
 <p>csv</p>
 <p>sqlite3</p>
 <p>pickle</p>
-<p>datetime</p>
 <p>time</p>
 <p>unittest</p>
 <p>os</p>
 <p>sys</p>
-<p>try except</p>
+<p>scipy.stats</p>
+<p>Exercise with datetime</p>
+<p>date,sales 2026-01-01,120 2026-01-02,135 2026-01-03,128 2026-01-08,150 2026-02-01,210 2026-02-03,215</p>
+<p>We want to:</p>
+<p>load the data</p>
+<p>convert the date column to datetime</p>
+<p>extract year/month/weekday</p>
+<p>filter by date</p>
+<p>compute time differences</p>
+<p>resample by month</p>
+<p>create rolling averages</p>
 
 
 </section>
@@ -612,8 +806,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10_misc.html" class="pagination-link" aria-label="Miscellaneous">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06_handling_data.html" class="pagination-link" aria-label="Using libraries and modules">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
