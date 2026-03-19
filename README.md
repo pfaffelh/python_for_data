@@ -9,5 +9,8 @@ If you want all in one go, type
 quarto render
 ```
 This takes a few minutes. 
-
+If you enter
+```
 python -m http.server
+```
+you will find yourself be able to click on the files you would like to see. 

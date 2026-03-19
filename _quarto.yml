@@ -14,6 +14,7 @@ book:
     - 04_container_data_types.qmd
     - 05_libraries.qmd
     - 06_handling_data.qmd
+    - 07_numpy_from_chatgpt.qmd
     - 10_misc.qmd
 number-sections: true
 

@@ -178,8 +178,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./07_numpy_from_chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy for Machine Learning</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -281,11 +287,11 @@ print(f"My constant is {one.myConst()}.")</code></pre>
 <pre><code>import myPackage.one as myName
 print(f"My constant is {myName.myConst()}.")</code></pre>
 <ol start="2" type="1">
-<li><p>You want to use functions from a built-in library. Then, a simple <code>import module</code> is often the best choice. We will see examples in <a href="06_handling_data.html#sec-math" class="quarto-xref"><span>Section 6.1</span></a>.</p></li>
+<li><p>You want to use functions from a built-in library. Then, a simple <code>import module</code> is often the best choice. We will see examples in <a href="#sec-math" class="quarto-xref"><span>Section 5.2</span></a>.</p></li>
 <li><p>You want to use functions from a library, which needs to be installed. Here, before the <code>import module</code> even works, you need to install the module in your python environment. In a terminal, within your python environment, use</p></li>
 </ol>
 <pre><code>pip3 install module</code></pre>
-<p>and then, the <code>import</code> works. We will see examples for this e.g.&nbsp;in <span class="quarto-unresolved-ref">?sec-loading</span>.</p>
+<p>and then, the <code>import</code> works. We will see examples for this e.g.&nbsp;in <a href="06_handling_data.html#sec-loading" class="quarto-xref"><span>Section 6.1</span></a>.</p>
 </section>
 <section id="sec-math" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="sec-math"><span class="header-section-number">5.2</span> math</h2>
@@ -307,12 +313,12 @@ print(f"My constant is {myName.myConst()}.")</code></pre>
 <li><code>tzinfo</code> and <code>timezone</code>: handling timezones</li>
 </ul>
 <p>We will here use</p>
-<div id="0f0a7482" class="cell" data-execution_count="1">
+<div id="8834addf" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>at the cost that <code>datetime</code>-objects are only accessible by saying <code>datetime.datetime</code> (the first <code>datetime</code> being the package<code>, the second</code>datetime` being the class/submodule).</p>
 <p>Let us create a <code>datetime</code>-object`:</p>
-<div id="5d143518" class="cell" data-execution_count="2">
+<div id="e1683011" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime(<span class="dv">2026</span>, <span class="dv">4</span>, <span class="dv">21</span>, <span class="dv">12</span>, <span class="dv">15</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"year: </span><span class="sc">{</span>dt<span class="sc">.</span>year<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -339,7 +345,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the starting time of the first session in this course. As we see here, we can extract year,…, microseconds from the <code>datetime</code>-object.</p>
 <p>Often, we are given strings such as <code>"21.4.26, 12:15"</code>, and want to convert this into a <code>datetime</code> object. For this, we have <code>datetime.datetime.strptime</code>:</p>
-<div id="80871ebc" class="cell" data-execution_count="3">
+<div id="79d6229c" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"21.4.26, 12:15"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime.strptime(s, <span class="st">"%y.%m.</span><span class="sc">%d</span><span class="st">, %H:%M"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s <span class="op">+</span> <span class="ss">f" is converted to </span><span class="sc">{</span>dt<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -349,7 +355,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>(For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.)</p>
 <p>Reversely, we want to print a <code>datetime</code>-object in a certain way. For this, we have <code>datetime.datetime.strftime</code>:</p>
-<div id="934def0b" class="cell" data-execution_count="4">
+<div id="7111b113" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt.strftime(<span class="st">"%-m/</span><span class="sc">%-d</span><span class="st">/%y, %H:%M"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4/26/21, 12:15</code></pre>
@@ -357,7 +363,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the US-style output.</p>
 <p>Next, assume we want to compute the same time 12 weeks from now. For this, we use <code>datetime.timedelta</code>.</p>
-<div id="fe9aa6dc" class="cell" data-execution_count="5">
+<div id="df4feac8" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt <span class="op">+</span> datetime.timedelta(days<span class="op">=</span><span class="dv">84</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2021-07-19 12:15:00</code></pre>

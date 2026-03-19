@@ -207,8 +207,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./07_numpy_from_chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy for Machine Learning</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -257,7 +263,7 @@ window.Quarto = {
 <section id="if-elif-else" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="if-elif-else"><span class="header-section-number">3.1</span> If elif else</h2>
 <p>As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an <code>if</code>-condition:</p>
-<div id="a4b8e15a" class="cell" data-execution_count="1">
+<div id="47b2eecf" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&lt;</span> b:</span>
@@ -281,7 +287,7 @@ else:
     case_else</code></pre>
 <p>Here, read <code>elif</code> alse <code>else if</code>, which means that the code jumps into this case if the respective condition is the first to hold. The <code>else</code> case only applied if both the <code>if</code> and all <code>elif</code> conditions do not apply.</p>
 <p>In fact, there are abbreviations in python3 which are very handy. In particular, look at this piece of code.</p>
-<div id="bab2efde" class="cell" data-execution_count="2">
+<div id="1b35f4e2" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> a <span class="cf">if</span> a <span class="op">&lt;</span> b <span class="cf">else</span> b</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The minimum of </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> is:"</span>, res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -289,7 +295,7 @@ else:
 </div>
 </div>
 <p>Let us make another example, also using <code>elif</code>. Given some <code>n</code>, the task is to print <code>Fizz</code> if <code>n</code> is a multiple of 3, <code>Buzz</code>, if it is a multiple of 5, and <code>FizzBuzz</code> if both conditions are satisfied.</p>
-<div id="3b69580d" class="cell" data-execution_count="3">
+<div id="83998d67" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">165</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -307,7 +313,7 @@ else:
 <section id="for" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="for"><span class="header-section-number">3.2</span> for</h2>
 <p>There are <code>for</code>-loops in Python3, as discussed in this section, and <code>while</code>-loops in the next section. The basic use-case of a <code>for</code>-loop is repeating a task several times. As a simple example, adding <code>b</code> a number of <code>a</code> times, results in <code>a * b</code>.</p>
-<div id="4132fa8d" class="cell" data-execution_count="4">
+<div id="7fd3cbb9" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">7</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="dv">0</span></span>
@@ -325,7 +331,7 @@ else:
 <section id="greatest-common-divisor-i" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="greatest-common-divisor-i"><span class="header-section-number">3.2.1</span> Greatest common divisor I</h3>
 <p>Let us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, <code>a</code> and <code>b</code>. A very simple algorithm is going through all numbers <code>1,...,</code> in order, and update result each time we encounter a number which divides both, <code>a</code> and <code>b</code>. (Here, <code>range(1,a+1)</code> is a synoym for the numbers <code>1,...,a</code>.)</p>
-<div id="3756b40b" class="cell" data-execution_count="5">
+<div id="adab49b4" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic algorithm for finding the gcd of two numbers</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">33</span></span>
@@ -351,7 +357,7 @@ else:
 <section id="finding-sqrt2" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="finding-sqrt2"><span class="header-section-number">3.3.1</span> Finding <span class="math inline">\(\sqrt{2}\)</span></h3>
 <p>For finding <span class="math inline">\(\sqrt{2}\)</span>, note that this is a fixed point for the iteration <span class="math display">\[ x_{n+1} = \frac {x_n} 2 - \frac 1 {x_n}.\]</span> (In order to see this, assume that <span class="math inline">\(x = x_n = x_{n+1}\)</span>, and multiply the recursion by <span class="math inline">\(x\)</span>.) We can use this as follows.</p>
-<div id="07da5b7e" class="cell" data-execution_count="6">
+<div id="3d088da7" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1e-10</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x_prev <span class="op">=</span> <span class="dv">0</span></span>
@@ -370,7 +376,7 @@ else:
 <p>The above algorithm (using <code>for</code>-loops) for finding the gcd were not particulary efficient. (You might want to test them with some large numbers.) Euclid’s algorithm is much more efficient. It is based on the observation that <code>c % a == 0</code> (<code>c</code> divides <code>a</code>) and <code>c % b == 0</code> iff <code>c % a == 0</code> and <code>c % (b % a)</code>.</p>
 <p>In order to see this, note that <code>c % a == 0</code> and <code>c % b == 0</code> iff <code>c % a == 0</code> and <code>c % (b - da) == 0</code> for any <code>d</code>. Then, the result follows from choosing <code>d = b \\ a</code> since <code>b - (b \\ a) * a = b % a</code>. Moreover, every number divides <code>0</code>, so if <code>b % a == 0</code>, the gcd of <code>a</code> and <code>b</code> is <code>a</code>.</p>
 <p>We can use these insights, taking <code>a &lt; b</code> for simplicity. Starting with <code>a</code> and <code>b</code>, we compute if <code>b % a == 0</code>. If yes, we are done, and return <code>a</code>. If not, we compute the gcd of <code>a</code> and <code>b % a</code> instead.</p>
-<div id="6d60f0b4" class="cell" data-execution_count="7">
+<div id="6b326c92" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Euclid's algorithm for finding the gcd of two numbers</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a_input <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>b_input <span class="op">=</span> <span class="dv">33</span></span>
@@ -401,7 +407,7 @@ The gcd of 105 and 33 is 3.</code></pre>
 <section id="sec-functions" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="sec-functions"><span class="header-section-number">3.5</span> def (Functions)</h2>
 <p>Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid’s algorithm, this would look as follows:</p>
-<div id="d99da33a" class="cell" data-execution_count="8">
+<div id="c4e7acfc" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">33</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -423,7 +429,7 @@ The gcd of 105 and 33 is 3.</code></pre>
     some instructions
     return something</code></pre>
 <p>Not all functions return something. Those who don’t usually produce some output. Here is an example</p>
-<div id="f2c80ddd" class="cell" data-execution_count="9">
+<div id="4f16465b" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greeting(name, prefix<span class="op">=</span><span class="st">"Hello"</span>):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Return a greeting for name."""</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span>

@@ -1,0 +1,3494 @@
+---
+title: "NumPy for Machine Learning"
+subtitle: "A Lecture-Complete Course Script for Mathematicians"
+author: "Prepared with ChatGPT"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: false
+    code-tools: true
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: false
+jupyter: python3
+editor: visual
+---
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+# How to Use This Script
+
+This document is designed as a lecture-complete course script for a mathematically trained audience.
+It aims to bridge rigorous mathematical thinking and practical numerical implementation.
+
+The guiding principle of the course is:
+
+> **Mathematics → vectorized formulation → NumPy implementation → numerical interpretation**
+
+The intended audience is a group of students who are comfortable with linear algebra, calculus,
+basic proof-oriented reasoning, and elementary Python.
+
+The central didactic choices are the following.
+
+1. We treat **NumPy** as the computational language of finite-dimensional linear algebra.
+2. We treat **pandas** as a data interface rather than as the mathematical core.
+3. We implement fundamental machine learning models directly in NumPy before mentioning higher-level libraries.
+4. We repeatedly connect formulas to shapes, dimensions, and numerical stability.
+
+# Learning Objectives
+
+After working through this script, students should be able to:
+
+- use NumPy arrays as vectors, matrices, and batches of data;
+- reason confidently about shapes, axes, and broadcasting;
+- distinguish elementwise operations from linear-algebraic operations;
+- derive and implement linear regression from first principles;
+- implement gradient descent and study its convergence behavior;
+- derive and implement logistic regression for binary classification;
+- understand the role of feature scaling and data preprocessing;
+- implement a simple neural network using matrix operations;
+- recognize common sources of numerical instability and shape errors;
+- connect abstract mathematics with computational workflows.
+
+# Course Structure
+
+The course is organized as follows.
+
+1. NumPy as a language for vectors and matrices.
+2. Shapes, slicing, views, copies, and the logic of vectorization.
+3. Linear algebra in NumPy.
+4. Statistics and aggregation.
+5. pandas as a gateway from raw tabular data to numerical arrays.
+6. Linear regression and the normal equation.
+7. Gradient descent and optimization.
+8. Logistic regression and binary cross-entropy.
+9. Data preprocessing and feature engineering.
+10. A first neural network in pure NumPy.
+11. Numerical stability and debugging strategies.
+12. Mini-projects and extensions.
+
+# Mathematical Convention
+
+Throughout the text:
+
+- vectors are written in lowercase, for example $x \in \mathbb{R}^d$;
+- matrices are written in uppercase, for example $X \in \mathbb{R}^{n \times d}$;
+- rows of $X$ usually represent samples;
+- columns of $X$ usually represent features.
+
+Thus a dataset with $n$ observations and $d$ features is represented by a matrix
+
+$$
+X \in \mathbb{R}^{n \times d}.
+$$
+
+A parameter vector for a linear model is usually written as
+
+$$
+w \in \mathbb{R}^d.
+$$
+
+Predictions then take the form
+
+$$
+\hat y = Xw.
+$$
+
+# 1. NumPy as a Computational Model of Linear Algebra
+
+## 1.1 Arrays, vectors, matrices
+
+NumPy arrays are the fundamental data structure of the course.
+A one-dimensional array behaves like a vector, and a two-dimensional array behaves like a matrix.
+
+```{python}
+x = np.array([1.0, 2.0, 3.0])
+A = np.array([
+    [1.0, 0.0, 2.0],
+    [0.0, 1.0, 1.0]
+])
+
+print("x =")
+print(x)
+print()
+print("A =")
+print(A)
+print()
+print("x.shape =", x.shape)
+print("A.shape =", A.shape)
+print("x.ndim =", x.ndim)
+print("A.ndim =", A.ndim)
+print("x.dtype =", x.dtype)
+```
+
+A first important observation is that the shape of a vector in NumPy is not `(3, 1)` but `(3,)`.
+This is mathematically convenient in some places and dangerous in others.
+Much of good NumPy programming consists in keeping track of such distinctions.
+
+## 1.2 Column vectors versus one-dimensional arrays
+
+From a mathematical viewpoint, one may want to distinguish between a vector in $\mathbb{R}^d$
+and a column vector in $\mathbb{R}^{d \times 1}$.
+NumPy does not force that distinction unless we create it explicitly.
+
+```{python}
+x = np.array([1.0, 2.0, 3.0])
+x_col = x.reshape(-1, 1)
+x_row = x.reshape(1, -1)
+
+print("x.shape =", x.shape)
+print("x_col.shape =", x_col.shape)
+print("x_row.shape =", x_row.shape)
+print()
+print("x_col =")
+print(x_col)
+print()
+print("x_row =")
+print(x_row)
+```
+
+This is one of the most important habits for students:
+always ask what the shape of each object is.
+
+## 1.3 Basic arithmetic
+
+```{python}
+x = np.array([1.0, -2.0, 4.0])
+y = np.array([3.0, 5.0, -1.0])
+
+print("x + y =", x + y)
+print("x - y =", x - y)
+print("2 * x =", 2 * x)
+print("x / 2 =", x / 2)
+print("x ** 2 =", x ** 2)
+```
+
+These are **elementwise** operations.
+That distinction matters.
+Elementwise multiplication is not the same as matrix multiplication.
+
+## 1.4 Inner product, norms, and basic geometry
+
+```{python}
+x = np.array([1.0, -2.0, 2.0])
+y = np.array([3.0, 1.0, -1.0])
+
+inner_1 = x @ y
+inner_2 = np.dot(x, y)
+norm_l1 = np.sum(np.abs(x))
+norm_l2 = np.sqrt(np.sum(x**2))
+norm_l2_alt = np.linalg.norm(x)
+norm_inf = np.max(np.abs(x))
+
+print("inner_1 =", inner_1)
+print("inner_2 =", inner_2)
+print("||x||_1 =", norm_l1)
+print("||x||_2 =", norm_l2)
+print("||x||_2 (np.linalg.norm) =", norm_l2_alt)
+print("||x||_inf =", norm_inf)
+```
+
+The formula
+
+$$
+\langle x, y \rangle = \sum_{j=1}^d x_j y_j
+$$
+
+becomes either `x @ y` or `np.dot(x, y)`.
+
+The Euclidean norm
+
+$$
+\|x\|_2 = \sqrt{\langle x, x \rangle}
+$$
+
+can be implemented by hand or by a library function.
+In a course for mathematicians it is worth showing both.
+
+## 1.5 Exercise set
+
+1. Create a vector $x \in \mathbb{R}^5$ of your choice.
+2. Compute $\|x\|_1$, $\|x\|_2$, and $\|x\|_\infty$.
+3. Create another vector $y \in \mathbb{R}^5$ and compute the inner product.
+4. Reshape $x$ into a column vector and a row vector.
+5. Explain in words why `x.shape == (5,)` is not the same as `x.reshape(5, 1).shape == (5, 1)`.
+
+## 1.6 Worked solution sketch
+
+```{python}
+x = np.array([1.0, -1.0, 2.0, 0.0, 3.0])
+y = np.array([2.0, 1.0, -1.0, 4.0, 0.5])
+
+print("||x||_1 =", np.sum(np.abs(x)))
+print("||x||_2 =", np.linalg.norm(x))
+print("||x||_inf =", np.max(np.abs(x)))
+print("<x,y> =", x @ y)
+print("column shape =", x.reshape(-1, 1).shape)
+print("row shape =", x.reshape(1, -1).shape)
+```
+
+# 2. Indexing, Slicing, Views, and Copies
+
+## 2.1 One-dimensional indexing
+
+```{python}
+a = np.arange(10)
+print("a =", a)
+print("a[0] =", a[0])
+print("a[3] =", a[3])
+print("a[-1] =", a[-1])
+print("a[2:7] =", a[2:7])
+print("a[:4] =", a[:4])
+print("a[::2] =", a[::2])
+```
+
+## 2.2 Two-dimensional indexing
+
+```{python}
+A = np.arange(1, 13).reshape(3, 4)
+print("A =")
+print(A)
+print()
+print("A[0, 0] =", A[0, 0])
+print("A[1, 2] =", A[1, 2])
+print("A[:, 1] =", A[:, 1])
+print("A[1, :] =", A[1, :])
+print("A[:2, 1:3] =")
+print(A[:2, 1:3])
+```
+
+For a matrix $A \in \mathbb{R}^{m \times n}$, the expression `A[:, j]` selects the $j$-th column,
+whereas `A[i, :]` selects the $i$-th row.
+
+## 2.3 Views versus copies
+
+This topic is essential.
+A slice often creates a view rather than an independent object.
+
+```{python}
+a = np.arange(10)
+b = a[2:6]
+
+print("Before modification")
+print("a =", a)
+print("b =", b)
+
+b[0] = 99
+
+print()
+print("After modification")
+print("a =", a)
+print("b =", b)
+```
+
+The modification of `b` also changed `a`.
+This means that `b` was a view on part of `a`.
+
+To force an actual copy, use `.copy()`.
+
+```{python}
+a = np.arange(10)
+c = a[2:6].copy()
+c[0] = -7
+
+print("a =", a)
+print("c =", c)
+```
+
+## 2.4 Boolean masks
+
+Boolean indexing is a central tool for data preprocessing.
+
+```{python}
+x = np.array([3.0, -1.0, 2.5, -4.0, 0.0, 7.0])
+mask = x > 0
+
+print("x =", x)
+print("mask =", mask)
+print("x[mask] =", x[mask])
+```
+
+For matrices the same logic works rowwise or elementwise depending on the mask.
+
+```{python}
+X = np.array([
+    [1.0, 10.0],
+    [-1.0, 20.0],
+    [2.0, 30.0],
+    [-2.0, 40.0]
+])
+
+row_mask = X[:, 0] > 0
+print("row_mask =", row_mask)
+print("Filtered rows =")
+print(X[row_mask])
+```
+
+## 2.5 Exercises
+
+1. Create a $4 \times 5$ matrix and select its second row and third column.
+2. Create a slice of the matrix and verify whether modifying the slice changes the original matrix.
+3. Create a copy of the slice and verify that modifying it does not change the original matrix.
+4. Use boolean indexing to select all entries of a vector that are strictly larger than $1$.
+5. Filter all rows of a matrix whose first component is positive.
+
+## 2.6 Worked example
+
+```{python}
+A = np.arange(20).reshape(4, 5)
+print("A =")
+print(A)
+print()
+print("second row =", A[1, :])
+print("third column =", A[:, 2])
+
+sub = A[:2, :3]
+sub[0, 0] = -100
+print()
+print("A after modifying a view =")
+print(A)
+
+A = np.arange(20).reshape(4, 5)
+sub_copy = A[:2, :3].copy()
+sub_copy[0, 0] = -100
+print()
+print("A after modifying a copy =")
+print(A)
+print("sub_copy =")
+print(sub_copy)
+```
+
+# 3. Vectorization and Broadcasting
+
+## 3.1 Why vectorization matters
+
+In machine learning we rarely want to process one data point at a time in pure Python loops.
+Instead we formulate operations on full vectors and matrices.
+
+Suppose we want to evaluate the affine function
+
+$$
+f(x) = 3x + 2
+$$
+
+at many points simultaneously.
+
+```{python}
+x = np.linspace(0.0, 1.0, 6)
+y = 3 * x + 2
+
+print("x =", x)
+print("y =", y)
+```
+
+This is both shorter and faster than a Python loop.
+
+## 3.2 Loop versus vectorized formulation
+
+```{python}
+x = np.linspace(0.0, 1.0, 6)
+
+y_loop = np.empty_like(x)
+for i in range(len(x)):
+    y_loop[i] = 3 * x[i] + 2
+
+y_vec = 3 * x + 2
+
+print("y_loop =", y_loop)
+print("y_vec  =", y_vec)
+print("difference =", np.max(np.abs(y_loop - y_vec)))
+```
+
+The vectorized formulation exposes the mathematics more clearly:
+the expression looks like the formula itself.
+
+## 3.3 Broadcasting idea
+
+Broadcasting allows NumPy to combine arrays of compatible shape even when their shapes are not identical.
+
+```{python}
+X = np.array([
+    [1.0, 2.0],
+    [3.0, 4.0],
+    [5.0, 6.0]
+])
+
+b = np.array([10.0, 20.0])
+
+print("X =")
+print(X)
+print()
+print("b =", b)
+print()
+print("X + b =")
+print(X + b)
+```
+
+The vector `b` is broadcast across all rows.
+
+From the machine learning viewpoint this is exactly what happens when one adds a bias vector
+to a batch of hidden activations or feature values.
+
+## 3.4 Broadcasting with column vectors
+
+```{python}
+x = np.array([1.0, 2.0, 3.0])
+x_col = x[:, None]
+x_row = x[None, :]
+
+print("x_col =")
+print(x_col)
+print()
+print("x_row =")
+print(x_row)
+print()
+print("x_col + x_row =")
+print(x_col + x_row)
+```
+
+This creates the matrix whose $(i,j)$-entry is $x_i + x_j$.
+In other words, broadcasting can be used to construct pairwise operations compactly.
+
+## 3.5 A distance-matrix example
+
+For a set of one-dimensional points $x_1, \dots, x_n$, the matrix
+
+$$
+D_{ij} = |x_i - x_j|
+$$
+
+can be built without loops.
+
+```{python}
+x = np.array([0.0, 1.5, 3.0, 5.0])
+D = np.abs(x[:, None] - x[None, :])
+
+print("x =", x)
+print("distance matrix =")
+print(D)
+```
+
+## 3.6 Batch affine maps
+
+If $X \in \mathbb{R}^{n \times d}$ is a dataset and $w \in \mathbb{R}^d$, then
+
+$$
+Xw
+$$
+
+computes the predictions for all $n$ points at once.
+
+```{python}
+X = np.array([
+    [1.0, 2.0],
+    [0.0, 1.0],
+    [3.0, 1.0]
+])
+w = np.array([2.0, -1.0])
+b = 0.5
+
+y = X @ w + b
+print("y =", y)
+```
+
+This is one of the core patterns of the entire course.
+
+## 3.7 Exercises
+
+1. Re-implement a simple vectorized formula using a Python loop.
+2. Add a vector `b` to each row of a matrix `X`.
+3. Construct a matrix of pairwise differences using broadcasting.
+4. Given a data matrix $X$ and parameter vector $w$, compute $Xw + b$.
+5. Explain in words what broadcasting is doing in each of the examples above.
+
+## 3.8 Worked example
+
+```{python}
+X = np.arange(12, dtype=float).reshape(4, 3)
+b = np.array([10.0, 20.0, 30.0])
+
+print("X =")
+print(X)
+print()
+print("X + b =")
+print(X + b)
+
+u = np.array([1.0, 4.0, 6.0, 8.0])
+pairwise = u[:, None] - u[None, :]
+print()
+print("pairwise differences =")
+print(pairwise)
+```
+
+# 4. Matrix Calculus in NumPy
+
+## 4.1 Matrix-vector products
+
+```{python}
+A = np.array([
+    [1.0, 2.0],
+    [3.0, 4.0]
+])
+x = np.array([1.0, -1.0])
+
+print("A @ x =", A @ x)
+```
+
+The formula
+
+$$
+(Ax)_i = \sum_{j=1}^n A_{ij} x_j
+$$
+
+becomes the very compact expression `A @ x`.
+
+## 4.2 Matrix-matrix products
+
+```{python}
+A = np.array([
+    [1.0, 2.0],
+    [3.0, 4.0]
+])
+B = np.array([
+    [2.0, 0.0],
+    [1.0, 2.0]
+])
+
+print("A @ B =")
+print(A @ B)
+```
+
+## 4.3 Transposition
+
+```{python}
+A = np.array([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0]
+])
+
+print("A =")
+print(A)
+print()
+print("A.T =")
+print(A.T)
+```
+
+The transpose changes rows into columns.
+In optimization and machine learning, transposes appear everywhere:
+normal equations, gradients, covariance matrices, and backpropagation.
+
+## 4.4 Solving linear systems
+
+If we want to solve
+
+$$
+Ax = b,
+$$
+
+then `np.linalg.solve` is the standard tool.
+
+```{python}
+A = np.array([
+    [3.0, 1.0],
+    [1.0, 2.0]
+])
+b = np.array([9.0, 8.0])
+
+x = np.linalg.solve(A, b)
+print("solution x =", x)
+print("A @ x =", A @ x)
+```
+
+## 4.5 Why one should usually avoid explicit inverses
+
+One often sees formulas like
+
+$$
+x = A^{-1}b.
+$$
+
+This is mathematically correct when $A$ is invertible,
+but numerically it is often better to solve the system directly.
+
+```{python}
+A = np.array([
+    [3.0, 1.0],
+    [1.0, 2.0]
+])
+b = np.array([9.0, 8.0])
+
+x_solve = np.linalg.solve(A, b)
+x_inv = np.linalg.inv(A) @ b
+
+print("x_solve =", x_solve)
+print("x_inv   =", x_inv)
+print("difference =", np.linalg.norm(x_solve - x_inv))
+```
+
+The differences are small here, but in more difficult problems direct solving is preferred.
+
+## 4.6 Condition number
+
+The condition number indicates how sensitive a linear system is to perturbations.
+
+```{python}
+A = np.array([
+    [1.0, 1.0],
+    [1.0, 1.0001]
+])
+
+cond = np.linalg.cond(A)
+print("condition number =", cond)
+```
+
+A large condition number warns us that the problem may be numerically unstable.
+
+## 4.7 Eigenvalues and singular values
+
+Although not needed immediately, it is useful to know that NumPy also provides tools for spectral problems.
+
+```{python}
+A = np.array([
+    [2.0, 1.0],
+    [1.0, 2.0]
+])
+
+eigenvalues, eigenvectors = np.linalg.eig(A)
+U, S, VT = np.linalg.svd(A)
+
+print("eigenvalues =", eigenvalues)
+print("singular values =", S)
+```
+
+## 4.8 Exercises
+
+1. Compute a matrix-vector product by hand and verify it in NumPy.
+2. Solve a $2 \times 2$ linear system using `np.linalg.solve`.
+3. Compare `np.linalg.solve(A, b)` with `np.linalg.inv(A) @ b`.
+4. Construct an ill-conditioned matrix and compute its condition number.
+5. Compute the eigenvalues of a symmetric matrix and interpret them geometrically.
+
+## 4.9 Worked example
+
+```{python}
+A = np.array([
+    [4.0, 1.0],
+    [1.0, 3.0]
+])
+b = np.array([1.0, 2.0])
+
+x = np.linalg.solve(A, b)
+print("x =", x)
+print("residual =", np.linalg.norm(A @ x - b))
+
+eigvals, eigvecs = np.linalg.eig(A)
+print("eigvals =", eigvals)
+print("eigvecs =")
+print(eigvecs)
+```
+
+# 5. Aggregation, Statistics, and the `axis` Parameter
+
+## 5.1 Means and sums
+
+Statistics is everywhere in machine learning:
+means, variances, losses, empirical risks, and error metrics.
+
+```{python}
+data = np.array([
+    [1.0, 2.0, 3.0],
+    [2.0, 3.0, 4.0],
+    [3.0, 4.0, 5.0]
+])
+
+print("sum over all entries =", np.sum(data))
+print("mean over all entries =", np.mean(data))
+```
+
+## 5.2 Means along an axis
+
+```{python}
+print("column means =", np.mean(data, axis=0))
+print("row means =", np.mean(data, axis=1))
+```
+
+The meaning of `axis` is worth internalizing.
+
+- `axis=0` means aggregate down the rows, so the result keeps one entry per column.
+- `axis=1` means aggregate across the columns, so the result keeps one entry per row.
+
+## 5.3 Variance and standard deviation
+
+```{python}
+print("column variances =", np.var(data, axis=0))
+print("column std =", np.std(data, axis=0))
+```
+
+In practical machine learning, these are central for normalization and data exploration.
+
+## 5.4 Standardization
+
+Given a feature matrix $X$, one often transforms each column by
+
+$$
+\widetilde X_{:,j} = \frac{X_{:,j} - \mu_j}{\sigma_j}.
+$$
+
+```{python}
+X = np.array([
+    [1.0, 10.0],
+    [2.0, 20.0],
+    [3.0, 30.0],
+    [4.0, 40.0]
+])
+
+mu = np.mean(X, axis=0)
+sigma = np.std(X, axis=0)
+X_std = (X - mu) / sigma
+
+print("mu =", mu)
+print("sigma =", sigma)
+print("X_std =")
+print(X_std)
+print("mean of standardized columns =", np.mean(X_std, axis=0))
+print("std of standardized columns =", np.std(X_std, axis=0))
+```
+
+## 5.5 Loss functions as aggregations
+
+For regression, the mean squared error is
+
+$$
+\mathrm{MSE}(y, \hat y) = \frac{1}{n}\sum_{i=1}^n (y_i - \hat y_i)^2.
+$$
+
+```{python}
+y = np.array([2.0, 3.0, 5.0, 4.0])
+y_pred = np.array([2.2, 2.8, 4.7, 4.3])
+
+mse = np.mean((y - y_pred)**2)
+mae = np.mean(np.abs(y - y_pred))
+
+print("MSE =", mse)
+print("MAE =", mae)
+```
+
+## 5.6 Exercises
+
+1. Compute the row sums and column sums of a matrix.
+2. Standardize a small matrix and verify the result numerically.
+3. Implement the mean squared error by hand.
+4. Compare MSE and MAE on the same prediction vector.
+5. Explain why standardization is done featurewise rather than over all entries at once.
+
+## 5.7 Worked example
+
+```{python}
+X = np.array([
+    [2.0, 1.0, 3.0],
+    [4.0, 2.0, 6.0],
+    [6.0, 3.0, 9.0]
+])
+
+print("column sums =", np.sum(X, axis=0))
+print("row sums =", np.sum(X, axis=1))
+
+mu = np.mean(X, axis=0)
+sigma = np.std(X, axis=0)
+Z = (X - mu) / sigma
+
+print("Z =")
+print(Z)
+print("column means of Z =", np.mean(Z, axis=0))
+print("column std of Z =", np.std(Z, axis=0))
+```
+
+# 6. Randomness, Reproducibility, and Synthetic Data
+
+## 6.1 Why randomness matters
+
+Randomness enters machine learning in many places:
+
+- synthetic data generation;
+- random initialization of parameters;
+- train-test splitting;
+- mini-batch sampling;
+- randomized algorithms.
+
+## 6.2 Modern random number generation
+
+The recommended interface is `np.random.default_rng`.
+
+```{python}
+rng = np.random.default_rng(42)
+
+print("uniform random numbers =", rng.random(5))
+print("normal random numbers =", rng.standard_normal(5))
+print("random integers =", rng.integers(0, 10, size=5))
+```
+
+## 6.3 Reproducibility
+
+```{python}
+rng1 = np.random.default_rng(123)
+rng2 = np.random.default_rng(123)
+
+print(rng1.standard_normal(4))
+print(rng2.standard_normal(4))
+```
+
+The outputs agree because the seeds agree.
+
+## 6.4 A synthetic linear regression dataset
+
+```{python}
+rng = np.random.default_rng(0)
+
+n = 100
+x = np.linspace(0.0, 10.0, n)
+noise = rng.normal(0.0, 1.0, size=n)
+y = 2.5 * x - 1.0 + noise
+
+plt.figure(figsize=(6, 4))
+plt.scatter(x, y, s=20)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Synthetic linear regression data")
+plt.show()
+```
+
+## 6.5 A synthetic classification dataset
+
+```{python}
+rng = np.random.default_rng(0)
+
+n0 = 80
+n1 = 80
+
+X0 = rng.normal(loc=[-1.0, -1.0], scale=0.8, size=(n0, 2))
+X1 = rng.normal(loc=[1.0, 1.0], scale=0.8, size=(n1, 2))
+
+X = np.vstack([X0, X1])
+y = np.concatenate([np.zeros(n0), np.ones(n1)])
+
+plt.figure(figsize=(6, 4))
+plt.scatter(X0[:, 0], X0[:, 1], label="class 0", s=20)
+plt.scatter(X1[:, 0], X1[:, 1], label="class 1", s=20)
+plt.legend()
+plt.xlabel("x1")
+plt.ylabel("x2")
+plt.title("Synthetic binary classification data")
+plt.show()
+```
+
+## 6.6 Train-test splitting by permutation
+
+```{python}
+rng = np.random.default_rng(7)
+n = len(X)
+perm = rng.permutation(n)
+
+train_size = int(0.8 * n)
+train_idx = perm[:train_size]
+test_idx = perm[train_size:]
+
+X_train = X[train_idx]
+X_test = X[test_idx]
+y_train = y[train_idx]
+y_test = y[test_idx]
+
+print("X_train.shape =", X_train.shape)
+print("X_test.shape =", X_test.shape)
+```
+
+## 6.7 Exercises
+
+1. Generate a random vector with a fixed seed and verify reproducibility.
+2. Create a synthetic regression dataset with noise.
+3. Create a synthetic binary classification dataset in two dimensions.
+4. Split a dataset into train and test subsets using a permutation.
+5. Explain why fixed seeds are useful in teaching and experimentation.
+
+## 6.8 Worked example
+
+```{python}
+rng = np.random.default_rng(2024)
+
+X = rng.normal(size=(12, 3))
+y = (X[:, 0] - X[:, 1] > 0).astype(int)
+
+perm = rng.permutation(len(X))
+split = 8
+
+X_train = X[perm[:split]]
+X_test = X[perm[split:]]
+y_train = y[perm[:split]]
+y_test = y[perm[split:]]
+
+print("y_train =", y_train)
+print("y_test =", y_test)
+```
+
+# 7. pandas as a Data Interface
+
+## 7.1 Why pandas belongs after NumPy
+
+For mathematically trained students it is usually more effective to learn NumPy first.
+Once arrays, shapes, and matrix operations are conceptually clear,
+pandas can be introduced as an interface for real-world tabular data.
+
+The key pedagogical message is:
+
+> **pandas handles labeled tabular data; NumPy performs the mathematical core.**
+
+## 7.2 A small example DataFrame
+
+```{python}
+df = pd.DataFrame({
+    "age": [22, 27, 31, 45, 38, 29],
+    "income": [42000, 51000, 64000, 83000, 72000, 56000],
+    "hours_studied": [10, 12, 7, 4, 6, 9],
+    "passed": [1, 1, 0, 0, 1, 1]
+})
+
+df
+```
+
+A DataFrame can be viewed as a matrix together with labels and heterogeneous metadata.
+
+## 7.3 Selecting columns and rows
+
+```{python}
+print(df["age"])
+print()
+print(df[["age", "income"]])
+print()
+print(df.iloc[0])
+print()
+print(df.loc[0:2, ["age", "passed"]])
+```
+
+## 7.4 Filtering rows
+
+```{python}
+filtered = df[df["income"] > 55000]
+filtered
+```
+
+## 7.5 Missing values
+
+```{python}
+df_missing = df.copy()
+df_missing.loc[2, "income"] = np.nan
+df_missing.loc[4, "hours_studied"] = np.nan
+
+print(df_missing)
+print()
+print(df_missing.isna())
+print()
+print(df_missing.dropna())
+```
+
+## 7.6 From pandas to NumPy
+
+This is the crucial transition.
+
+```{python}
+clean = df_missing.dropna()
+
+X = clean[["age", "income", "hours_studied"]].to_numpy(dtype=float)
+y = clean["passed"].to_numpy(dtype=float)
+
+print("X =")
+print(X)
+print()
+print("y =", y)
+print("X.shape =", X.shape)
+print("y.shape =", y.shape)
+```
+
+Once we reach `X` and `y`, we are back in the mathematical world of arrays.
+
+## 7.7 Reading a CSV file
+
+The next cell assumes that a file named `ml_dataset.csv` is available in the same directory.
+If that file is not present, the fallback code creates a simple example dataset instead.
+
+```{python}
+from pathlib import Path
+
+csv_path = Path("ml_dataset.csv")
+
+if csv_path.exists():
+    df_csv = pd.read_csv(csv_path)
+else:
+    rng = np.random.default_rng(42)
+    n = 120
+    df_csv = pd.DataFrame({
+        "age": rng.integers(18, 65, size=n),
+        "income": rng.normal(55000, 14000, size=n),
+        "hours_studied": rng.normal(8, 2, size=n),
+    })
+    logits = (
+        -4
+        + 0.00005 * df_csv["income"]
+        + 0.25 * df_csv["hours_studied"]
+        - 0.02 * df_csv["age"]
+    )
+    probs = 1 / (1 + np.exp(-logits))
+    df_csv["target"] = (rng.random(n) < probs).astype(int)
+
+df_csv.head()
+```
+
+## 7.8 Basic exploratory analysis
+
+```{python}
+print(df_csv.describe())
+print()
+print(df_csv.dtypes)
+```
+
+```{python}
+numeric_cols = [c for c in df_csv.columns if pd.api.types.is_numeric_dtype(df_csv[c])]
+df_csv[numeric_cols].hist(figsize=(10, 6))
+plt.suptitle("Histograms of numeric columns")
+plt.tight_layout()
+plt.show()
+```
+
+## 7.9 Exercises
+
+1. Create a DataFrame with at least three columns and six rows.
+2. Select two columns and convert them to a NumPy array.
+3. Introduce missing values and remove them.
+4. Filter a DataFrame by a threshold condition.
+5. Explain the sentence “pandas is the interface, NumPy is the engine.”
+
+## 7.10 Worked example
+
+```{python}
+df_small = pd.DataFrame({
+    "feature_1": [1.0, 2.0, 3.0, 4.0],
+    "feature_2": [10.0, 20.0, 30.0, 40.0],
+    "label": [0, 1, 0, 1]
+})
+
+X = df_small[["feature_1", "feature_2"]].to_numpy()
+y = df_small["label"].to_numpy()
+
+print("X =")
+print(X)
+print("y =", y)
+```
+
+# 8. Linear Regression from First Principles
+
+## 8.1 Problem statement
+
+Suppose we are given data
+
+$$
+(x_i, y_i) \in \mathbb{R}^d \times \mathbb{R},
+\quad i = 1, \dots, n.
+$$
+
+We collect the inputs as rows of a matrix
+
+$$
+X \in \mathbb{R}^{n \times d}
+$$
+
+and the outputs as a vector
+
+$$
+y \in \mathbb{R}^n.
+$$
+
+A linear model predicts
+
+$$
+\hat y = Xw.
+$$
+
+The least squares objective is
+
+$$
+f(w) = \|Xw - y\|_2^2.
+$$
+
+Our goal is to find
+
+$$
+w^\ast = \arg\min_{w \in \mathbb{R}^d} \|Xw - y\|_2^2.
+$$
+
+## 8.2 Derivation of the normal equation
+
+Expanding the square gives
+
+$$
+f(w) = (Xw - y)^\top (Xw - y).
+$$
+
+Differentiating with respect to $w$ yields
+
+$$
+\nabla f(w) = 2X^\top(Xw - y).
+$$
+
+At a critical point we therefore require
+
+$$
+X^\top(Xw - y) = 0,
+$$
+
+hence
+
+$$
+X^\top X w = X^\top y.
+$$
+
+This is the **normal equation**.
+
+If $X^\top X$ is invertible, the minimizer is
+
+$$
+w^\ast = (X^\top X)^{-1} X^\top y.
+$$
+
+Computationally, we prefer the solve form
+
+$$
+w^\ast = \mathrm{solve}(X^\top X,\; X^\top y).
+$$
+
+## 8.3 A small one-dimensional example
+
+```{python}
+X_raw = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
+y = np.array([1.8, 2.9, 3.7, 5.1, 5.9])
+
+X = np.column_stack([np.ones(len(X_raw)), X_raw])
+
+print("X =")
+print(X)
+print("y =", y)
+```
+
+The first column of ones corresponds to the intercept term.
+
+## 8.4 Solving the normal equation
+
+```{python}
+w = np.linalg.solve(X.T @ X, X.T @ y)
+print("w =", w)
+```
+
+## 8.5 Predictions and residuals
+
+```{python}
+y_pred = X @ w
+residuals = y - y_pred
+
+print("predictions =", y_pred)
+print("residuals =", residuals)
+print("MSE =", np.mean(residuals**2))
+```
+
+## 8.6 Visualization
+
+```{python}
+plt.figure(figsize=(6, 4))
+plt.scatter(X_raw, y, label="data")
+plt.plot(X_raw, y_pred, label="least squares fit")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.title("Linear regression fit")
+plt.show()
+```
+
+## 8.7 Geometric interpretation
+
+The normal equation
+
+$$
+X^\top(Xw^\ast - y)=0
+$$
+
+says that the residual vector $r = y - Xw^\ast$ is orthogonal to the column space of $X$.
+Thus $Xw^\ast$ is the orthogonal projection of $y$ onto the column space of $X$.
+
+This is one of the deepest conceptual points in the course.
+Least squares is not merely an algorithm; it is an orthogonal projection problem.
+
+## 8.8 A synthetic multi-feature example
+
+```{python}
+rng = np.random.default_rng(0)
+
+n = 200
+d = 3
+
+X_features = rng.normal(size=(n, d))
+true_w = np.array([1.5, -2.0, 0.75])
+noise = 0.3 * rng.standard_normal(n)
+y = X_features @ true_w + noise
+
+X = X_features
+w_hat = np.linalg.solve(X.T @ X, X.T @ y)
+
+print("true_w =", true_w)
+print("w_hat  =", w_hat)
+print("estimation error =", np.linalg.norm(w_hat - true_w))
+```
+
+## 8.9 Regression with an explicit intercept
+
+```{python}
+X_aug = np.column_stack([np.ones(n), X_features])
+w_aug = np.linalg.solve(X_aug.T @ X_aug, X_aug.T @ y)
+
+print("w_aug =", w_aug)
+```
+
+The first component is the intercept.
+
+## 8.10 Exercises
+
+1. Derive the normal equation carefully starting from $f(w)=\|Xw-y\|_2^2$.
+2. Implement least squares on a small one-dimensional dataset.
+3. Add noise to the outputs and observe how the solution changes.
+4. Compare the true coefficient vector to the estimated one on synthetic data.
+5. Explain the projection interpretation in your own words.
+
+## 8.11 Worked solution example
+
+```{python}
+rng = np.random.default_rng(5)
+
+n = 80
+x = np.linspace(-2, 2, n)
+y = 1.2 + 2.7 * x + 0.5 * rng.standard_normal(n)
+
+X = np.column_stack([np.ones(n), x])
+w = np.linalg.solve(X.T @ X, X.T @ y)
+y_pred = X @ w
+
+print("estimated parameters =", w)
+print("MSE =", np.mean((y - y_pred)**2))
+
+plt.figure(figsize=(6, 4))
+plt.scatter(x, y, s=18)
+plt.plot(x, y_pred)
+plt.title("Worked least squares example")
+plt.show()
+```
+
+# 9. Gradient Descent for Least Squares
+
+## 9.1 Why gradient descent?
+
+The normal equation is elegant, but direct linear solves are not the only way to optimize an objective.
+Machine learning often relies on iterative optimization.
+
+For least squares we consider the empirical risk
+
+$$
+f(w) = \frac{1}{n}\|Xw - y\|_2^2.
+$$
+
+Its gradient is
+
+$$
+\nabla f(w) = \frac{2}{n}X^\top(Xw - y).
+$$
+
+The gradient descent iteration is
+
+$$
+w_{k+1} = w_k - \eta \nabla f(w_k),
+$$
+
+where $\eta > 0$ is the learning rate.
+
+## 9.2 Implementation
+
+```{python}
+rng = np.random.default_rng(0)
+
+n = 120
+d = 2
+X = rng.normal(size=(n, d))
+true_w = np.array([2.0, -1.0])
+y = X @ true_w + 0.2 * rng.standard_normal(n)
+
+w = np.zeros(d)
+eta = 0.1
+num_steps = 200
+
+loss_history = []
+
+for _ in range(num_steps):
+    grad = (2 / n) * X.T @ (X @ w - y)
+    w = w - eta * grad
+    loss = np.mean((X @ w - y)**2)
+    loss_history.append(loss)
+
+print("estimated w =", w)
+print("true_w =", true_w)
+print("final loss =", loss_history[-1])
+```
+
+## 9.3 Convergence plot
+
+```{python}
+plt.figure(figsize=(6, 4))
+plt.plot(loss_history)
+plt.xlabel("iteration")
+plt.ylabel("MSE")
+plt.title("Gradient descent convergence")
+plt.show()
+```
+
+## 9.4 Comparison with closed-form least squares
+
+```{python}
+w_closed = np.linalg.solve(X.T @ X, X.T @ y)
+
+print("w_closed =", w_closed)
+print("w_gd     =", w)
+print("difference =", np.linalg.norm(w_closed - w))
+```
+
+## 9.5 Learning rate effects
+
+The choice of learning rate matters.
+
+```{python}
+etas = [0.01, 0.05, 0.2]
+histories = []
+
+for eta in etas:
+    w_eta = np.zeros(d)
+    hist = []
+    for _ in range(100):
+        grad = (2 / n) * X.T @ (X @ w_eta - y)
+        w_eta -= eta * grad
+        hist.append(np.mean((X @ w_eta - y)**2))
+    histories.append(hist)
+
+plt.figure(figsize=(6, 4))
+for eta, hist in zip(etas, histories):
+    plt.plot(hist, label=f"eta={eta}")
+plt.legend()
+plt.xlabel("iteration")
+plt.ylabel("MSE")
+plt.title("Effect of the learning rate")
+plt.show()
+```
+
+## 9.6 Gradient checking idea
+
+A very useful debugging principle is to compare an analytic gradient with a finite-difference approximation.
+
+For a scalar function $f:\mathbb{R}^d \to \mathbb{R}$ and a small perturbation $h$,
+one can compare
+
+$$
+\frac{f(w + h e_j) - f(w - h e_j)}{2h}
+$$
+
+to the $j$-th component of the analytic gradient.
+
+```{python}
+def least_squares_loss(w, X, y):
+    return np.mean((X @ w - y)**2)
+
+def least_squares_grad(w, X, y):
+    n = len(y)
+    return (2 / n) * X.T @ (X @ w - y)
+
+w0 = np.array([0.3, -0.2])
+g = least_squares_grad(w0, X, y)
+
+h = 1e-6
+g_fd = np.zeros_like(w0)
+for j in range(len(w0)):
+    e = np.zeros_like(w0)
+    e[j] = 1.0
+    g_fd[j] = (
+        least_squares_loss(w0 + h * e, X, y)
+        - least_squares_loss(w0 - h * e, X, y)
+    ) / (2 * h)
+
+print("analytic grad =", g)
+print("finite diff grad =", g_fd)
+print("difference =", np.linalg.norm(g - g_fd))
+```
+
+## 9.7 Exercises
+
+1. Derive the gradient of the least squares loss.
+2. Implement gradient descent for a synthetic regression problem.
+3. Compare the result to the normal equation solution.
+4. Experiment with too-small and too-large learning rates.
+5. Use a finite-difference test to validate your gradient formula.
+
+## 9.8 Worked example
+
+```{python}
+rng = np.random.default_rng(11)
+
+n = 150
+d = 3
+X = rng.normal(size=(n, d))
+w_true = np.array([1.0, -1.5, 0.5])
+y = X @ w_true + 0.1 * rng.normal(size=n)
+
+w = np.zeros(d)
+eta = 0.08
+losses = []
+
+for _ in range(300):
+    grad = (2 / n) * X.T @ (X @ w - y)
+    w -= eta * grad
+    losses.append(np.mean((X @ w - y)**2))
+
+print("w_true =", w_true)
+print("w =", w)
+
+plt.figure(figsize=(6, 4))
+plt.plot(losses)
+plt.title("Worked gradient descent example")
+plt.xlabel("iteration")
+plt.ylabel("MSE")
+plt.show()
+```
+
+# 10. Binary Classification and Logistic Regression
+
+## 10.1 Why linear regression is not enough for classification
+
+If the target values are $0$ and $1$, then least squares can still be used,
+but it does not model probabilities naturally and can produce values outside the interval $[0,1]$.
+
+To model probabilities we use the sigmoid function
+
+$$
+\sigma(t) = \frac{1}{1 + e^{-t}}.
+$$
+
+## 10.2 The sigmoid function
+
+```{python}
+def sigmoid(t):
+    return 1 / (1 + np.exp(-t))
+
+t = np.linspace(-8, 8, 400)
+
+plt.figure(figsize=(6, 4))
+plt.plot(t, sigmoid(t))
+plt.xlabel("t")
+plt.ylabel("sigma(t)")
+plt.title("Sigmoid function")
+plt.show()
+```
+
+## 10.3 Logistic model
+
+Given $x \in \mathbb{R}^d$ and parameter vector $w \in \mathbb{R}^d$,
+the logistic model is
+
+$$
+p(y=1 \mid x) = \sigma(x^\top w).
+$$
+
+For a full dataset with design matrix $X$, the vector of predicted probabilities is
+
+$$
+p = \sigma(Xw),
+$$
+
+where the sigmoid is applied componentwise.
+
+## 10.4 Binary cross-entropy loss
+
+If $y_i \in \{0,1\}$ and $p_i$ is the predicted probability of class $1$,
+the average logistic loss is
+
+$$
+L(w) = -\frac{1}{n}\sum_{i=1}^n \left(
+y_i \log p_i + (1-y_i)\log(1-p_i)
+\right).
+$$
+
+This is also called binary cross-entropy.
+
+## 10.5 Gradient of the logistic loss
+
+A standard calculation shows that
+
+$$
+\nabla L(w) = \frac{1}{n} X^\top (p - y),
+$$
+
+where
+
+$$
+p = \sigma(Xw).
+$$
+
+This compact formula is one of the main reasons logistic regression is such an elegant teaching example.
+
+## 10.6 Synthetic dataset
+
+```{python}
+rng = np.random.default_rng(0)
+
+n0 = 120
+n1 = 120
+
+X0 = rng.normal(loc=[-1.5, -1.0], scale=0.9, size=(n0, 2))
+X1 = rng.normal(loc=[1.0, 1.3], scale=0.9, size=(n1, 2))
+
+X_raw = np.vstack([X0, X1])
+y = np.concatenate([np.zeros(n0), np.ones(n1)])
+
+plt.figure(figsize=(6, 4))
+plt.scatter(X0[:, 0], X0[:, 1], s=18, label="class 0")
+plt.scatter(X1[:, 0], X1[:, 1], s=18, label="class 1")
+plt.legend()
+plt.xlabel("x1")
+plt.ylabel("x2")
+plt.title("Binary classification dataset")
+plt.show()
+```
+
+## 10.7 Add the intercept column
+
+```{python}
+X = np.column_stack([np.ones(len(X_raw)), X_raw])
+print("X.shape =", X.shape)
+print("y.shape =", y.shape)
+```
+
+## 10.8 Binary cross-entropy implementation
+
+```{python}
+def binary_cross_entropy(y_true, y_prob):
+    eps = 1e-12
+    y_prob = np.clip(y_prob, eps, 1 - eps)
+    return -np.mean(
+        y_true * np.log(y_prob)
+        + (1 - y_true) * np.log(1 - y_prob)
+    )
+```
+
+## 10.9 Gradient descent for logistic regression
+
+```{python}
+n, d = X.shape
+w = np.zeros(d)
+eta = 0.2
+num_steps = 1000
+
+history = []
+
+for _ in range(num_steps):
+    p = sigmoid(X @ w)
+    grad = (X.T @ (p - y)) / n
+    w -= eta * grad
+    history.append(binary_cross_entropy(y, p))
+
+print("w =", w)
+print("final loss =", history[-1])
+```
+
+## 10.10 Loss curve
+
+```{python}
+plt.figure(figsize=(6, 4))
+plt.plot(history)
+plt.xlabel("iteration")
+plt.ylabel("binary cross-entropy")
+plt.title("Logistic regression training curve")
+plt.show()
+```
+
+## 10.11 Classification accuracy
+
+```{python}
+p = sigmoid(X @ w)
+y_pred = (p >= 0.5).astype(int)
+
+accuracy = np.mean(y_pred == y)
+print("accuracy =", accuracy)
+```
+
+## 10.12 Decision boundary visualization
+
+For a model
+
+$$
+p(y=1 \mid x) = \sigma(w_0 + w_1 x_1 + w_2 x_2),
+$$
+
+the decision boundary at threshold $0.5$ is
+
+$$
+w_0 + w_1 x_1 + w_2 x_2 = 0.
+$$
+
+```{python}
+plt.figure(figsize=(6, 4))
+plt.scatter(X0[:, 0], X0[:, 1], s=18, label="class 0")
+plt.scatter(X1[:, 0], X1[:, 1], s=18, label="class 1")
+
+x1_min, x1_max = X_raw[:, 0].min() - 1, X_raw[:, 0].max() + 1
+grid_x1 = np.linspace(x1_min, x1_max, 200)
+
+if abs(w[2]) > 1e-12:
+    grid_x2 = -(w[0] + w[1] * grid_x1) / w[2]
+    plt.plot(grid_x1, grid_x2, label="decision boundary")
+
+plt.xlabel("x1")
+plt.ylabel("x2")
+plt.legend()
+plt.title("Logistic regression decision boundary")
+plt.show()
+```
+
+## 10.13 Confusion counts
+
+```{python}
+tp = np.sum((y_pred == 1) & (y == 1))
+tn = np.sum((y_pred == 0) & (y == 0))
+fp = np.sum((y_pred == 1) & (y == 0))
+fn = np.sum((y_pred == 0) & (y == 1))
+
+print("TP =", tp)
+print("TN =", tn)
+print("FP =", fp)
+print("FN =", fn)
+```
+
+## 10.14 Exercises
+
+1. Derive the logistic regression gradient formula.
+2. Train logistic regression on a synthetic 2D dataset.
+3. Plot the decision boundary.
+4. Compute the accuracy and confusion counts.
+5. Explain why clipping probabilities is useful in the cross-entropy implementation.
+
+## 10.15 Worked example
+
+```{python}
+rng = np.random.default_rng(17)
+
+n = 200
+X_raw = rng.normal(size=(n, 2))
+true_w = np.array([-0.5, 2.0, -1.2])
+
+X = np.column_stack([np.ones(n), X_raw])
+p_true = sigmoid(X @ true_w)
+y = (rng.random(n) < p_true).astype(float)
+
+w = np.zeros(X.shape[1])
+eta = 0.1
+losses = []
+
+for _ in range(1200):
+    p = sigmoid(X @ w)
+    grad = X.T @ (p - y) / n
+    w -= eta * grad
+    losses.append(binary_cross_entropy(y, p))
+
+print("true_w =", true_w)
+print("estimated_w =", w)
+print("accuracy =", np.mean((sigmoid(X @ w) >= 0.5) == y))
+
+plt.figure(figsize=(6, 4))
+plt.plot(losses)
+plt.title("Worked logistic regression example")
+plt.xlabel("iteration")
+plt.ylabel("loss")
+plt.show()
+```
+
+# 11. Data Preprocessing, Features, and Shapes
+
+## 11.1 Why preprocessing matters
+
+A model is not only determined by its optimization method.
+The representation of the data matters.
+
+Common preprocessing tasks include:
+
+- selecting relevant columns;
+- handling missing values;
+- encoding categorical information;
+- centering and scaling;
+- constructing interaction features;
+- splitting data into training and testing sets.
+
+## 11.2 Reshape, flatten, and new axes
+
+```{python}
+x = np.arange(12)
+X = x.reshape(3, 4)
+
+print("x =", x)
+print("X =")
+print(X)
+print("x.shape =", x.shape)
+print("X.shape =", X.shape)
+print("flatten =", X.flatten())
+print("ravel   =", X.ravel())
+print("x[:, None].shape =", np.array([1, 2, 3])[:, None].shape)
+```
+
+## 11.3 Feature scaling
+
+```{python}
+rng = np.random.default_rng(9)
+
+X = np.column_stack([
+    rng.normal(0, 1, size=200),
+    rng.normal(1000, 250, size=200),
+    rng.normal(0.01, 0.003, size=200)
+])
+
+mu = np.mean(X, axis=0)
+sigma = np.std(X, axis=0)
+Z = (X - mu) / sigma
+
+print("original feature scales:")
+print(np.std(X, axis=0))
+print("scaled feature scales:")
+print(np.std(Z, axis=0))
+```
+
+Scaling is often crucial for gradient-based optimization because poorly scaled features can slow convergence.
+
+## 11.4 Train-test split using pandas
+
+```{python}
+df = df_csv.copy()
+
+numeric_cols = [c for c in df.columns if pd.api.types.is_numeric_dtype(df[c])]
+target_col = "target" if "target" in df.columns else numeric_cols[-1]
+feature_cols = [c for c in numeric_cols if c != target_col]
+
+df_model = df[feature_cols + [target_col]].dropna()
+
+X = df_model[feature_cols].to_numpy(dtype=float)
+y = df_model[target_col].to_numpy(dtype=float)
+
+rng = np.random.default_rng(123)
+perm = rng.permutation(len(X))
+split = int(0.8 * len(X))
+
+X_train = X[perm[:split]]
+X_test = X[perm[split:]]
+y_train = y[perm[:split]]
+y_test = y[perm[split:]]
+
+print("feature columns =", feature_cols)
+print("X_train.shape =", X_train.shape)
+print("X_test.shape =", X_test.shape)
+```
+
+## 11.5 Polynomial features in one variable
+
+A linear model becomes nonlinear in the original input if we augment the feature map.
+
+For one variable $x$, define
+
+$$
+\phi(x) = (1, x, x^2, x^3).
+$$
+
+Then the model
+
+$$
+\hat y = w_0 + w_1 x + w_2 x^2 + w_3 x^3
+$$
+
+is still linear in the parameter vector $w$.
+
+```{python}
+x = np.linspace(-2, 2, 100)
+Phi = np.column_stack([np.ones_like(x), x, x**2, x**3])
+
+print("Phi.shape =", Phi.shape)
+print(Phi[:5])
+```
+
+## 11.6 A polynomial regression example
+
+```{python}
+rng = np.random.default_rng(0)
+
+x = np.linspace(-2, 2, 150)
+y_true = 1 - x + 2 * x**2 - 0.5 * x**3
+y = y_true + 0.8 * rng.standard_normal(len(x))
+
+Phi = np.column_stack([np.ones_like(x), x, x**2, x**3])
+w = np.linalg.solve(Phi.T @ Phi, Phi.T @ y)
+y_pred = Phi @ w
+
+print("estimated coefficients =", w)
+
+plt.figure(figsize=(6, 4))
+plt.scatter(x, y, s=15, label="data")
+plt.plot(x, y_true, label="true function")
+plt.plot(x, y_pred, label="polynomial fit")
+plt.legend()
+plt.title("Polynomial regression")
+plt.show()
+```
+
+## 11.7 Exercises
+
+1. Explain the difference between `reshape`, `flatten`, and `ravel`.
+2. Standardize a feature matrix and verify columnwise mean $0$ and standard deviation $1$.
+3. Build polynomial features up to degree $3$ for a one-dimensional dataset.
+4. Split a dataset into train and test parts.
+5. Explain why feature engineering can make a linear model nonlinear in the original input.
+
+## 11.8 Worked example
+
+```{python}
+x = np.linspace(-1, 1, 8)
+Phi = np.column_stack([np.ones_like(x), x, x**2])
+print("Phi =")
+print(Phi)
+
+mu = np.mean(Phi[:, 1:], axis=0)
+sigma = np.std(Phi[:, 1:], axis=0)
+Phi_scaled = Phi.copy()
+Phi_scaled[:, 1:] = (Phi_scaled[:, 1:] - mu) / sigma
+
+print()
+print("Phi_scaled =")
+print(Phi_scaled)
+```
+
+# 12. Regularization and Overfitting
+
+## 12.1 Motivation
+
+When a model is too flexible relative to the amount of data, it may fit noise rather than structure.
+This phenomenon is called overfitting.
+
+One way to control complexity is regularization.
+
+## 12.2 Ridge regression
+
+The ridge objective is
+
+$$
+f_\lambda(w) = \|Xw - y\|_2^2 + \lambda \|w\|_2^2
+$$
+
+for $\lambda > 0$.
+
+Differentiating gives
+
+$$
+\nabla f_\lambda(w) = 2X^\top(Xw - y) + 2\lambda w.
+$$
+
+The normal equation becomes
+
+$$
+(X^\top X + \lambda I)w = X^\top y.
+$$
+
+## 12.3 Ridge implementation
+
+```{python}
+rng = np.random.default_rng(0)
+
+n = 60
+x = np.linspace(-3, 3, n)
+y_true = np.sin(x)
+y = y_true + 0.35 * rng.standard_normal(n)
+
+degree = 12
+Phi = np.column_stack([x**k for k in range(degree + 1)])
+
+lam_values = [0.0, 1e-3, 1e-1, 1.0]
+
+plt.figure(figsize=(7, 5))
+plt.scatter(x, y, s=18, label="data")
+
+for lam in lam_values:
+    A = Phi.T @ Phi + lam * np.eye(Phi.shape[1])
+    w = np.linalg.solve(A, Phi.T @ y)
+    y_pred = Phi @ w
+    plt.plot(x, y_pred, label=f"lambda={lam}")
+
+plt.plot(x, y_true, label="true sin(x)", linewidth=2)
+plt.legend()
+plt.title("Ridge regularization on polynomial regression")
+plt.show()
+```
+
+## 12.4 Train-test perspective
+
+A model can have very small training error and much worse test error.
+That discrepancy is a practical sign of overfitting.
+
+```{python}
+rng = np.random.default_rng(1)
+
+perm = rng.permutation(n)
+split = int(0.7 * n)
+train_idx = perm[:split]
+test_idx = perm[split:]
+
+x_train = x[train_idx]
+y_train = y[train_idx]
+x_test = x[test_idx]
+y_test = y[test_idx]
+
+Phi_train = np.column_stack([x_train**k for k in range(degree + 1)])
+Phi_test = np.column_stack([x_test**k for k in range(degree + 1)])
+
+for lam in [0.0, 1e-3, 1e-2, 1e-1, 1.0]:
+    A = Phi_train.T @ Phi_train + lam * np.eye(Phi_train.shape[1])
+    w = np.linalg.solve(A, Phi_train.T @ y_train)
+    train_mse = np.mean((Phi_train @ w - y_train)**2)
+    test_mse = np.mean((Phi_test @ w - y_test)**2)
+    print(f"lambda={lam:>5}: train_mse={train_mse:.4f}, test_mse={test_mse:.4f}")
+```
+
+## 12.5 Exercises
+
+1. Derive the ridge normal equation.
+2. Fit a high-degree polynomial with and without regularization.
+3. Compare train and test errors for different values of $\lambda$.
+4. Explain why ridge can improve generalization.
+5. Discuss whether the intercept should always be regularized in practical applications.
+
+## 12.6 Worked example
+
+```{python}
+rng = np.random.default_rng(2)
+
+x = np.linspace(-2, 2, 50)
+y = np.cos(2 * x) + 0.2 * rng.normal(size=len(x))
+Phi = np.column_stack([x**k for k in range(9)])
+
+for lam in [0.0, 0.01, 0.1]:
+    w = np.linalg.solve(Phi.T @ Phi + lam * np.eye(Phi.shape[1]), Phi.T @ y)
+    print(f"lambda={lam}, coefficient norm={np.linalg.norm(w):.3f}")
+```
+
+# 13. Mini-Batches and Stochastic Ideas
+
+## 13.1 From full gradients to sampled gradients
+
+For large datasets, computing the full gradient at every step can be expensive.
+Instead one can approximate it by sampling a subset of observations.
+
+This leads to mini-batch gradient methods.
+
+## 13.2 A simple batch sampler
+
+```{python}
+rng = np.random.default_rng(0)
+
+n = 500
+d = 4
+X = rng.normal(size=(n, d))
+w_true = np.array([1.0, -2.0, 0.5, 1.5])
+y = X @ w_true + 0.5 * rng.normal(size=n)
+
+def sample_minibatch(X, y, batch_size, rng):
+    idx = rng.choice(len(X), size=batch_size, replace=False)
+    return X[idx], y[idx]
+
+Xb, yb = sample_minibatch(X, y, batch_size=16, rng=rng)
+print("Xb.shape =", Xb.shape)
+print("yb.shape =", yb.shape)
+```
+
+## 13.3 Mini-batch gradient descent for least squares
+
+```{python}
+rng = np.random.default_rng(1)
+
+w = np.zeros(d)
+eta = 0.05
+batch_size = 32
+num_steps = 500
+
+losses = []
+
+for _ in range(num_steps):
+    Xb, yb = sample_minibatch(X, y, batch_size=batch_size, rng=rng)
+    grad = (2 / len(Xb)) * Xb.T @ (Xb @ w - yb)
+    w -= eta * grad
+    losses.append(np.mean((X @ w - y)**2))
+
+print("estimated w =", w)
+print("true w =", w_true)
+```
+
+## 13.4 Comparison with full-batch gradient descent
+
+```{python}
+w_full = np.zeros(d)
+losses_full = []
+
+for _ in range(num_steps):
+    grad_full = (2 / n) * X.T @ (X @ w_full - y)
+    w_full -= eta * grad_full
+    losses_full.append(np.mean((X @ w_full - y)**2))
+
+plt.figure(figsize=(6, 4))
+plt.plot(losses, label="mini-batch")
+plt.plot(losses_full, label="full batch")
+plt.legend()
+plt.xlabel("iteration")
+plt.ylabel("MSE on full data")
+plt.title("Mini-batch versus full-batch gradient descent")
+plt.show()
+```
+
+## 13.5 Exercises
+
+1. Implement a mini-batch sampler.
+2. Compare mini-batch and full-batch gradient descent on the same problem.
+3. Change the batch size and observe the effect on the loss curve.
+4. Explain why mini-batch methods introduce noise into the optimization path.
+5. Discuss why stochastic methods are attractive for large-scale machine learning.
+
+## 13.6 Worked example
+
+```{python}
+rng = np.random.default_rng(4)
+
+n = 300
+d = 2
+X = rng.normal(size=(n, d))
+w_true = np.array([2.5, -0.7])
+y = X @ w_true + 0.3 * rng.normal(size=n)
+
+def mbgd(X, y, batch_size, eta, steps, rng):
+    w = np.zeros(X.shape[1])
+    hist = []
+    for _ in range(steps):
+        idx = rng.choice(len(X), size=batch_size, replace=False)
+        Xb = X[idx]
+        yb = y[idx]
+        grad = (2 / batch_size) * Xb.T @ (Xb @ w - yb)
+        w -= eta * grad
+        hist.append(np.mean((X @ w - y)**2))
+    return w, hist
+
+w_mb, hist_mb = mbgd(X, y, batch_size=24, eta=0.08, steps=250, rng=rng)
+print("w_mb =", w_mb)
+```
+
+# 14. A First Neural Network in Pure NumPy
+
+## 14.1 Why neural networks fit naturally into linear algebra
+
+A fully connected neural network is built from repeated compositions of affine maps and nonlinear activation functions.
+This makes it an ideal topic after students are comfortable with matrices, broadcasting, and vectorization.
+
+We consider a network with one hidden layer:
+
+$$
+H = \phi(XW_1 + b_1),
+$$
+
+$$
+\hat Y = HW_2 + b_2.
+$$
+
+Here
+
+- $X \in \mathbb{R}^{n \times d}$ is the input matrix;
+- $W_1 \in \mathbb{R}^{d \times h}$ is the first weight matrix;
+- $b_1 \in \mathbb{R}^{h}$ is the hidden bias;
+- $H \in \mathbb{R}^{n \times h}$ is the hidden representation;
+- $W_2 \in \mathbb{R}^{h \times m}$ is the second weight matrix;
+- $b_2 \in \mathbb{R}^{m}$ is the output bias.
+
+## 14.2 Activation functions
+
+We begin with the ReLU function
+
+$$
+\mathrm{ReLU}(t) = \max(0, t).
+$$
+
+```{python}
+def relu(x):
+    return np.maximum(0, x)
+
+t = np.linspace(-3, 3, 400)
+
+plt.figure(figsize=(6, 4))
+plt.plot(t, relu(t))
+plt.xlabel("t")
+plt.ylabel("ReLU(t)")
+plt.title("ReLU activation")
+plt.show()
+```
+
+## 14.3 Forward pass on XOR-style data
+
+```{python}
+rng = np.random.default_rng(0)
+
+X = np.array([
+    [0.0, 0.0],
+    [0.0, 1.0],
+    [1.0, 0.0],
+    [1.0, 1.0]
+])
+
+y = np.array([[0.0], [1.0], [1.0], [0.0]])
+
+d = 2
+h = 4
+m = 1
+
+W1 = 0.5 * rng.standard_normal((d, h))
+b1 = np.zeros(h)
+W2 = 0.5 * rng.standard_normal((h, m))
+b2 = np.zeros(m)
+
+H = relu(X @ W1 + b1)
+Y = H @ W2 + b2
+
+print("H =")
+print(H)
+print()
+print("Y =")
+print(Y)
+```
+
+## 14.4 Sigmoid output for binary classification
+
+```{python}
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+P = sigmoid(Y)
+print("P =")
+print(P)
+```
+
+## 14.5 Binary cross-entropy for network outputs
+
+```{python}
+def bce_from_logits(logits, y_true):
+    probs = sigmoid(logits)
+    eps = 1e-12
+    probs = np.clip(probs, eps, 1 - eps)
+    return -np.mean(y_true * np.log(probs) + (1 - y_true) * np.log(1 - probs))
+```
+
+## 14.6 Backpropagation outline
+
+For a first course, it is often enough to outline the structure of backpropagation without deriving every formula in maximal detail.
+
+Let
+
+$$
+Z_1 = XW_1 + b_1,
+\quad
+H = \mathrm{ReLU}(Z_1),
+\quad
+Z_2 = HW_2 + b_2,
+\quad
+P = \sigma(Z_2).
+$$
+
+With binary cross-entropy and sigmoid output, the output error term is
+
+$$
+\delta_2 = P - y.
+$$
+
+Then the parameter gradients are
+
+$$
+\nabla_{W_2} L = \frac{1}{n} H^\top \delta_2,
+$$
+
+$$
+\nabla_{b_2} L = \frac{1}{n} \sum_{i=1}^n \delta_{2,i},
+$$
+
+and for the hidden layer,
+
+$$
+\delta_1 = (\delta_2 W_2^\top) \odot \mathbf{1}_{Z_1 > 0},
+$$
+
+$$
+\nabla_{W_1} L = \frac{1}{n} X^\top \delta_1,
+\qquad
+\nabla_{b_1} L = \frac{1}{n} \sum_{i=1}^n \delta_1^{(i)}.
+$$
+
+## 14.7 Training the network
+
+```{python}
+rng = np.random.default_rng(1)
+
+X = np.array([
+    [0.0, 0.0],
+    [0.0, 1.0],
+    [1.0, 0.0],
+    [1.0, 1.0]
+])
+
+y = np.array([[0.0], [1.0], [1.0], [0.0]])
+
+d = 2
+h = 8
+m = 1
+
+W1 = 0.5 * rng.standard_normal((d, h))
+b1 = np.zeros(h)
+W2 = 0.5 * rng.standard_normal((h, m))
+b2 = np.zeros(m)
+
+eta = 0.5
+history = []
+
+for _ in range(5000):
+    Z1 = X @ W1 + b1
+    H = relu(Z1)
+    Z2 = H @ W2 + b2
+    P = sigmoid(Z2)
+
+    eps = 1e-12
+    P_clip = np.clip(P, eps, 1 - eps)
+    loss = -np.mean(y * np.log(P_clip) + (1 - y) * np.log(1 - P_clip))
+    history.append(loss)
+
+    delta2 = P - y
+    dW2 = H.T @ delta2 / len(X)
+    db2 = np.mean(delta2, axis=0)
+
+    delta1 = (delta2 @ W2.T) * (Z1 > 0)
+    dW1 = X.T @ delta1 / len(X)
+    db1 = np.mean(delta1, axis=0)
+
+    W2 -= eta * dW2
+    b2 -= eta * db2
+    W1 -= eta * dW1
+    b1 -= eta * db1
+
+print("final probabilities =")
+print(sigmoid(relu(X @ W1 + b1) @ W2 + b2))
+```
+
+## 14.8 Training curve
+
+```{python}
+plt.figure(figsize=(6, 4))
+plt.plot(history)
+plt.xlabel("iteration")
+plt.ylabel("binary cross-entropy")
+plt.title("Training a small neural network on XOR")
+plt.show()
+```
+
+## 14.9 Exercises
+
+1. Verify all shapes in the forward pass and backward pass.
+2. Replace ReLU with sigmoid in the hidden layer and compare training behavior.
+3. Increase the hidden dimension and observe what changes.
+4. Explain why a linear model cannot solve XOR perfectly.
+5. Derive the gradient formulas for the final layer.
+
+## 14.10 Worked example
+
+```{python}
+rng = np.random.default_rng(3)
+
+X = np.array([
+    [-1.0, -1.0],
+    [-1.0,  1.0],
+    [ 1.0, -1.0],
+    [ 1.0,  1.0]
+])
+
+y = np.array([[0.0], [1.0], [1.0], [0.0]])
+
+W1 = 0.3 * rng.normal(size=(2, 6))
+b1 = np.zeros(6)
+W2 = 0.3 * rng.normal(size=(6, 1))
+b2 = np.zeros(1)
+
+for _ in range(3000):
+    Z1 = X @ W1 + b1
+    H = relu(Z1)
+    Z2 = H @ W2 + b2
+    P = sigmoid(Z2)
+
+    delta2 = P - y
+    dW2 = H.T @ delta2 / len(X)
+    db2 = np.mean(delta2, axis=0)
+    delta1 = (delta2 @ W2.T) * (Z1 > 0)
+    dW1 = X.T @ delta1 / len(X)
+    db1 = np.mean(delta1, axis=0)
+
+    W2 -= 0.4 * dW2
+    b2 -= 0.4 * db2
+    W1 -= 0.4 * dW1
+    b1 -= 0.4 * db1
+
+print((sigmoid(relu(X @ W1 + b1) @ W2 + b2) > 0.5).astype(int))
+```
+
+# 15. Numerical Stability and Debugging
+
+## 15.1 Why numerical stability matters
+
+Even if a mathematical formula is correct, a direct implementation can fail because of floating-point limitations.
+In machine learning, common issues include:
+
+- overflow in exponentials;
+- underflow in probabilities;
+- division by very small values;
+- catastrophic cancellation;
+- exploding or vanishing gradients;
+- accidental shape mismatches.
+
+## 15.2 Stable softmax
+
+The naive softmax is
+
+$$
+\mathrm{softmax}(x)_i = \frac{e^{x_i}}{\sum_j e^{x_j}}.
+$$
+
+This can overflow when the entries of $x$ are large.
+
+A standard remedy is to subtract the maximum entry first.
+
+```{python}
+def softmax_naive(x):
+    ex = np.exp(x)
+    return ex / np.sum(ex)
+
+def softmax_stable(x):
+    z = x - np.max(x)
+    ez = np.exp(z)
+    return ez / np.sum(ez)
+
+x = np.array([1000.0, 1001.0, 1002.0])
+
+print("stable softmax =", softmax_stable(x))
+```
+
+## 15.3 Stable logistic loss ideas
+
+In practice, probabilities should often be clipped before taking logarithms.
+
+```{python}
+p = np.array([1e-20, 0.2, 0.8, 1 - 1e-20])
+p_clip = np.clip(p, 1e-12, 1 - 1e-12)
+
+print("p =", p)
+print("p_clip =", p_clip)
+print("log(p_clip) =", np.log(p_clip))
+```
+
+## 15.4 Shape debugging
+
+When code fails, shapes are often the culprit.
+Printing shapes systematically is an underrated debugging method.
+
+```{python}
+X = np.random.randn(5, 3)
+w = np.random.randn(3)
+b = 0.5
+
+print("X.shape =", X.shape)
+print("w.shape =", w.shape)
+print("X @ w shape =", (X @ w).shape)
+print("(X @ w + b).shape =", (X @ w + b).shape)
+```
+
+## 15.5 Gradient checking revisited
+
+Finite differences are a practical way to validate a backpropagation implementation on small examples.
+
+```{python}
+def f_scalar(w):
+    return np.sum(w**2)
+
+def grad_scalar(w):
+    return 2 * w
+
+w = np.array([1.5, -2.0, 0.3])
+g = grad_scalar(w)
+
+h = 1e-6
+g_fd = np.zeros_like(w)
+
+for j in range(len(w)):
+    e = np.zeros_like(w)
+    e[j] = 1.0
+    g_fd[j] = (f_scalar(w + h * e) - f_scalar(w - h * e)) / (2 * h)
+
+print("analytic =", g)
+print("finite difference =", g_fd)
+```
+
+## 15.6 Common checklist
+
+When a model behaves strangely, inspect the following.
+
+1. Are the shapes what you think they are?
+2. Are the dtypes appropriate?
+3. Are the gradients exploding or vanishing?
+4. Is the learning rate too large or too small?
+5. Are you mixing row vectors and column vectors?
+6. Are probabilities clipped before logarithms?
+7. Are features on wildly different scales?
+
+## 15.7 Exercises
+
+1. Implement naive and stable softmax and compare them.
+2. Create a deliberate shape error and fix it.
+3. Run a finite-difference gradient test for a simple loss.
+4. Explain why clipping probabilities avoids undefined logarithms.
+5. Write your own debugging checklist for gradient-based optimization.
+
+## 15.8 Worked example
+
+```{python}
+x = np.array([500.0, 505.0, 510.0])
+
+print("stable:", softmax_stable(x))
+
+X = np.random.randn(7, 2)
+w = np.random.randn(2, 1)
+
+print("X.shape =", X.shape)
+print("w.shape =", w.shape)
+print("(X @ w).shape =", (X @ w).shape)
+```
+
+# 16. Capstone Mini-Projects
+
+## 16.1 Project A: Linear regression on synthetic data
+
+Tasks:
+
+1. Generate a dataset with two input features and a linear target.
+2. Fit the model using the normal equation.
+3. Fit the model using gradient descent.
+4. Compare the coefficient vectors.
+5. Study the effect of noise and scaling.
+
+Starter code:
+
+```{python}
+rng = np.random.default_rng(100)
+
+n = 250
+X = rng.normal(size=(n, 2))
+w_true = np.array([3.0, -1.5])
+y = X @ w_true + 0.4 * rng.normal(size=n)
+
+w_closed = np.linalg.solve(X.T @ X, X.T @ y)
+print("w_closed =", w_closed)
+```
+
+## 16.2 Project B: Logistic regression on a tabular dataset
+
+Tasks:
+
+1. Load a CSV file with pandas.
+2. Select numeric features and a binary target.
+3. Handle missing values.
+4. Convert to NumPy.
+5. Train logistic regression.
+6. Evaluate accuracy on a test split.
+
+Starter code:
+
+```{python}
+df = df_csv.copy()
+
+if "target" in df.columns:
+    feature_cols = [c for c in df.columns if c != "target" and pd.api.types.is_numeric_dtype(df[c])]
+    X = df[feature_cols].to_numpy(dtype=float)
+    y = df["target"].to_numpy(dtype=float)
+
+    mu = X.mean(axis=0)
+    sigma = X.std(axis=0)
+    X = (X - mu) / sigma
+
+    X = np.column_stack([np.ones(len(X)), X])
+
+    rng = np.random.default_rng(99)
+    perm = rng.permutation(len(X))
+    split = int(0.8 * len(X))
+
+    X_train = X[perm[:split]]
+    X_test = X[perm[split:]]
+    y_train = y[perm[:split]]
+    y_test = y[perm[split:]]
+
+    w = np.zeros(X.shape[1])
+
+    for _ in range(1500):
+        p = sigmoid(X_train @ w)
+        grad = X_train.T @ (p - y_train) / len(X_train)
+        w -= 0.1 * grad
+
+    test_probs = sigmoid(X_test @ w)
+    test_pred = (test_probs >= 0.5).astype(int)
+    print("test accuracy =", np.mean(test_pred == y_test))
+```
+
+## 16.3 Project C: XOR with a neural network
+
+Tasks:
+
+1. Implement the forward pass.
+2. Implement the backward pass.
+3. Train the network on XOR.
+4. Visualize the loss curve.
+5. Experiment with different hidden sizes and activations.
+
+Starter code:
+
+```{python}
+X = np.array([
+    [0.0, 0.0],
+    [0.0, 1.0],
+    [1.0, 0.0],
+    [1.0, 1.0]
+])
+
+y = np.array([[0.0], [1.0], [1.0], [0.0]])
+```
+
+# 17. Summary and Outlook
+
+## 17.1 Summary of the main ideas
+
+The core message of this course is that machine learning can be understood very naturally through finite-dimensional linear algebra, calculus, and vectorized programming.
+
+The main conceptual pillars were:
+
+- arrays as concrete representations of vectors and matrices;
+- slicing, masking, and broadcasting as tools for structured numerical work;
+- matrix-vector products as the computational core of linear models;
+- aggregation and statistics as the basis of losses and preprocessing;
+- pandas as a labeled interface to tabular data;
+- least squares as projection and optimization;
+- logistic regression as a probability model with a convex loss;
+- neural networks as compositions of affine maps and nonlinearities;
+- numerical stability and shape awareness as practical necessities.
+
+## 17.2 What students should now be able to do
+
+A student who has worked through this script carefully should be able to:
+
+1. load, inspect, and preprocess numerical tabular data;
+2. represent machine learning models as matrix formulas;
+3. derive gradients of standard losses;
+4. implement linear regression and logistic regression from scratch;
+5. implement a small neural network in pure NumPy;
+6. debug shape mismatches and stability issues.
+
+## 17.3 Natural continuations
+
+Possible directions for a continuation course include:
+
+- principal component analysis via singular value decomposition;
+- stochastic gradient descent in greater depth;
+- multiclass softmax regression;
+- regularization paths and model selection;
+- automatic differentiation;
+- transition to PyTorch or JAX;
+- optimization theory for machine learning;
+- generalization bounds and statistical learning theory.
+
+# 18. Suggested Homework Problems
+
+1. Prove carefully that the least-squares residual is orthogonal to the column space of $X$.
+2. Derive the logistic regression gradient in full detail.
+3. Implement ridge regression and compare it to ordinary least squares on a polynomial task.
+4. Create a notebook that illustrates the effect of feature scaling on gradient descent.
+5. Build a two-layer network for XOR and verify the gradients numerically.
+6. Write a short essay explaining the role of broadcasting in machine learning code.
+7. Construct a dataset on which linear regression fails as a classifier and explain why logistic regression is better suited.
+8. Show by experiment that different random seeds can influence optimization trajectories even if the final model class is the same.
+
+# 19. Appendix: Reusable Utility Functions
+
+```{python}
+def add_intercept(X):
+    return np.column_stack([np.ones(len(X)), X])
+
+def mse(y_true, y_pred):
+    return np.mean((y_true - y_pred)**2)
+
+def mae(y_true, y_pred):
+    return np.mean(np.abs(y_true - y_pred))
+
+def accuracy_score(y_true, y_pred):
+    return np.mean(y_true == y_pred)
+
+def standardize_train_test(X_train, X_test):
+    mu = np.mean(X_train, axis=0)
+    sigma = np.std(X_train, axis=0)
+    sigma = np.where(sigma == 0, 1.0, sigma)
+    return (X_train - mu) / sigma, (X_test - mu) / sigma, mu, sigma
+
+def least_squares_fit(X, y):
+    return np.linalg.solve(X.T @ X, X.T @ y)
+
+def least_squares_predict(X, w):
+    return X @ w
+
+def logistic_predict_proba(X, w):
+    return sigmoid(X @ w)
+
+def logistic_predict(X, w, threshold=0.5):
+    return (logistic_predict_proba(X, w) >= threshold).astype(int)
+
+def logistic_fit_gd(X, y, eta=0.1, num_steps=1000):
+    w = np.zeros(X.shape[1])
+    history = []
+    for _ in range(num_steps):
+        p = sigmoid(X @ w)
+        grad = X.T @ (p - y) / len(X)
+        w -= eta * grad
+        history.append(binary_cross_entropy(y, p))
+    return w, history
+```
+
+## 19.1 Demonstration of the helper functions
+
+```{python}
+rng = np.random.default_rng(123)
+
+X = rng.normal(size=(80, 2))
+w_true = np.array([1.5, -0.7])
+y_reg = X @ w_true + 0.2 * rng.normal(size=80)
+
+w_hat = least_squares_fit(X, y_reg)
+print("least squares w_hat =", w_hat)
+
+X_clf = add_intercept(X)
+p_true = sigmoid(X_clf @ np.array([0.2, 1.0, -1.5]))
+y_clf = (rng.random(80) < p_true).astype(float)
+
+w_log, hist = logistic_fit_gd(X_clf, y_clf, eta=0.2, num_steps=800)
+y_pred = logistic_predict(X_clf, w_log)
+
+print("classification accuracy =", accuracy_score(y_clf, y_pred))
+```
+
+# 20. Closing Remark
+
+A useful way to summarize the philosophy of the course is this:
+
+> **NumPy is not merely a programming library. It is a concrete language for expressing finite-dimensional mathematics.**
+
+Once students see machine learning through that lens, many formulas stop looking mysterious.
+They become structured matrix computations, optimization problems, and geometric projections.
+That is precisely the bridge this script was designed to build.---
+
+
+# Kursziele
+
+Dieser Kurs richtet sich an Mathematiker:innen und verfolgt zwei Ziele:
+
+1. **NumPy als Sprache der numerischen linearen Algebra** verstehen.
+2. **Grundideen des Machine Learning** mathematisch sauber formulieren und direkt in NumPy implementieren.
+
+Am Ende sollen die Teilnehmenden einfache Modelle nicht nur anwenden, sondern selbst herleiten und programmieren können.
+
+# Voraussetzungen
+
+- Grundlagen in Analysis und Linearer Algebra
+- elementare Python-Kenntnisse
+- keine Vorkenntnisse in Machine Learning nötig
+
+# Lernziele
+
+Nach dem Kurs sollen die Teilnehmenden:
+
+- Arrays, Broadcasting und Vektorisierung sicher verwenden,
+- lineare und logistische Regression in NumPy implementieren,
+- Gradientenverfahren verstehen und numerisch umsetzen,
+- einfache neuronale Netze in Matrixform formulieren,
+- numerische Stabilität und Shape-Probleme erkennen.
+
+# 1. NumPy als mathematische Sprache
+
+## 1.1 Arrays als Vektoren und Matrizen
+
+In NumPy werden Vektoren und Matrizen als Arrays dargestellt.
+
+```{python}
+import numpy as np
+
+x = np.array([1.0, 2.0, 3.0])
+A = np.array([[1.0, 0.0, 2.0],
+              [0.0, 1.0, 1.0]])
+
+print("x =", x)
+print("A =\n", A)
+print("shape von x:", x.shape)
+print("shape von A:", A.shape)
+print("Dimension von A:", A.ndim)
+```
+
+## 1.2 Wichtige Grundbegriffe
+
+- `shape`: Form des Arrays
+- `ndim`: Anzahl der Achsen
+- `dtype`: Datentyp
+- Indexing und Slicing
+- Views vs. Copies
+
+```{python}
+B = np.arange(10)
+print("B =", B)
+
+print("B[2:6] =", B[2:6])
+
+view = B[2:6]
+view[0] = 99
+print("Nach Änderung der View:")
+print("view =", view)
+print("B =", B)
+```
+
+::: {.callout-important}
+**Didaktischer Hinweis**
+
+Gerade für mathematisch orientierte Studierende ist der Unterschied zwischen **View** und **Copy** wichtig:  
+Nicht jede "Teilmenge" eines Arrays ist ein neues Objekt.
+:::
+
+## 1.3 Normen und Skalarprodukt
+
+```{python}
+x = np.array([1.0, -2.0, 2.0])
+y = np.array([3.0, 1.0, -1.0])
+
+l1 = np.sum(np.abs(x))
+l2 = np.sqrt(np.sum(x**2))
+dot = x @ y
+
+print("||x||_1 =", l1)
+print("||x||_2 =", l2)
+print("<x,y> =", dot)
+```
+
+## Übung 1
+
+1. Erzeuge einen Vektor $x \in \mathbb{R}^5$.
+2. Berechne $\|x\|_1$, $\|x\|_2$ und $\|x\|_\infty$.
+3. Implementiere das Skalarprodukt zweier Vektoren auf zwei Arten:
+   - mit `@`
+   - mit `np.sum(x * y)`
+
+# 2. Vektorisierung und Broadcasting
+
+## 2.1 Warum Vektorisierung?
+
+In numerischer Mathematik und im Machine Learning vermeiden wir möglichst explizite Python-Schleifen.
+
+```{python}
+x = np.linspace(0, 1, 5)
+y = 3 * x + 2
+
+print("x =", x)
+print("y =", y)
+```
+
+## 2.2 Broadcasting
+
+Broadcasting erlaubt Rechenoperationen zwischen Arrays unterschiedlicher, aber kompatibler Form.
+
+```{python}
+X = np.array([[1.0, 2.0],
+              [3.0, 4.0],
+              [5.0, 6.0]])
+
+b = np.array([10.0, 20.0])
+
+print("X + b =\n", X + b)
+```
+
+Interpretation: Der Vektor $b$ wird zeilenweise "mitgeführt".
+
+## 2.3 Affine Abbildungen
+
+Viele ML-Modelle beruhen auf der Form
+
+$$
+y = Xw + b.
+$$
+
+```{python}
+X = np.array([[1.0, 2.0],
+              [0.0, 1.0],
+              [3.0, 1.0]])
+w = np.array([2.0, -1.0])
+b = 0.5
+
+y = X @ w + b
+print("y =", y)
+```
+
+## Übung 2
+
+1. Erzeuge eine Matrix $X \in \mathbb{R}^{4 \times 3}$ und einen Vektor $w \in \mathbb{R}^3$.
+2. Berechne $Xw$.
+3. Addiere einen Bias-Term $b$.
+4. Erkläre, warum Broadcasting hier funktioniert.
+
+# 3. Lineare Algebra in NumPy
+
+## 3.1 Matrix-Vektor- und Matrix-Matrix-Produkte
+
+```{python}
+A = np.array([[1.0, 2.0],
+              [3.0, 4.0]])
+x = np.array([1.0, -1.0])
+B = np.array([[2.0, 0.0],
+              [1.0, 2.0]])
+
+print("A @ x =", A @ x)
+print("A @ B =\n", A @ B)
+```
+
+## 3.2 Transponieren
+
+```{python}
+print("A^T =\n", A.T)
+```
+
+## 3.3 Lineare Gleichungssysteme
+
+Für $Ax = b$ sollte man **nicht** mit der Inversen arbeiten, sondern mit `np.linalg.solve`.
+
+```{python}
+A = np.array([[3.0, 1.0],
+              [1.0, 2.0]])
+b = np.array([9.0, 8.0])
+
+x = np.linalg.solve(A, b)
+print("Lösung x =", x)
+print("Prüfung A @ x =", A @ x)
+```
+
+## 3.4 Kondition und numerische Sensitivität
+
+```{python}
+A = np.array([[1.0, 1.0],
+              [1.0, 1.0001]])
+
+cond = np.linalg.cond(A)
+print("Konditionszahl =", cond)
+```
+
+::: {.callout-note}
+Eine große Konditionszahl weist darauf hin, dass kleine Störungen in den Daten zu großen Änderungen in der Lösung führen können.
+:::
+
+## Übung 3
+
+1. Löse ein lineares Gleichungssystem mit `np.linalg.solve`.
+2. Vergleiche das Ergebnis mit einer Berechnung über `np.linalg.inv(A) @ b`.
+3. Berechne die Konditionszahl einer Matrix deiner Wahl.
+
+# 4. Statistik mit NumPy
+
+## 4.1 Mittelwert, Varianz, Standardabweichung
+
+```{python}
+data = np.array([[1.0, 2.0, 3.0],
+                 [2.0, 3.0, 4.0],
+                 [3.0, 4.0, 5.0]])
+
+print("Mittelwert insgesamt:", np.mean(data))
+print("Mittelwerte spaltenweise:", np.mean(data, axis=0))
+print("Varianzen spaltenweise:", np.var(data, axis=0))
+print("Standardabweichungen spaltenweise:", np.std(data, axis=0))
+```
+
+## 4.2 Bedeutung von `axis`
+
+- `axis=0`: spaltenweise Aggregation
+- `axis=1`: zeilenweise Aggregation
+
+```{python}
+print("Zeilensummen:", np.sum(data, axis=1))
+print("Spaltensummen:", np.sum(data, axis=0))
+```
+
+## 4.3 Standardisierung
+
+Ein klassischer Vorverarbeitungsschritt ist die Standardisierung:
+
+$$
+\widetilde X = \frac{X - \mu}{\sigma}.
+$$
+
+```{python}
+X = np.array([[1.0, 10.0],
+              [2.0, 20.0],
+              [3.0, 30.0],
+              [4.0, 40.0]])
+
+mu = np.mean(X, axis=0)
+sigma = np.std(X, axis=0)
+
+X_std = (X - mu) / sigma
+
+print("mu =", mu)
+print("sigma =", sigma)
+print("standardisierte Daten =\n", X_std)
+```
+
+## Übung 4
+
+1. Standardisiere einen kleinen Datensatz.
+2. Überprüfe numerisch, dass Mittelwert ungefähr 0 und Standardabweichung ungefähr 1 sind.
+
+# 5. Zufall und Reproduzierbarkeit
+
+## 5.1 Zufallszahlen
+
+```{python}
+rng = np.random.default_rng(42)
+
+print("Zufallsvektor:", rng.random(5))
+print("Normalverteilte Daten:", rng.standard_normal(5))
+print("Zufallsindizes:", rng.integers(0, 10, size=5))
+```
+
+## 5.2 Reproduzierbarkeit
+
+Für numerische Experimente im ML ist Reproduzierbarkeit zentral.
+
+```{python}
+rng1 = np.random.default_rng(123)
+rng2 = np.random.default_rng(123)
+
+print(rng1.standard_normal(4))
+print(rng2.standard_normal(4))
+```
+
+## Übung 5
+
+1. Erzeuge einen zufälligen Datensatz mit 100 Punkten in $\mathbb{R}^2$.
+2. Erzeuge dazu ein zufälliges Label-Array mit Werten 0 und 1.
+3. Teile die Daten in Trainings- und Testdaten auf.
+
+
+
+# Datenverarbeitung mit pandas
+
+## 5.1 DataFrame als annotierte Matrix
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({
+    "age": [25, 30, 22, 40],
+    "income": [50000, 60000, 45000, 80000],
+    "target": [0, 1, 0, 1]
+})
+
+print(df)
+```
+
+Interpretation:
+- Zeilen = Datenpunkte
+- Spalten = Features
+- entspricht einer Matrix $X$ mit Zusatzstruktur
+
+## 5.2 Auswahl und Projektion
+
+```{python}
+print(df["age"])
+print(df[["age", "income"]])
+print(df.iloc[0])
+```
+
+## 5.3 Filtern
+
+```{python}
+df_filtered = df[df["age"] > 25]
+print(df_filtered)
+```
+
+## 5.4 Fehlende Werte
+
+```{python}
+df.loc[2, "income"] = None
+
+print(df.isna())
+df_clean = df.dropna()
+print(df_clean)
+```
+
+## 5.5 Übergang zu NumPy
+
+```{python}
+X = df_clean[["age", "income"]].to_numpy()
+y = df_clean["target"].to_numpy()
+
+print("X =", X)
+print("y =", y)
+```
+
+::: {.callout-important}
+Ab diesem Punkt arbeiten wir wieder rein mathematisch mit NumPy.
+:::
+
+## Übung pandas
+
+1. Lade einen Datensatz (CSV).
+2. Entferne fehlende Werte.
+3. Wähle zwei Features und ein Target.
+4. Wandle alles in NumPy-Arrays um.
+
+# 6. Lineare Regression
+
+## 6.1 Problemstellung
+
+Gegeben seien Daten $(x_i, y_i)$, gesucht ist ein lineares Modell
+
+$$
+\hat y = Xw.
+$$
+
+Wir minimieren
+
+$$
+\min_w \|Xw - y\|_2^2.
+$$
+
+## 6.2 Normalengleichung
+
+Die erste Optimalitätsbedingung führt auf
+
+$$
+X^\top X w = X^\top y.
+$$
+
+```{python}
+X = np.array([[1.0, 1.0],
+              [1.0, 2.0],
+              [1.0, 3.0],
+              [1.0, 4.0]])
+y = np.array([2.0, 3.0, 5.0, 4.0])
+
+w = np.linalg.solve(X.T @ X, X.T @ y)
+print("Parameter w =", w)
+```
+
+## 6.3 Vorhersage und Fehler
+
+```{python}
+y_pred = X @ w
+mse = np.mean((y_pred - y)**2)
+
+print("Vorhersagen =", y_pred)
+print("MSE =", mse)
+```
+
+## 6.4 Visualisierung
+
+```{python}
+import matplotlib.pyplot as plt
+
+x_plot = X[:, 1]
+
+plt.figure(figsize=(6, 4))
+plt.scatter(x_plot, y, label="Daten")
+plt.plot(x_plot, y_pred, label="Regression")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.show()
+```
+
+## Übung 6
+
+1. Implementiere lineare Regression über die Normalengleichung.
+2. Füge Rauschen zu den Daten hinzu.
+3. Untersuche, wie sich die Lösung verändert.
+
+# 7. Gradientenverfahren
+
+## 7.1 Gradient der quadratischen Verlustfunktion
+
+Für
+
+$$
+f(w) = \frac{1}{n}\|Xw - y\|_2^2
+$$
+
+gilt
+
+$$
+\nabla f(w) = \frac{2}{n} X^\top (Xw - y).
+$$
+
+## 7.2 Gradient Descent
+
+```{python}
+X = np.array([[1.0, 1.0],
+              [1.0, 2.0],
+              [1.0, 3.0],
+              [1.0, 4.0]])
+y = np.array([2.0, 3.0, 5.0, 4.0])
+
+n, d = X.shape
+w = np.zeros(d)
+eta = 0.1
+
+loss_history = []
+
+for k in range(200):
+    grad = (2 / n) * X.T @ (X @ w - y)
+    w = w - eta * grad
+    loss = np.mean((X @ w - y)**2)
+    loss_history.append(loss)
+
+print("Gefundene Parameter:", w)
+print("Letzter Loss:", loss_history[-1])
+```
+
+## 7.3 Konvergenz visualisieren
+
+```{python}
+plt.figure(figsize=(6, 4))
+plt.plot(loss_history)
+plt.xlabel("Iteration")
+plt.ylabel("MSE")
+plt.title("Konvergenz des Gradient Descent")
+plt.show()
+```
+
+## Übung 7
+
+1. Experimentiere mit verschiedenen Lernraten `eta`.
+2. Beobachte Konvergenz, langsames Lernen und Divergenz.
+3. Vergleiche die GD-Lösung mit der Lösung aus der Normalengleichung.
+
+# 8. Logistische Regression
+
+## 8.1 Binäre Klassifikation
+
+Wir modellieren Wahrscheinlichkeiten mit der Sigmoid-Funktion
+
+$$
+\sigma(t) = \frac{1}{1 + e^{-t}}.
+$$
+
+```{python}
+def sigmoid(t):
+    return 1 / (1 + np.exp(-t))
+
+t = np.linspace(-5, 5, 100)
+plt.figure(figsize=(6, 4))
+plt.plot(t, sigmoid(t))
+plt.xlabel("t")
+plt.ylabel("sigma(t)")
+plt.title("Sigmoid-Funktion")
+plt.show()
+```
+
+## 8.2 Modell
+
+Für Datenmatrix $X$ und Parameter $w$ gilt
+
+$$
+p(y=1 \mid x) = \sigma(Xw).
+$$
+
+## 8.3 Binary Cross Entropy
+
+Die Verlustfunktion ist
+
+$$
+L(w) = -\frac{1}{n}\sum_{i=1}^n \left(y_i \log p_i + (1-y_i)\log(1-p_i)\right).
+$$
+
+```{python}
+def binary_cross_entropy(y_true, y_prob):
+    eps = 1e-12
+    y_prob = np.clip(y_prob, eps, 1 - eps)
+    return -np.mean(y_true * np.log(y_prob) + (1 - y_true) * np.log(1 - y_prob))
+```
+
+## 8.4 Training per Gradient Descent
+
+```{python}
+X_raw = np.array([[0.0, 0.0],
+                  [0.0, 1.0],
+                  [1.0, 0.0],
+                  [1.0, 1.0],
+                  [1.5, 1.0],
+                  [2.0, 1.0]])
+
+y = np.array([0, 0, 0, 1, 1, 1], dtype=float)
+
+X = np.column_stack([np.ones(len(X_raw)), X_raw])
+
+n, d = X.shape
+w = np.zeros(d)
+eta = 0.5
+history = []
+
+for _ in range(1000):
+    p = sigmoid(X @ w)
+    grad = (X.T @ (p - y)) / n
+    w -= eta * grad
+    history.append(binary_cross_entropy(y, p))
+
+print("w =", w)
+print("finaler Loss =", history[-1])
+```
+
+## 8.5 Vorhersagen
+
+```{python}
+p = sigmoid(X @ w)
+y_pred = (p >= 0.5).astype(int)
+
+print("Wahrscheinlichkeiten:", p)
+print("Vorhergesagte Klassen:", y_pred)
+print("Trefferquote:", np.mean(y_pred == y))
+```
+
+## Übung 8
+
+1. Implementiere logistische Regression selbst.
+2. Variiere die Lernrate und die Anzahl der Iterationen.
+3. Ersetze die Trainingsdaten durch einen eigenen 2D-Datensatz.
+
+# 9. Shapes, Masking und Datenvorverarbeitung
+
+## 9.1 Reshape
+
+```{python}
+x = np.arange(12)
+X = x.reshape(3, 4)
+
+print("x =", x)
+print("X =\n", X)
+```
+
+## 9.2 Neue Achsen
+
+```{python}
+x = np.array([1.0, 2.0, 3.0])
+
+print("x.shape =", x.shape)
+print("x[:, None].shape =", x[:, None].shape)
+print("x[None, :].shape =", x[None, :].shape)
+```
+
+## 9.3 Boolean Masking
+
+```{python}
+X = np.array([[1.0, 10.0],
+              [-1.0, 20.0],
+              [2.0, 30.0],
+              [-2.0, 40.0]])
+
+mask = X[:, 0] > 0
+print("Maske:", mask)
+print("Gefilterte Daten =\n", X[mask])
+```
+
+## Übung 9
+
+1. Erzeuge einen Datensatz mit positiven und negativen Werten.
+2. Filtere alle Zeilen heraus, deren erste Komponente negativ ist.
+3. Erläutere die Rolle von Masking im Preprocessing.
+
+# 10. Einfaches neuronales Netz
+
+## 10.1 Modellidee
+
+Ein einfaches Netzwerk mit einer versteckten Schicht kann als
+
+$$
+f(x) = W_2 \,\phi(XW_1 + b_1) + b_2
+$$
+
+geschrieben werden.
+
+Wir verwenden als Aktivierungsfunktion die ReLU
+
+$$
+\mathrm{ReLU}(t) = \max(0,t).
+$$
+
+## 10.2 Forward Pass
+
+```{python}
+def relu(x):
+    return np.maximum(0, x)
+
+rng = np.random.default_rng(0)
+
+X = np.array([[0.0, 0.0],
+              [0.0, 1.0],
+              [1.0, 0.0],
+              [1.0, 1.0]])
+
+W1 = rng.standard_normal((2, 4))
+b1 = np.zeros(4)
+W2 = rng.standard_normal((4, 1))
+b2 = np.zeros(1)
+
+H = relu(X @ W1 + b1)
+Y = H @ W2 + b2
+
+print("Hidden layer H =\n", H)
+print("Output Y =\n", Y)
+```
+
+## 10.3 Bemerkung zur Backpropagation
+
+Für einen vollständigen Kurs sollte hier die Kettenregel in Matrixform entwickelt werden.  
+In einer ersten Einführung genügt oft:
+
+1. Vorwärtsdurchlauf definieren,
+2. Verlustfunktion formulieren,
+3. Gradienten der einzelnen Parameter herleiten,
+4. Update-Regel implementieren.
+
+::: {.callout-tip}
+Gerade für Mathematiker:innen lohnt es sich, Backpropagation als wiederholte Anwendung der Kettenregel auf affine Abbildungen und nichtlineare Aktivierungen zu präsentieren.
+:::
+
+## Übung 10
+
+1. Implementiere ein kleines neuronales Netz mit einer versteckten Schicht.
+2. Verwende ReLU als Aktivierung.
+3. Erzeuge einen kleinen künstlichen Datensatz und berechne den Forward Pass.
+
+# 11. Numerische Stabilität
+
+## 11.1 Problem: Overflow bei `exp`
+
+```{python}
+x = np.array([1000.0, 1001.0, 1002.0])
+```
+
+Die naive Softmax-Implementierung
+
+$$
+\mathrm{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}}
+$$
+
+kann numerisch instabil sein.
+
+## 11.2 Stabile Softmax
+
+```{python}
+def softmax_stable(x):
+    z = x - np.max(x)
+    exp_z = np.exp(z)
+    return exp_z / np.sum(exp_z)
+
+print("stabile Softmax:", softmax_stable(x))
+```
+
+## Übung 11
+
+1. Implementiere eine naive Softmax.
+2. Vergleiche sie mit der stabilen Version.
+3. Diskutiere das Problem des Overflows.
+
+# 12. Mini-Projekte
+
+## Projekt A: Lineare Regression
+- Simuliere Daten
+- fitte ein Modell
+- interpretiere die Parameter
+- visualisiere Residuen
+
+## Projekt B: Logistische Regression
+- konstruiere einen binären Datensatz
+- trainiere ein Modell
+- berechne Accuracy und Loss
+
+## Projekt C: NumPy-only Neuronales Netz
+- ein Hidden Layer
+- ReLU oder Sigmoid
+- Training mit Gradient Descent
+- Diskussion von Overfitting und Lernrate
+
+# 13. Zusammenfassung
+
+Die zentralen NumPy-Ideen für Machine Learning sind:
+
+- **Arrays als Träger mathematischer Objekte**
+- **Vektorisierung statt Schleifen**
+- **Matrixrechnung für Modelle**
+- **statistische Aggregation für Datenanalyse**
+- **Gradientenverfahren für Optimierung**
+- **Shape-Kompetenz für sauberen Code**
+- **numerische Stabilität für robuste Implementierungen**
+
+# 14. Weiterführende Themen
+
+Für einen Anschlusskurs bieten sich an:
+
+- Regularisierung (Ridge, Lasso)
+- PCA mit SVD
+- stochastischer Gradient Descent
+- Mini-Batching
+- automatische Differentiation
+- Übergang zu PyTorch oder JAX
+
+# Hausaufgabenideen
+
+1. Implementiere lineare Regression mit und ohne Normalengleichung.
+2. Implementiere logistische Regression für einen selbst erzeugten Datensatz.
+3. Untersuche den Einfluss der Lernrate auf die Konvergenz.
+4. Erstelle eine stabile Softmax-Funktion.
+5. Dokumentiere typische Shape-Fehler und ihre Korrektur.
+
+# Literaturhinweise
+
+- NumPy-Dokumentation
+- G. Strang: *Linear Algebra and Learning from Data*
+- Hastie, Tibshirani, Friedman: *The Elements of Statistical Learning*
+- Goodfellow, Bengio, Courville: *Deep Learning*
+
