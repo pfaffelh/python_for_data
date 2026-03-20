@@ -6,6 +6,9 @@ format:
 jupyter: python3
 ---
 
+[Download notebook](notebooks/08_analyzing_data.ipynb).
+
+
 ## Visualization (`matplotlib`)
 
 ## csv, json, requests

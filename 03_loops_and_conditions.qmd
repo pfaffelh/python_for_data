@@ -193,11 +193,61 @@ Here are some important remarks on functions:
 * Sometimes, it is too much to define an own function for a very simple task. In this case, Python3 comes with `lambda`-functions, which are very quick: 
 `lambda x: x * x`. Most use cases are with container data types, and we will have one in @sec-list. 
 
-## Exception handling (`try ... except`)
+## Exception handling (`raise`, `try ... except`)
 
-xxx Exception handling! 
+In code, various things happen, and some go wrong. Raising (throwing) errors, catching them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them: 
+
+| Exception             | When it happens         | Example                |
+| --------------------- | ----------------------- | ---------------------- |
+| `ValueError`          | Right type, wrong value | `int("abc")`           |
+| `TypeError`           | Wrong type used         | `"2" + 3`              |
+| `IndexError`          | Index out of range      | `[1,2][5]`             |
+| `KeyError`            | Dictionary key missing  | `{"a":1}["b"]`         |
+| `ZeroDivisionError`   | Division by zero        | `1 / 0`                |
+| `FileNotFoundError`   | File does not exist     | `open("x.txt")`        |
+| `PermissionError`     | No access rights        | opening protected file |
+| `AttributeError`      | Object has no attribute | `"abc".foo`            |
+| `NameError`           | Variable not defined    | `print(x)`             |
+| `ImportError`         | Import fails            | `import nonexisting`   |
+| `ModuleNotFoundError` | Module not found        | `import xyz`           |
+| `AssertionError`      | `assert` fails          | `assert False`         |
+
+We obtain an error here:
+```{python}
+#| error: true
+print("This will not work")
+print(f"1/0 = {1/0}")
+print("If this print works, the program has continued past 1/0")
+```
+However, if we _catch_ the error, the code can run past it:
+```{python}
+try:
+    print("This will not work")
+    print(f"1/0 = {1/0}")
+    print("This never runs")
+except ZeroDivisionError as e:
+    print("You must not divide by zero!")
+    print("This is the error message:", e)
+print("The program continues!")
+```
+Now we know how to _catch_ errors, but often, we need to _throw_ them. This is actually simple using `raise`:
+```{python}
+def compute_sth(x):
+    if type(x) != int:
+        raise TypeError("x must be an int!")
+    y = x ** x
+    return y
+
+try:
+    print(compute_sth(2))
+    print(compute_sth("abc"))
+except TypeError:
+    print("Calculation not possible, sorry")
+```
 
 ## Context management (`with`)
+
+Often, our Python3 file (or notebook) must interact with other files or ressources. In order to do this safely, we are using `with`. 
 
 xxx file handling!
 
@@ -227,3 +277,15 @@ Define a function computing the sum of the first `n` integers.
 **Exercise 8**
 Write a function (without using imports) which computes the sum of all digits (cross sum) of an int. 
 
+```{python}
+def check_age(age_as_string):
+    try:
+        age = int(age_as_string)
+    except ValueError as e:
+        print("Age must be an int.")
+        age = -1
+    return age
+
+print(check_age(25))
+print(check_age("abc"))
+```

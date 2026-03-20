@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Loading and handling data (pandas)</title>
+<title>7&nbsp; Loading and handling data</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_handling_data.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_handling_data.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_loops_and_conditions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, and functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, functions, etc</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -132,19 +132,19 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_libraries.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_numerics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical mathematics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_handling_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,8 +181,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#sec-loading" id="toc-sec-loading" class="nav-link active" data-scroll-target="#sec-loading"><span class="header-section-number">7.1</span> Loading data</a></li>
-  <li><a href="#sec-pandas" id="toc-sec-pandas" class="nav-link" data-scroll-target="#sec-pandas"><span class="header-section-number">7.2</span> some pandas details</a></li>
+  <li><a href="#sec-loading-files" id="toc-sec-loading-files" class="nav-link active" data-scroll-target="#sec-loading-files"><span class="header-section-number">7.1</span> Loading data from files (<code>csv</code>, <code>xlsx</code>, <code>json</code>)</a></li>
+  <li><a href="#sec-loading-online" id="toc-sec-loading-online" class="nav-link" data-scroll-target="#sec-loading-online"><span class="header-section-number">7.2</span> Loading data from online resources (<code>requests</code>)</a></li>
+  <li><a href="#sec-pandas" id="toc-sec-pandas" class="nav-link" data-scroll-target="#sec-pandas"><span class="header-section-number">7.3</span> Dataframes (<code>pandas</code>)</a></li>
+  <li><a href="#json" id="toc-json" class="nav-link" data-scroll-target="#json"><span class="header-section-number">7.4</span> json</a></li>
+  <li><a href="#csv" id="toc-csv" class="nav-link" data-scroll-target="#csv"><span class="header-section-number">7.5</span> csv</a></li>
+  <li><a href="#sql-databases-sqlite3" id="toc-sql-databases-sqlite3" class="nav-link" data-scroll-target="#sql-databases-sqlite3"><span class="header-section-number">7.6</span> SQL databases (<code>sqlite3</code>)</a></li>
   </ul>
 </nav>
     </div>
@@ -191,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data</span></h1>
 </div>
 
 
@@ -208,15 +212,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sec-loading" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="sec-loading"><span class="header-section-number">7.1</span> Loading data</h2>
-<p>json</p>
-<p>csv</p>
-<p>requests</p>
+<p><a href="notebooks/07_handling_data.ipynb">Download notebook</a>.</p>
+<section id="sec-loading-files" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-loading-files"><span class="header-section-number">7.1</span> Loading data from files (<code>csv</code>, <code>xlsx</code>, <code>json</code>)</h2>
 </section>
-<section id="sec-pandas" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="sec-pandas"><span class="header-section-number">7.2</span> some pandas details</h2>
+<section id="sec-loading-online" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-loading-online"><span class="header-section-number">7.2</span> Loading data from online resources (<code>requests</code>)</h2>
+</section>
+<section id="sec-pandas" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sec-pandas"><span class="header-section-number">7.3</span> Dataframes (<code>pandas</code>)</h2>
 <p>dt.strftime(“%-m/%-d/%y, %H:%M”)</p>
+</section>
+<section id="json" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="json"><span class="header-section-number">7.4</span> json</h2>
+</section>
+<section id="csv" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="csv"><span class="header-section-number">7.5</span> csv</h2>
+</section>
+<section id="sql-databases-sqlite3" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="sql-databases-sqlite3"><span class="header-section-number">7.6</span> SQL databases (<code>sqlite3</code>)</h2>
 
 
 </section>
@@ -624,8 +638,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06_numerics.html" class="pagination-link" aria-label="Some numerics (numpy)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span>
+      <a href="./06_numerics.html" class="pagination-link" aria-label="Numerical mathematics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical mathematics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

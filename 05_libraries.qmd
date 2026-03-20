@@ -1,12 +1,16 @@
 ---
-title: Using libraries and modules
+title: Some useful libraries/packages/modules
 format: 
     pdf: default
     ipynb: default
 jupyter: python3
 ---
 
-## imports
+[Download notebook](notebooks/05_libraries.ipynb).
+
+In this chapter, we take a little break. Although there are lots of things to learn, the material covered here has the role of helping to learn about the Python3 ecosystem and what is possible, rather than learn the details of various labraries. The first section, however, is central and will be needed in any Python3 project you will start. 
+
+## Loading modules (`import`)
 
 As in all programming languages, not all python programs come in a single file. If a Python3 project spans multiple files, an `import` becomes necessary. In Python3, there is syntax for `import`s as follows:
 
@@ -25,7 +29,7 @@ There are three cases:
 1. You wrote some code in file `one.py` (e.g. some functions) which you want to use in file `two.py`. (Note, btw, that the first digit in `one.py` must be a letter.) Assume `one.py` is as follows: 
 
 ```
-one.py
+# File: one.py
 
 def myConst():
     return 42
@@ -33,6 +37,8 @@ def myConst():
 Then, the import in `two.py` is either `import one` (both files must be in the same folder), or `from one import myConst` or (not recommended) `from one import *`. In the first case, you must prefix `myconst()` by `one`:
 
 ```
+# File: two.py
+
 import one
 print(f"My constant is {one.myConst()}.")
 ```
@@ -61,18 +67,17 @@ print(f"My constant is {myName.myConst()}.")
 
 2. You want to use functions from a built-in library. Then, a simple `import module` is often the best choice. We will see examples in @sec-math. 
 
-3. You want to use functions from a library, which needs to be installed. Here, before the `import module` even works, you need to install the module in your python environment. In a terminal, within your python environment, use
+3. You want to use functions from a library, which needs to be installed. Here, before the `import module` even works, you need to install the module in your python environment. In a terminal, within your Python3 environment, use
+```{python}
+# Uncomment the next line and run the cell for installation.
+# This only needs to be done once for every package.
+# If pip3 does not work, use pip instead. 
+# !pip3 install numpy
 ```
-pip3 install module
-```
-and then, the `import` works. We will see examples for this e.g. in @sec-loading. 
+and then, `import numpy` will work. We will see examples for this e.g. in @sec-loading. 
 
 ## Mathematics (`math`) {#sec-math}
 The mathematical library in Python is used by `import math`. Then, you have e.g. the following functions, which are self-explanatory: `math.sqrt()`, `math.exp()`, `math.log()`, `math.sin()`, `math.cos()`, and constants like `math.pi` and `math.e`. 
-
-## Regular expressions (`re`) {#sec-re}
-
-xxx Use AI
 
 ## Dates and times of day (`datetime`)
 
@@ -133,17 +138,42 @@ Here are some more remarks:
 * `datetime.time` has the same limitations.
 * We will not cover time-zones here, but if you have global data, they will become important!
 
-## descriptive statistics (`scipy.stats`)
-
 ## Decimal numbers (`decimal`)
 
-## json
+We already saw that:
+```{python}
+print(f"Rounding error: 0.2 + 0.1 = {0.2 + 0.1}.")
+```
+The reason is that computers in general use a base of 2 for all computations, and 0.3 has a bad representation in this system. While this small error is acceptable often, it is not in some contexts (above all, finance). In this case, we can use the `decimal` library. Within `decimal`, a base of 10 is used, but calculations are slower than for `float`s. 
 
-## csv
+```{python}
+from decimal import Decimal
+print(f"Exact calculation: 0.2 + 0.1 = {Decimal('0.2') + Decimal('0.1')}.")
+```
 
-## SQL databases (`sqlite3`)
+## Regular expressions (`re`) {#sec-re}
+
+Sometimes, you need to find patterns in a string. In data science, this happens if some field contains unstructured text, and you want to extract information. As an example, assume you load data from a csv-file, and one columns contains all email-adresses of the corresponding item. If you read this, you have something like `"muller@gmail.com; muller@yahoo.com"`. However, you want to separate the two addresses, and store them in a `list`. One way to approach this is using a regular expression (which in this case reads `"\S+@\S+\.\S+"`):
+
+```{python}
+import re
+
+text = "muller@gmail.com; muller@yahoo.com"
+
+emails = re.findall(r"\S+@\S+\.\S+", text)
+print(emails)
+```
+Let us quickly break this down to some extent, looking at `"\S+@\S+\.\S+"`: 
+* `\S`: any non-whitespace character
+* `+`: one or more of the previous thing
+* `@`: exactly the `@` symbol
+* `\.`: exactly the dot `.` character (separating e.g. gmail from com)
+
+We can agree that this exactly what an email address looks like. The `re.finall()` finds all places in `text` which match this pattern and extracts them, putting them into a list. Note that there are more patterns to find than `\S`, `+` and exact matches. For this reason, it is advised to use AI when it comes to regular expressions. 
 
 ## Storing and restoring objects (`pickle`)
+
+Sometimes, you want to store intermediate objects. One way is to write them out in files, but you can also use the `pickle`-library in order to write Python3 objects to disc. Here is an example:
 
 ```{python}
 import pickle
@@ -161,13 +191,38 @@ with open("data.pkl", "rb") as f:
 print(loaded_data)
 ```
 
-## Testing code (`unittest`)
+## Testing code (`pytest`)
+```{python}
+# Uncomment the next line and run the cell for installation.
+# If pip3 does not work, use pip instead. 
+# !pip3 install pytest
+```
+When starting to code, producing reliable programs is both important and difficult. One -- not the best -- way to approach this is to rely on the program until something breaks. It is actually better to _test_ the code, i.e. to write tests. This means that you tell your program that you expect a certain behavior. 
 
-## Dealing with the operating system (`os`) 
+A simple and powerful library for this is `pytest`. When working with `.py`-files, you usually separate such tests in a separate file. Every test-case is within a function with name starting with `test_`. In a terminal, you can run `pytest` on that file, which performs all tests, and reports any error. 
 
-## sys 
+However, we are working with Jupyter notebooks here, so we cannot run `pytest` on separate files. Although there are workarounds (the package `ipytest`), we will only go through some basics here. This means we are introducing `assert`. 
+
+```{python}
+#| error: true
+x = 5
+y = -1
+assert 2 + 2 = 4
+assert 2 + 2 = 5
+```
+
+## Using the operating system (`os`) 
+
+## Interacting with the environment (`sys`)
+
+xxx command line arguments
 
 ## Exercises
+
+**Exercise 1**
+What is your age in seconds?
+
+
 
 Exercise with datetime
 
@@ -194,3 +249,15 @@ compute time differences
 resample by month
 
 create rolling averages
+
+
+
+
+**Exercise f**
+Apparently, `"muller@gmail.com; wrong-email; muller@yahoo.com"` only contains two valid email addresses. Use AI and `re` in order to produce and understand code, which separates the correct from the incorrect email addresses. 
+
+**Exercise d**
+A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.)
+Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year. 
+* Compute the account balance _as usual_, i.e. keeping sub-cents at all days. 
+* Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day. 

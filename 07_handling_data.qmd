@@ -6,6 +6,9 @@ format:
 jupyter: python3
 ---
 
+[Download notebook](notebooks/07_handling_data.ipynb).
+
+
 ## Loading data from files (`csv`, `xlsx`, `json`) {#sec-loading-files}
 
 ## Loading data from online resources (`requests`)  {#sec-loading-online}
@@ -14,5 +17,11 @@ jupyter: python3
 
 dt.strftime("%-m/%-d/%y, %H:%M")
 
+
+## json
+
+## csv
+
+## SQL databases (`sqlite3`)
 
 

@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_loops_and_conditions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, and functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, functions, etc</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -167,19 +167,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_libraries.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_numerics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical mathematics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_handling_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -216,11 +216,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#sec-list" id="toc-sec-list" class="nav-link active" data-scroll-target="#sec-list"><span class="header-section-number">4.1</span> list</a></li>
-  <li><a href="#sec-tuple" id="toc-sec-tuple" class="nav-link" data-scroll-target="#sec-tuple"><span class="header-section-number">4.2</span> tuple</a></li>
-  <li><a href="#sec-set" id="toc-sec-set" class="nav-link" data-scroll-target="#sec-set"><span class="header-section-number">4.3</span> set</a></li>
-  <li><a href="#sec-dict" id="toc-sec-dict" class="nav-link" data-scroll-target="#sec-dict"><span class="header-section-number">4.4</span> dict</a></li>
-  <li><a href="#sec-iterating" id="toc-sec-iterating" class="nav-link" data-scroll-target="#sec-iterating"><span class="header-section-number">4.5</span> list/set/dict/tuple comprehensions</a></li>
+  <li><a href="#sec-list" id="toc-sec-list" class="nav-link active" data-scroll-target="#sec-list"><span class="header-section-number">4.1</span> Lists (<code>list</code>)</a></li>
+  <li><a href="#sec-tuple" id="toc-sec-tuple" class="nav-link" data-scroll-target="#sec-tuple"><span class="header-section-number">4.2</span> Tuples (<code>tuple</code>)</a></li>
+  <li><a href="#sec-set" id="toc-sec-set" class="nav-link" data-scroll-target="#sec-set"><span class="header-section-number">4.3</span> Sets (<code>set</code>)</a></li>
+  <li><a href="#sec-dict" id="toc-sec-dict" class="nav-link" data-scroll-target="#sec-dict"><span class="header-section-number">4.4</span> Dictioanries (<code>dict</code>)</a></li>
+  <li><a href="#sec-iterating" id="toc-sec-iterating" class="nav-link" data-scroll-target="#sec-iterating"><span class="header-section-number">4.5</span> Comprehensions</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.6</span> Exercises</a></li>
   </ul>
 </nav>
@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="notebooks/04_container_data_types.ipynb">Download notebook</a>.</p>
 <p>When working with data, we usually not only have <em>one</em> int or <em>one</em> str, but many of them. For this situation, there are the container data types, <code>list</code>, <code>tuple</code>, <code>set</code>, and <code>dict</code>.</p>
 <section id="sec-list" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="sec-list"><span class="header-section-number">4.1</span> list</h2>
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-list"><span class="header-section-number">4.1</span> Lists (<code>list</code>)</h2>
 <p>The notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is <code>[1,2,3]</code>. A list of names is e.g.&nbsp;<code>["Alice", "Bob", "Charlie", "Donna"]</code>. So, for a <code>list</code>, the entries have simple (or again container) data types.</p>
 <ul>
 <li>We can access the entries of a list using square brackets. However, we have to be careful if the length of the list is too short.</li>
@@ -259,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The types of elements of a list can be mixed.</li>
 <li>When talking about <code>for</code>-loops, we already had <code>range(n)</code>, which stands for <code>0,...,n-1</code>. This is not exactly a list, but can be turned into one by <code>list(range(n))</code>. (More precisely, there is also <code>range(start, stop, step)</code> for <code>start, start + step, start + 2*step,...</code>, which stops at <code>stop-1</code> at the latest.)</li>
 </ul>
-<div id="95abf384" class="cell" data-execution_count="1">
+<div id="f45f6140" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a list of ints</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>])</span>
@@ -270,7 +270,7 @@ None</code></pre>
 </div>
 </div>
 <p>Slicing refers to sublists.</p>
-<div id="5558bb54" class="cell" data-execution_count="2">
+<div id="c3d46acf" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The first and second element: </span><span class="sc">{</span>x[<span class="dv">0</span>:<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The first two elements: </span><span class="sc">{</span>x[:<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -282,7 +282,7 @@ All elements after the first element: [2, 3]</code></pre>
 </div>
 </div>
 <p>Playing around with <code>range</code>.</p>
-<div id="e8d89c21" class="cell" data-execution_count="3">
+<div id="30c5fe3e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The first and second odd number: </span><span class="sc">{</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>))<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The first and second odd number: </span><span class="sc">{</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">2</span>))[:<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -291,7 +291,7 @@ The first and second odd number: [1, 3]</code></pre>
 </div>
 </div>
 <p>The elements of a list can be lists themselves.</p>
-<div id="b091dffa" class="cell" data-execution_count="4">
+<div id="954dcaa4" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>], <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y[<span class="dv">1</span>])</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y[<span class="dv">1</span>][<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -301,7 +301,7 @@ The first and second odd number: [1, 3]</code></pre>
 </div>
 </div>
 <p>A list can have mixed types.</p>
-<div id="5e60d59d" class="cell" data-execution_count="5">
+<div id="0ced8271" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [<span class="dv">1</span>, <span class="st">"two"</span>, [<span class="dv">3</span>,<span class="dv">4</span>], <span class="fl">5.0</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(z[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -326,7 +326,7 @@ The first and second odd number: [1, 3]</code></pre>
 <li><code>list.reverse(l)</code> (or <code>l.reverse()</code>) reverses the list.</li>
 </ul>
 <p>For the functions starting with <code>list</code>, there is a catch: While we mentioned that a function takes its input (here the list), and does not alter it, <code>list</code>s are mutable objects, which means that they are changed when calling such a function on them. So, e.g.&nbsp;after <code>l.sort()</code>, the list <code>l</code> itself is sorted, and there is no return value of that function (more precisely, the return value is <code>None</code>.) This can be counterintuitive:</p>
-<div id="6f922834" class="cell" data-execution_count="6">
+<div id="f1e2ef4a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This gives none since the return value of l.sort() is None</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(l.sort())</span>
@@ -347,7 +347,7 @@ l = [1, 2, 3]
 </div>
 </div>
 <p>Assume you want to sort a <code>list</code> not as usual. In this situation, you will find out about the <code>key</code>-parameter in <code>sorted</code>. It takes a function, we sorts the list according to the values of this function. As an example, assume we want to sort a list of <code>int</code>s according to their abolute value:</p>
-<div id="0bff0d5a" class="cell" data-execution_count="7">
+<div id="9ef476d8" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">2</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>(l, key <span class="op">=</span> <span class="kw">lambda</span> x: <span class="bu">abs</span>(x)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -355,7 +355,7 @@ l = [1, 2, 3]
 </div>
 </div>
 <p>Similarly, you can e.g.&nbsp;filter the list by only taking numbers which are at least one:</p>
-<div id="a86f7acc" class="cell" data-execution_count="8">
+<div id="751dc132" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">2</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">&gt;=</span> <span class="dv">1</span>, l)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -369,9 +369,9 @@ l = [1, 2, 3]
 </ul>
 </section>
 <section id="sec-tuple" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="sec-tuple"><span class="header-section-number">4.2</span> tuple</h2>
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-tuple"><span class="header-section-number">4.2</span> Tuples (<code>tuple</code>)</h2>
 <p>At first glance, a <code>tuple</code> is like a <code>list</code>, but comes with normal brackets <code>()</code> instead of square brackets <code>[]</code>. So, <code>(1,2,3)</code> is the tuple of these three numbers, and <code>("Alice", "Bob", "Charlie") is a tuple of three names. For the tuple</code>l<code>, still,</code>l[0]<code>gives the first entry etc. The main difference between</code>tuple<code>and</code>list<code>is that</code>list<code>s are more flexible when adding or changing entries, and</code>tuple`s are fixed (immutable) once they have been created.</p>
-<div id="c113ee9e" class="cell" data-execution_count="9">
+<div id="0314dddd" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> (<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The next line does not work, since l is immutable</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># l[0] = "Anna"</span></span>
@@ -384,7 +384,7 @@ l = [1, 2, 3]
 </div>
 </div>
 <p>An important aspect of tuples is that single values can easily be packed into a tuple. An important example is to use a tuple in order to assign two or more values at the same time:</p>
-<div id="476f3791" class="cell" data-execution_count="10">
+<div id="8973ed02" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> min_max(a,b):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    (mi, ma) <span class="op">=</span> (a <span class="cf">if</span> a <span class="op">&lt;</span> b <span class="cf">else</span> b, b <span class="cf">if</span> a <span class="op">&lt;</span> b <span class="cf">else</span> a)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mi, ma</span>
@@ -398,21 +398,34 @@ l = [1, 2, 3]
 </div>
 </div>
 <p>A special note applies to tuples of length 1. Here, note that e.g.&nbsp;<code>(1)</code> does not create a <code>tuple</code> of length 1, but an <code>int</code>. Instead, use <code>(1,)</code> for the <code>tuple</code> of length one.</p>
-<div id="1c9c8fd9" class="cell" data-execution_count="11">
+<div id="ee961dda" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>thisisnotuple <span class="op">=</span> (<span class="dv">1</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(thisisnotuple))</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>thisisatuple <span class="op">=</span> (<span class="dv">1</span>,)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(thisisatuple))</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Its first and only element is </span><span class="sc">{</span>thisisatuple[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(thisisnotuple[<span class="dv">0</span>])</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>thisisatuple <span class="op">=</span> (<span class="dv">1</span>,)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(thisisatuple))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Its first and only element is </span><span class="sc">{</span>thisisatuple[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'int'&gt;
-&lt;class 'tuple'&gt;
-Its first and only element is 1.</code></pre>
+<pre><code>&lt;class 'int'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 3</span>
+<span class="ansi-green-fg">      1</span> thisisnotuple = (<span class="ansi-green-fg">1</span>)
+<span class="ansi-green-fg">      2</span> <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(0,135,0)">type</span>(thisisnotuple))
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">thisisnotuple</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span>)
+<span class="ansi-green-fg">      4</span> thisisatuple = (<span class="ansi-green-fg">1</span>,)
+<span class="ansi-green-fg">      5</span> <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(0,135,0)">type</span>(thisisatuple))
+
+<span class="ansi-red-fg">TypeError</span>: 'int' object is not subscriptable</pre>
+</div>
 </div>
 </div>
 </section>
 <section id="sec-set" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="sec-set"><span class="header-section-number">4.3</span> set</h2>
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-set"><span class="header-section-number">4.3</span> Sets (<code>set</code>)</h2>
 <p>As in mathematics, sets have no special order, and there are noduplicates within a set. In Python3, they can be created using curly brackets, so e.g.&nbsp;<code>{1,2,3}</code> as well as <code>{1,3,2,3,1}</code> is the set of the numbers <code>1,2,3</code>. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a <code>list</code>, which can contain duplicates, <code>list(set(l))</code> is the same list (maybe the order changed) but with duplicates removed.</p>
 <p>Here are some functions on some <code>s</code> and <code>t</code>: * <code>len(s)</code>: returns the number of unique elements in <code>s</code>. * <code>s | t</code>: The union of <code>s</code> and <code>t</code>. * <code>s &amp; t</code>: The intersection of <code>s</code> and <code>t</code>. * <code>s - t</code>: The difference of <code>s</code> and <code>t</code>.</p>
 <pre class="{python3}"><code>l = [1,3,2,4,3,2]
@@ -425,9 +438,9 @@ print(f"The intersection of {s} and {t} is {s &amp; t}.")
 print(f"The difference of {s} and {t} is {s - t}.")</code></pre>
 </section>
 <section id="sec-dict" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="sec-dict"><span class="header-section-number">4.4</span> dict</h2>
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-dict"><span class="header-section-number">4.4</span> Dictioanries (<code>dict</code>)</h2>
 <p>Dictionaries (<code>dict</code>) are nothing but a collection of key-value pairs. Here is an example:</p>
-<div id="3dc7c205" class="cell" data-execution_count="12">
+<div id="0960ef6a" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">"first_name"</span>: <span class="st">"Alice"</span>,</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"last_name"</span>: <span class="st">"Müller"</span>,</span>
@@ -446,7 +459,7 @@ print(f"The difference of {s} and {t} is {s - t}.")</code></pre>
 <li>keys in a dict can be any immutable data type (like <code>int</code>, <code>str</code>, <code>float</code>, <code>tuple</code>).</li>
 </ul>
 <p>As you see, accessing field <code>'age'</code> in the <code>dict</code> <code>p</code> is done using <code>p['age']</code>. However, assume <code>'age'</code> is not a field in <code>p</code>. Then, <code>p['age']</code> gives an error. For this reason, it is often better to use the <code>get</code>-function:</p>
-<div id="94837938" class="cell" data-execution_count="13">
+<div id="9ad74360" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>d[<span class="st">'first_name'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>d[<span class="st">'last_name'</span>]<span class="sc">}</span><span class="ss"> lives in </span><span class="sc">{</span>d<span class="sc">.</span>get(<span class="st">'address'</span>)<span class="sc">}</span><span class="ss">."</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This version uses a default field in get</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"""</span><span class="sc">{</span>d[<span class="st">'first_name'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>d[<span class="st">'last_name'</span>]<span class="sc">}</span><span class="ss"> lives </span></span>
@@ -464,7 +477,7 @@ Alice Müller lives
 </div>
 </div>
 <p>Some of the most important functions on <code>d</code> as a <code>dict</code>s are: * <code>dict.keys(d)</code> (or <code>d.keys()</code>): Returns the list of all keys. * <code>dict.values(d)</code> (or <code>d.values()</code>): Returns the list of all values. * <code>dict.items(d)</code> (or <code>d.items()</code>): Returns the list of tuples (key, value).</p>
-<div id="840e135a" class="cell" data-execution_count="14">
+<div id="c3ba159a" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The keys are </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(d.keys())<span class="sc">}</span><span class="ss">."</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The values are:"</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> d.values():</span>
@@ -494,7 +507,7 @@ The key-value-pairs are:
 <li><code>dict.pop(d, key, default)</code> (or <code>d.pop(key, default)</code>): removes the key <code>key</code> from <code>d</code> and returs its value (or <code>default</code>, if the key isn’t found).</li>
 <li><code>del d[key]</code>: Deletes the entry with key <code>key</code> from <code>d</code>.</li>
 </ul>
-<div id="c7f884ac" class="cell" data-execution_count="15">
+<div id="745519cf" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">|=</span> {</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"profession"</span> : <span class="st">"student"</span>,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"subject"</span> : <span class="st">"Mathematics"</span></span>
@@ -512,7 +525,7 @@ The key-value-pairs are:
 </div>
 </div>
 <p>Here is a last example for a list of dicts.</p>
-<div id="8c04d99b" class="cell" data-execution_count="16">
+<div id="cd6feeff" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> [</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"first_name"</span>: <span class="st">"Alice"</span>,</span>
@@ -551,13 +564,13 @@ David Fischer is 41 and likes gardening, woodworking, cycling.</code></pre>
 </div>
 </section>
 <section id="sec-iterating" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="sec-iterating"><span class="header-section-number">4.5</span> list/set/dict/tuple comprehensions</h2>
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-iterating"><span class="header-section-number">4.5</span> Comprehensions</h2>
 <p>Python3 has very expressive (i.e.&nbsp;short) ways to alter container data types. The general form is (where “iterable” is a container data type):</p>
 <pre><code>[expression for variable in list if condition]
 [expression_if_true if condition else expression_if_false for variable in list]
 {key: value for item in dict if condition}</code></pre>
 <p>Let us make some examples, and you will see how powerful these complehensions are!</p>
-<div id="1d3b891c" class="cell" data-execution_count="17">
+<div id="bed85916" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The squares of all even numbers below 10</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([x<span class="op">*</span>x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>])</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The names of people who like cycling</span></span>
@@ -578,7 +591,8 @@ People who like cycling are Alice Müller, David Fischer.</code></pre>
 <p><strong>Exercise 4</strong> Given a list of names [“ALICE”, “BOB”, “CHARLIE”], convert them all to lowercase.</p>
 <p><strong>Exercise 5</strong> From a list of fruits [“apple”, “banana”, “kiwi”, “mango”, “pear”], create a list of fruits that have exactly 5 letters.</p>
 <p><strong>Exercise 6</strong> Create a list of tuples representing all possible <code>(x, y)</code> coordinates where <code>x</code> is from <code>[1, 2, 3]</code> and <code>y</code> is from <code>[4, 5]</code>.</p>
-<p><strong>Exercise 7</strong> Given the dict <code>{"a": 1, "b": 2, "c": 3}</code>, create a new dictionary that swaps keys and values <code>{1: "a", ...}</code>.</p>
+<p><strong>Exercise 7</strong> Given the dict <code>{"a": 1, "b": 2, "c": 3}</code>, create a new dictionary that swaps keys and values <code>{1: "a", ...}</code>. This is best done using a comprehension.</p>
+<p><strong>Exercise 8</strong> Assume you have <code>a = [10, 20, 30, 40]</code> and <code>mask = [True, False, True, False]</code>, you might want obtain a sublist of <code>a</code> which only contains the positions where <code>mask</code> has <code>True. Find out (using AI) how this works (without using other libraries), and describe what your code does. (You will probably find out about the</code>zip`-function, which you should look at more closely.)</p>
 
 
 </section>
@@ -986,13 +1000,13 @@ People who like cycling are Alice Müller, David Fischer.</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03_loops_and_conditions.html" class="pagination-link" aria-label="Control flow -- conditions, loops, and functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, and functions</span></span>
+      <a href="./03_loops_and_conditions.html" class="pagination-link" aria-label="Control flow -- conditions, loops, functions, etc">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, functions, etc</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05_libraries.html" class="pagination-link" aria-label="Using libraries and modules">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05_libraries.html" class="pagination-link" aria-label="Some useful libraries/packages/modules">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

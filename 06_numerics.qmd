@@ -1,14 +1,20 @@
 ---
-title: Some numerics (numpy)
+title: Numerical mathematics 
 format: 
     pdf: default
     ipynb: default
 jupyter: python3
 ---
 
-We will be using numpy {#sec-numpy}
+[Download notebook](notebooks/06_numerics.ipynb).
 
-## Linear algebra (np.array etc)
+
+
+We will be using numpy {#sec-numpy} and scipy
+
+
+
+## Linear algebra (`np.array` etc)
 
 This package provides powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra and some optimization. Usually, it is imported via
 ```{python}
@@ -41,10 +47,44 @@ print("x.dtype =", x.dtype)
 Generally we 
 
 
+## Statistics (`scipy.stats`)
+
+The `scipy`-library is a powerful which covers much of numerical mathematics. It comes with several submodules, e.g. `scipy.linalg` (linear algebra), `scipy.optimize` (optimization), `scipy.integrate` (numerical integration and ODE solving), and `scipy.signal` (signal processing). It works best with `numpy`-arrays, which we will cover in xxx.
+
+Here, we only describe what `scipy` has to offer in descriptive statistics. The function names are mostly self-explanatory: 
+
+from scipy import stats
+
+stats.norm.mean()      # mean = 0
+stats.norm.pdf(0)      # density at 0
+stats.norm.cdf(1.96)   # cumulative probability
 
 
-## Random numbers (np.rand)
+data = [1, 2, 3, 4, 5]
 
-## optimization (np.optimization)
+stats.describe(data)
+
+stats.ttest_1samp(data, popmean=3)
+
+
+stats.ttest_ind(sample1, sample2)
+
+stats.chisquare([10, 20, 30])
+
+stats.pearsonr(x, y)
+
+stats.scoreatpercentile(data, 50)  # median
+
+stats.norm.rvs(size=5)
+
+stats.tmean(data)   # mean
+stats.tstd(data)    # standard deviation
+stats.tvar(data)    # variance
+
+
+
+## Random numbers (`np.rand`)
+
+## optimization (`np.optimization`)
 
 

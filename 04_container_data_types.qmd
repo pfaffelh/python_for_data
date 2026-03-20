@@ -121,8 +121,10 @@ print(f"Minimum and maximum are {res[0]} and {res[1]}.")
 ```
 A special note applies to tuples of length 1. Here, note that e.g. `(1)` does not create a `tuple` of length 1, but an `int`. Instead, use `(1,)` for the `tuple` of length one.
 ```{python}
+#| error: true
 thisisnotuple = (1)
 print(type(thisisnotuple))
+print(thisisnotuple[0])
 thisisatuple = (1,)
 print(type(thisisatuple))
 print(f"Its first and only element is {thisisatuple[0]}.")

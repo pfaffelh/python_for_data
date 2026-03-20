@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Some numerics (numpy)</title>
+<title>6&nbsp; Numerical mathematics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_numerics.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_numerics.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical mathematics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_loops_and_conditions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, and functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, functions, etc</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -167,19 +167,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_libraries.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_numerics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical mathematics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_handling_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -216,10 +216,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#linear-algebra-in-particular-arrays" id="toc-linear-algebra-in-particular-arrays" class="nav-link active" data-scroll-target="#linear-algebra-in-particular-arrays"><span class="header-section-number">6.1</span> linear algebra, in particular arrays</a></li>
-  <li><a href="#sec-numpy" id="toc-sec-numpy" class="nav-link" data-scroll-target="#sec-numpy"><span class="header-section-number">6.2</span> numpy</a></li>
-  <li><a href="#random-numbers" id="toc-random-numbers" class="nav-link" data-scroll-target="#random-numbers"><span class="header-section-number">6.3</span> random numbers</a></li>
-  <li><a href="#optimization" id="toc-optimization" class="nav-link" data-scroll-target="#optimization"><span class="header-section-number">6.4</span> optimization</a></li>
+  <li><a href="#linear-algebra-np.array-etc" id="toc-linear-algebra-np.array-etc" class="nav-link active" data-scroll-target="#linear-algebra-np.array-etc"><span class="header-section-number">6.1</span> Linear algebra (<code>np.array</code> etc)</a></li>
+  <li><a href="#statistics-scipy.stats" id="toc-statistics-scipy.stats" class="nav-link" data-scroll-target="#statistics-scipy.stats"><span class="header-section-number">6.2</span> Statistics (<code>scipy.stats</code>)</a></li>
+  <li><a href="#random-numbers-np.rand" id="toc-random-numbers-np.rand" class="nav-link" data-scroll-target="#random-numbers-np.rand"><span class="header-section-number">6.3</span> Random numbers (<code>np.rand</code>)</a></li>
+  <li><a href="#optimization-np.optimization" id="toc-optimization-np.optimization" class="nav-link" data-scroll-target="#optimization-np.optimization"><span class="header-section-number">6.4</span> optimization (<code>np.optimization</code>)</a></li>
   </ul>
 </nav>
     </div>
@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical mathematics</span></h1>
 </div>
 
 
@@ -245,18 +245,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="linear-algebra-in-particular-arrays" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="linear-algebra-in-particular-arrays"><span class="header-section-number">6.1</span> linear algebra, in particular arrays</h2>
-</section>
-<section id="sec-numpy" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="sec-numpy"><span class="header-section-number">6.2</span> numpy</h2>
+<p><a href="notebooks/06_numerics.ipynb">Download notebook</a>.</p>
+<p>We will be using numpy {#sec-numpy} and scipy</p>
+<section id="linear-algebra-np.array-etc" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="linear-algebra-np.array-etc"><span class="header-section-number">6.1</span> Linear algebra (<code>np.array</code> etc)</h2>
 <p>This package provides powerful and fast computations for numerical mathematics. (Most of it is implemented in <code>C</code>.) We will only learn about some parts of it, some linear algebra and some optimization. Usually, it is imported via</p>
-<div id="5b4f572f" class="cell" data-execution_count="1">
+<div id="4175b2fb" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>(Then, the functions from <code>numpy</code> are called <code>np.something</code>.) Together with <code>pandas</code> (see <a href="07_handling_data.html#sec-pandas" class="quarto-xref"><span>Section 7.2</span></a>) for data handling, this is the basic framework for data analysis in Python3.</p>
+<p>(Then, the functions from <code>numpy</code> are called <code>np.something</code>.) Together with <code>pandas</code> (see <a href="07_handling_data.html#sec-pandas" class="quarto-xref"><span>Section 7.3</span></a>) for data handling, this is the basic framework for data analysis in Python3.</p>
 <p>Let us start with linear algebra. A vector or matrix is an <code>np.array</code>. <code>numpy</code> interprets a vector as a column vector, and</p>
-<div id="2615e676" class="cell" data-execution_count="2">
+<div id="d0a0731d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">2.0</span>],</span>
@@ -291,11 +290,27 @@ x.dtype = float64</code></pre>
 </div>
 <p>Generally we</p>
 </section>
-<section id="random-numbers" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="random-numbers"><span class="header-section-number">6.3</span> random numbers</h2>
+<section id="statistics-scipy.stats" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="statistics-scipy.stats"><span class="header-section-number">6.2</span> Statistics (<code>scipy.stats</code>)</h2>
+<p>The <code>scipy</code>-library is a powerful which covers much of numerical mathematics. It comes with several submodules, e.g.&nbsp;<code>scipy.linalg</code> (linear algebra), <code>scipy.optimize</code> (optimization), <code>scipy.integrate</code> (numerical integration and ODE solving), and <code>scipy.signal</code> (signal processing). It works best with <code>numpy</code>-arrays, which we will cover in xxx.</p>
+<p>Here, we only describe what <code>scipy</code> has to offer in descriptive statistics. The function names are mostly self-explanatory:</p>
+<p>from scipy import stats</p>
+<p>stats.norm.mean() # mean = 0 stats.norm.pdf(0) # density at 0 stats.norm.cdf(1.96) # cumulative probability</p>
+<p>data = [1, 2, 3, 4, 5]</p>
+<p>stats.describe(data)</p>
+<p>stats.ttest_1samp(data, popmean=3)</p>
+<p>stats.ttest_ind(sample1, sample2)</p>
+<p>stats.chisquare([10, 20, 30])</p>
+<p>stats.pearsonr(x, y)</p>
+<p>stats.scoreatpercentile(data, 50) # median</p>
+<p>stats.norm.rvs(size=5)</p>
+<p>stats.tmean(data) # mean stats.tstd(data) # standard deviation stats.tvar(data) # variance</p>
 </section>
-<section id="optimization" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="optimization"><span class="header-section-number">6.4</span> optimization</h2>
+<section id="random-numbers-np.rand" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="random-numbers-np.rand"><span class="header-section-number">6.3</span> Random numbers (<code>np.rand</code>)</h2>
+</section>
+<section id="optimization-np.optimization" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="optimization-np.optimization"><span class="header-section-number">6.4</span> optimization (<code>np.optimization</code>)</h2>
 
 
 </section>
@@ -703,13 +718,13 @@ x.dtype = float64</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05_libraries.html" class="pagination-link" aria-label="Using libraries and modules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span>
+      <a href="./05_libraries.html" class="pagination-link" aria-label="Some useful libraries/packages/modules">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07_handling_data.html" class="pagination-link" aria-label="Loading and handling data (pandas)">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07_handling_data.html" class="pagination-link" aria-label="Loading and handling data">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

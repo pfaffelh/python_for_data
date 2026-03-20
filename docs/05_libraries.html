@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Using libraries and modules</title>
+<title>5&nbsp; Some useful libraries/packages/modules</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_libraries.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_libraries.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_loops_and_conditions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, and functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control flow – conditions, loops, functions, etc</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -167,19 +167,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_libraries.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_numerics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical mathematics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_handling_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -216,20 +216,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports"><span class="header-section-number">5.1</span> imports</a></li>
-  <li><a href="#sec-math" id="toc-sec-math" class="nav-link" data-scroll-target="#sec-math"><span class="header-section-number">5.2</span> math</a></li>
-  <li><a href="#sec-re" id="toc-sec-re" class="nav-link" data-scroll-target="#sec-re"><span class="header-section-number">5.3</span> re (regular expressions)</a></li>
-  <li><a href="#datetime" id="toc-datetime" class="nav-link" data-scroll-target="#datetime"><span class="header-section-number">5.4</span> datetime</a></li>
-  <li><a href="#scipy.stats" id="toc-scipy.stats" class="nav-link" data-scroll-target="#scipy.stats"><span class="header-section-number">5.5</span> scipy.stats</a></li>
-  <li><a href="#decimal" id="toc-decimal" class="nav-link" data-scroll-target="#decimal"><span class="header-section-number">5.6</span> decimal</a></li>
-  <li><a href="#json" id="toc-json" class="nav-link" data-scroll-target="#json"><span class="header-section-number">5.7</span> json</a></li>
-  <li><a href="#csv" id="toc-csv" class="nav-link" data-scroll-target="#csv"><span class="header-section-number">5.8</span> csv</a></li>
-  <li><a href="#sqlite3" id="toc-sqlite3" class="nav-link" data-scroll-target="#sqlite3"><span class="header-section-number">5.9</span> sqlite3</a></li>
-  <li><a href="#pickle" id="toc-pickle" class="nav-link" data-scroll-target="#pickle"><span class="header-section-number">5.10</span> pickle</a></li>
-  <li><a href="#unittest" id="toc-unittest" class="nav-link" data-scroll-target="#unittest"><span class="header-section-number">5.11</span> unittest</a></li>
-  <li><a href="#os" id="toc-os" class="nav-link" data-scroll-target="#os"><span class="header-section-number">5.12</span> os</a></li>
-  <li><a href="#sys" id="toc-sys" class="nav-link" data-scroll-target="#sys"><span class="header-section-number">5.13</span> sys</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.14</span> Exercises</a></li>
+  <li><a href="#loading-modules-import" id="toc-loading-modules-import" class="nav-link active" data-scroll-target="#loading-modules-import"><span class="header-section-number">5.1</span> Loading modules (<code>import</code>)</a></li>
+  <li><a href="#sec-math" id="toc-sec-math" class="nav-link" data-scroll-target="#sec-math"><span class="header-section-number">5.2</span> Mathematics (<code>math</code>)</a></li>
+  <li><a href="#dates-and-times-of-day-datetime" id="toc-dates-and-times-of-day-datetime" class="nav-link" data-scroll-target="#dates-and-times-of-day-datetime"><span class="header-section-number">5.3</span> Dates and times of day (<code>datetime</code>)</a></li>
+  <li><a href="#decimal-numbers-decimal" id="toc-decimal-numbers-decimal" class="nav-link" data-scroll-target="#decimal-numbers-decimal"><span class="header-section-number">5.4</span> Decimal numbers (<code>decimal</code>)</a></li>
+  <li><a href="#sec-re" id="toc-sec-re" class="nav-link" data-scroll-target="#sec-re"><span class="header-section-number">5.5</span> Regular expressions (<code>re</code>)</a></li>
+  <li><a href="#storing-and-restoring-objects-pickle" id="toc-storing-and-restoring-objects-pickle" class="nav-link" data-scroll-target="#storing-and-restoring-objects-pickle"><span class="header-section-number">5.6</span> Storing and restoring objects (<code>pickle</code>)</a></li>
+  <li><a href="#testing-code-pytest" id="toc-testing-code-pytest" class="nav-link" data-scroll-target="#testing-code-pytest"><span class="header-section-number">5.7</span> Testing code (<code>pytest</code>)</a></li>
+  <li><a href="#using-the-operating-system-os" id="toc-using-the-operating-system-os" class="nav-link" data-scroll-target="#using-the-operating-system-os"><span class="header-section-number">5.8</span> Using the operating system (<code>os</code>)</a></li>
+  <li><a href="#interacting-with-the-environment-sys" id="toc-interacting-with-the-environment-sys" class="nav-link" data-scroll-target="#interacting-with-the-environment-sys"><span class="header-section-number">5.9</span> Interacting with the environment (<code>sys</code>)</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.10</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -238,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></h1>
 </div>
 
 
@@ -255,8 +251,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="imports" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="imports"><span class="header-section-number">5.1</span> imports</h2>
+<p><a href="notebooks/05_libraries.ipynb">Download notebook</a>.</p>
+<p>In this chapter, we take a little break. Although there are lots of things to learn, the material covered here has the role of helping to learn about the Python3 ecosystem and what is possible, rather than learn the details of various labraries. The first section, however, is central and will be needed in any Python3 project you will start.</p>
+<section id="loading-modules-import" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="loading-modules-import"><span class="header-section-number">5.1</span> Loading modules (<code>import</code>)</h2>
 <p>As in all programming languages, not all python programs come in a single file. If a Python3 project spans multiple files, an <code>import</code> becomes necessary. In Python3, there is syntax for <code>import</code>s as follows:</p>
 <table class="caption-top table">
 <thead>
@@ -293,12 +291,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>You wrote some code in file <code>one.py</code> (e.g.&nbsp;some functions) which you want to use in file <code>two.py</code>. (Note, btw, that the first digit in <code>one.py</code> must be a letter.) Assume <code>one.py</code> is as follows:</li>
 </ol>
-<pre><code>one.py
+<pre><code># File: one.py
 
 def myConst():
     return 42</code></pre>
 <p>Then, the import in <code>two.py</code> is either <code>import one</code> (both files must be in the same folder), or <code>from one import myConst</code> or (not recommended) <code>from one import *</code>. In the first case, you must prefix <code>myconst()</code> by <code>one</code>:</p>
-<pre><code>import one
+<pre><code># File: two.py
+
+import one
 print(f"My constant is {one.myConst()}.")</code></pre>
 <p>In the second case, there is no prefix:</p>
 <pre><code>from one import myConst
@@ -315,21 +315,22 @@ print(f"My constant is {one.myConst()}.")</code></pre>
 print(f"My constant is {myName.myConst()}.")</code></pre>
 <ol start="2" type="1">
 <li><p>You want to use functions from a built-in library. Then, a simple <code>import module</code> is often the best choice. We will see examples in <a href="#sec-math" class="quarto-xref"><span>Section 5.2</span></a>.</p></li>
-<li><p>You want to use functions from a library, which needs to be installed. Here, before the <code>import module</code> even works, you need to install the module in your python environment. In a terminal, within your python environment, use</p></li>
+<li><p>You want to use functions from a library, which needs to be installed. Here, before the <code>import module</code> even works, you need to install the module in your python environment. In a terminal, within your Python3 environment, use</p></li>
 </ol>
-<pre><code>pip3 install module</code></pre>
-<p>and then, the <code>import</code> works. We will see examples for this e.g.&nbsp;in <a href="07_handling_data.html#sec-loading" class="quarto-xref"><span>Section 7.1</span></a>.</p>
+<div id="7eb7b457" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the next line and run the cell for installation.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This only needs to be done once for every package.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If pip3 does not work, use pip instead. </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip3 install numpy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>and then, <code>import numpy</code> will work. We will see examples for this e.g.&nbsp;in <span class="quarto-unresolved-ref">?sec-loading</span>.</p>
 </section>
 <section id="sec-math" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="sec-math"><span class="header-section-number">5.2</span> math</h2>
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-math"><span class="header-section-number">5.2</span> Mathematics (<code>math</code>)</h2>
 <p>The mathematical library in Python is used by <code>import math</code>. Then, you have e.g.&nbsp;the following functions, which are self-explanatory: <code>math.sqrt()</code>, <code>math.exp()</code>, <code>math.log()</code>, <code>math.sin()</code>, <code>math.cos()</code>, and constants like <code>math.pi</code> and <code>math.e</code>.</p>
 </section>
-<section id="sec-re" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="sec-re"><span class="header-section-number">5.3</span> re (regular expressions)</h2>
-<p>xxx Use AI</p>
-</section>
-<section id="datetime" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="datetime"><span class="header-section-number">5.4</span> datetime</h2>
+<section id="dates-and-times-of-day-datetime" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="dates-and-times-of-day-datetime"><span class="header-section-number">5.3</span> Dates and times of day (<code>datetime</code>)</h2>
 <p>In data science, we often have to handle dates. Their disadvantage is that there is no standard way to write these as strings. In Python3, this and various other problems around dates and times is solved by the <code>datetime</code>-library.</p>
 <p>Submodules (in fact, these are <code>class</code>es in this case) of this package are</p>
 <ul>
@@ -340,12 +341,12 @@ print(f"My constant is {myName.myConst()}.")</code></pre>
 <li><code>tzinfo</code> and <code>timezone</code>: handling timezones</li>
 </ul>
 <p>We will here use</p>
-<div id="97d1dfef" class="cell" data-execution_count="1">
+<div id="f1a6de6d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>at the cost that <code>datetime</code>-objects are only accessible by saying <code>datetime.datetime</code> (the first <code>datetime</code> being the package<code>, the second</code>datetime` being the class/submodule).</p>
 <p>Let us create a <code>datetime</code>-object`:</p>
-<div id="9ee4ca0f" class="cell" data-execution_count="2">
+<div id="ca105171" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime(<span class="dv">2026</span>, <span class="dv">4</span>, <span class="dv">21</span>, <span class="dv">12</span>, <span class="dv">15</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"year: </span><span class="sc">{</span>dt<span class="sc">.</span>year<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -372,7 +373,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the starting time of the first session in this course. As we see here, we can extract year,…, microseconds from the <code>datetime</code>-object.</p>
 <p>Often, we are given strings such as <code>"21.4.26, 12:15"</code>, and want to convert this into a <code>datetime</code> object. For this, we have <code>datetime.datetime.strptime</code>:</p>
-<div id="95366095" class="cell" data-execution_count="3">
+<div id="d27a4884" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"21.4.26, 12:15"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime.strptime(s, <span class="st">"%y.%m.</span><span class="sc">%d</span><span class="st">, %H:%M"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s <span class="op">+</span> <span class="ss">f" is converted to </span><span class="sc">{</span>dt<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -382,7 +383,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>(For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.)</p>
 <p>Reversely, we want to print a <code>datetime</code>-object in a certain way. For this, we have <code>datetime.datetime.strftime</code>:</p>
-<div id="695c8b3d" class="cell" data-execution_count="4">
+<div id="11eb7054" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt.strftime(<span class="st">"%-m/</span><span class="sc">%-d</span><span class="st">/%y, %H:%M"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4/26/21, 12:15</code></pre>
@@ -390,7 +391,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the US-style output.</p>
 <p>Next, assume we want to compute the same time 12 weeks from now. For this, we use <code>datetime.timedelta</code>.</p>
-<div id="e908efda" class="cell" data-execution_count="5">
+<div id="584252fa" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt <span class="op">+</span> datetime.timedelta(days<span class="op">=</span><span class="dv">84</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2021-07-19 12:15:00</code></pre>
@@ -403,54 +404,99 @@ time: 12:15:00</code></pre>
 <li>We will not cover time-zones here, but if you have global data, they will become important!</li>
 </ul>
 </section>
-<section id="scipy.stats" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="scipy.stats"><span class="header-section-number">5.5</span> scipy.stats</h2>
-<p>descriptive statistics</p>
+<section id="decimal-numbers-decimal" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="decimal-numbers-decimal"><span class="header-section-number">5.4</span> Decimal numbers (<code>decimal</code>)</h2>
+<p>We already saw that:</p>
+<div id="76f0a189" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rounding error: 0.2 + 0.1 = </span><span class="sc">{</span><span class="fl">0.2</span> <span class="op">+</span> <span class="fl">0.1</span><span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rounding error: 0.2 + 0.1 = 0.30000000000000004.</code></pre>
+</div>
+</div>
+<p>The reason is that computers in general use a base of 2 for all computations, and 0.3 has a bad representation in this system. While this small error is acceptable often, it is not in some contexts (above all, finance). In this case, we can use the <code>decimal</code> library. Within <code>decimal</code>, a base of 10 is used, but calculations are slower than for <code>float</code>s.</p>
+<div id="19e985fb" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> decimal <span class="im">import</span> Decimal</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Exact calculation: 0.2 + 0.1 = </span><span class="sc">{</span>Decimal(<span class="st">'0.2'</span>) <span class="op">+</span> Decimal(<span class="st">'0.1'</span>)<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Exact calculation: 0.2 + 0.1 = 0.3.</code></pre>
+</div>
+</div>
 </section>
-<section id="decimal" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="decimal"><span class="header-section-number">5.6</span> decimal</h2>
+<section id="sec-re" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="sec-re"><span class="header-section-number">5.5</span> Regular expressions (<code>re</code>)</h2>
+<p>Sometimes, you need to find patterns in a string. In data science, this happens if some field contains unstructured text, and you want to extract information. As an example, assume you load data from a csv-file, and one columns contains all email-adresses of the corresponding item. If you read this, you have something like <code>"muller@gmail.com; muller@yahoo.com"</code>. However, you want to separate the two addresses, and store them in a <code>list</code>. One way to approach this is using a regular expression (which in this case reads <code>"\S+@\S+\.\S+"</code>):</p>
+<div id="d25d551a" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"muller@gmail.com; muller@yahoo.com"</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>emails <span class="op">=</span> re.findall(<span class="vs">r"</span><span class="dv">\S</span><span class="op">+</span><span class="vs">@</span><span class="dv">\S</span><span class="op">+</span><span class="ch">\.</span><span class="dv">\S</span><span class="op">+</span><span class="vs">"</span>, text)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(emails)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['muller@gmail.com;', 'muller@yahoo.com']</code></pre>
+</div>
+</div>
+<p>Let us quickly break this down to some extent, looking at <code>"\S+@\S+\.\S+"</code>: * <code>\S</code>: any non-whitespace character * <code>+</code>: one or more of the previous thing * <code>@</code>: exactly the <code>@</code> symbol * <code>\.</code>: exactly the dot <code>.</code> character (separating e.g.&nbsp;gmail from com)</p>
+<p>We can agree that this exactly what an email address looks like. The <code>re.finall()</code> finds all places in <code>text</code> which match this pattern and extracts them, putting them into a list. Note that there are more patterns to find than <code>\S</code>, <code>+</code> and exact matches. For this reason, it is advised to use AI when it comes to regular expressions.</p>
 </section>
-<section id="json" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="json"><span class="header-section-number">5.7</span> json</h2>
-</section>
-<section id="csv" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="csv"><span class="header-section-number">5.8</span> csv</h2>
-</section>
-<section id="sqlite3" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="sqlite3"><span class="header-section-number">5.9</span> sqlite3</h2>
-</section>
-<section id="pickle" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="pickle"><span class="header-section-number">5.10</span> pickle</h2>
-<div id="322cc13c" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to file (pickle)</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    pickle.dump(data, f)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load from file (unpickle)</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.pkl"</span>, <span class="st">"rb"</span>) <span class="im">as</span> f:</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    loaded_data <span class="op">=</span> pickle.load(f)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loaded_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="storing-and-restoring-objects-pickle" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="storing-and-restoring-objects-pickle"><span class="header-section-number">5.6</span> Storing and restoring objects (<code>pickle</code>)</h2>
+<p>Sometimes, you want to store intermediate objects. One way is to write them out in files, but you can also use the <code>pickle</code>-library in order to write Python3 objects to disc. Here is an example:</p>
+<div id="400b94f9" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to file (pickle)</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    pickle.dump(data, f)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load from file (unpickle)</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.pkl"</span>, <span class="st">"rb"</span>) <span class="im">as</span> f:</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    loaded_data <span class="op">=</span> pickle.load(f)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loaded_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'name': 'Alice', 'age': 30}</code></pre>
 </div>
 </div>
 </section>
-<section id="unittest" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="unittest"><span class="header-section-number">5.11</span> unittest</h2>
+<section id="testing-code-pytest" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="testing-code-pytest"><span class="header-section-number">5.7</span> Testing code (<code>pytest</code>)</h2>
+<div id="78bf22cc" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the next line and run the cell for installation.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If pip3 does not work, use pip instead. </span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip3 install pytest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>When starting to code, producing reliable programs is both important and difficult. One – not the best – way to approach this is to rely on the program until something breaks. It is actually better to <em>test</em> the code, i.e.&nbsp;to write tests. This means that you tell your program that you expect a certain behavior.</p>
+<p>A simple and powerful library for this is <code>pytest</code>. When working with <code>.py</code>-files, you usually separate such tests in a separate file. Every test-case is within a function with name starting with <code>test_</code>. In a terminal, you can run <code>pytest</code> on that file, which performs all tests, and reports any error.</p>
+<p>However, we are working with Jupyter notebooks here, so we cannot run <code>pytest</code> on separate files. Although there are workarounds (the package <code>ipytest</code>), we will only go through some basics here. This means we are introducing <code>assert</code>.</p>
+<div id="0b6d8031" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">=</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>  <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[12]</span><span class="ansi-green-fg">, line 3</span>
+<span class="ansi-red-fg">    </span><span class="ansi-red-fg">assert 2 + 2 = 4</span>
+                 ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
+</pre>
+</div>
+</div>
+</div>
 </section>
-<section id="os" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="os"><span class="header-section-number">5.12</span> os</h2>
+<section id="using-the-operating-system-os" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="using-the-operating-system-os"><span class="header-section-number">5.8</span> Using the operating system (<code>os</code>)</h2>
 </section>
-<section id="sys" class="level2" data-number="5.13">
-<h2 data-number="5.13" class="anchored" data-anchor-id="sys"><span class="header-section-number">5.13</span> sys</h2>
+<section id="interacting-with-the-environment-sys" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="interacting-with-the-environment-sys"><span class="header-section-number">5.9</span> Interacting with the environment (<code>sys</code>)</h2>
+<p>xxx command line arguments</p>
 </section>
-<section id="exercises" class="level2" data-number="5.14">
-<h2 data-number="5.14" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.14</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.10</span> Exercises</h2>
+<p><strong>Exercise 1</strong> What is your age in seconds?</p>
 <p>Exercise with datetime</p>
 <p>date,sales 2026-01-01,120 2026-01-02,135 2026-01-03,128 2026-01-08,150 2026-02-01,210 2026-02-03,215</p>
 <p>We want to:</p>
@@ -461,6 +507,8 @@ time: 12:15:00</code></pre>
 <p>compute time differences</p>
 <p>resample by month</p>
 <p>create rolling averages</p>
+<p><strong>Exercise f</strong> Apparently, <code>"muller@gmail.com; wrong-email; muller@yahoo.com"</code> only contains two valid email addresses. Use AI and <code>re</code> in order to produce and understand code, which separates the correct from the incorrect email addresses.</p>
+<p><strong>Exercise d</strong> A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.) Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year. * Compute the account balance <em>as usual</em>, i.e.&nbsp;keeping sub-cents at all days. * Compute the account balance using the above strategy, i.e.&nbsp;ignoring sub-cents at the end of each day.</p>
 
 
 </section>
@@ -873,8 +921,8 @@ time: 12:15:00</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06_numerics.html" class="pagination-link" aria-label="Some numerics (numpy)">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06_numerics.html" class="pagination-link" aria-label="Numerical mathematics">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical mathematics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
