@@ -1,0 +1,14 @@
+---
+title: Loading data and pandas
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+## csv, json, requests
+
+## dataframe
+
+## dealing with na, data cleaning 
+
