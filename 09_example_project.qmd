@@ -1,0 +1,9 @@
+---
+title: An example project
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+Human population data

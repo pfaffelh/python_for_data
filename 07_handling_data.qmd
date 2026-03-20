@@ -1,0 +1,18 @@
+---
+title: Loading and handling data 
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+## Loading data from files (`csv`, `xlsx`, `json`) {#sec-loading-files}
+
+## Loading data from online resources (`requests`)  {#sec-loading-online}
+
+## Dataframes (`pandas`) {#sec-pandas}
+
+dt.strftime("%-m/%-d/%y, %H:%M")
+
+
+

@@ -6,7 +6,6 @@ format:
 jupyter: python3
 ---
 
-
 ## imports
 
 As in all programming languages, not all python programs come in a single file. If a Python3 project spans multiple files, an `import` becomes necessary. In Python3, there is syntax for `import`s as follows:
@@ -68,42 +67,14 @@ pip3 install module
 ```
 and then, the `import` works. We will see examples for this e.g. in @sec-loading. 
 
-## math {#sec-math}
+## Mathematics (`math`) {#sec-math}
 The mathematical library in Python is used by `import math`. Then, you have e.g. the following functions, which are self-explanatory: `math.sqrt()`, `math.exp()`, `math.log()`, `math.sin()`, `math.cos()`, and constants like `math.pi` and `math.e`. 
 
-## numpy {#sec-numpy}
+## Regular expressions (`re`) {#sec-re}
 
-This package provides powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra and some optimization. Usually, it is imported via
-```{python}
-import numpy as np
-```
-(Then, the functions from `numpy` are called `np.something`.) Together with `pandas` (see @sec-pandas) for data handling, this is the basic framework for data analysis in Python3. 
+xxx Use AI
 
-Let us start with linear algebra. A vector or matrix is an `np.array`. `numpy` interprets a vector as a column vector, and 
-
-```{python}
-x = np.array([1.0, 2.0, 3.0])
-A = np.array([
-    [1.0, 0.0, 2.0],
-    [0.0, 1.0, 1.0]
-])
-
-print("x =")
-print(x)
-print()
-print("A =")
-print(A)
-print()
-print("x.shape =", x.shape)
-print("A.shape =", A.shape)
-print("x.ndim =", x.ndim)
-print("A.ndim =", A.ndim)
-print("x.dtype =", x.dtype)
-```
-
-Generally we 
-
-## datetime
+## Dates and times of day (`datetime`)
 
 In data science, we often have to handle dates. Their disadvantage is that there is no standard way to write these as strings. In Python3, this and various other problems around dates and times is solved by the `datetime`-library. 
 
@@ -162,35 +133,41 @@ Here are some more remarks:
 * `datetime.time` has the same limitations.
 * We will not cover time-zones here, but if you have global data, they will become important!
 
-## numpy 
+## descriptive statistics (`scipy.stats`)
 
-## scipy.stats
+## Decimal numbers (`decimal`)
 
-statistics
+## json
 
+## csv
 
+## SQL databases (`sqlite3`)
 
-random
+## Storing and restoring objects (`pickle`)
 
-decimal
+```{python}
+import pickle
 
-json
+data = {"name": "Alice", "age": 30}
 
-csv
+# Save to file (pickle)
+with open("data.pkl", "wb") as f:
+    pickle.dump(data, f)
 
-sqlite3
+# Load from file (unpickle)
+with open("data.pkl", "rb") as f:
+    loaded_data = pickle.load(f)
 
-pickle
+print(loaded_data)
+```
 
-time
+## Testing code (`unittest`)
 
-unittest
+## Dealing with the operating system (`os`) 
 
-os 
+## sys 
 
-sys 
-
-scipy.stats
+## Exercises
 
 Exercise with datetime
 

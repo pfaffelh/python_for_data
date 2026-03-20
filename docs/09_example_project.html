@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Python for Data Analysis</title>
+<title>9&nbsp; An example project</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -68,7 +33,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02_simple_data_types.html" rel="next">
+<link href="./10_misc.html" rel="next">
+<link href="./08_analyzing_data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -119,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Data Analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_example_project.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">An example project</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -141,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Data Analysis</span></span></a>
   </div>
 </li>
@@ -189,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_example_project.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_example_project.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">An example project</span></span></a>
   </div>
 </li>
@@ -218,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Data Analysis</h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">An example project</span></h1>
 </div>
 
 
@@ -235,38 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>These are the materials which are used for a course on <em>Python for Data Analysis</em> at the University of Freiburg in summer 2026. It does not assume any prior knowledge of python (although this might help). The goal of the course is some literacy in python, including basic knowledge such as data types and control flow, but also using libraries and APIs, reading and dealing with data, up to some methods such as PCA and regression.</p>
-<p>Basically, the course has three parts: 1. Python basics: data types, functions, loops, conditions etc; (Lessons 01, 02, 03, 04) 2. Tools for data analysis: numpy, matplotlib, pandas; (Lessons 05, 05, 07, 08) 3: Project: choose data that interests you and creat a dashboard</p>
-<p>Within the first two parts, you will be assigned homeworks, which you can find at the end of each section. For the third part, you will have to find a project by yourself.</p>
-<p>Let us discuss some preliminairies.</p>
-<p><strong>Your python environment:</strong> We will assume that python and jupyter is installed on your system. These course notes are written with python 3.13, but other versions might work as well. In addition to plain <code>python</code>, we will need some libraries. Which ones we need (including their versions) is written in the file <a href="https://github.com/pfaffelh/python_for_data/blob/master/requirements.txt"><code>requirements.txt</code></a>. Some jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the jupyter server which runs the notebools.)</p>
-<p><em>General note: We avoid repeating the distinction between the commands <code>python</code> and <code>python3</code>, and will simply write <code>python3</code> in the sequel.</em></p>
-<p><strong>Starting a Jupyter notebook:</strong></p>
-<p>There are basically three ways <code>python</code> commands can be run: 1. In interactive mode on the command line by typing <code>python3</code> in your shell, 2. In <code>python</code>-scripts, usually ending with <code>myScript.py</code>. You can run these using <code>python3 myScript.py</code>. 3. Jupyter notebooks have the opportunity to mix usual text with <code>python</code> commands. We will use these in this course.</p>
-<p>For Jupyter notebooks, there are at least two ways to run them:</p>
-<ol type="1">
-<li>Start the Jupyter server using <code>jupyter lab</code> (hopefully, it is already installed), which opens your browser where you can edit and save what you have done;</li>
-<li>Use <code>vscode</code> as you IDE and work from there; see below.</li>
-</ol>
-<p><strong>Integrated Development Environment (IDE):</strong> When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as <a href="https://code.visualstudio.com/"><code>vscode</code></a> or <a href="https://www.jetbrains.com/de-de/pycharm/">pycharm</a>. It is best to acticvate your vertual environment using <code>source venv/bin/activate</code> before starting your IDE. In order to start vscode, go to the main folder of the course notes, and type <code>code .</code> E.g., vscode can be used for all three ways to write Python commands:</p>
-<ol type="1">
-<li>Use <code>Terminal -&gt; New Terminal</code> in order to open a terminal, type <code>python3</code> and you are in interactive mode,</li>
-<li>Write a Python script and run it using the opoened terminal,</li>
-<li>Click on some Jupyther notebook, and vscode starts the Jupyter server for you.</li>
-</ol>
-<p><strong>A first Python cell:</strong> Here is the first cell of Python-code:</p>
-<div id="d9a0b619" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Hello, "</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"world!"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x<span class="op">+</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Hello, world!</code></pre>
-</div>
-</div>
-<p>If you are working within the jupyter notebook (and not just in the html-file), you can execute this piece of code: Press the play bottom on the left (or hit <code>Control + Enter</code> within the Python-cell).</p>
-<p><strong>Using AI (ChatGPT, Gemini etc, Copilot, Claude, etc):</strong></p>
-<p>During the last years, AI has increasingly improved in code writing. You are encouraged to use this new technology! As usual when learning new things, this new tool can help a lot, and will be able to solve the exercises within the Jupyter notebooks. However, you still have to undestand the code, and what might go wrong during execution. As a first course in Python, you will end up having up to a few hundred lines of code, which has to be coherent. You must know the structure of that code, and in order to extend it, fix bugs etc. If you are ever involved in bigger projects, this is even more important.</p>
-<p>For these course notes, I have also used AI (chatGPT, gemini) in order to ask the AI which topics I should cover, and make concrete suggestions for a workflow. (While I have been programming in Python3 for some years now, my experience with <code>numpy</code> and <code>matplotlib</code> was still limited when I started to write the course, since I have used <code>R</code> for such topics in the past.) Not all suggestions from the AI were great. However, I think that the end result for that course is much better than without the help of AI. I hope this also helps the learning experience.</p>
+<p>Human population data</p>
 
 
 
@@ -673,10 +608,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./08_analyzing_data.html" class="pagination-link" aria-label="Analyzing data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyzing data</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02_simple_data_types.html" class="pagination-link" aria-label="Simple Data types">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Simple Data types</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10_misc.html" class="pagination-link" aria-label="Miscellaneous">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

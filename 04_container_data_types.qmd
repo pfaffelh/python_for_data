@@ -10,7 +10,7 @@ jupyter: python3
 
 When working with data, we usually not only have *one* int or *one* str, but many of them. For this situation, there are the container data types, `list`, `tuple`, `set`, and `dict`. 
 
-## list {#sec-list}
+## Lists (`list`) {#sec-list}
 The notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is `[1,2,3]`. A list of names is e.g. `["Alice", "Bob", "Charlie", "Donna"]`. So, for a `list`, the entries have simple (or again container) data types. 
 
 * We can access the entries of a list using square brackets. However, we have to be careful if the length of the list is too short. 
@@ -96,7 +96,7 @@ Let us shortly describe two functions on a list of `bool`s `l`.
 * `all(l)` gives `True` if all entries of `l` are `True.
 * `any(l)` gives `True` if at least one entry of `l` is `True.
 
-## tuple {#sec-tuple}
+## Tuples (`tuple`) {#sec-tuple}
 
 At first glance, a `tuple` is like a `list`, but comes with normal brackets `()` instead of square brackets `[]`. So, `(1,2,3)` is the tuple of these three numbers, and `("Alice", "Bob", "Charlie") is a tuple of three names. For the tuple `l`, still, `l[0]` gives the first entry etc. The main difference between `tuple` and `list` is that `list`s are more flexible when adding or changing entries, and `tuple`s are fixed (immutable) once they have been created.
 ```{python}
@@ -119,8 +119,16 @@ b = 10
 res = min_max(a,b)
 print(f"Minimum and maximum are {res[0]} and {res[1]}.")
 ```
+A special note applies to tuples of length 1. Here, note that e.g. `(1)` does not create a `tuple` of length 1, but an `int`. Instead, use `(1,)` for the `tuple` of length one.
+```{python}
+thisisnotuple = (1)
+print(type(thisisnotuple))
+thisisatuple = (1,)
+print(type(thisisatuple))
+print(f"Its first and only element is {thisisatuple[0]}.")
+```
 
-## set {#sec-set}
+## Sets (`set`) {#sec-set}
 
 As in mathematics, sets have no special order, and there are noduplicates within a set. In Python3, they can be created using curly brackets, so e.g. `{1,2,3}` as well as `{1,3,2,3,1}` is the set of the numbers `1,2,3`. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a `list`, which can contain duplicates, `list(set(l))` is the same list (maybe the order changed) but with duplicates removed.
 
@@ -144,7 +152,7 @@ print(f"The intersection of {s} and {t} is {s & t}.")
 print(f"The difference of {s} and {t} is {s - t}.")
 ```
 
-## dict {#sec-dict}
+## Dictioanries (`dict`) {#sec-dict}
 
 Dictionaries (`dict`) are nothing but a collection of key-value pairs. Here is an example:
 ```{python}
@@ -235,7 +243,7 @@ for p in people:
         + ", ".join(p["hobbies"]) + ".")
 ```
 
-## list/set/dict/tuple comprehensions {#sec-iterating}
+## Comprehensions {#sec-iterating}
 
 Python3 has very expressive (i.e. short) ways to alter container data types. The general form is (where "iterable" is a container data type):
 ```
@@ -277,4 +285,8 @@ From a list of fruits ["apple", "banana", "kiwi", "mango", "pear"], create a lis
 Create a list of tuples representing all possible `(x, y)` coordinates where `x` is from `[1, 2, 3]` and `y` is from `[4, 5]`.
 
 **Exercise 7**
-Given the dict `{"a": 1, "b": 2, "c": 3}`, create a new dictionary that swaps keys and values `{1: "a", ...}`.
+Given the dict `{"a": 1, "b": 2, "c": 3}`, create a new dictionary that swaps keys and values `{1: "a", ...}`. This is best done using a comprehension. 
+
+**Exercise 8**
+Assume you have `a = [10, 20, 30, 40]` and `mask = [True, False, True, False]`, you might want obtain a sublist of `a` which only contains the positions where `mask` has `True. Find out (using AI) how this works (without using other libraries), and describe what your code does. (You will probably find out about the `zip`-function, which you should look at more closely.)
+

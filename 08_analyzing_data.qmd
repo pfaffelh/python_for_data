@@ -1,10 +1,12 @@
 ---
-title: Visualization and matplotlib
+title: Analyzing data 
 format: 
     pdf: default
     ipynb: default
 jupyter: python3
 ---
+
+## Visualization (`matplotlib`)
 
 ## csv, json, requests
 

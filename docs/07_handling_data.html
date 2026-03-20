@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Using libraries and modules</title>
+<title>7&nbsp; Loading and handling data (pandas)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07_numpy_from_chatgpt.html" rel="next">
-<link href="./05_libraries.html" rel="prev">
+<link href="./08_analyzing_data.html" rel="next">
+<link href="./06_numerics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_handling_data.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_handling_data.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -137,20 +137,38 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_handling_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
+  <a href="./06_numerics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_numpy_from_chatgpt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy for Machine Learning</span></span></a>
+  <a href="./07_handling_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_analyzing_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyzing data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_example_project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">An example project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_numpy_from_chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">NumPy for Machine Learning</span></span></a>
   </div>
 </li>
     </ul>
@@ -163,9 +181,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#sec-loading" id="toc-sec-loading" class="nav-link active" data-scroll-target="#sec-loading"><span class="header-section-number">6.1</span> Loading data</a></li>
-  <li><a href="#sec-pandas" id="toc-sec-pandas" class="nav-link" data-scroll-target="#sec-pandas"><span class="header-section-number">6.2</span> pandas details</a></li>
-  <li><a href="#sec-numpy" id="toc-sec-numpy" class="nav-link" data-scroll-target="#sec-numpy"><span class="header-section-number">6.3</span> numpy</a></li>
+  <li><a href="#sec-loading" id="toc-sec-loading" class="nav-link active" data-scroll-target="#sec-loading"><span class="header-section-number">7.1</span> Loading data</a></li>
+  <li><a href="#sec-pandas" id="toc-sec-pandas" class="nav-link" data-scroll-target="#sec-pandas"><span class="header-section-number">7.2</span> some pandas details</a></li>
   </ul>
 </nav>
     </div>
@@ -174,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></h1>
 </div>
 
 
@@ -191,32 +208,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sec-loading" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="sec-loading"><span class="header-section-number">6.1</span> Loading data</h2>
-</section>
-<section id="sec-pandas" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="sec-pandas"><span class="header-section-number">6.2</span> pandas details</h2>
-<p>dt.strftime(“%-m/%-d/%y, %H:%M”)</p>
-</section>
-<section id="sec-numpy" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="sec-numpy"><span class="header-section-number">6.3</span> numpy</h2>
-<p>gives math.pi</p>
-<p>import numpy as np</p>
-<p>date and time</p>
-<p>statistics</p>
-<p>scipy.stats</p>
-<p>random</p>
-<p>decimal</p>
+<section id="sec-loading" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-loading"><span class="header-section-number">7.1</span> Loading data</h2>
 <p>json</p>
 <p>csv</p>
-<p>sqlite3</p>
-<p>pickle</p>
-<p>datetime</p>
-<p>time</p>
-<p>unittest</p>
-<p>os</p>
-<p>sys</p>
-<p>try except</p>
+<p>requests</p>
+</section>
+<section id="sec-pandas" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-pandas"><span class="header-section-number">7.2</span> some pandas details</h2>
+<p>dt.strftime(“%-m/%-d/%y, %H:%M”)</p>
 
 
 </section>
@@ -624,13 +624,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05_libraries.html" class="pagination-link" aria-label="Using libraries and modules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span>
+      <a href="./06_numerics.html" class="pagination-link" aria-label="Some numerics (numpy)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07_numpy_from_chatgpt.html" class="pagination-link" aria-label="NumPy for Machine Learning">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy for Machine Learning</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08_analyzing_data.html" class="pagination-link" aria-label="Analyzing data">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyzing data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

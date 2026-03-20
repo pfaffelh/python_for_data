@@ -25,7 +25,7 @@ Every variable or other object in python has a type. This is the kind of informa
 - In fact, `type(x)` is already the first example of a built-in-function. The function `type` takes a single value as input, and returns its type. We will encounter various more functions already in this section. We will learn more about functions (built-in and self-written) in  @sec-functions.
 - There are conversions between some types. For example, `"0"` is a string, but `int("0")` (again a function, taking a single value, and returning its integer value) the integer `0`. Conversely, `str(0)` is the string `"0"`. We will have more examples below. 
 
-## int
+## Integers (`int`)
 
 With `int`s (numbers ...,-2,-1,0,1,2,... ), you can compute as usual. 
 
@@ -55,7 +55,7 @@ print("x % y = ", x % y)
 In most programming languages (e.g. `C++`), there is a minimal and a maximal possible value for an int. Python, however, does not have this limitation. Only the amount of available memory restricts the numbers which can be stored in an `int`.
 
 
-## float
+## Floating point numbers (`float`)
 
 Generally speaking, floats are decimal numbers, which come with an exponent and a mantissa, e.g. $1.2 \cdot 10^2$. Python can do the same computations as with ints, but the following should be kept in mind:
 
@@ -112,7 +112,7 @@ On `float`, you can use many functions. We only name two at the moment, for some
 
 In @sec-math, we will encounter that many more usual functions (like `sqrt`) can be used on floats, but we need to `import` the mathematical library for this. 
 
-## bool
+## True-False variables (`bool`)
 
 There are exactly two boolean values, known as `True` and `False`. You can compute with them using `not`, `and`, `or` and 'xor'. In addition, `True` and `False` can be the result of a condition, such as the expression `1 == 2`. 
 
@@ -157,7 +157,7 @@ z = float("nan")
 print("(z == z) =", z == z)
 ```
 
-## string
+## Text (`string`)
 
 In many cases, strings are objects in quotation markes, such as in `"Hello, world!". 
 
@@ -222,7 +222,7 @@ For strings, there are various build-in functions. We mention some of them. Here
 Here is another very useful notation convention, known as dot-notation: For a function `str.something(s,...)`, where `s` is of type `str`, you can as well write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. 
 
 
-## NoneType
+## Missing things (`NoneType`)
 
 When analysing data, it is common to have missing values. These usually come as `None`. This is different from anything else we encountered so far (including `nan` and `False`).
 

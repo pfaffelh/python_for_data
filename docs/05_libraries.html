@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06_handling_data.html" rel="next">
+<link href="./06_numerics.html" rel="next">
 <link href="./04_container_data_types.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -172,20 +172,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_handling_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span></a>
+  <a href="./06_numerics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_numpy_from_chatgpt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy for Machine Learning</span></span></a>
+  <a href="./07_handling_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Loading and handling data (pandas)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_analyzing_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyzing data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_example_project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">An example project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_numpy_from_chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">NumPy for Machine Learning</span></span></a>
   </div>
 </li>
     </ul>
@@ -200,9 +218,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports"><span class="header-section-number">5.1</span> imports</a></li>
   <li><a href="#sec-math" id="toc-sec-math" class="nav-link" data-scroll-target="#sec-math"><span class="header-section-number">5.2</span> math</a></li>
-  <li><a href="#sec-numpy" id="toc-sec-numpy" class="nav-link" data-scroll-target="#sec-numpy"><span class="header-section-number">5.3</span> numpy</a></li>
+  <li><a href="#sec-re" id="toc-sec-re" class="nav-link" data-scroll-target="#sec-re"><span class="header-section-number">5.3</span> re (regular expressions)</a></li>
   <li><a href="#datetime" id="toc-datetime" class="nav-link" data-scroll-target="#datetime"><span class="header-section-number">5.4</span> datetime</a></li>
   <li><a href="#scipy.stats" id="toc-scipy.stats" class="nav-link" data-scroll-target="#scipy.stats"><span class="header-section-number">5.5</span> scipy.stats</a></li>
+  <li><a href="#decimal" id="toc-decimal" class="nav-link" data-scroll-target="#decimal"><span class="header-section-number">5.6</span> decimal</a></li>
+  <li><a href="#json" id="toc-json" class="nav-link" data-scroll-target="#json"><span class="header-section-number">5.7</span> json</a></li>
+  <li><a href="#csv" id="toc-csv" class="nav-link" data-scroll-target="#csv"><span class="header-section-number">5.8</span> csv</a></li>
+  <li><a href="#sqlite3" id="toc-sqlite3" class="nav-link" data-scroll-target="#sqlite3"><span class="header-section-number">5.9</span> sqlite3</a></li>
+  <li><a href="#pickle" id="toc-pickle" class="nav-link" data-scroll-target="#pickle"><span class="header-section-number">5.10</span> pickle</a></li>
+  <li><a href="#unittest" id="toc-unittest" class="nav-link" data-scroll-target="#unittest"><span class="header-section-number">5.11</span> unittest</a></li>
+  <li><a href="#os" id="toc-os" class="nav-link" data-scroll-target="#os"><span class="header-section-number">5.12</span> os</a></li>
+  <li><a href="#sys" id="toc-sys" class="nav-link" data-scroll-target="#sys"><span class="header-section-number">5.13</span> sys</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.14</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -291,15 +318,15 @@ print(f"My constant is {myName.myConst()}.")</code></pre>
 <li><p>You want to use functions from a library, which needs to be installed. Here, before the <code>import module</code> even works, you need to install the module in your python environment. In a terminal, within your python environment, use</p></li>
 </ol>
 <pre><code>pip3 install module</code></pre>
-<p>and then, the <code>import</code> works. We will see examples for this e.g.&nbsp;in <a href="06_handling_data.html#sec-loading" class="quarto-xref"><span>Section 6.1</span></a>.</p>
+<p>and then, the <code>import</code> works. We will see examples for this e.g.&nbsp;in <a href="07_handling_data.html#sec-loading" class="quarto-xref"><span>Section 7.1</span></a>.</p>
 </section>
 <section id="sec-math" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="sec-math"><span class="header-section-number">5.2</span> math</h2>
 <p>The mathematical library in Python is used by <code>import math</code>. Then, you have e.g.&nbsp;the following functions, which are self-explanatory: <code>math.sqrt()</code>, <code>math.exp()</code>, <code>math.log()</code>, <code>math.sin()</code>, <code>math.cos()</code>, and constants like <code>math.pi</code> and <code>math.e</code>.</p>
 </section>
-<section id="sec-numpy" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="sec-numpy"><span class="header-section-number">5.3</span> numpy</h2>
-<p>import numpy as np</p>
+<section id="sec-re" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-re"><span class="header-section-number">5.3</span> re (regular expressions)</h2>
+<p>xxx Use AI</p>
 </section>
 <section id="datetime" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="datetime"><span class="header-section-number">5.4</span> datetime</h2>
@@ -313,12 +340,12 @@ print(f"My constant is {myName.myConst()}.")</code></pre>
 <li><code>tzinfo</code> and <code>timezone</code>: handling timezones</li>
 </ul>
 <p>We will here use</p>
-<div id="8834addf" class="cell" data-execution_count="1">
+<div id="97d1dfef" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>at the cost that <code>datetime</code>-objects are only accessible by saying <code>datetime.datetime</code> (the first <code>datetime</code> being the package<code>, the second</code>datetime` being the class/submodule).</p>
 <p>Let us create a <code>datetime</code>-object`:</p>
-<div id="e1683011" class="cell" data-execution_count="2">
+<div id="9ee4ca0f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime(<span class="dv">2026</span>, <span class="dv">4</span>, <span class="dv">21</span>, <span class="dv">12</span>, <span class="dv">15</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"year: </span><span class="sc">{</span>dt<span class="sc">.</span>year<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -345,7 +372,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the starting time of the first session in this course. As we see here, we can extract year,…, microseconds from the <code>datetime</code>-object.</p>
 <p>Often, we are given strings such as <code>"21.4.26, 12:15"</code>, and want to convert this into a <code>datetime</code> object. For this, we have <code>datetime.datetime.strptime</code>:</p>
-<div id="79d6229c" class="cell" data-execution_count="3">
+<div id="95366095" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"21.4.26, 12:15"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime.strptime(s, <span class="st">"%y.%m.</span><span class="sc">%d</span><span class="st">, %H:%M"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s <span class="op">+</span> <span class="ss">f" is converted to </span><span class="sc">{</span>dt<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -355,7 +382,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>(For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.)</p>
 <p>Reversely, we want to print a <code>datetime</code>-object in a certain way. For this, we have <code>datetime.datetime.strftime</code>:</p>
-<div id="7111b113" class="cell" data-execution_count="4">
+<div id="695c8b3d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt.strftime(<span class="st">"%-m/</span><span class="sc">%-d</span><span class="st">/%y, %H:%M"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4/26/21, 12:15</code></pre>
@@ -363,7 +390,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the US-style output.</p>
 <p>Next, assume we want to compute the same time 12 weeks from now. For this, we use <code>datetime.timedelta</code>.</p>
-<div id="df4feac8" class="cell" data-execution_count="5">
+<div id="e908efda" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt <span class="op">+</span> datetime.timedelta(days<span class="op">=</span><span class="dv">84</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2021-07-19 12:15:00</code></pre>
@@ -378,18 +405,52 @@ time: 12:15:00</code></pre>
 </section>
 <section id="scipy.stats" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="scipy.stats"><span class="header-section-number">5.5</span> scipy.stats</h2>
-<p>statistics</p>
-<p>random</p>
-<p>decimal</p>
-<p>json</p>
-<p>csv</p>
-<p>sqlite3</p>
-<p>pickle</p>
-<p>time</p>
-<p>unittest</p>
-<p>os</p>
-<p>sys</p>
-<p>scipy.stats</p>
+<p>descriptive statistics</p>
+</section>
+<section id="decimal" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="decimal"><span class="header-section-number">5.6</span> decimal</h2>
+</section>
+<section id="json" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="json"><span class="header-section-number">5.7</span> json</h2>
+</section>
+<section id="csv" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="csv"><span class="header-section-number">5.8</span> csv</h2>
+</section>
+<section id="sqlite3" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="sqlite3"><span class="header-section-number">5.9</span> sqlite3</h2>
+</section>
+<section id="pickle" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="pickle"><span class="header-section-number">5.10</span> pickle</h2>
+<div id="322cc13c" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to file (pickle)</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    pickle.dump(data, f)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load from file (unpickle)</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.pkl"</span>, <span class="st">"rb"</span>) <span class="im">as</span> f:</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    loaded_data <span class="op">=</span> pickle.load(f)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loaded_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'name': 'Alice', 'age': 30}</code></pre>
+</div>
+</div>
+</section>
+<section id="unittest" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="unittest"><span class="header-section-number">5.11</span> unittest</h2>
+</section>
+<section id="os" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="os"><span class="header-section-number">5.12</span> os</h2>
+</section>
+<section id="sys" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="sys"><span class="header-section-number">5.13</span> sys</h2>
+</section>
+<section id="exercises" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.14</span> Exercises</h2>
 <p>Exercise with datetime</p>
 <p>date,sales 2026-01-01,120 2026-01-02,135 2026-01-03,128 2026-01-08,150 2026-02-01,210 2026-02-03,215</p>
 <p>We want to:</p>
@@ -812,8 +873,8 @@ time: 12:15:00</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06_handling_data.html" class="pagination-link" aria-label="Using libraries and modules">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using libraries and modules</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06_numerics.html" class="pagination-link" aria-label="Some numerics (numpy)">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some numerics (numpy)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

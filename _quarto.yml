@@ -13,9 +13,12 @@ book:
     - 03_loops_and_conditions.qmd
     - 04_container_data_types.qmd
     - 05_libraries.qmd
-    - 06_handling_data.qmd
-    - 07_numpy_from_chatgpt.qmd
+    - 06_numerics.qmd
+    - 07_handling_data.qmd
+    - 08_analyzing_data.qmd
+    - 09_example_project.qmd
     - 10_misc.qmd
+    - 11_numpy_from_chatgpt.qmd
 number-sections: true
 
 execute:

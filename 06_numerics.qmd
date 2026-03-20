@@ -1,0 +1,50 @@
+---
+title: Some numerics (numpy)
+format: 
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+We will be using numpy {#sec-numpy}
+
+## Linear algebra (np.array etc)
+
+This package provides powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra and some optimization. Usually, it is imported via
+```{python}
+import numpy as np
+```
+(Then, the functions from `numpy` are called `np.something`.) Together with `pandas` (see @sec-pandas) for data handling, this is the basic framework for data analysis in Python3. 
+
+Let us start with linear algebra. A vector or matrix is an `np.array`. `numpy` interprets a vector as a column vector, and 
+
+```{python}
+x = np.array([1.0, 2.0, 3.0])
+A = np.array([
+    [1.0, 0.0, 2.0],
+    [0.0, 1.0, 1.0]
+])
+
+print("x =")
+print(x)
+print()
+print("A =")
+print(A)
+print()
+print("x.shape =", x.shape)
+print("A.shape =", A.shape)
+print("x.ndim =", x.ndim)
+print("A.ndim =", A.ndim)
+print("x.dtype =", x.dtype)
+```
+
+Generally we 
+
+
+
+
+## Random numbers (np.rand)
+
+## optimization (np.optimization)
+
+
