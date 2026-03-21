@@ -95,7 +95,7 @@ We will here use
 ```{python}
 import datetime 
 ```
-at the cost that `datetime`-objects are only accessible by saying `datetime.datetime` (the first `datetime` being the package`, the second `datetime` being the class/submodule).
+at the cost that `datetime`-objects are only accessible by saying `datetime.datetime` (the first `datetime` being the package, the second `datetime` being the class/submodule).
 
 Let us create a `datetime`-object`: 
 ```{python}
@@ -207,8 +207,8 @@ However, we are working with Jupyter notebooks here, so we cannot run `pytest` o
 #| error: true
 x = 5
 y = -1
-assert 2 + 2 = 4
-assert 2 + 2 = 5
+assert 2 + 2 == 4
+assert 2 + 2 == 5
 ```
 
 ## Using the operating system (`os`) 
@@ -231,7 +231,7 @@ for file in os.listdir("."):
 
 ```{python}
 # Print all folders and files in the parent folder
-for root, dirs, files in os.walk(".."):
+for root, dirs, files in os.walk("."):
     print("ROOT:", root)
     print("DIRS:", dirs)
     print("FILES:", files)
@@ -261,25 +261,25 @@ except FileNotFoundError:
 
 ## Exercises
 
-**Exercise f**
+**Exercise 1**
 Apparently, `"muller@gmail.com; wrong-email; muller@yahoo.com"` only contains two valid email addresses. Use AI and `re` in order to produce and understand code, which separates the correct from the incorrect email addresses. 
 
-**Exercise d**
+**Exercise 2**
 A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.)
 Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year. 
 * Compute the account balance _as usual_, i.e. keeping sub-cents at all days. 
 * Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day. 
 
-**Exercise **
+**Exercise 3**
 Instead of `os.walk()`, we can also use the `pathlib` library. Find out how the equivalent of `os.walk()` works when using `pathlib`.
 
-**Exercise **
+**Exercise 4**
 Create some `txt`-files in the current working directory. Then, write a Pathon3 program that iterates through all such files, creates `all.txt`, where the content of all you `txt`files is appended. If `all.txt` already exists, the program should give a warning that this file is overridden.
 
-**Exercise **
+**Exercise 5**
 What is your age in seconds/minutes/hours/days/months?
 
-**Exercise **
+**Exercise 6**
 Below are some sales dates and quantities. 
 
 * Write a function, with `start` and `end` as `datetime` as input, which gives you the total amount of sales during this time. (You will need to convert `date` as given in the data to `datetime`. Note that `<`, `>`, `<=`, `>=`, `==` work for `datetime` as expected.)
