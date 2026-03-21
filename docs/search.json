@@ -154,7 +154,7 @@
     "href": "03_loops_and_conditions.html#context-management-with",
     "title": "3  Control flow – conditions, loops, functions, etc",
     "section": "3.6 Context management (with)",
-    "text": "3.6 Context management (with)\nOften, our Python3 file (or notebook) must interact with other files or ressources. In order to do this safely, we are using with.\nxxx file handling!",
+    "text": "3.6 Context management (with)\nOften, our Python3 file (or notebook) must interact with other files or ressources (databases, other connections). In order to do this safely, we are using with, which guarantees that the ressource is entered (opened) and exited (closed) correctly. The general structure is as follows:\nwith something as name:\n    do_something()\nThe simplest example is writing a file, or reading a file.\n\nwith open(\"hello.txt\", \"w\") as f:\n    f.write(\"Hello\")\n    print(\"File written.\")\n\nFile written.\n\n\n\nwith open(\"hello.txt\", \"r\") as f:\n    text = f.read()\nprint(\"This is the content of the file:\", text)\n\nThis is the content of the file: Hello\n\n\nHere, \"hello.txt\" is closed at the end of the with block. The second argument of open comes with the following options: * r: read (text mode) * w: (over-)write (text mode) * a: append (text mode) * x: create new (i.e. throw error if already exists) * rb: read (binary mode) * wb: (over-)write (binary mode) * ab: append (binary mode) * xb: create new (i.e. throw error if already exists)",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow -- conditions, loops, functions, etc</span>"
     ]
@@ -314,7 +314,7 @@
     "href": "05_libraries.html#testing-code-pytest",
     "title": "5  Some useful libraries/packages/modules",
     "section": "5.7 Testing code (pytest)",
-    "text": "5.7 Testing code (pytest)\n\n# Uncomment the next line and run the cell for installation.\n# If pip3 does not work, use pip instead. \n# !pip3 install pytest\n\nWhen starting to code, producing reliable programs is both important and difficult. One – not the best – way to approach this is to rely on the program until something breaks. It is actually better to test the code, i.e. to write tests. This means that you tell your program that you expect a certain behavior.\nA simple and powerful library for this is pytest. When working with .py-files, you usually separate such tests in a separate file. Every test-case is within a function with name starting with test_. In a terminal, you can run pytest on that file, which performs all tests, and reports any error.\nHowever, we are working with Jupyter notebooks here, so we cannot run pytest on separate files. Although there are workarounds (the package ipytest), we will only go through some basics here. This means we are introducing assert.\n\nx = 5\ny = -1\nassert 2 + 2 = 4\nassert 2 + 2 = 5\n\n\n  Cell In[12], line 3\n    assert 2 + 2 = 4\n                 ^\nSyntaxError: invalid syntax",
+    "text": "5.7 Testing code (pytest)\n\n# Uncomment the next line and run the cell for installation.\n# If pip3 does not work, use pip instead. \n# !pip3 install pytest\n\nWhen starting to code, producing reliable programs is both important and difficult. One – not the best – way to approach this is to rely on the program until something breaks. It is actually better to test the code, i.e. to write tests. This means that you tell your program that you expect a certain behavior.\nA simple and powerful library for this is pytest. When working with .py-files, you usually separate such tests in a separate file. Every test-case is within a function with name starting with test_. In a terminal, you can run pytest on that file, which performs all tests, and reports any error.\nHowever, we are working with Jupyter notebooks here, so we cannot run pytest on separate files. Although there are workarounds (the package ipytest), we will only go through some basics here, without importing pytest. This means we are introducing assert.\n\nx = 5\ny = -1\nassert 2 + 2 = 4\nassert 2 + 2 = 5\n\n\n  Cell In[12], line 3\n    assert 2 + 2 = 4\n                 ^\nSyntaxError: invalid syntax",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Some useful libraries/packages/modules</span>"
     ]
@@ -324,17 +324,17 @@
     "href": "05_libraries.html#using-the-operating-system-os",
     "title": "5  Some useful libraries/packages/modules",
     "section": "5.8 Using the operating system (os)",
-    "text": "5.8 Using the operating system (os)",
+    "text": "5.8 Using the operating system (os)\nFor the kind of projects we envision, we often must access files, which happens via the operating system. We might also want to see all files in some directory, access them one by one, etc. Here, folder is the string of the name of a folder, and file is the string for the name of a file. * os.getcwd(): returns the current working directory. * os.chdir(folder): this is a Python3 command for cd. * os.path.join(folder\", file): gives a complete path from the folder and file name. * os.listdir(folder): returns a list of files within the folder. * os.path.exists(file): returns true or false if the file exists or not. * os.walk(folder): gives the triple (root, dirs, files), where root is the absolute path of the folder, dirs are all direct subfolders in that folder, and files are the files in that folder. If folder has subfolders, it returns a list of triples for all subfolders.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Some useful libraries/packages/modules</span>"
     ]
   },
   {
-    "objectID": "05_libraries.html#interacting-with-the-environment-sys",
-    "href": "05_libraries.html#interacting-with-the-environment-sys",
+    "objectID": "05_libraries.html#starting-other-programs-subprocess",
+    "href": "05_libraries.html#starting-other-programs-subprocess",
     "title": "5  Some useful libraries/packages/modules",
-    "section": "5.9 Interacting with the environment (sys)",
-    "text": "5.9 Interacting with the environment (sys)\nxxx command line arguments",
+    "section": "5.9 Starting other programs (subprocess)",
+    "text": "5.9 Starting other programs (subprocess)\nSometimes, you want to start some piece of software (a command line tool) from within your Python3 program, and collect the result. You could use a script for this, which starts the command line tool, and rus your Python3 script afterwards, but you can as well use Python3 for the whole setting. We only give a basic example:\nimport subprocess\n\nresult = subprocess.run(\n    [\"pdflatex\", \"-interaction=nonstopmode\", \"file.tex\"], \n    capture_output=True, # capture stdout and stderr output instead of printing\n    text=True, # returns output as string, not binary\n    check=True # raises an error if the command fails\n)\n\nprint(result.stdout)",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Some useful libraries/packages/modules</span>"
     ]
@@ -344,7 +344,7 @@
     "href": "05_libraries.html#exercises",
     "title": "5  Some useful libraries/packages/modules",
     "section": "5.10 Exercises",
-    "text": "5.10 Exercises\nExercise 1 What is your age in seconds?\nExercise with datetime\ndate,sales 2026-01-01,120 2026-01-02,135 2026-01-03,128 2026-01-08,150 2026-02-01,210 2026-02-03,215\nWe want to:\nload the data\nconvert the date column to datetime\nextract year/month/weekday\nfilter by date\ncompute time differences\nresample by month\ncreate rolling averages\nExercise f Apparently, \"muller@gmail.com; wrong-email; muller@yahoo.com\" only contains two valid email addresses. Use AI and re in order to produce and understand code, which separates the correct from the incorrect email addresses.\nExercise d A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.) Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year. * Compute the account balance as usual, i.e. keeping sub-cents at all days. * Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day.",
+    "text": "5.10 Exercises\nExercise f Apparently, \"muller@gmail.com; wrong-email; muller@yahoo.com\" only contains two valid email addresses. Use AI and re in order to produce and understand code, which separates the correct from the incorrect email addresses.\nExercise d A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.) Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year. * Compute the account balance as usual, i.e. keeping sub-cents at all days. * Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day.\nExercise  Instead of os.walk(), we can also use the pathlib library. Find out how the equivalent of os.walk() works when using pathlib.\nExercise  Create some txt-files in the current working directory. Then, write a Pathon3 program that iterates through all such files, creates all.txt, where the content of all you txtfiles is appended. If all.txt already exists, the program should give a warning that this file is overridden.\nExercise  What is your age in seconds/minutes/hours/days/months?\nExercise  Below are some sales dates and quantities.\n\nWrite a function, with start and end as datetime as input, which gives you the total amount of sales during this time. (You will need to convert date as given in the data to datetime. Note that &lt;, &gt;, &lt;=, &gt;=, == work for datetime as expected.)\nWrite a function, with a date date and a number days days as input, which returns the average amount of sales per day during the last days since date.\n\n\ndata = [\n        (\"2026-01-01\", 120),\n        (\"2026-01-02\", 135),\n        (\"2026-01-03\", 128),\n        (\"2026-01-08\", 150),\n        (\"2026-02-01\", 210),\n        (\"2026-02-03\", 215)]",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Some useful libraries/packages/modules</span>"
     ]
@@ -824,7 +824,7 @@
     "href": "11_numpy_from_chatgpt.html#condition-number",
     "title": "11  NumPy for Machine Learning",
     "section": "19.6 4.6 Condition number",
-    "text": "19.6 4.6 Condition number\nThe condition number indicates how sensitive a linear system is to perturbations.\n\nA = np.array([\n    [1.0, 1.0],\n    [1.0, 1.0001]\n])\n\ncond = np.linalg.cond(A)\nprint(\"condition number =\", cond)\n\ncondition number = 40002.00007491187\n\n\nA large condition number warns us that the problem may be numerically unstable.",
+    "text": "19.6 4.6 Condition number\nThe condition number indicates how sensitive a linear system is to perturbations.\n\nA = np.array([\n    [1.0, 1.0],\n    [1.0, 1.0001]\n])\n\ncond = np.linalg.cond(A)\nprint(\"condition number =\", cond)\n\ncondition number = 40002.000074915224\n\n\nA large condition number warns us that the problem may be numerically unstable.",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NumPy for Machine Learning</span>"
     ]
@@ -1154,7 +1154,7 @@
     "href": "11_numpy_from_chatgpt.html#predictions-and-residuals",
     "title": "11  NumPy for Machine Learning",
     "section": "23.5 8.5 Predictions and residuals",
-    "text": "23.5 8.5 Predictions and residuals\n\ny_pred = X @ w\nresiduals = y - y_pred\n\nprint(\"predictions =\", y_pred)\nprint(\"residuals =\", residuals)\nprint(\"MSE =\", np.mean(residuals**2))\n\npredictions = [1.8  2.84 3.88 4.92 5.96]\nresiduals = [-2.22044605e-16  6.00000000e-02 -1.80000000e-01  1.80000000e-01\n -6.00000000e-02]\nMSE = 0.014399999999999918",
+    "text": "23.5 8.5 Predictions and residuals\n\ny_pred = X @ w\nresiduals = y - y_pred\n\nprint(\"predictions =\", y_pred)\nprint(\"residuals =\", residuals)\nprint(\"MSE =\", np.mean(residuals**2))\n\npredictions = [1.8  2.84 3.88 4.92 5.96]\nresiduals = [ 2.44249065e-15  6.00000000e-02 -1.80000000e-01  1.80000000e-01\n -6.00000000e-02]\nMSE = 0.014399999999999963",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NumPy for Machine Learning</span>"
     ]
@@ -1214,7 +1214,7 @@
     "href": "11_numpy_from_chatgpt.html#worked-solution-example",
     "title": "11  NumPy for Machine Learning",
     "section": "23.11 8.11 Worked solution example",
-    "text": "23.11 8.11 Worked solution example\n\nrng = np.random.default_rng(5)\n\nn = 80\nx = np.linspace(-2, 2, n)\ny = 1.2 + 2.7 * x + 0.5 * rng.standard_normal(n)\n\nX = np.column_stack([np.ones(n), x])\nw = np.linalg.solve(X.T @ X, X.T @ y)\ny_pred = X @ w\n\nprint(\"estimated parameters =\", w)\nprint(\"MSE =\", np.mean((y - y_pred)**2))\n\nplt.figure(figsize=(6, 4))\nplt.scatter(x, y, s=18)\nplt.plot(x, y_pred)\nplt.title(\"Worked least squares example\")\nplt.show()\n\nestimated parameters = [1.11582782 2.73530772]\nMSE = 0.20363506927607586",
+    "text": "23.11 8.11 Worked solution example\n\nrng = np.random.default_rng(5)\n\nn = 80\nx = np.linspace(-2, 2, n)\ny = 1.2 + 2.7 * x + 0.5 * rng.standard_normal(n)\n\nX = np.column_stack([np.ones(n), x])\nw = np.linalg.solve(X.T @ X, X.T @ y)\ny_pred = X @ w\n\nprint(\"estimated parameters =\", w)\nprint(\"MSE =\", np.mean((y - y_pred)**2))\n\nplt.figure(figsize=(6, 4))\nplt.scatter(x, y, s=18)\nplt.plot(x, y_pred)\nplt.title(\"Worked least squares example\")\nplt.show()\n\nestimated parameters = [1.11582782 2.73530772]\nMSE = 0.20363506927607578",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NumPy for Machine Learning</span>"
     ]
@@ -1254,7 +1254,7 @@
     "href": "11_numpy_from_chatgpt.html#comparison-with-closed-form-least-squares",
     "title": "11  NumPy for Machine Learning",
     "section": "24.4 9.4 Comparison with closed-form least squares",
-    "text": "24.4 9.4 Comparison with closed-form least squares\n\nw_closed = np.linalg.solve(X.T @ X, X.T @ y)\n\nprint(\"w_closed =\", w_closed)\nprint(\"w_gd     =\", w)\nprint(\"difference =\", np.linalg.norm(w_closed - w))\n\nw_closed = [ 1.99927294 -1.03094039]\nw_gd     = [ 1.99927294 -1.03094039]\ndifference = 9.42055475210265e-16",
+    "text": "24.4 9.4 Comparison with closed-form least squares\n\nw_closed = np.linalg.solve(X.T @ X, X.T @ y)\n\nprint(\"w_closed =\", w_closed)\nprint(\"w_gd     =\", w)\nprint(\"difference =\", np.linalg.norm(w_closed - w))\n\nw_closed = [ 1.99927294 -1.03094039]\nw_gd     = [ 1.99927294 -1.03094039]\ndifference = 1.2947314098277875e-15",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NumPy for Machine Learning</span>"
     ]
@@ -1274,7 +1274,7 @@
     "href": "11_numpy_from_chatgpt.html#gradient-checking-idea",
     "title": "11  NumPy for Machine Learning",
     "section": "24.6 9.6 Gradient checking idea",
-    "text": "24.6 9.6 Gradient checking idea\nA very useful debugging principle is to compare an analytic gradient with a finite-difference approximation.\nFor a scalar function \\(f:\\mathbb{R}^d \\to \\mathbb{R}\\) and a small perturbation \\(h\\), one can compare\n\\[\n\\frac{f(w + h e_j) - f(w - h e_j)}{2h}\n\\]\nto the \\(j\\)-th component of the analytic gradient.\n\ndef least_squares_loss(w, X, y):\n    return np.mean((X @ w - y)**2)\n\ndef least_squares_grad(w, X, y):\n    n = len(y)\n    return (2 / n) * X.T @ (X @ w - y)\n\nw0 = np.array([0.3, -0.2])\ng = least_squares_grad(w0, X, y)\n\nh = 1e-6\ng_fd = np.zeros_like(w0)\nfor j in range(len(w0)):\n    e = np.zeros_like(w0)\n    e[j] = 1.0\n    g_fd[j] = (\n        least_squares_loss(w0 + h * e, X, y)\n        - least_squares_loss(w0 - h * e, X, y)\n    ) / (2 * h)\n\nprint(\"analytic grad =\", g)\nprint(\"finite diff grad =\", g_fd)\nprint(\"difference =\", np.linalg.norm(g - g_fd))\n\nanalytic grad = [-3.12182606  1.2955987 ]\nfinite diff grad = [-3.12182606  1.2955987 ]\ndifference = 1.9233228267753716e-10",
+    "text": "24.6 9.6 Gradient checking idea\nA very useful debugging principle is to compare an analytic gradient with a finite-difference approximation.\nFor a scalar function \\(f:\\mathbb{R}^d \\to \\mathbb{R}\\) and a small perturbation \\(h\\), one can compare\n\\[\n\\frac{f(w + h e_j) - f(w - h e_j)}{2h}\n\\]\nto the \\(j\\)-th component of the analytic gradient.\n\ndef least_squares_loss(w, X, y):\n    return np.mean((X @ w - y)**2)\n\ndef least_squares_grad(w, X, y):\n    n = len(y)\n    return (2 / n) * X.T @ (X @ w - y)\n\nw0 = np.array([0.3, -0.2])\ng = least_squares_grad(w0, X, y)\n\nh = 1e-6\ng_fd = np.zeros_like(w0)\nfor j in range(len(w0)):\n    e = np.zeros_like(w0)\n    e[j] = 1.0\n    g_fd[j] = (\n        least_squares_loss(w0 + h * e, X, y)\n        - least_squares_loss(w0 - h * e, X, y)\n    ) / (2 * h)\n\nprint(\"analytic grad =\", g)\nprint(\"finite diff grad =\", g_fd)\nprint(\"difference =\", np.linalg.norm(g - g_fd))\n\nanalytic grad = [-3.12182606  1.2955987 ]\nfinite diff grad = [-3.12182606  1.2955987 ]\ndifference = 1.923325663960519e-10",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NumPy for Machine Learning</span>"
     ]
@@ -2014,7 +2014,7 @@
     "href": "11_numpy_from_chatgpt.html#kondition-und-numerische-sensitivität",
     "title": "11  NumPy for Machine Learning",
     "section": "41.4 3.4 Kondition und numerische Sensitivität",
-    "text": "41.4 3.4 Kondition und numerische Sensitivität\n\nA = np.array([[1.0, 1.0],\n              [1.0, 1.0001]])\n\ncond = np.linalg.cond(A)\nprint(\"Konditionszahl =\", cond)\n\nKonditionszahl = 40002.00007491187\n\n\n\n\n\n\n\n\nNote\n\n\n\nEine große Konditionszahl weist darauf hin, dass kleine Störungen in den Daten zu großen Änderungen in der Lösung führen können.",
+    "text": "41.4 3.4 Kondition und numerische Sensitivität\n\nA = np.array([[1.0, 1.0],\n              [1.0, 1.0001]])\n\ncond = np.linalg.cond(A)\nprint(\"Konditionszahl =\", cond)\n\nKonditionszahl = 40002.000074915224\n\n\n\n\n\n\n\n\nNote\n\n\n\nEine große Konditionszahl weist darauf hin, dass kleine Störungen in den Daten zu großen Änderungen in der Lösung führen können.",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NumPy for Machine Learning</span>"
     ]
@@ -2184,7 +2184,7 @@
     "href": "11_numpy_from_chatgpt.html#vorhersage-und-fehler",
     "title": "11  NumPy for Machine Learning",
     "section": "45.3 6.3 Vorhersage und Fehler",
-    "text": "45.3 6.3 Vorhersage und Fehler\n\ny_pred = X @ w\nmse = np.mean((y_pred - y)**2)\n\nprint(\"Vorhersagen =\", y_pred)\nprint(\"MSE =\", mse)\n\nVorhersagen = [2.3 3.1 3.9 4.7]\nMSE = 0.4500000000000002",
+    "text": "45.3 6.3 Vorhersage und Fehler\n\ny_pred = X @ w\nmse = np.mean((y_pred - y)**2)\n\nprint(\"Vorhersagen =\", y_pred)\nprint(\"MSE =\", mse)\n\nVorhersagen = [2.3 3.1 3.9 4.7]\nMSE = 0.45000000000000023",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NumPy for Machine Learning</span>"
     ]

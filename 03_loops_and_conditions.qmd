@@ -247,9 +247,33 @@ except TypeError:
 
 ## Context management (`with`)
 
-Often, our Python3 file (or notebook) must interact with other files or ressources. In order to do this safely, we are using `with`. 
+Often, our Python3 file (or notebook) must interact with other files or ressources (databases, other connections). In order to do this safely, we are using `with`, which guarantees that the ressource is entered (opened) and exited (closed) correctly. The general structure is as follows:
 
-xxx file handling!
+```
+with something as name:
+    do_something()
+```
+
+The simplest example is writing a file, or reading a file.
+```{python}
+with open("hello.txt", "w") as f:
+    f.write("Hello")
+    print("File written.")
+```
+```{python}
+with open("hello.txt", "r") as f:
+    text = f.read()
+print("This is the content of the file:", text)
+```
+Here, `"hello.txt"` is closed at the end of the `with` block. The second argument of `open` comes with the following options: 
+* `r`: read (text mode)
+* `w`: (over-)write (text mode)
+* `a`: append (text mode)
+* `x`: create new (i.e. throw error if already exists)
+* `rb`: read (binary mode)
+* `wb`: (over-)write (binary mode)
+* `ab`: append (binary mode)
+* `xb`: create new (i.e. throw error if already exists)
 
 ## Exercises
 

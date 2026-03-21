@@ -201,7 +201,7 @@ When starting to code, producing reliable programs is both important and difficu
 
 A simple and powerful library for this is `pytest`. When working with `.py`-files, you usually separate such tests in a separate file. Every test-case is within a function with name starting with `test_`. In a terminal, you can run `pytest` on that file, which performs all tests, and reports any error. 
 
-However, we are working with Jupyter notebooks here, so we cannot run `pytest` on separate files. Although there are workarounds (the package `ipytest`), we will only go through some basics here. This means we are introducing `assert`. 
+However, we are working with Jupyter notebooks here, so we cannot run `pytest` on separate files. Although there are workarounds (the package `ipytest`), we will only go through some basics here, without importing `pytest`. This means we are introducing `assert`. 
 
 ```{python}
 #| error: true
@@ -213,45 +213,53 @@ assert 2 + 2 = 5
 
 ## Using the operating system (`os`) 
 
-## Interacting with the environment (`sys`)
+For the kind of projects we envision, we often must access files, which happens via the operating system. We might also want to see all files in some directory, access them one by one, etc. Here, `folder` is the string of the name of a folder, and `file` is the string for the name of a file. 
+* `os.getcwd()`: returns the current working directory.
+* `os.chdir(folder)`: this is a Python3 command for `cd`.
+* `os.path.join(folder", file)`: gives a complete path from the folder and file name.
+* `os.listdir(folder)`: returns a list of files within the folder.
+* `os.path.exists(file)`: returns true or false if the file exists or not.
+* `os.walk(folder)`: gives the triple `(root, dirs, files)`, where `root` is the absolute path of the folder, `dirs` are all direct subfolders in that folder, and `files` are the files in that folder. If folder has subfolders, it returns a list of triples for all subfolders.
 
-xxx command line arguments
+```{python}
+import os
+# Print all ipynb-files in the current folder
+for file in os.listdir("."):
+    if file.endswith(".ipynb"):
+        print(file)
+```
+
+```{python}
+# Print all folders and files in the parent folder
+for root, dirs, files in os.walk(".."):
+    print("ROOT:", root)
+    print("DIRS:", dirs)
+    print("FILES:", files)
+```
+
+
+## Starting other programs (`subprocess`)
+
+Sometimes, you want to start some piece of software (a command line tool) from within your Python3 program, and collect the result. You could use a script for this, which starts the command line tool, and rus your Python3 script afterwards, but you can as well use Python3 for the whole setting. We only give a basic example:
+
+```
+import subprocess
+filename = "file.tex"
+try:
+    result = subprocess.run(
+        ["pdflatex", "-interaction=nonstopmode", filename], 
+        capture_output=True, # capture stdout and stderr output instead of printing
+        text=True, # returns output as string, not binary
+        check=True # raises an error if the command fails
+    )
+    print(result.stdout)
+except FileNotFoundError:
+    print(f"File {filename} not found.")
+
+```
+
 
 ## Exercises
-
-**Exercise 1**
-What is your age in seconds?
-
-
-
-Exercise with datetime
-
-date,sales
-2026-01-01,120
-2026-01-02,135
-2026-01-03,128
-2026-01-08,150
-2026-02-01,210
-2026-02-03,215
-
-We want to:
-
-load the data
-
-convert the date column to datetime
-
-extract year/month/weekday
-
-filter by date
-
-compute time differences
-
-resample by month
-
-create rolling averages
-
-
-
 
 **Exercise f**
 Apparently, `"muller@gmail.com; wrong-email; muller@yahoo.com"` only contains two valid email addresses. Use AI and `re` in order to produce and understand code, which separates the correct from the incorrect email addresses. 
@@ -261,3 +269,28 @@ A bank manager has an idea: Interests should be computed daily (as usual), but r
 Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year. 
 * Compute the account balance _as usual_, i.e. keeping sub-cents at all days. 
 * Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day. 
+
+**Exercise **
+Instead of `os.walk()`, we can also use the `pathlib` library. Find out how the equivalent of `os.walk()` works when using `pathlib`.
+
+**Exercise **
+Create some `txt`-files in the current working directory. Then, write a Pathon3 program that iterates through all such files, creates `all.txt`, where the content of all you `txt`files is appended. If `all.txt` already exists, the program should give a warning that this file is overridden.
+
+**Exercise **
+What is your age in seconds/minutes/hours/days/months?
+
+**Exercise **
+Below are some sales dates and quantities. 
+
+* Write a function, with `start` and `end` as `datetime` as input, which gives you the total amount of sales during this time. (You will need to convert `date` as given in the data to `datetime`. Note that `<`, `>`, `<=`, `>=`, `==` work for `datetime` as expected.)
+* Write a function, with a date `date` and a number days `days` as input, which returns the average amount of sales per day during the last `days` since `date`. 
+
+```{python}
+data = [
+        ("2026-01-01", 120),
+        ("2026-01-02", 135),
+        ("2026-01-03", 128),
+        ("2026-01-08", 150),
+        ("2026-02-01", 210),
+        ("2026-02-03", 215)]
+```
