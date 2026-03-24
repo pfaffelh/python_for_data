@@ -8,19 +8,22 @@ jupyter: python3
 
 [Download notebook](notebooks/06_numerics.ipynb).
 
+We will be using `numpy` {#sec-numpy} and some `scipy`. These packages provide powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra (using `numpy`), optimization (using `scipy`) and statistics(using `scipy`). Together with `pandas` (see @sec-pandas) for data handling, this is the basic framework for data analysis in Python3. 
 
 
-We will be using numpy {#sec-numpy} and scipy
+
 
 
 
 ## Linear algebra (`np.array` etc)
 
-This package provides powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra and some optimization. Usually, it is imported via
+Let us start by importing `numpy`
 ```{python}
+# uncomment the following line for installing numpy
+# !pip3 install numpy 
 import numpy as np
 ```
-(Then, the functions from `numpy` are called `np.something`.) Together with `pandas` (see @sec-pandas) for data handling, this is the basic framework for data analysis in Python3. 
+(Then, the functions from `numpy` are called `np.something`.) 
 
 Let us start with linear algebra. A vector or matrix is an `np.array`. `numpy` interprets a vector as a column vector, and 
 
@@ -30,19 +33,40 @@ A = np.array([
     [1.0, 0.0, 2.0],
     [0.0, 1.0, 1.0]
 ])
-
 print("x =")
 print(x)
 print()
 print("A =")
 print(A)
-print()
+```
+Often, we need the number of dismensions of an array (and maybe want to change it), and check the type of its entries. For this, we have
+* `x.dim`: number of dimensions of `x`.
+* `x.shape`: tuple of length `x.dim` which gives the length of dimension `i` as entry `i`. (Recall that e.g. `(3,)` is a tuple of length `1`.)
+* `x.dtype`: type of entries in `x`.
+
+```{python}
 print("x.shape =", x.shape)
 print("A.shape =", A.shape)
 print("x.ndim =", x.ndim)
 print("A.ndim =", A.ndim)
 print("x.dtype =", x.dtype)
 ```
+Sometimes, we want to alter the shape of an `array`, or its direction. For this, we have e.g.:
+* `x.reshape`: 
+* `A.T`: 
+
+only view!
+
+```{python}
+print("A.reshape(3,2) = ", A.reshape(3,2))   # note that 3*2 = 6 and A has 6 entries
+print("A.reshape(-1,2) = ", A.reshape(-1,2)) # putting -1 means that python infers that number
+print("x.reshape(-1,1) = ", x.reshape(-1,1)) # python infers the number of rows if there is only one column
+print("A.reshape(-1) = ", A.reshape(-1))     # A as a vector
+print("x.T = ", x.T)                         # transposing x gives a column vector
+print("A.T = ", A.T)
+```
+
+
 
 Generally we 
 
