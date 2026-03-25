@@ -75,7 +75,7 @@ print(f"My constant is {myName.myConst()}.")
 # If pip3 does not work, use pip instead. 
 # !pip3 install numpy
 ```
-and then, `import numpy` will work. We will see examples for this e.g. in @sec-loading. 
+and then, `import numpy` will work. We will see examples for this e.g. in @sec-loading-files. 
 
 ## Mathematics (`math`) {#sec-math}
 The mathematical library in Python is used by `import math`. Then, you have e.g. the following functions, which are self-explanatory: `math.sqrt()`, `math.exp()`, `math.log()`, `math.sin()`, `math.cos()`, and constants like `math.pi` and `math.e`. 
@@ -226,13 +226,13 @@ For the kind of projects we envision, we often must access files, which happens 
 import os
 # Print all ipynb-files in the current folder
 for file in os.listdir("."):
-    if file.endswith(".ipynb"):
+    if file.endswith(".ipynb"):  # .endswith() checks if a string ends with the given suffix
         print(file)
 ```
 
 ```{python}
 # Print folders and files (only first 5 entries of os.walk)
-for i, (root, dirs, files) in enumerate(os.walk(".")):
+for i, (root, dirs, files) in enumerate(os.walk(".")):  # enumerate() gives pairs (index, element) for iteration
     if i >= 5:
         print("... (truncated)")
         break

@@ -278,12 +278,11 @@ window.Quarto = {
 
 
 <p><a href="notebooks/03_loops_and_conditions.ipynb">Download notebook</a>.</p>
-<p>xxx add bold face highlighted words as in chapter 6</p>
 <p>Coding starts to become interesting when we can control how variables change, and repeat operations.</p>
 <section id="conditions-if-...-elif-...-else" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="conditions-if-...-elif-...-else"><span class="header-section-number">3.1</span> Conditions (<code>if ... elif ... else</code>)</h2>
-<p>As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an <code>if</code>-condition:</p>
-<div id="86bbf161" class="cell" data-execution_count="1">
+<p>As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an <code>if</code>-<strong>condition</strong>:</p>
+<div id="f1d2e93a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&lt;</span> b:</span>
@@ -307,7 +306,7 @@ else:
     case_else</code></pre>
 <p>Here, read <code>elif</code> alse <code>else if</code>, which means that the code jumps into this case if the respective condition is the first to hold. The <code>else</code> case only applied if both the <code>if</code> and all <code>elif</code> conditions do not apply.</p>
 <p>In fact, there are abbreviations in Python which are very handy. In particular, look at this piece of code.</p>
-<div id="d60b56f0" class="cell" data-execution_count="2">
+<div id="b191aeed" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> a <span class="cf">if</span> a <span class="op">&lt;</span> b <span class="cf">else</span> b</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The minimum of </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> is:"</span>, res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -315,7 +314,7 @@ else:
 </div>
 </div>
 <p>Let us make another example, also using <code>elif</code>. Given some <code>n</code>, the task is to print <code>Fizz</code> if <code>n</code> is a multiple of 3, <code>Buzz</code>, if it is a multiple of 5, and <code>FizzBuzz</code> if both conditions are satisfied.</p>
-<div id="49d6fcb3" class="cell" data-execution_count="3">
+<div id="3ebc81df" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">165</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -332,8 +331,8 @@ else:
 </section>
 <section id="loops-with-fixed-length-for" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="loops-with-fixed-length-for"><span class="header-section-number">3.2</span> Loops with fixed length (<code>for</code>)</h2>
-<p>There are <code>for</code>-loops in Python, as discussed in this section, and <code>while</code>-loops in the next section. The basic use-case of a <code>for</code>-loop is repeating a task several times. As a simple example, adding <code>b</code> a number of <code>a</code> times, results in <code>a * b</code>.</p>
-<div id="58ee0478" class="cell" data-execution_count="4">
+<p>There are <strong><code>for</code>-loops</strong> in Python, as discussed in this section, and <code>while</code>-loops in the next section. The basic use-case of a <code>for</code>-loop is repeating a task several times. As a simple example, adding <code>b</code> a number of <code>a</code> times, results in <code>a * b</code>.</p>
+<div id="fd736ed6" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">7</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="dv">0</span></span>
@@ -351,7 +350,7 @@ else:
 <section id="greatest-common-divisor-i" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="greatest-common-divisor-i"><span class="header-section-number">3.2.1</span> Greatest common divisor I</h3>
 <p>Let us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, <code>a</code> and <code>b</code>. A very simple algorithm is going through all numbers <code>1,...,</code> in order, and update result each time we encounter a number which divides both, <code>a</code> and <code>b</code>. (Here, <code>range(1,a+1)</code> is a synoym for the numbers <code>1,...,a</code>.)</p>
-<div id="22d1a04d" class="cell" data-execution_count="5">
+<div id="408488dd" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic algorithm for finding the gcd of two numbers</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">33</span></span>
@@ -370,14 +369,14 @@ else:
 </section>
 <section id="loops-with-unknown-length-while" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="loops-with-unknown-length-while"><span class="header-section-number">3.3</span> Loops with unknown length (<code>while</code>)</h2>
-<p>The <code>for</code>-loop directly iterates over some variable (<code>i</code> above). The <code>while</code>-loop instead comes with a condition, which is checked everytime it is started new. The general structure is:</p>
+<p>The <code>for</code>-loop directly iterates over some variable (<code>i</code> above). The <strong><code>while</code>-loop</strong> instead comes with a condition, which is checked everytime it is started new. The general structure is:</p>
 <pre><code>while _condition_:
     instructions which might change the value of _condition_</code></pre>
 <p>Let us make two examples: finding <span class="math inline">\(\sqrt{2}\)</span> and computing the gcd using Euclid’s algorithm.</p>
 <section id="finding-sqrt2" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="finding-sqrt2"><span class="header-section-number">3.3.1</span> Finding <span class="math inline">\(\sqrt{2}\)</span></h3>
 <p>For finding <span class="math inline">\(\sqrt{2}\)</span>, note that this is a fixed point for the iteration <span class="math display">\[ x_{n+1} = \frac {x_n} 2 - \frac 1 {x_n}.\]</span> (In order to see this, assume that <span class="math inline">\(x = x_n = x_{n+1}\)</span>, and multiply the recursion by <span class="math inline">\(x\)</span>.) We can use this as follows.</p>
-<div id="b35cc7ca" class="cell" data-execution_count="6">
+<div id="9e8f21d5" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1e-10</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x_prev <span class="op">=</span> <span class="dv">0</span></span>
@@ -396,7 +395,7 @@ else:
 <p>The above algorithm (using <code>for</code>-loops) for finding the gcd were not particulary efficient. (You might want to test them with some large numbers.) Euclid’s algorithm is much more efficient. It is based on the observation that <code>c % a == 0</code> (<code>c</code> divides <code>a</code>) and <code>c % b == 0</code> iff <code>c % a == 0</code> and <code>c % (b % a)</code>.</p>
 <p>In order to see this, note that <code>c % a == 0</code> and <code>c % b == 0</code> iff <code>c % a == 0</code> and <code>c % (b - da) == 0</code> for any <code>d</code>. Then, the result follows from choosing <code>d = b \\ a</code> since <code>b - (b \\ a) * a = b % a</code>. Moreover, every number divides <code>0</code>, so if <code>b % a == 0</code>, the gcd of <code>a</code> and <code>b</code> is <code>a</code>.</p>
 <p>We can use these insights, taking <code>a &lt; b</code> for simplicity. Starting with <code>a</code> and <code>b</code>, we compute if <code>b % a == 0</code>. If yes, we are done, and return <code>a</code>. If not, we compute the gcd of <code>a</code> and <code>b % a</code> instead.</p>
-<div id="d37deaff" class="cell" data-execution_count="7">
+<div id="601c74d8" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Euclid's algorithm for finding the gcd of two numbers</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a_input <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>b_input <span class="op">=</span> <span class="dv">33</span></span>
@@ -422,8 +421,8 @@ The gcd of 105 and 33 is 3.</code></pre>
 </section>
 <section id="sec-functions" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="sec-functions"><span class="header-section-number">3.4</span> Functions (<code>def</code>)</h2>
-<p>Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid’s algorithm, this would look as follows:</p>
-<div id="01466357" class="cell" data-execution_count="8">
+<p>Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own <strong>function</strong> for reusing it. For Euclid’s algorithm, this would look as follows:</p>
+<div id="2e69b6e4" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">105</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">33</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -445,7 +444,7 @@ The gcd of 105 and 33 is 3.</code></pre>
     some instructions
     return something</code></pre>
 <p>Not all functions return something. Those who don’t usually produce some output. Here is an example</p>
-<div id="577ad0e5" class="cell" data-execution_count="9">
+<div id="f22f97ee" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greeting(name, prefix<span class="op">=</span><span class="st">"Hello"</span>):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Return a greeting for name."""</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span>
@@ -462,20 +461,20 @@ Welcome, Charlie!</code></pre>
 <p>Here are some important remarks on functions:</p>
 <ul>
 <li>Variables within functions are private to them. (There will be exceptions to this) In the gcd example, variable names <code>a</code> and <code>b</code> occur both, within and outside of the function. Although the variables <code>a</code> and <code>b</code>, which are private to the function, are changed within the function, the <code>print</code>-statement still knowns their value from before the function definition.</li>
-<li>Variables which are given to functions might have default values, as the <code>prefix = "Hello"</code> in the <code>greeting</code> example.</li>
+<li>Variables which are given to functions might have <strong>default values</strong>, as the <code>prefix = "Hello"</code> in the <code>greeting</code> example.</li>
 <li>For giving variables, there are two options:
 <ul>
-<li>you can rely on the position they have in the definition of the function. (Example: <code>greeting("Bob", prefix="Hi")</code>, where you rely on <code>"Bob"</code> being in the <code>name</code> position.) These are called positional variables.</li>
+<li>you can rely on the position they have in the definition of the function. (Example: <code>greeting("Bob", prefix="Hi")</code>, where you rely on <code>"Bob"</code> being in the <code>name</code> position.) These are called <strong>positional variables</strong>.</li>
 <li>you can give it the explicite variable name it has in the function definition. In this case, the order of variable names does not matter. (Example: In <code>greeting(prefix="Welcome", name="Charlie")</code>, the output was correct although the order of the two variables differs from the function definition.)</li>
 </ul></li>
-<li>All positional arguments must come before keyword aguments.</li>
-<li>Both functions from above have a <em>docstring</em>, which is the multiline string after the <code>def</code>-line. They indicate what this function is doing and are displayed in various places, e.g.&nbsp;when you hover over a function in your jupyter notebook.</li>
-<li>Sometimes, it is too much to define an own function for a very simple task. In this case, Python comes with <code>lambda</code>-functions, which are very quick: <code>lambda x: x * x</code>. Most use cases are with container data types, and we will have one in <a href="04_container_data_types.html#sec-list" class="quarto-xref"><span>Section 4.1</span></a>.</li>
+<li>All positional arguments must come before <strong>keyword aguments</strong>.</li>
+<li>Both functions from above have a <strong>docstring</strong>, which is the multiline string after the <code>def</code>-line. They indicate what this function is doing and are displayed in various places, e.g.&nbsp;when you hover over a function in your jupyter notebook.</li>
+<li>Sometimes, it is too much to define an own function for a very simple task. In this case, Python comes with <strong><code>lambda</code>-functions</strong>, which are very quick: <code>lambda x: x * x</code>. Most use cases are with container data types, and we will have one in <a href="04_container_data_types.html#sec-list" class="quarto-xref"><span>Section 4.1</span></a>.</li>
 </ul>
 </section>
 <section id="exception-handling-raise-try-...-except" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="exception-handling-raise-try-...-except"><span class="header-section-number">3.5</span> Exception handling (<code>raise</code>, <code>try ... except</code>)</h2>
-<p>In code, various things happen, and some go wrong. Raising (throwing) errors, catching them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them:</p>
+<p>In code, various things happen, and some go wrong. <strong>Raising</strong> (throwing) errors, <strong>catching</strong> them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 31%">
@@ -553,7 +552,7 @@ Welcome, Charlie!</code></pre>
 </tbody>
 </table>
 <p>We obtain an error here:</p>
-<div id="1983af1c" class="cell" data-execution_count="10">
+<div id="a439eec4" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This will not work"</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"1/0 = </span><span class="sc">{</span><span class="dv">1</span><span class="op">/</span><span class="dv">0</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"If this print works, the program has continued past 1/0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -574,7 +573,7 @@ Welcome, Charlie!</code></pre>
 </div>
 </div>
 <p>However, if we <em>catch</em> the error, the code can run past it:</p>
-<div id="c0236701" class="cell" data-execution_count="11">
+<div id="f95a629a" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This will not work"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"1/0 = </span><span class="sc">{</span><span class="dv">1</span><span class="op">/</span><span class="dv">0</span><span class="sc">}</span><span class="ss">"</span>)</span>
@@ -591,7 +590,7 @@ The program continues!</code></pre>
 </div>
 </div>
 <p>Now we know how to <em>catch</em> errors, but often, we need to <em>throw</em> them. This is actually simple using <code>raise</code>:</p>
-<div id="a7b0aa75" class="cell" data-execution_count="12">
+<div id="fdc224a9" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_sth(x):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(x) <span class="op">!=</span> <span class="bu">int</span>:</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"x must be an int!"</span>)</span>
@@ -611,11 +610,11 @@ Calculation not possible, sorry</code></pre>
 </section>
 <section id="file-input-and-output-context-management-open-read-write-with" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="file-input-and-output-context-management-open-read-write-with"><span class="header-section-number">3.6</span> File input and output, context management (<code>open</code>, <code>read</code>, <code>write</code>, <code>with</code>)</h2>
-<p>Reading and writing files is one of the most common tasks in data analysis. Python’s built-in <code>open</code> function, combined with the <code>with</code> statement, provides a clean way to handle files. The <code>with</code> context manager handles opening and closing files for you. More generall, our Python file (or notebook) must interact with other files or ressources (databases, other connections). In order to do this safely, we are using <code>with</code>, which guarantees that the ressource is entered (opened) and exited (closed) correctly. The general structure is as follows:</p>
+<p>Reading and writing files is one of the most common tasks in data analysis. Python’s built-in <code>open</code> function, combined with the <code>with</code> statement, provides a clean way to handle files. The <code>with</code> <strong>context manager</strong> handles opening and closing files for you. More generall, our Python file (or notebook) must interact with other files or ressources (databases, other connections). In order to do this safely, we are using <code>with</code>, which guarantees that the ressource is entered (opened) and exited (closed) correctly. The general structure is as follows:</p>
 <pre><code>with something as name:
     do_something()</code></pre>
 <p>Specifically for input and output from and to files, let <code>f</code> be an open file object. Then, the following are useful: * <code>open(path, mode)</code>: open a file. See below for some details on <code>mode</code>. * <code>f.read()</code>: read the entire file as a single string. * <code>f.readline()</code>: read a single line. * <code>f.readlines()</code>: read all lines into a list of strings. * <code>f.write(s)</code>: write string <code>s</code> to the file. * <code>f.writelines(lines)</code>: write a list of strings to the file.</p>
-<div id="935de9ae" class="cell" data-execution_count="13">
+<div id="033ecdbe" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"hello.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"Hello"</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"This is a new line in the file!</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -624,7 +623,7 @@ Calculation not possible, sorry</code></pre>
 <pre><code>File written.</code></pre>
 </div>
 </div>
-<div id="db2f23d3" class="cell" data-execution_count="14">
+<div id="e173ce47" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"hello.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> f.read()</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This is the content of the file:"</span>, text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -633,7 +632,7 @@ Calculation not possible, sorry</code></pre>
 </code></pre>
 </div>
 </div>
-<div id="81ca66b7" class="cell" data-execution_count="15">
+<div id="89dfbaaf" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reading line by line (useful for large files)</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"hello.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> f:</span>
@@ -658,7 +657,7 @@ HelloThis is a new line in the file!
 <p><strong>Exercise 6</strong> <code>for</code>-loops can also become nested. Compute <span class="math inline">\(\sum_{i=1}^{100} \sum_{j=1}^i j\)</span>. (Note the double indentation for the inner <code>for</code>-loop!)</p>
 <p><strong>Exercise 7</strong> Define a function computing the sum of the first <code>n</code> integers.</p>
 <p><strong>Exercise 8</strong> Write a function (without using imports) which computes the sum of all digits (cross sum) of an int.</p>
-<div id="79a5d1c8" class="cell" data-execution_count="16">
+<div id="b3a3f05f" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_age(age_as_string):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>        age <span class="op">=</span> <span class="bu">int</span>(age_as_string)</span>

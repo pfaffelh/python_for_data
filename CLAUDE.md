@@ -50,3 +50,32 @@ Additional pandas content was added to Chapter 07:
 11. "Add exercises to 07, asking for some new columns in the person data for age. Also give a dict of generations..." → added 5 exercises: computing age, extracting birth year, generation mapping with a `generations` dict, filtering by generation, hobby analysis with `explode`.
 12. "Please also use the person data in the SQL section." → replaced hand-crafted students table with person dataset loaded via `df.to_sql()`, demonstrated filtering, `pd.read_sql_query`, and SQL aggregation.
 13. "Please also use the person data in 'Working with dates and times'." → replaced generic date examples with person dataset: converting `date_of_birth`, extracting year/month, computing age, formatting dates with `strftime`.
+
+### Bold keywords and xxx prompts in chapters 02–06 (2026-03-25)
+
+Executed all `xxx` prompts across chapters 02–06:
+
+- **Chapter 02**: Added **bold** highlighting to key terms (`type`, `variable`, `int`, `float`, `exponent`, `mantissa`, `boolean`, `strings`, `format specifier`, `missing values`).
+- **Chapter 03**: Added **bold** highlighting (`condition`, `for-loop`, `while-loop`, `function`, `default values`, `positional variables`, `keyword arguments`, `docstring`, `lambda-functions`, `raising`, `catching`, `context manager`).
+- **Chapter 04**: Added **bold** highlighting (`container data types`, `list`, `indexing`, `slicing`, `mutable`, `tuple`, `immutable`, `set`, `dictionaries`, `key-value pairs`, `comprehensions`). Added explanation and two code examples for indexing and slicing.
+- **Chapter 05**: Added **bold** highlighting (`packages`, `modules`, `submodules`, `dates`, `times`, `rounding error`, `patterns`, `regular expression`, `pickle`, `tests`, `operating system`).
+- **Chapter 06**: Changed aggregation data so column/row means differ; replaced matplotlib scatter example with text-based `rng.choice`/`rng.permutation` example; added `result.nfev` output to `minimize_scalar`; deleted nonlinear least squares example.
+
+#### Prompts used
+
+1. "In 02, 03, 04, 05, 06, I have added comments starting with xxx. Execute these prompts."
+
+### Audit of chapters for unexplained code (2026-03-25)
+
+Audited chapters 02–08 for commands/variables used before being explained. Key findings:
+
+- **Chapter 02**: `^` (XOR) operator unexplained; `str.isalpha()` missing description; `", ".join` fragment incomplete.
+- **Chapter 03**: `continue`/`break` mentioned but no code examples; `abs()` used without introduction.
+- **Chapter 04**: `len()` used before bullet list; `lambda`/`filter()` used without explanation; `del` keyword unexplained.
+- **Chapter 05**: `@sec-loading` cross-reference points to non-existent label; `.endswith()` and `enumerate()` unexplained.
+- **Chapter 06**: `np.abs()`, `np.sum()`, `np.max()` used before aggregation section; `result.nfev` and `result.root` attributes not documented.
+- **Chapter 08**: 17 issues — matplotlib axis methods (`set_title`, `tight_layout`, `contourf`, `colorbar`) not in bullet list; `np.meshgrid`, `np.zeros_like`, `np.inf` unexplained; `rng.exponential`/`rng.gamma` not in chapter 06 list; distribution parameter conventions not documented.
+
+#### Prompts used
+
+1. "Go through all files line by line. See if every command or variable is explained before it is used. In such a case, either try to simplify the code such that everything is explained, or, if this does not work, mark the place by 'xxx' and say what needs to be introduced."

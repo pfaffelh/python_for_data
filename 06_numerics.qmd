@@ -191,6 +191,7 @@ print(X + b)
 ```{python}
 # pairwise operations via broadcasting
 x = np.array([0.0, 1.5, 3.0, 5.0])
+# np.abs() computes the absolute value elementwise
 D = np.abs(x[:, None] - x[None, :])
 print("distance matrix =")
 print(D)
@@ -217,6 +218,7 @@ x = np.array([1.0, -2.0, 2.0])
 y = np.array([3.0, 1.0, -1.0])
 print("<x,y> =", x @ y)
 print("||x||_2 =", np.linalg.norm(x))
+# np.sum() and np.max() are aggregation functions, explained below
 print("||x||_1 =", np.sum(np.abs(x)))
 print("||x||_inf =", np.max(np.abs(x)))
 ```
@@ -323,11 +325,11 @@ print("random order of 0..4 =", rng.permutation(5))
 
 The `scipy.optimize` module provides tools for finding minima of functions and roots of equations. This is essential in many areas of mathematics and data analysis.
 
-* `optimize.minimize_scalar(f)`: find the minimum of a scalar function $f: \mathbb{R} \to \mathbb{R}$.
+* `optimize.minimize_scalar(f)`: find the minimum of a scalar function $f: \mathbb{R} \to \mathbb{R}$. Returns a result object with `.x` (minimizer), `.fun` (minimum value), `.nfev` (number of function evaluations).
 * `optimize.minimize(f, x0)`: find the minimum of $f: \mathbb{R}^d \to \mathbb{R}$, starting from `x0`. Returns a result object with attributes `.x` (minimizer), `.fun` (minimum value), `.success`, `.nit` (number of iterations).
 * `optimize.minimize(f, x0, jac=grad_f)`: same, but with analytically supplied gradient for faster convergence.
 * `optimize.minimize(f, x0, method='...')`: choose a specific algorithm, e.g. `'BFGS'`, `'Nelder-Mead'`, `'L-BFGS-B'`.
-* `optimize.root_scalar(f, bracket=[a, b])`: find a root of $f$ in the interval $[a, b]$.
+* `optimize.root_scalar(f, bracket=[a, b])`: find a root of $f$ in the interval $[a, b]$. Returns a result object with `.root` (the root location).
 
 ```{python}
 from scipy import optimize

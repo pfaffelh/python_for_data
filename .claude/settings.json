@@ -3,7 +3,15 @@
     "allow": [
       "Bash(pip3 show:*)",
       "Bash(/home/pfaffelh/Code/python_for_data/venv/bin/pip install:*)",
-      "Bash(/home/pfaffelh/Code/python_for_data/venv/bin/python misc/fake_data.py)"
+      "Bash(/home/pfaffelh/Code/python_for_data/venv/bin/python misc/fake_data.py)",
+      "Bash(grep -h \"^## .*{#sec-\" /home/pfaffelh/Code/python_for_data/*.qmd)",
+      "Bash(grep -r \"{#sec-math}\" *.qmd)",
+      "Bash(grep -n \"{#sec-\" /home/pfaffelh/Code/python_for_data/*.qmd)",
+      "Bash(grep -n \"sec-list\" /home/pfaffelh/Code/python_for_data/*.qmd)",
+      "Bash(grep -r \"{#sec-list}\" *.qmd)",
+      "Bash(grep -n \"^\\\\* \\\\`\" /home/pfaffelh/Code/python_for_data/0[2-6]_*.qmd)",
+      "Bash(grep -n \"unpacking\" /home/pfaffelh/Code/python_for_data/*.qmd)",
+      "Bash(grep -E \"^\\\\w+, \\\\w+ =\" /home/pfaffelh/Code/python_for_data/0[2-5]_*.qmd)"
     ],
     "additionalDirectories": [
       "/home/pfaffelh/Code/python_for_data"

@@ -94,8 +94,24 @@ print(f"The gcd of {a} and {b} is {res}.")
 Let us make some remarks on `for`-loops: 
 * In the last example, note that the instructios within the `for`-loop depend on `i`.
 * Within a `for`-loop, you can use `continue` in order to stop the execution of the current iteration, and immediately jump to the next `i`. 
-* Within a `for`-loop, you can use `break` in order to stop the whole execution of the `for`-loop. 
+* Within a `for`-loop, you can use `break` in order to stop the whole execution of the `for`-loop.
 
+```{python}
+# continue skips the rest of the current iteration
+for i in range(5):
+    if i == 2:
+        continue
+    print(i, end=" ")
+print()
+```
+```{python}
+# break stops the loop entirely
+for i in range(10):
+    if i == 5:
+        break
+    print(i, end=" ")
+print()
+```
 
 ## Loops with unknown length (`while`)
 The `for`-loop directly iterates over some variable (`i` above). The **`while`-loop** instead comes with a condition, which is checked everytime it is started new. The general structure is:
@@ -110,7 +126,7 @@ Let us make two examples: finding $\sqrt{2}$ and computing the gcd using Euclid'
 ### Finding $\sqrt{2}$
 For finding $\sqrt{2}$, note that this is a fixed point for the iteration
 $$ x_{n+1} = \frac {x_n} 2 - \frac 1 {x_n}.$$
-(In order to see this, assume that $x = x_n = x_{n+1}$, and multiply the recursion by $x$.) We can use this as follows. 
+(In order to see this, assume that $x = x_n = x_{n+1}$, and multiply the recursion by $x$.) We can use this as follows. Here, `abs()` is a built-in function returning the absolute value of a number.
 
 ```{python}
 x = 1

@@ -39,6 +39,7 @@ The notation for a list comes with square brackets, where the entries are separa
 # a list of ints
 x = [1,2,3]
 print(x[0])
+# len(x) gives the length of x
 print(x[3] if len(x) > 3 else None)
 ```
 Slicing refers to sublists. 
@@ -97,7 +98,7 @@ print(f"l = {l}")
 l = [3,2,1]
 print(sorted(l))
 ```
-Assume you want to sort a `list` not as usual. In this situation, you will find out about the `key`-parameter in `sorted`. It takes a function, we sorts the list according to the values of this function. As an example, assume we want to sort a list of `int`s according to their abolute value:
+Assume you want to sort a `list` not as usual. In this situation, you will find out about the `key`-parameter in `sorted`. It takes a function, we sorts the list according to the values of this function. Here, we use `lambda` to define short anonymous functions inline: `lambda x: expression` creates a function that takes `x` and returns `expression` (see also @sec-functions in Chapter 3). As an example, assume we want to sort a list of `int`s according to their abolute value:
 ```{python}
 l = [5, -4, 0, 7, -3, 2]
 print(sorted(l, key = lambda x: abs(x)))
@@ -225,6 +226,7 @@ d |= {
     "profession" : "student",
     "subject" : "Mathematics"
 }
+# del removes an entry from the dict
 del d["age"]
 for key, value in d.items():
     print((key, str(value)))

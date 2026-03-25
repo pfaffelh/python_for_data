@@ -294,7 +294,7 @@ Data often comes as files. The most common formats are CSV (comma-separated valu
 * `pd.read_csv(path)`: reads a CSV file into a DataFrame.
 * `df.to_csv(path, index=False)`: writes a DataFrame to a CSV file.
 * `pd.read_json(path)`: reads a JSON file into a DataFrame.
-* `df.to_json()`: converts a DataFrame to a JSON string.
+* `df.to_json(orient="records")`: converts a DataFrame to a JSON string. The `orient` parameter controls the format; `"records"` produces a list of dictionaries.
 * `pd.read_excel(path)`: reads an Excel file into a DataFrame (requires the `openpyxl` package).
 
 ```{python}
@@ -354,7 +354,7 @@ df_pop = pd.DataFrame([{
     "region": c["region"]
 } for c in countries])
 
-df_pop.nlargest(10, "population")
+df_pop.sort_values("population", ascending=False).head(10)
 ```
 ```{python}
 # population by region
@@ -401,6 +401,7 @@ Python has built-in support for SQLite databases via the `sqlite3` module. This 
 * `cursor.execute(sql)`: execute an SQL statement.
 * `cursor.fetchall()`: fetch all results.
 * `pd.read_sql_query(sql, conn)`: run an SQL query and return the result as a DataFrame.
+* `df.to_sql("table_name", conn, index=False)`: write a DataFrame into an SQL table.
 
 ```{python}
 import sqlite3
@@ -470,4 +471,4 @@ Write a function `get_generation(year)` that takes a birth year and returns the 
 Write a function `filter_generation(df, gen_name)` that takes the DataFrame and a generation name (e.g., `"Millennial"`) and returns only the rows belonging to that generation. Use it to display all millennials. How many are there?
 
 **Exercise 5**
-The `hobbies` column in the CSV is a semicolon-separated string. Split it into a Python list using `df["hobbies"].str.split(";")`. Then find out: what is the most common hobby across all persons? Hint: use `explode` to turn the lists into individual rows, then use `value_counts`.
+The `hobbies` column in the CSV is a semicolon-separated string. The `.str` accessor on a pandas Series gives access to string methods, so `df["hobbies"].str.split(";")` splits each entry into a Python list. Use this to split the hobbies. Then find out: what is the most common hobby across all persons? Hint: `series.explode()` turns a Series of lists into individual rows (one row per list element); then use `value_counts`.

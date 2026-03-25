@@ -128,6 +128,7 @@ print("x and y =", x and y)
 print("x or y =", x or y)
 ```
 ```{python}
+# xor (exclusive or, written as ^)
 print("x xor y =", x ^ y)
 ```
 ```{python}
@@ -208,10 +209,10 @@ For strings, there are various build-in functions. We mention some of them. Here
 * `len(s)`: gives the length of the string. 
 * `str.replace(s, "x", "y")`: Replaces each occurrence of `"x"` in `s` by `"y"`.
 * `str.split(s, "x")`: Splits `s` at each occurrence of `"x". The result is a `list`, which we will encounter in @sec-list.
-", ".join
+* `", ".join(list)`: Joins the elements of a list into a single string, separated by the given string.
 * `str.lower(s)`: Return the same string, but all letters are lowercase. 
 * `str.upper(s)`: Return the same string, but all letters are uppercase. 
-* `str.isalpha(s)`: 
+* `str.isalpha(s)`: Returns `True` if the string consists only of alphabetic letters, and `False` otherwise.
 * `str.isdigit(s)`: Returns `True` if the string is actually a number, and `False` otherwise.
 * `str.isalnum(s)`: Returns `True` if the string consists only of letters and numbers, and `False` otherwise.
 * `str.isspace(s)`: Returns `True` if the string consists only empty spaces, and `False` otherwise.
