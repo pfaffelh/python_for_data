@@ -47,4 +47,14 @@ with open("misc/person.csv", "w", newline="", encoding="utf-8") as f:
         row["hobbies"] = ";".join(row["hobbies"])
         writer.writerow(row)
 
-print(f"Created misc/person.json and misc/person.csv with {len(persons)} persons.")
+# Save as SQLite database
+import sqlite3
+import pandas as pd
+
+df = pd.DataFrame(persons)
+df["hobbies"] = df["hobbies"].apply(lambda h: ";".join(h))
+conn = sqlite3.connect("misc/person.db")
+df.to_sql("persons", conn, index=False, if_exists="replace")
+conn.close()
+
+print(f"Created misc/person.json, misc/person.csv, and misc/person.db with {len(persons)} persons.")

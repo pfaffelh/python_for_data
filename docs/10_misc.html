@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.32">
+<meta name="generator" content="quarto-1.9.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7c69b197886ae2a34062761d21e44731.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7e471ccb3c3609b40687e3330816b98a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-352f0346a3070dd3b7340e73962f3721.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="comments" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="comments"><span class="header-section-number">10.1</span> Comments</h2>
 <p>In Python, the key for a comment is #.</p>
-<div id="6a4bbd70" class="cell" data-execution_count="1">
+<div id="710f1f8e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This line is a comment.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This line is not a comment."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -288,7 +288,7 @@ print(f"Hello, {name}!")</code></pre>
 <li><code>x: int = 5</code>: tell Python that <code>x</code> is an int.</li>
 <li><code>def f(x: float) -&gt; float:</code>: declare that <code>f</code> takes a float and returns a float.</li>
 </ul>
-<div id="e8e557f2" class="cell" data-execution_count="2">
+<div id="a6432b35" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(x: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return x squared."""</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x</span>
@@ -339,7 +339,7 @@ pip install -r requirements.txt</code></pre>
 <li><code>breakpoint()</code>: drop into the interactive debugger (<code>pdb</code>) at this point. You can then inspect variables, step through code, and continue execution.</li>
 <li>In the debugger: <code>n</code> (next line), <code>s</code> (step into function), <code>c</code> (continue), <code>p x</code> (print <code>x</code>), <code>q</code> (quit).</li>
 </ul>
-<div id="9e3dc7f1" class="cell" data-execution_count="3">
+<div id="a004d7de" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using print for debugging</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> buggy_mean(values):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
@@ -355,7 +355,7 @@ pip install -r requirements.txt</code></pre>
 result = 20.0</code></pre>
 </div>
 </div>
-<div id="4dc8793b" class="cell" data-execution_count="4">
+<div id="16843cc9" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking types</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"42"</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x <span class="op">=</span> <span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="bu">type</span>(x) <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
@@ -388,7 +388,7 @@ def process(data):
 <li><code>open(path, "r", encoding="utf-8")</code>: read a file with a specific encoding. If omitted, Python uses the system default (usually <code>utf-8</code> on modern systems, but not always).</li>
 <li><code>"latin-1"</code> (also called <code>"iso-8859-1"</code>): an older encoding common in Western European data. It can represent ä, ö, ü but not e.g.&nbsp;Chinese characters.</li>
 </ul>
-<div id="cd9b783f" class="cell" data-execution_count="5">
+<div id="4ca414fd" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Üniversität Freiburg"</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> s.encode(<span class="st">"utf-8"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"string: </span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -402,14 +402,14 @@ length of string: 20
 length of bytes:  22</code></pre>
 </div>
 </div>
-<div id="4fd1588d" class="cell" data-execution_count="6">
+<div id="8679501b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># decoding bytes back to a string</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b.decode(<span class="st">"utf-8"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Üniversität Freiburg</code></pre>
 </div>
 </div>
-<div id="add3defb" class="cell" data-execution_count="7">
+<div id="aef901b5" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what goes wrong with the wrong encoding</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b_latin <span class="op">=</span> s.encode(<span class="st">"latin-1"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"latin-1 bytes: </span><span class="sc">{</span>b_latin<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -423,7 +423,7 @@ length of bytes:  22</code></pre>
 Error: 'utf-8' codec can't decode byte 0xdc in position 0: invalid continuation byte</code></pre>
 </div>
 </div>
-<div id="8737a298" class="cell" data-execution_count="8">
+<div id="97a149c8" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reading a file with explicit encoding</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"example_utf8.txt"</span>, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"Ä, Ö, Ü, ß</span><span class="ch">\n</span><span class="st">"</span>)</span>

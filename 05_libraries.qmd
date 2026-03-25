@@ -80,7 +80,7 @@ and then, `import numpy` will work. We will see examples for this e.g. in @sec-l
 ## Mathematics (`math`) {#sec-math}
 The mathematical library in Python is used by `import math`. Then, you have e.g. the following functions, which are self-explanatory: `math.sqrt()`, `math.exp()`, `math.log()`, `math.sin()`, `math.cos()`, and constants like `math.pi` and `math.e`. 
 
-## Dates and times of day (`datetime`)
+## Dates and times of day (`datetime`) {#sec-datetime}
 
 In data science, we often have to handle **dates**. Their disadvantage is that there is no standard way to write these as strings. In Python, this and various other problems around dates and **times** is solved by the `datetime`-library. 
 
