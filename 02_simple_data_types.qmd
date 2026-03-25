@@ -8,6 +8,8 @@ jupyter: python3
 
 [Download notebook](notebooks/02_simple_data_types.ipynb).
 
+xxx add bold face highlighted words as in chapter 6
+
 ## Overview
 
 Every variable or other object in python has a type. This is the kind of information which is stored insice the variable or object Here is an overview over the most important simple data types. 
@@ -224,8 +226,6 @@ Here is another very useful notation convention, known as dot-notation: For a fu
 
 ### Formatting numbers in f-strings {#sec-formatting}
 
-_claude generated_
-
 When printing numerical results, we often want to control the number of decimal places, alignment, or padding. Inside an f-string, a format specifier follows the variable after a colon: `f"{x:.4f}"`.
 
 * `f"{x:.4f}"`: float with 4 decimal places.
@@ -236,27 +236,13 @@ When printing numerical results, we often want to control the number of decimal 
 * `f"{x:.2%}"`: format as percentage with 2 decimal places.
 
 ```{python}
-import math
-pi = math.pi
+pi = 3.141592653589793
 print(f"pi = {pi}")
 print(f"pi = {pi:.2f}")
-print(f"pi = {pi:.8f}")
 print(f"pi = {pi:.2e}")
+print(f"123456 = {123456:,}")
+print(f"pi = {pi:.2%}")
 ```
-```{python}
-# alignment and padding
-for name, score in [("Alice", 92.5), ("Bob", 87.123), ("Charlie", 100.0)]:
-    print(f"{name:<10} {score:>8.2f}")
-```
-```{python}
-# thousands separator and percentage
-n = 1234567
-ratio = 0.8734
-print(f"n = {n:,}")
-print(f"ratio = {ratio:.1%}")
-```
-
-This is especially useful when printing tables of results in data analysis.
 
 ## Missing things (`NoneType`)
 

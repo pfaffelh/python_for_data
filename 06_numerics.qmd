@@ -8,9 +8,9 @@ jupyter: python3
 
 [Download notebook](notebooks/06_numerics.ipynb).
 
-We will be using `numpy` {#sec-numpy} and some `scipy`. These packages provide powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra (using `numpy`), optimization (using `scipy`) and statistics (using `scipy`). Together with `pandas` (see @sec-pandas) for data handling, this is the basic framework for data analysis in Python3.
+We will be using `numpy` and some `scipy`. These packages provide powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra (using `numpy`), optimization (using `scipy`) and statistics (using `scipy`). Together with `pandas` (see @sec-pandas) for data handling, this is the basic framework for data analysis in Python.
 
-## Arrays, vectors, matrices (`np.array`)
+## Arrays, vectors, matrices (`np.array`) {#sec-numpy}
 
 Let us start by importing `numpy`.
 ```{python}
@@ -105,7 +105,6 @@ Arithmetic operations on arrays are **elementwise**. This is different from matr
 * `x * y`: elementwise multiplication (not matrix multiplication!).
 * `x / y`: elementwise division.
 * `x ** n`: elementwise power.
-* `x @ y`: inner product of vectors, or matrix multiplication for 2d arrays.
 
 ```{python}
 x = np.array([1.0, -2.0, 4.0])
@@ -212,7 +211,6 @@ NumPy provides a comprehensive linear algebra module. Here, `x` and `y` are vect
 * `np.linalg.det(A)`: determinant.
 * `np.linalg.cond(A)`: condition number. Large values indicate numerical instability.
 * `np.linalg.eig(A)`: eigenvalues and eigenvectors.
-* `np.linalg.svd(A)`: singular value decomposition.
 
 ```{python}
 x = np.array([1.0, -2.0, 2.0])
@@ -254,6 +252,8 @@ NumPy provides functions for aggregating arrays. When applied to 2d arrays, the 
 * `axis=0`: aggregate down the rows (result: one entry per column).
 * `axis=1`: aggregate across the columns (result: one entry per row).
 
+
+xxx change data such that column and row means have different results
 ```{python}
 data = np.array([
     [1.0, 2.0, 3.0],
@@ -301,6 +301,9 @@ rng2 = np.random.default_rng(123)
 print(rng1.standard_normal(4))
 print(rng2.standard_normal(4))
 ```
+
+xxx delete this data example, but make a purely text-based example, where you also use rng.choice and rng.permutation.
+
 ```{python}
 # a synthetic dataset
 import matplotlib.pyplot as plt
@@ -355,6 +358,7 @@ result = optimize.minimize_scalar(f)
 print("minimum at x =", result.x)
 print("minimum value =", result.fun)
 ```
+xxx add an output for the number of iterations
 ```{python}
 # minimizing a function of several variables (Rosenbrock function)
 def rosenbrock(x):
@@ -376,6 +380,8 @@ result = optimize.minimize(rosenbrock, x0, jac=rosenbrock_grad, method='BFGS')
 print("minimum at x =", result.x)
 print("iterations =", result.nit)
 ```
+
+xxx delete the next example
 ```{python}
 # nonlinear least squares fitting
 rng = np.random.default_rng(0)
@@ -406,3 +412,10 @@ result = optimize.root_scalar(g, bracket=[2, 3])
 print("root at x =", result.root)
 print("g(root) =", g(result.root))
 ```
+
+
+
+## Exercises
+Find out about the singular value decomposition in `np.linalg.svd`!
+
+Why is it better to use np.linalg.solve rather than np.linalg.inv?

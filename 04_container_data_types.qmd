@@ -8,9 +8,14 @@ jupyter: python3
 
 [Download notebook](notebooks/04_container_data_types.ipynb).
 
+xxx add bold face highlighted words as in chapter 6
+
+
 When working with data, we usually not only have *one* int or *one* str, but many of them. For this situation, there are the container data types, `list`, `tuple`, `set`, and `dict`. 
 
 ## Lists (`list`) {#sec-list}
+xxx add what slicing and indexing refers to. add two examples
+
 The notation for a list comes with square brackets, where the entries are separated by a comma. The list of numbers 1, 2, 3 is `[1,2,3]`. A list of names is e.g. `["Alice", "Bob", "Charlie", "Donna"]`. So, for a `list`, the entries have simple (or again container) data types. 
 
 * We can access the entries of a list using square brackets. However, we have to be careful if the length of the list is too short. 
@@ -132,7 +137,7 @@ print(f"Its first and only element is {thisisatuple[0]}.")
 
 ## Sets (`set`) {#sec-set}
 
-As in mathematics, sets have no special order, and there are noduplicates within a set. In Python3, they can be created using curly brackets, so e.g. `{1,2,3}` as well as `{1,3,2,3,1}` is the set of the numbers `1,2,3`. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a `list`, which can contain duplicates, `list(set(l))` is the same list (maybe the order changed) but with duplicates removed.
+As in mathematics, sets have no special order, and there are noduplicates within a set. In Python, they can be created using curly brackets, so e.g. `{1,2,3}` as well as `{1,3,2,3,1}` is the set of the numbers `1,2,3`. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a `list`, which can contain duplicates, `list(set(l))` is the same list (maybe the order changed) but with duplicates removed.
 
 Here are some functions on some `s` and `t`:
 * `len(s)`: returns the number of unique elements in `s`.
@@ -247,7 +252,7 @@ for p in people:
 
 ## Comprehensions {#sec-iterating}
 
-Python3 has very expressive (i.e. short) ways to alter container data types. The general form is (where "iterable" is a container data type):
+Python has very expressive (i.e. short) ways to alter container data types. The general form is (where "iterable" is a container data type):
 ```
 [expression for variable in list if condition]
 [expression_if_true if condition else expression_if_false for variable in list]

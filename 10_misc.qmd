@@ -39,6 +39,23 @@ ask the AI!
 
 Here is another very useful notation convention, known as dot-notation: For a function `str.something(s,...)`, where `s` is of type `str`, you can as well write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. 
 
+## Type hints and assertions (`assert`, type annotations)
+
+Python does not enforce that you say which type a variable has (in contrast to C, say), but you can annotate them. This is not enforced by Python, but helps readability.
+
+* `x: int = 5`: tell Python that `x` is an int. 
+* `def f(x: float) -> float:`: declare that `f` takes a float and returns a float. 
+
+```{python}
+def square(x: float) -> float:
+    """Return x squared."""
+    return x * x
+
+print(square(3.0))
+# This also works, since Python does not enforce the type hint:
+print(square(5))
+```
+
 ## Virtual environments and `pip` (`venv`, `pip`) {#sec-venv}
 
 _claude generated_

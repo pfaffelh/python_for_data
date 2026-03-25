@@ -8,11 +8,14 @@ jupyter: python3
 
 [Download notebook](notebooks/05_libraries.ipynb).
 
-In this chapter, we take a little break. Although there are lots of things to learn, the material covered here has the role of helping to learn about the Python3 ecosystem and what is possible, rather than learn the details of various labraries. The first section, however, is central and will be needed in any Python3 project you will start. 
+xxx add bold face highlighted words as in chapter 6
+
+
+In this chapter, we take a little break. Although there are lots of things to learn, the material covered here has the role of helping to learn about the Python ecosystem and what is possible, rather than learn the details of various labraries. The first section, however, is central and will be needed in any Python project you will start. 
 
 ## Loading modules (`import`)
 
-As in all programming languages, not all python programs come in a single file. If a Python3 project spans multiple files, an `import` becomes necessary. In Python3, there is syntax for `import`s as follows:
+As in all programming languages, not all python programs come in a single file. If a Python project spans multiple files, an `import` becomes necessary. In Python, there is syntax for `import`s as follows:
 
 | Syntax                    | Meaning            |
 | ------------------------- | ------------------ |
@@ -67,7 +70,7 @@ print(f"My constant is {myName.myConst()}.")
 
 2. You want to use functions from a built-in library. Then, a simple `import module` is often the best choice. We will see examples in @sec-math. 
 
-3. You want to use functions from a library, which needs to be installed. Here, before the `import module` even works, you need to install the module in your python environment. In a terminal, within your Python3 environment, use
+3. You want to use functions from a library, which needs to be installed. Here, before the `import module` even works, you need to install the module in your python environment. In a terminal, within your Python environment, use
 ```{python}
 # Uncomment the next line and run the cell for installation.
 # This only needs to be done once for every package.
@@ -81,7 +84,7 @@ The mathematical library in Python is used by `import math`. Then, you have e.g.
 
 ## Dates and times of day (`datetime`)
 
-In data science, we often have to handle dates. Their disadvantage is that there is no standard way to write these as strings. In Python3, this and various other problems around dates and times is solved by the `datetime`-library. 
+In data science, we often have to handle dates. Their disadvantage is that there is no standard way to write these as strings. In Python, this and various other problems around dates and times is solved by the `datetime`-library. 
 
 Submodules (in fact, these are `class`es in this case) of this package are 
 
@@ -173,7 +176,7 @@ We can agree that this exactly what an email address looks like. The `re.finall(
 
 ## Storing and restoring objects (`pickle`)
 
-Sometimes, you want to store intermediate objects. One way is to write them out in files, but you can also use the `pickle`-library in order to write Python3 objects to disc. Here is an example:
+Sometimes, you want to store intermediate objects. One way is to write them out in files, but you can also use the `pickle`-library in order to write Python objects to disc. Here is an example:
 
 ```{python}
 import pickle
@@ -215,7 +218,7 @@ assert 2 + 2 == 5
 
 For the kind of projects we envision, we often must access files, which happens via the operating system. We might also want to see all files in some directory, access them one by one, etc. Here, `folder` is the string of the name of a folder, and `file` is the string for the name of a file. 
 * `os.getcwd()`: returns the current working directory.
-* `os.chdir(folder)`: this is a Python3 command for `cd`.
+* `os.chdir(folder)`: this is a Python command for `cd`.
 * `os.path.join(folder", file)`: gives a complete path from the folder and file name.
 * `os.listdir(folder)`: returns a list of files within the folder.
 * `os.path.exists(file)`: returns true or false if the file exists or not.
@@ -244,7 +247,7 @@ for i, (root, dirs, files) in enumerate(os.walk(".")):
 
 ## Starting other programs (`subprocess`)
 
-Sometimes, you want to start some piece of software (a command line tool) from within your Python3 program, and collect the result. You could use a script for this, which starts the command line tool, and rus your Python3 script afterwards, but you can as well use Python3 for the whole setting. We only give a basic example:
+Sometimes, you want to start some piece of software (a command line tool) from within your Python program, and collect the result. You could use a script for this, which starts the command line tool, and rus your Python script afterwards, but you can as well use Python for the whole setting. We only give a basic example:
 
 ```
 import subprocess
