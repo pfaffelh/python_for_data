@@ -8,13 +8,11 @@ jupyter: python3
 
 [Download notebook](notebooks/03_loops_and_conditions.ipynb).
 
-xxx add bold face highlighted words as in chapter 6
-
 
 Coding starts to become interesting when we can control how variables change, and repeat operations. 
 
 ## Conditions (`if ... elif ... else`)
-As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an `if`-condition:
+As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an `if`-**condition**:
 ```{python}
 a = 2
 b = 5
@@ -59,7 +57,7 @@ print(res)
 
 ## Loops with fixed length (`for`)
 
-There are `for`-loops in Python, as discussed in this section, and `while`-loops in the next section. The basic use-case of a  `for`-loop is repeating a task several times. As a simple example, adding `b` a number of `a` times, results in `a * b`.
+There are **`for`-loops** in Python, as discussed in this section, and `while`-loops in the next section. The basic use-case of a  `for`-loop is repeating a task several times. As a simple example, adding `b` a number of `a` times, results in `a * b`.
 
 ```{python}
 a = 3
@@ -100,7 +98,7 @@ Let us make some remarks on `for`-loops:
 
 
 ## Loops with unknown length (`while`)
-The `for`-loop directly iterates over some variable (`i` above). The `while`-loop instead comes with a condition, which is checked everytime it is started new. The general structure is:
+The `for`-loop directly iterates over some variable (`i` above). The **`while`-loop** instead comes with a condition, which is checked everytime it is started new. The general structure is:
 
 ```
 while _condition_:
@@ -151,7 +149,7 @@ print(f"The gcd of {a_input} and {b_input} is {b}.")
 
 ## Functions (`def`) {#sec-functions}
 
-Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own function for reusing it. For Euclid's algorithm, this would look as follows:
+Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own **function** for reusing it. For Euclid's algorithm, this would look as follows:
 
 ```{python}
 a = 105
@@ -187,18 +185,18 @@ greeting(prefix="Welcome", name="Charlie")
 Here are some important remarks on functions: 
 
 * Variables within functions are private to them. (There will be exceptions to this) In the gcd example, variable names `a` and `b` occur both, within and outside of the function. Although the variables `a` and `b`, which are private to the function, are changed within the function, the `print`-statement still knowns their value from before the function definition.
-* Variables which are given to functions might have default values, as the `prefix = "Hello"` in the `greeting` example. 
+* Variables which are given to functions might have **default values**, as the `prefix = "Hello"` in the `greeting` example.
 * For giving variables, there are two options: 
-    - you can rely on the position they have in the definition of the function. (Example: `greeting("Bob", prefix="Hi")`, where you rely on `"Bob"` being in the `name` position.) These are called positional variables. 
+    - you can rely on the position they have in the definition of the function. (Example: `greeting("Bob", prefix="Hi")`, where you rely on `"Bob"` being in the `name` position.) These are called **positional variables**. 
     - you can give it the explicite variable name it has in the function definition. In this case, the order of variable names does not matter. (Example: In `greeting(prefix="Welcome", name="Charlie")`, the output was correct although the order of the two variables differs from the function definition.)
-* All positional arguments must come before keyword aguments. 
-* Both functions from above have a _docstring_, which is the multiline string after the `def`-line. They indicate what this function is doing and are displayed in various places, e.g. when you hover over a function in your jupyter notebook.
-* Sometimes, it is too much to define an own function for a very simple task. In this case, Python comes with `lambda`-functions, which are very quick: 
+* All positional arguments must come before **keyword aguments**. 
+* Both functions from above have a **docstring**, which is the multiline string after the `def`-line. They indicate what this function is doing and are displayed in various places, e.g. when you hover over a function in your jupyter notebook.
+* Sometimes, it is too much to define an own function for a very simple task. In this case, Python comes with **`lambda`-functions**, which are very quick: 
 `lambda x: x * x`. Most use cases are with container data types, and we will have one in @sec-list. 
 
 ## Exception handling (`raise`, `try ... except`)
 
-In code, various things happen, and some go wrong. Raising (throwing) errors, catching them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them: 
+In code, various things happen, and some go wrong. **Raising** (throwing) errors, **catching** them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them: 
 
 | Exception             | When it happens         | Example                |
 | --------------------- | ----------------------- | ---------------------- |
@@ -250,7 +248,7 @@ except TypeError:
 
 ## File input and output, context management (`open`, `read`, `write`, `with`)
 
-Reading and writing files is one of the most common tasks in data analysis. Python's built-in `open` function, combined with the `with` statement, provides a clean way to handle files. The `with` context manager handles opening and closing files for you. More generall, our Python file (or notebook) must interact with other files or ressources (databases, other connections). In order to do this safely, we are using `with`, which guarantees that the ressource is entered (opened) and exited (closed) correctly. The general structure is as follows:
+Reading and writing files is one of the most common tasks in data analysis. Python's built-in `open` function, combined with the `with` statement, provides a clean way to handle files. The `with` **context manager** handles opening and closing files for you. More generall, our Python file (or notebook) must interact with other files or ressources (databases, other connections). In order to do this safely, we are using `with`, which guarantees that the ressource is entered (opened) and exited (closed) correctly. The general structure is as follows:
 ```
 with something as name:
     do_something()
@@ -266,6 +264,7 @@ Specifically for input and output from and to files, let `f` be an open file obj
 ```{python}
 with open("hello.txt", "w") as f:
     f.write("Hello")
+    f.write("This is a new line in the file!\n")
     print("File written.")
 ```
 ```{python}
@@ -276,10 +275,9 @@ print("This is the content of the file:", text)
 ```{python}
 # reading line by line (useful for large files)
 with open("hello.txt", "r") as f:
-    f.write("This is a new line in the file!\n")
     for line in f:
         print(line.strip())
-with open("example.txt", "r") as f:
+with open("hello.txt", "r") as f:
     print(f.read())
 ```
 Here, `"hello.txt"` is closed at the end of the `with` block. The second argument of `open` comes with the following modes: 

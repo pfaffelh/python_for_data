@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b5c49d451f14625acf1737a92055c052.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7e471ccb3c3609b40687e3330816b98a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -221,10 +221,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#user-input" id="toc-user-input" class="nav-link" data-scroll-target="#user-input"><span class="header-section-number">10.3</span> User input</a></li>
   <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="header-section-number">10.4</span> Regular expressions</a></li>
   <li><a href="#dot-notation" id="toc-dot-notation" class="nav-link" data-scroll-target="#dot-notation"><span class="header-section-number">10.5</span> dot-notation</a></li>
-  <li><a href="#sec-venv" id="toc-sec-venv" class="nav-link" data-scroll-target="#sec-venv"><span class="header-section-number">10.6</span> Virtual environments and <code>pip</code> (<code>venv</code>, <code>pip</code>)</a></li>
-  <li><a href="#sec-debugging" id="toc-sec-debugging" class="nav-link" data-scroll-target="#sec-debugging"><span class="header-section-number">10.7</span> Debugging (<code>print</code>, <code>breakpoint</code>)</a></li>
-  <li><a href="#sec-encoding" id="toc-sec-encoding" class="nav-link" data-scroll-target="#sec-encoding"><span class="header-section-number">10.8</span> Encoding and Unicode (<code>utf-8</code>, <code>encode</code>, <code>decode</code>)</a></li>
-  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github"><span class="header-section-number">10.9</span> git and github</a></li>
+  <li><a href="#type-hints-and-assertions-assert-type-annotations" id="toc-type-hints-and-assertions-assert-type-annotations" class="nav-link" data-scroll-target="#type-hints-and-assertions-assert-type-annotations"><span class="header-section-number">10.6</span> Type hints and assertions (<code>assert</code>, type annotations)</a></li>
+  <li><a href="#sec-venv" id="toc-sec-venv" class="nav-link" data-scroll-target="#sec-venv"><span class="header-section-number">10.7</span> Virtual environments and <code>pip</code> (<code>venv</code>, <code>pip</code>)</a></li>
+  <li><a href="#sec-debugging" id="toc-sec-debugging" class="nav-link" data-scroll-target="#sec-debugging"><span class="header-section-number">10.8</span> Debugging (<code>print</code>, <code>breakpoint</code>)</a></li>
+  <li><a href="#sec-encoding" id="toc-sec-encoding" class="nav-link" data-scroll-target="#sec-encoding"><span class="header-section-number">10.9</span> Encoding and Unicode (<code>utf-8</code>, <code>encode</code>, <code>decode</code>)</a></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github"><span class="header-section-number">10.10</span> git and github</a></li>
   </ul>
 </nav>
     </div>
@@ -254,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="comments" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="comments"><span class="header-section-number">10.1</span> Comments</h2>
 <p>In Python, the key for a comment is #.</p>
-<div id="593b93c7" class="cell" data-execution_count="1">
+<div id="dcdc1a6e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This line is a comment.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This line is not a comment."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -280,8 +281,29 @@ print(f"Hello, {name}!")</code></pre>
 <h2 data-number="10.5" class="anchored" data-anchor-id="dot-notation"><span class="header-section-number">10.5</span> dot-notation</h2>
 <p>Here is another very useful notation convention, known as dot-notation: For a function <code>str.something(s,...)</code>, where <code>s</code> is of type <code>str</code>, you can as well write <code>s.something()</code>. For example, <code>s.strip()</code> is the same as <code>str.strip(s)</code>.</p>
 </section>
-<section id="sec-venv" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="sec-venv"><span class="header-section-number">10.6</span> Virtual environments and <code>pip</code> (<code>venv</code>, <code>pip</code>)</h2>
+<section id="type-hints-and-assertions-assert-type-annotations" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="type-hints-and-assertions-assert-type-annotations"><span class="header-section-number">10.6</span> Type hints and assertions (<code>assert</code>, type annotations)</h2>
+<p>Python does not enforce that you say which type a variable has (in contrast to C, say), but you can annotate them. This is not enforced by Python, but helps readability.</p>
+<ul>
+<li><code>x: int = 5</code>: tell Python that <code>x</code> is an int.</li>
+<li><code>def f(x: float) -&gt; float:</code>: declare that <code>f</code> takes a float and returns a float.</li>
+</ul>
+<div id="dbf16585" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(x: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return x squared."""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(square(<span class="fl">3.0</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># This also works, since Python does not enforce the type hint:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(square(<span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>9.0
+25</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-venv" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="sec-venv"><span class="header-section-number">10.7</span> Virtual environments and <code>pip</code> (<code>venv</code>, <code>pip</code>)</h2>
 <p><em>claude generated</em></p>
 <p>When working on different Python projects, you may need different versions of the same library. Virtual environments solve this by creating an isolated Python installation per project. The <code>pip</code> tool installs packages into the active environment.</p>
 <ul>
@@ -306,8 +328,8 @@ source venv/bin/activate
 pip install -r requirements.txt</code></pre>
 <p>Without a virtual environment, installing packages changes your system-wide Python installation, which can break other projects. It is good practice to always work inside a virtual environment.</p>
 </section>
-<section id="sec-debugging" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="sec-debugging"><span class="header-section-number">10.7</span> Debugging (<code>print</code>, <code>breakpoint</code>)</h2>
+<section id="sec-debugging" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="sec-debugging"><span class="header-section-number">10.8</span> Debugging (<code>print</code>, <code>breakpoint</code>)</h2>
 <p><em>claude generated</em></p>
 <p>When code does not behave as expected, we need to find the bug. The simplest strategy is adding <code>print</code> statements to inspect variables at critical points. For more complex issues, Python has a built-in interactive debugger.</p>
 <ul>
@@ -317,27 +339,27 @@ pip install -r requirements.txt</code></pre>
 <li><code>breakpoint()</code>: drop into the interactive debugger (<code>pdb</code>) at this point. You can then inspect variables, step through code, and continue execution.</li>
 <li>In the debugger: <code>n</code> (next line), <code>s</code> (step into function), <code>c</code> (continue), <code>p x</code> (print <code>x</code>), <code>q</code> (quit).</li>
 </ul>
-<div id="b5d286a9" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using print for debugging</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> buggy_mean(values):</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> values:</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        total <span class="op">+=</span> v</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>total <span class="op">=</span> <span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="bu">len</span>(values) <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)  <span class="co"># inspect intermediate values</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total <span class="op">/</span> <span class="bu">len</span>(values)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> buggy_mean([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>result <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a7007ebd" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using print for debugging</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> buggy_mean(values):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> values:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        total <span class="op">+=</span> v</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>total <span class="op">=</span> <span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="bu">len</span>(values) <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)  <span class="co"># inspect intermediate values</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total <span class="op">/</span> <span class="bu">len</span>(values)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> buggy_mean([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>result <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total = 60, len(values) = 3
 result = 20.0</code></pre>
 </div>
 </div>
-<div id="51b74655" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking types</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"42"</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x <span class="op">=</span> <span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="bu">type</span>(x) <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this would be a subtle bug: x is a string, not an int</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c9a6aff8" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking types</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"42"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x <span class="op">=</span> <span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="bu">type</span>(x) <span class="op">=</span> <span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this would be a subtle bug: x is a string, not an int</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x = '42', type(x) = &lt;class 'str'&gt;</code></pre>
 </div>
@@ -356,8 +378,8 @@ def process(data):
 <li>Once fixed, remove the debugging statements.</li>
 </ol>
 </section>
-<section id="sec-encoding" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="sec-encoding"><span class="header-section-number">10.8</span> Encoding and Unicode (<code>utf-8</code>, <code>encode</code>, <code>decode</code>)</h2>
+<section id="sec-encoding" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="sec-encoding"><span class="header-section-number">10.9</span> Encoding and Unicode (<code>utf-8</code>, <code>encode</code>, <code>decode</code>)</h2>
 <p><em>claude generated</em></p>
 <p>Text in a computer is stored as a sequence of bytes. An <strong>encoding</strong> defines how characters are mapped to bytes. The most common encoding today is <code>utf-8</code>, which can represent all Unicode characters (including ä, ö, ü, é, 中, 🎉). Problems arise when a file was written in one encoding but read in another.</p>
 <ul>
@@ -366,13 +388,13 @@ def process(data):
 <li><code>open(path, "r", encoding="utf-8")</code>: read a file with a specific encoding. If omitted, Python uses the system default (usually <code>utf-8</code> on modern systems, but not always).</li>
 <li><code>"latin-1"</code> (also called <code>"iso-8859-1"</code>): an older encoding common in Western European data. It can represent ä, ö, ü but not e.g.&nbsp;Chinese characters.</li>
 </ul>
-<div id="31b9256c" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Üniversität Freiburg"</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> s.encode(<span class="st">"utf-8"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"string: </span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"bytes:  </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"length of string: </span><span class="sc">{</span><span class="bu">len</span>(s)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"length of bytes:  </span><span class="sc">{</span><span class="bu">len</span>(b)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d4c5ecb8" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Üniversität Freiburg"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> s.encode(<span class="st">"utf-8"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"string: </span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"bytes:  </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"length of string: </span><span class="sc">{</span><span class="bu">len</span>(s)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"length of bytes:  </span><span class="sc">{</span><span class="bu">len</span>(b)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>string: Üniversität Freiburg
 bytes:  b'\xc3\x9cniversit\xc3\xa4t Freiburg'
@@ -380,34 +402,34 @@ length of string: 20
 length of bytes:  22</code></pre>
 </div>
 </div>
-<div id="2018b689" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># decoding bytes back to a string</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b.decode(<span class="st">"utf-8"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d630badd" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># decoding bytes back to a string</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b.decode(<span class="st">"utf-8"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Üniversität Freiburg</code></pre>
 </div>
 </div>
-<div id="9a8f3d69" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what goes wrong with the wrong encoding</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>b_latin <span class="op">=</span> s.encode(<span class="st">"latin-1"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"latin-1 bytes: </span><span class="sc">{</span>b_latin<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># decoding latin-1 bytes as utf-8 would fail:</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(b_latin.decode(<span class="st">"utf-8"</span>))</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">UnicodeDecodeError</span> <span class="im">as</span> e:</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="11fcaf21" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what goes wrong with the wrong encoding</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b_latin <span class="op">=</span> s.encode(<span class="st">"latin-1"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"latin-1 bytes: </span><span class="sc">{</span>b_latin<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># decoding latin-1 bytes as utf-8 would fail:</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(b_latin.decode(<span class="st">"utf-8"</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">UnicodeDecodeError</span> <span class="im">as</span> e:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>latin-1 bytes: b'\xdcniversit\xe4t Freiburg'
 Error: 'utf-8' codec can't decode byte 0xdc in position 0: invalid continuation byte</code></pre>
 </div>
 </div>
-<div id="8e662b1f" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reading a file with explicit encoding</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"example_utf8.txt"</span>, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"Ä, Ö, Ü, ß</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"example_utf8.txt"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f.read())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c4425dc3" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reading a file with explicit encoding</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"example_utf8.txt"</span>, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"Ä, Ö, Ü, ß</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"example_utf8.txt"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f.read())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ä, Ö, Ü, ß
 </code></pre>
@@ -415,8 +437,8 @@ Error: 'utf-8' codec can't decode byte 0xdc in position 0: invalid continuation 
 </div>
 <p>When you encounter a <code>UnicodeDecodeError</code> while reading a file, the most common fix is to specify the correct encoding in <code>open(..., encoding="...")</code>. Common candidates are <code>"utf-8"</code>, <code>"latin-1"</code>, and <code>"cp1252"</code> (Windows). If you are unsure about the encoding of a file, the <code>chardet</code> library can help guess it.</p>
 </section>
-<section id="git-and-github" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="git-and-github"><span class="header-section-number">10.9</span> git and github</h2>
+<section id="git-and-github" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="git-and-github"><span class="header-section-number">10.10</span> git and github</h2>
 <p><code>git</code> is a version control system: it tracks changes to files over time, so you can go back to earlier versions, collaborate with others, and see who changed what and when. <code>github</code> is a website that hosts <code>git</code> repositories online.</p>
 <p>These course notes are organized using <code>git</code>. You need to <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">install <code>git</code></a> on your system. Here are the most important <code>git</code> commands:</p>
 <p><strong>Getting started:</strong></p>
@@ -464,7 +486,7 @@ cd python_for_data</code></pre>
 <p>We recommend the following setup:</p>
 <ol type="1">
 <li>Clone the repository using <code>git clone https://github.com/pfaffelh/python_for_data</code> and <code>cd python_for_data</code>.</li>
-<li>Create a virtual environment using <code>python3 -m venv venv</code> (see <a href="#sec-venv" class="quarto-xref"><span>Section 10.6</span></a>).</li>
+<li>Create a virtual environment using <code>python3 -m venv venv</code> (see <a href="#sec-venv" class="quarto-xref"><span>Section 10.7</span></a>).</li>
 <li>Activate it by <code>source venv/bin/activate</code>.</li>
 <li>Install the libraries using <code>pip install -r requirements.txt</code>.</li>
 </ol>

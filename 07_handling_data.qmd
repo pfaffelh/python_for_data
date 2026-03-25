@@ -8,79 +8,20 @@ jupyter: python3
 
 [Download notebook](notebooks/07_handling_data.ipynb).
 
-In this chapter we learn how to load data from various sources and how to handle tabular data using `pandas`.
-
-## Loading data from files (`csv`, `xlsx`, `json`) {#sec-loading-files}
-
-Data often comes as files. The most common formats are CSV (comma-separated values), Excel (`.xlsx`), and JSON (JavaScript Object Notation). Python has built-in support for CSV and JSON, and `pandas` can read all three. The built-in modules are:
-
-* `csv.reader(file)`: reads a CSV file row by row (each row is a list of strings).
-* `csv.DictReader(file)`: reads a CSV file row by row (each row is a dictionary with column names as keys).
-* `json.loads(s)`: parses a JSON string into a Python object (dict, list, etc.).
-* `json.dumps(obj)`: converts a Python object to a JSON string.
-* `json.load(file)` / `json.dump(obj, file)`: read/write JSON from/to a file.
-
-```{python}
-import csv
-import io
-
-# We simulate a CSV file using a string
-csv_string = """name,age,city
-Alice,30,Berlin
-Bob,25,Munich
-Charlie,35,Hamburg"""
-
-reader = csv.DictReader(io.StringIO(csv_string))
-for row in reader:
-    print(row)
-```
-```{python}
-import json
-
-# parsing a JSON string
-json_string = '{"name": "Alice", "age": 30, "scores": [85, 92, 78]}'
-data = json.loads(json_string)
-print(data)
-print("name:", data["name"])
-```
-```{python}
-# converting back to JSON
-person = {"name": "Bob", "age": 25, "city": "Munich"}
-print(json.dumps(person, indent=2))
-```
-
-In practice, you will usually use `pandas` to read data files (see below). For Excel files, `pd.read_excel("data.xlsx")` requires the `openpyxl` package.
-
-## Loading data from online resources (`requests`) {#sec-loading-online}
-
-The `requests` library allows downloading data from the internet.
-
-* `requests.get(url)`: sends a GET request and returns a response object.
-* `response.status_code`: HTTP status code (200 means success).
-* `response.text`: the response body as a string.
-* `response.json()`: parse the response body as JSON.
-
-```{python}
-import requests
-
-url = "https://jsonplaceholder.typicode.com/todos/1"
-response = requests.get(url)
-print("status code:", response.status_code)
-print("content:", response.json())
-```
-
-You can also combine `requests` with `pandas`: `pd.read_csv("https://example.com/data.csv")` reads a CSV file directly from a URL.
+In this chapter we learn how to load data from various sources and how to handle tabular data using `pandas`. Before we start, we describe what a dataframe is, since it is the building block of many data science routines.
 
 ## Dataframes (`pandas`) {#sec-pandas}
 
-`pandas` is the standard library for handling tabular data in Python. Its central data structure is the `DataFrame`, which can be thought of as a matrix together with row and column labels.
+`pandas` is the standard library for handling tabular data in Python. Its central data structure is the `DataFrame`, which is a two-dimensional, tabular data structure — essentially a table with rows and columns. Each column has a name and a data type (e.g., integers, floats, strings), and each row represents one observation or record. You can think of a dataframe as an in-memory spreadsheet that comes with powerful methods for selecting, filtering, transforming, and aggregating data. In Python, the `pandas` library provides the `DataFrame` class, which is the standard tool for working with tabular data. We will see how to create and manipulate dataframes below.
 
 ```{python}
+# Execute once for installing pandas
+# !pip3 install pandas
 import pandas as pd
 import numpy as np
 ```
 
-Here, `df` is a `DataFrame`:
+Here are the most important routines, if `df` is a `DataFrame`:
 
 * `pd.DataFrame(dict)`: create a DataFrame from a dictionary (keys become column names).
 * `df["col"]`: select a single column (returns a `Series`).
@@ -89,9 +30,7 @@ Here, `df` is a `DataFrame`:
 * `df.loc[i, "col"]`: select by label.
 * `df[df["col"] > value]`: filter rows by a condition.
 * `df.head(n)` / `df.tail(n)`: first / last `n` rows.
-* `df.describe()`: summary statistics for all numeric columns.
-* `df.dtypes`: data types of all columns.
-* `df.info()`: concise summary of the DataFrame.
+* `df.describe()`: summary statistics (count, mean, std, min, quartiles, max) for all numeric columns.
 * `df.sort_values("col")`: sort by a column.
 * `df.groupby("col").mean()`: group by a column and compute means.
 * `df.isna()`: boolean mask of missing values.
@@ -99,8 +38,6 @@ Here, `df` is a `DataFrame`:
 * `df.fillna(value)`: fill missing values.
 * `df.drop(columns=["col"])`: remove a column.
 * `df.to_numpy()`: convert to a NumPy array.
-* `pd.read_csv(path)`: read a CSV file into a DataFrame.
-* `pd.to_datetime(...)`: convert strings to datetime objects.
 
 ```{python}
 df = pd.DataFrame({
@@ -170,58 +107,293 @@ print("X.shape =", X.shape)
 print("y =", y)
 ```
 
-The guiding principle is: **pandas handles labeled tabular data; numpy performs the mathematical core.**
+## Adding and renaming columns (`assign`, `rename`) {#sec-add-rename}
+
+Adding new columns and renaming existing ones are among the most frequent pandas operations.
+
+* `df["new_col"] = values`: add a new column (or overwrite an existing one) by direct assignment.
+* `df.assign(col=expr)`: return a new DataFrame with an additional column (does not modify the original).
+* `df.rename(columns={"old": "new"})`: rename one or more columns.
+* `df.insert(loc, column, value)`: insert a column at a specific position.
 
 ```{python}
-# reading CSV files (here with a fallback if the file does not exist)
-from pathlib import Path
+df = pd.DataFrame({
+    "name": ["Alice", "Bob", "Charlie"],
+    "weight_kg": [62, 85, 74],
+    "height_m": [1.65, 1.80, 1.75]
+})
+df
+```
+```{python}
+# adding a computed column
+df["bmi"] = df["weight_kg"] / df["height_m"] ** 2
+df
+```
+```{python}
+# assign returns a new DataFrame, leaving df unchanged
+df2 = df.assign(height_cm=df["height_m"] * 100)
+df2
+```
+```{python}
+# renaming columns
+df_renamed = df.rename(columns={"weight_kg": "weight", "height_m": "height"})
+df_renamed
+```
 
-csv_path = Path("ml_dataset.csv")
+Note that direct assignment (`df["col"] = ...`) modifies the DataFrame in place, while `assign` and `rename` return new DataFrames by default.
 
-if csv_path.exists():
-    df_csv = pd.read_csv(csv_path)
-else:
-    rng = np.random.default_rng(42)
-    n = 120
-    df_csv = pd.DataFrame({
-        "age": rng.integers(18, 65, size=n),
-        "income": rng.normal(55000, 14000, size=n),
-        "hours_studied": rng.normal(8, 2, size=n),
-    })
-    logits = (
-        -4
-        + 0.00005 * df_csv["income"]
-        + 0.25 * df_csv["hours_studied"]
-        - 0.02 * df_csv["age"]
-    )
-    probs = 1 / (1 + np.exp(-logits))
-    df_csv["target"] = (rng.random(n) < probs).astype(int)
+## Merging and joining DataFrames (`merge`, `concat`) {#sec-merge-concat}
 
+Combining data from multiple tables is a core data-handling task. `pd.merge` joins two DataFrames on a common key (like an SQL JOIN), while `pd.concat` stacks them vertically or horizontally.
+
+* `pd.merge(left, right, on="key")`: inner join on a shared column.
+* `pd.merge(left, right, on="key", how="left")`: left join (keep all rows from the left DataFrame). Other options: `"right"`, `"outer"`.
+* `pd.concat([df1, df2])`: stack DataFrames vertically (row-wise).
+* `pd.concat([df1, df2], axis=1)`: stack DataFrames horizontally (column-wise).
+
+```{python}
+students = pd.DataFrame({
+    "student_id": [1, 2, 3, 4],
+    "name": ["Alice", "Bob", "Charlie", "Diana"]
+})
+
+grades = pd.DataFrame({
+    "student_id": [1, 2, 3, 5],
+    "grade": [1.3, 2.0, 1.7, 2.7]
+})
+
+print(students)
+print()
+print(grades)
+```
+```{python}
+# inner join: only students present in both tables
+merged = pd.merge(students, grades, on="student_id")
+print(merged)
+```
+```{python}
+# left join: keep all students, NaN where no grade exists
+merged_left = pd.merge(students, grades, on="student_id", how="left")
+print(merged_left)
+```
+```{python}
+# concatenating vertically
+df_a = pd.DataFrame({"name": ["Alice", "Bob"], "score": [85, 92]})
+df_b = pd.DataFrame({"name": ["Charlie", "Diana"], "score": [78, 91]})
+combined = pd.concat([df_a, df_b], ignore_index=True)
+print(combined)
+```
+
+When concatenating vertically, use `ignore_index=True` to reset the index; otherwise both DataFrames keep their original indices, which may lead to duplicate index values.
+
+## Applying custom functions (`apply`, `map`) {#sec-apply-map}
+
+Built-in methods like `.mean()` or `.sum()` cover many cases, but sometimes you need to apply an arbitrary Python function to each row, column, or element.
+
+* `df.apply(func)`: apply `func` to each column (default) or each row (`axis=1`).
+* `series.map(func)`: apply `func` element-wise to a Series.
+* `df.map(func)`: apply `func` element-wise to every cell of a DataFrame.
+
+```{python}
+df = pd.DataFrame({
+    "name": ["Alice", "Bob", "Charlie"],
+    "score": [85, 92, 78],
+    "bonus": [5, 3, 8]
+})
+df
+```
+```{python}
+# apply a function to each column (default axis=0)
+print(df[["score", "bonus"]].apply(np.mean))
+```
+```{python}
+# apply a function row-wise (axis=1)
+df["total"] = df.apply(lambda row: row["score"] + row["bonus"], axis=1)
+df
+```
+```{python}
+# map: element-wise transformation of a Series
+df["grade"] = df["total"].map(lambda x: "pass" if x >= 85 else "fail")
+df
+```
+
+Use `apply` with `axis=1` when the computation depends on multiple columns in the same row. For simple element-wise transformations on a single column, `map` is more readable. For best performance on large DataFrames, prefer vectorized operations (e.g., `df["score"] + df["bonus"]`) over `apply` whenever possible.
+
+## Value counts and unique values (`value_counts`, `unique`) {#sec-value-counts}
+
+When exploring a dataset, you often want to know which values occur in a column and how frequently. This is especially useful for categorical data.
+
+* `df["col"].value_counts()`: count how often each value appears, sorted by frequency.
+* `df["col"].unique()`: return an array of all distinct values.
+* `df["col"].nunique()`: return the number of distinct values.
+* `df["col"].value_counts(normalize=True)`: return relative frequencies instead of absolute counts.
+
+```{python}
+df = pd.DataFrame({
+    "name": ["Alice", "Bob", "Charlie", "Diana", "Eve", "Frank"],
+    "department": ["Sales", "IT", "Sales", "IT", "HR", "Sales"],
+    "level": ["junior", "senior", "senior", "junior", "junior", "senior"]
+})
+df
+```
+```{python}
+# how often does each department appear?
+print(df["department"].value_counts())
+```
+```{python}
+# relative frequencies
+print(df["department"].value_counts(normalize=True))
+```
+```{python}
+# unique values and their count
+print("Unique departments:", df["department"].unique())
+print("Number of departments:", df["department"].nunique())
+```
+
+`value_counts()` is one of the first things to try when getting to know a new dataset. For numeric columns, consider using `df["col"].describe()` instead.
+
+## Handling duplicates (`duplicated`, `drop_duplicates`) {#sec-duplicates}
+
+Real-world data often contains duplicate rows — for example from repeated data imports or logging errors. `pandas` makes it easy to detect and remove them.
+
+* `df.duplicated()`: return a boolean Series that is `True` for duplicate rows.
+* `df.duplicated(subset=["col1", "col2"])`: check for duplicates based on specific columns only.
+* `df.drop_duplicates()`: remove duplicate rows (keeps the first occurrence by default).
+* `df.drop_duplicates(subset=["col"], keep="last")`: keep the last occurrence instead.
+
+```{python}
+df = pd.DataFrame({
+    "name": ["Alice", "Bob", "Alice", "Charlie", "Bob"],
+    "score": [85, 92, 85, 78, 95]
+})
+df
+```
+```{python}
+# which rows are duplicates?
+print(df.duplicated())
+```
+```{python}
+# remove exact duplicate rows
+print(df.drop_duplicates())
+```
+```{python}
+# duplicates based on a subset of columns
+print(df.duplicated(subset=["name"]))
+```
+```{python}
+# keep only the last entry per name
+print(df.drop_duplicates(subset=["name"], keep="last"))
+```
+
+Note that `drop_duplicates()` returns a new DataFrame by default. To modify in place, pass `inplace=True`. When checking duplicates on a subset of columns, the first (or last) complete row is kept, not just the key columns.
+
+## Loading data from files (`csv`, `xlsx`, `json`) {#sec-loading-files}
+
+Data often comes as files. The most common formats are CSV (comma-separated values), Excel (`.xlsx`), and JSON (JavaScript Object Notation). A CSV file is like an Excel table, where contents of cells are separated by a comma (or some other delimiter). A JSON file has the same structure as a Python dictionary. We use the following example files throughout this section: [person.csv](misc/person.csv) and [person.json](misc/person.json). These contain data on 50 fictional persons with names, addresses, dates of birth, and hobbies.
+
+* `pd.read_csv(path)`: reads a CSV file into a DataFrame.
+* `df.to_csv(path, index=False)`: writes a DataFrame to a CSV file.
+* `pd.read_json(path)`: reads a JSON file into a DataFrame.
+* `df.to_json()`: converts a DataFrame to a JSON string.
+* `pd.read_excel(path)`: reads an Excel file into a DataFrame (requires the `openpyxl` package).
+
+```{python}
+# Reading a CSV file
+df_csv = pd.read_csv("misc/person.csv")
 df_csv.head()
 ```
 ```{python}
-print(df_csv.describe())
+# The hobbies column is a semicolon-separated string — we can inspect it
+print(df_csv["hobbies"].head())
+```
+```{python}
+# Reading a JSON file
+df_json = pd.read_json("misc/person.json")
+df_json.head()
+```
+```{python}
+# In the JSON version, hobbies is a list
+print(df_json["hobbies"].head())
+```
+```{python}
+# Converting a DataFrame back to JSON
+print(df_csv.head(3).to_json(orient="records", indent=2))
 ```
 
-### Working with dates and times
+Note how CSV and JSON handle the `hobbies` column differently: CSV stores it as a flat string (here semicolon-separated), while JSON preserves it as a list. For Excel files, `pd.read_excel("data.xlsx")` requires the `openpyxl` package.
 
-`pandas` can parse and work with dates.
+## Loading data from online resources (`requests`) {#sec-loading-online}
+
+The `requests` library allows downloading data from the internet.
+
+* `requests.get(url)`: sends a GET request (i.e. tries to download a website) and returns a response object.
+* `response.status_code`: HTTP status code (200 means success).
+* `response.text`: the response body as a string.
+* `response.json()`: parse the response body as JSON.
+
+```{python}
+import requests
+
+url = "https://jsonplaceholder.typicode.com/todos/1"
+response = requests.get(url)
+print("status code:", response.status_code)
+print("content:", response.json())
+```
+
+You can also combine `requests` with `pandas`: `pd.read_csv("https://example.com/data.csv")` reads a CSV file directly from a URL.
+
+As a concrete example, the REST Countries API provides geographic and demographic data. Here we fetch population data for all countries and display the ten most populous ones.
+
+```{python}
+response = requests.get("https://restcountries.com/v3.1/all?fields=name,population,region")
+countries = response.json()
+
+df_pop = pd.DataFrame([{
+    "country": c["name"]["common"],
+    "population": c["population"],
+    "region": c["region"]
+} for c in countries])
+
+df_pop.nlargest(10, "population")
+```
+```{python}
+# population by region
+df_pop.groupby("region")["population"].sum().sort_values(ascending=False)
+```
+
+## Working with dates and times (`to_datetime`, `Timestamp`) {#sec-dates-times}
+
+`pandas` can parse and work with dates. We use the person dataset from @sec-loading-files to illustrate this.
 
 * `pd.to_datetime(...)`: convert strings to datetime.
+* `series.dt.year` / `.dt.month` / `.dt.day_of_week`: extract date components.
+* `pd.Timestamp(...)`: create a single datetime value.
 * `dt.strftime(format)`: format a datetime as a string.
 
 ```{python}
-dates = pd.to_datetime(["2024-01-15", "2024-03-22", "2024-07-01"])
-print(dates)
-print("Month:", dates.month.tolist())
-print("Day of week:", dates.day_of_week.tolist())
+df = pd.read_csv("misc/person.csv")
+df["date_of_birth"] = pd.to_datetime(df["date_of_birth"])
+df["date_of_birth"].head()
 ```
 ```{python}
-dt = pd.Timestamp("2024-06-15 14:30:00")
-print(dt.strftime("%-m/%-d/%y, %H:%M"))
+# extract year and month of birth
+df["birth_year"] = df["date_of_birth"].dt.year
+df["birth_month"] = df["date_of_birth"].dt.month
+df[["first_name", "last_name", "birth_year", "birth_month"]].head()
+```
+```{python}
+# compute age in completed years
+today = pd.Timestamp.now()
+df["age"] = (today - df["date_of_birth"]).dt.days // 365
+df[["first_name", "last_name", "date_of_birth", "age"]].head()
+```
+```{python}
+# format dates as strings
+df["dob_formatted"] = df["date_of_birth"].dt.strftime("%-d %B %Y")
+df[["first_name", "last_name", "dob_formatted"]].head()
 ```
 
-## SQL databases (`sqlite3`)
+## SQL databases (`sqlite3`) {#sec-sqlite}
 
 Python has built-in support for SQLite databases via the `sqlite3` module. This is useful for working with structured data that lives in a database.
 
@@ -233,36 +405,69 @@ Python has built-in support for SQLite databases via the `sqlite3` module. This 
 ```{python}
 import sqlite3
 
+# load the person dataset and write it into an in-memory SQLite database
+df_persons = pd.read_csv("misc/person.csv")
 conn = sqlite3.connect(":memory:")
-cursor = conn.cursor()
-
-cursor.execute("""
-    CREATE TABLE students (
-        name TEXT,
-        age INTEGER,
-        grade REAL
-    )
-""")
-
-students = [
-    ("Alice", 22, 1.3),
-    ("Bob", 25, 2.0),
-    ("Charlie", 23, 1.7),
-    ("Diana", 27, 2.3),
-]
-
-cursor.executemany("INSERT INTO students VALUES (?, ?, ?)", students)
-conn.commit()
+df_persons.to_sql("persons", conn, index=False)
 ```
 ```{python}
-# querying
-cursor.execute("SELECT * FROM students WHERE age > 23")
+# querying with raw SQL
+cursor = conn.cursor()
+cursor.execute("SELECT first_name, last_name, country FROM persons WHERE country = 'Germany'")
 for row in cursor.fetchall():
     print(row)
 ```
 ```{python}
-# reading SQL results into a pandas DataFrame
-df_sql = pd.read_sql_query("SELECT * FROM students", conn)
-print(df_sql)
+# reading SQL results directly into a pandas DataFrame
+df_french = pd.read_sql_query(
+    "SELECT first_name, last_name, town FROM persons WHERE country = 'France'",
+    conn
+)
+df_french
+```
+```{python}
+# aggregation in SQL
+df_counts = pd.read_sql_query(
+    "SELECT country, COUNT(*) AS n_persons FROM persons GROUP BY country ORDER BY n_persons DESC",
+    conn
+)
+df_counts
+```
+```{python}
 conn.close()
 ```
+
+## Exercises
+
+All exercises use the person dataset from @sec-loading-files. Start by loading it:
+
+```{python}
+df = pd.read_csv("misc/person.csv")
+```
+
+**Exercise 1**
+Add a column `age` to `df` that contains each person's age in completed years (as an integer). Hint: use `pd.to_datetime` to convert `date_of_birth`, then compute the difference to today's date.
+
+**Exercise 2**
+Add a column `birth_year` extracted from `date_of_birth`. Then use `df.describe()` and `df["birth_year"].value_counts()` to explore the distribution of birth years.
+
+**Exercise 3**
+The following dictionary defines generational cohorts by birth year ranges:
+
+```{python}
+generations = {
+    "Silent Generation": (1928, 1945),
+    "Baby Boomer": (1946, 1964),
+    "Generation X": (1965, 1980),
+    "Millennial": (1981, 1996),
+    "Generation Z": (1997, 2012),
+}
+```
+
+Write a function `get_generation(year)` that takes a birth year and returns the generation name (or `"Other"` if the year does not fall into any range). Then use `map` or `apply` to add a column `generation` to `df`. How many persons belong to each generation?
+
+**Exercise 4**
+Write a function `filter_generation(df, gen_name)` that takes the DataFrame and a generation name (e.g., `"Millennial"`) and returns only the rows belonging to that generation. Use it to display all millennials. How many are there?
+
+**Exercise 5**
+The `hobbies` column in the CSV is a semicolon-separated string. Split it into a Python list using `df["hobbies"].str.split(";")`. Then find out: what is the most common hobby across all persons? Hint: use `explode` to turn the lists into individual rows, then use `value_counts`.

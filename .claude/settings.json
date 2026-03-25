@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip3 show:*)",
+      "Bash(/home/pfaffelh/Code/python_for_data/venv/bin/pip install:*)",
+      "Bash(/home/pfaffelh/Code/python_for_data/venv/bin/python misc/fake_data.py)"
+    ],
+    "additionalDirectories": [
+      "/home/pfaffelh/Code/python_for_data"
+    ]
+  }
+}

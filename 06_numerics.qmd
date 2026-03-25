@@ -253,12 +253,11 @@ NumPy provides functions for aggregating arrays. When applied to 2d arrays, the 
 * `axis=1`: aggregate across the columns (result: one entry per row).
 
 
-xxx change data such that column and row means have different results
 ```{python}
 data = np.array([
     [1.0, 2.0, 3.0],
-    [2.0, 3.0, 4.0],
-    [3.0, 4.0, 5.0]
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0]
 ])
 print("sum over all =", np.sum(data))
 print("column means =", np.mean(data, axis=0))
@@ -302,38 +301,22 @@ print(rng1.standard_normal(4))
 print(rng2.standard_normal(4))
 ```
 
-xxx delete this data example, but make a purely text-based example, where you also use rng.choice and rng.permutation.
-
 ```{python}
-# a synthetic dataset
-import matplotlib.pyplot as plt
-
-rng = np.random.default_rng(0)
-n = 100
-x = np.linspace(0.0, 10.0, n)
-noise = rng.normal(0.0, 1.0, size=n)
-y = 2.5 * x - 1.0 + noise
-
-plt.figure(figsize=(6, 4))
-plt.scatter(x, y, s=20)
-plt.xlabel("x")
-plt.ylabel("y")
-plt.title("Synthetic linear regression data")
-plt.show()
+# rng.choice: draw random samples from an array
+rng = np.random.default_rng(42)
+names = np.array(["Alice", "Bob", "Charlie", "Diana", "Eve"])
+print("pick 3 with replacement =", rng.choice(names, size=3, replace=True))
+print("pick 3 without replacement =", rng.choice(names, size=3, replace=False))
 ```
 ```{python}
-# train-test splitting by permutation
+# rng.permutation: shuffle an array (returns a new array)
 rng = np.random.default_rng(7)
-n = 100
-X = rng.normal(size=(n, 3))
-y = rng.normal(size=n)
-
-perm = rng.permutation(n)
-train_size = int(0.8 * n)
-X_train = X[perm[:train_size]]
-X_test = X[perm[train_size:]]
-print("X_train.shape =", X_train.shape)
-print("X_test.shape =", X_test.shape)
+cards = np.array(["7", "8", "9", "10", "J", "Q", "K", "A"])
+shuffled = rng.permutation(cards)
+print("original =", cards)
+print("shuffled =", shuffled)
+# permutation of integers
+print("random order of 0..4 =", rng.permutation(5))
 ```
 
 ## Optimization (`scipy.optimize`) {#sec-optimization}
@@ -357,8 +340,8 @@ def f(x):
 result = optimize.minimize_scalar(f)
 print("minimum at x =", result.x)
 print("minimum value =", result.fun)
+print("function evaluations =", result.nfev)
 ```
-xxx add an output for the number of iterations
 ```{python}
 # minimizing a function of several variables (Rosenbrock function)
 def rosenbrock(x):
@@ -381,28 +364,6 @@ print("minimum at x =", result.x)
 print("iterations =", result.nit)
 ```
 
-xxx delete the next example
-```{python}
-# nonlinear least squares fitting
-rng = np.random.default_rng(0)
-x_data = np.linspace(0, 4, 50)
-y_data = 2.5 * np.exp(-1.3 * x_data) + 0.1 * rng.standard_normal(50)
-
-def loss(params):
-    a, b = params
-    return np.mean((y_data - a * np.exp(-b * x_data))**2)
-
-result = optimize.minimize(loss, x0=[1.0, 1.0])
-a_fit, b_fit = result.x
-print(f"fitted parameters: a = {a_fit:.3f}, b = {b_fit:.3f}")
-
-plt.figure(figsize=(6, 4))
-plt.scatter(x_data, y_data, s=20, label="data")
-plt.plot(x_data, a_fit * np.exp(-b_fit * x_data), label="fit")
-plt.legend()
-plt.title("Nonlinear least squares fit")
-plt.show()
-```
 ```{python}
 # root finding
 def g(x):

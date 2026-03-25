@@ -5,6 +5,7 @@ project:
     - ./render_notebooks.sh
   resources:
     - notebooks/*.ipynb
+    - misc/*
 
 book:
   chapters:

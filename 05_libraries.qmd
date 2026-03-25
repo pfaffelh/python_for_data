@@ -8,8 +8,6 @@ jupyter: python3
 
 [Download notebook](notebooks/05_libraries.ipynb).
 
-xxx add bold face highlighted words as in chapter 6
-
 
 In this chapter, we take a little break. Although there are lots of things to learn, the material covered here has the role of helping to learn about the Python ecosystem and what is possible, rather than learn the details of various labraries. The first section, however, is central and will be needed in any Python project you will start. 
 
@@ -25,7 +23,7 @@ As in all programming languages, not all python programs come in a single file. 
 | `from module import *`    | everything (avoid) |
 | `import module.submodule` | submodule          |
 
-Generally, there are packages (folders), modules (a `.py`-file within a package, or a single `py`-file), and submodules. Every submodule is a module. In any case, the import loads the (sub-)module, and executes all top-level code inside it (i.e. everything which is not inside a function). 
+Generally, there are **packages** (folders), **modules** (a `.py`-file within a package, or a single `py`-file), and **submodules**. Every submodule is a module. In any case, the import loads the (sub-)module, and executes all top-level code inside it (i.e. everything which is not inside a function). 
 
 There are three cases: 
 
@@ -84,7 +82,7 @@ The mathematical library in Python is used by `import math`. Then, you have e.g.
 
 ## Dates and times of day (`datetime`)
 
-In data science, we often have to handle dates. Their disadvantage is that there is no standard way to write these as strings. In Python, this and various other problems around dates and times is solved by the `datetime`-library. 
+In data science, we often have to handle **dates**. Their disadvantage is that there is no standard way to write these as strings. In Python, this and various other problems around dates and **times** is solved by the `datetime`-library. 
 
 Submodules (in fact, these are `class`es in this case) of this package are 
 
@@ -147,7 +145,7 @@ We already saw that:
 ```{python}
 print(f"Rounding error: 0.2 + 0.1 = {0.2 + 0.1}.")
 ```
-The reason is that computers in general use a base of 2 for all computations, and 0.3 has a bad representation in this system. While this small error is acceptable often, it is not in some contexts (above all, finance). In this case, we can use the `decimal` library. Within `decimal`, a base of 10 is used, but calculations are slower than for `float`s. 
+The reason is that computers in general use a base of 2 for all computations, and 0.3 has a bad representation in this system. While this small **rounding error** is acceptable often, it is not in some contexts (above all, finance). In this case, we can use the `decimal` library. Within `decimal`, a base of 10 is used, but calculations are slower than for `float`s. 
 
 ```{python}
 from decimal import Decimal
@@ -156,7 +154,7 @@ print(f"Exact calculation: 0.2 + 0.1 = {Decimal('0.2') + Decimal('0.1')}.")
 
 ## Regular expressions (`re`) {#sec-re}
 
-Sometimes, you need to find patterns in a string. In data science, this happens if some field contains unstructured text, and you want to extract information. As an example, assume you load data from a csv-file, and one columns contains all email-adresses of the corresponding item. If you read this, you have something like `"muller@gmail.com; muller@yahoo.com"`. However, you want to separate the two addresses, and store them in a `list`. One way to approach this is using a regular expression (which in this case reads `"\S+@\S+\.\S+"`):
+Sometimes, you need to find **patterns** in a string. In data science, this happens if some field contains unstructured text, and you want to extract information. As an example, assume you load data from a csv-file, and one columns contains all email-adresses of the corresponding item. If you read this, you have something like `"muller@gmail.com; muller@yahoo.com"`. However, you want to separate the two addresses, and store them in a `list`. One way to approach this is using a **regular expression** (which in this case reads `"\S+@\S+\.\S+"`):
 
 ```{python}
 import re
@@ -176,7 +174,7 @@ We can agree that this exactly what an email address looks like. The `re.finall(
 
 ## Storing and restoring objects (`pickle`)
 
-Sometimes, you want to store intermediate objects. One way is to write them out in files, but you can also use the `pickle`-library in order to write Python objects to disc. Here is an example:
+Sometimes, you want to store intermediate objects. One way is to write them out in files, but you can also use the `pickle`-library in order to **pickle** (i.e. serialize) Python objects to disc. Here is an example:
 
 ```{python}
 import pickle
@@ -200,7 +198,7 @@ print(loaded_data)
 # If pip3 does not work, use pip instead. 
 # !pip3 install pytest
 ```
-When starting to code, producing reliable programs is both important and difficult. One -- not the best -- way to approach this is to rely on the program until something breaks. It is actually better to _test_ the code, i.e. to write tests. This means that you tell your program that you expect a certain behavior. 
+When starting to code, producing reliable programs is both important and difficult. One -- not the best -- way to approach this is to rely on the program until something breaks. It is actually better to _test_ the code, i.e. to write **tests**. This means that you tell your program that you expect a certain behavior. 
 
 A simple and powerful library for this is `pytest`. When working with `.py`-files, you usually separate such tests in a separate file. Every test-case is within a function with name starting with `test_`. In a terminal, you can run `pytest` on that file, which performs all tests, and reports any error. 
 
@@ -216,7 +214,7 @@ assert 2 + 2 == 5
 
 ## Using the operating system (`os`) 
 
-For the kind of projects we envision, we often must access files, which happens via the operating system. We might also want to see all files in some directory, access them one by one, etc. Here, `folder` is the string of the name of a folder, and `file` is the string for the name of a file. 
+For the kind of projects we envision, we often must access files, which happens via the **operating system**. We might also want to see all files in some directory, access them one by one, etc. Here, `folder` is the string of the name of a folder, and `file` is the string for the name of a file. 
 * `os.getcwd()`: returns the current working directory.
 * `os.chdir(folder)`: this is a Python command for `cd`.
 * `os.path.join(folder", file)`: gives a complete path from the folder and file name.
