@@ -230,11 +230,15 @@ for file in os.listdir("."):
 ```
 
 ```{python}
-# Print all folders and files in the parent folder
-for root, dirs, files in os.walk("."):
+# Print folders and files (only first 5 entries of os.walk)
+for i, (root, dirs, files) in enumerate(os.walk(".")):
+    if i >= 5:
+        print("... (truncated)")
+        break
     print("ROOT:", root)
-    print("DIRS:", dirs)
-    print("FILES:", files)
+    print("DIRS:", dirs[:5], "..." if len(dirs) > 5 else "")
+    print("FILES:", files[:5], "..." if len(files) > 5 else "")
+    print()
 ```
 
 

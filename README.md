@@ -14,3 +14,12 @@ If you enter
 python -m http.server
 ```
 you will find yourself be able to click on the files you would like to see. 
+
+
+TODOs: 
+* Added to basics (marked _claude generated_): string formatting (Ch 02), type hints/assertions (Ch 03), file I/O (Ch 03).
+* Chapter 11 has been moved to `archive/` (excluded via `.gitignore`).
+* Make 5 suggestions what else could be covered in 10 misc
+* Add a remark on what you just did in the section on AI usage.
+* Please add 11_Exercises.qmd, where you list several more exercises, from easy to hard, with one header for each section. For each section, add 4 exercises. 
+* Add a folder solutions, and add it to .gitignore. In this folder, solve all exercises in the chapter which were already there, and also your new exercises. 

@@ -222,6 +222,42 @@ For strings, there are various build-in functions. We mention some of them. Here
 Here is another very useful notation convention, known as dot-notation: For a function `str.something(s,...)`, where `s` is of type `str`, you can as well write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. 
 
 
+### Formatting numbers in f-strings {#sec-formatting}
+
+_claude generated_
+
+When printing numerical results, we often want to control the number of decimal places, alignment, or padding. Inside an f-string, a format specifier follows the variable after a colon: `f"{x:.4f}"`.
+
+* `f"{x:.4f}"`: float with 4 decimal places.
+* `f"{x:.2e}"`: scientific notation with 2 decimal places.
+* `f"{x:>10}"`: right-align in a field of width 10.
+* `f"{x:<10}"`: left-align in a field of width 10.
+* `f"{n:,}"`: integer with thousands separator.
+* `f"{x:.2%}"`: format as percentage with 2 decimal places.
+
+```{python}
+import math
+pi = math.pi
+print(f"pi = {pi}")
+print(f"pi = {pi:.2f}")
+print(f"pi = {pi:.8f}")
+print(f"pi = {pi:.2e}")
+```
+```{python}
+# alignment and padding
+for name, score in [("Alice", 92.5), ("Bob", 87.123), ("Charlie", 100.0)]:
+    print(f"{name:<10} {score:>8.2f}")
+```
+```{python}
+# thousands separator and percentage
+n = 1234567
+ratio = 0.8734
+print(f"n = {n:,}")
+print(f"ratio = {ratio:.1%}")
+```
+
+This is especially useful when printing tables of results in data analysis.
+
 ## Missing things (`NoneType`)
 
 When analysing data, it is common to have missing values. These usually come as `None`. This is different from anything else we encountered so far (including `nan` and `False`).

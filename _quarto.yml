@@ -18,7 +18,7 @@ book:
     - 08_analyzing_data.qmd
     - 09_example_project.qmd
     - 10_misc.qmd
-    - 11_numpy_from_chatgpt.qmd
+    - 11_exercises.qmd
 number-sections: true
 
 execute:

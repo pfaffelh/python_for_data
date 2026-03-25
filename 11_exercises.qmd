@@ -1,0 +1,109 @@
+---
+title: Additional exercises
+format:
+    pdf: default
+    ipynb: default
+jupyter: python3
+---
+
+[Download notebook](notebooks/11_exercises.ipynb).
+
+Here are additional exercises, organized by topic. They range from easy to hard within each section.
+
+## Simple data types (`int`, `float`, `str`, `bool`)
+
+**Exercise 1:**
+Write a function `is_palindrome(s)` that returns `True` if the string `s` reads the same forwards and backwards (e.g. `"racecar"`), and `False` otherwise. Ignore upper/lower case.
+
+**Exercise 2:**
+Given a float `x`, write a one-liner that rounds `x` to 3 decimal places without using `round`. (Hint: use arithmetic with `int()`.)
+
+**Exercise 3:**
+Write a function `caesar(s, k)` that shifts every letter in the string `s` by `k` positions in the alphabet (wrapping around from `z` to `a`). Non-letter characters should remain unchanged. (Hint: use `ord()` and `chr()`.)
+
+**Exercise 4:**
+IEEE 754 floating point numbers satisfy `0.1 + 0.2 != 0.3`. Write a function `approx_equal(x, y, tol=1e-9)` that returns `True` if `|x - y| < tol`. Then use it to verify that `0.1 + 0.2` is approximately `0.3`. Discuss: is a relative or absolute tolerance more appropriate in general?
+
+## Control flow (`if`, `for`, `while`, `def`)
+
+**Exercise 1:**
+Write a function `collatz(n)` that returns the number of steps it takes for the Collatz sequence starting at `n` to reach `1`. (The rule is: if `n` is even, divide by 2; if odd, compute `3n+1`.)
+
+**Exercise 2:**
+Write a function `primes_up_to(n)` that returns a list of all prime numbers up to `n`, using the Sieve of Eratosthenes.
+
+**Exercise 3:**
+Write a function `newton_sqrt(a, tol=1e-10)` that computes $\sqrt{a}$ using Newton's method, i.e. the iteration $x_{k+1} = \frac{1}{2}\left(x_k + \frac{a}{x_k}\right)$, starting from $x_0 = a$, and stopping when $|x_{k+1} - x_k| < \text{tol}$.
+
+**Exercise 4:**
+Write a function `bisection(f, a, b, tol=1e-10)` that finds a root of a continuous function $f$ on $[a, b]$ using the bisection method. Assume $f(a)$ and $f(b)$ have opposite signs. Test it on $f(x) = x^3 - 2$.
+
+## Container data types (`list`, `dict`, `set`, `tuple`)
+
+**Exercise 1:**
+Given a list of integers, write a function `most_frequent(lst)` that returns the element that appears most often. If there is a tie, return any of the most frequent ones. (Hint: use a `dict` to count.)
+
+**Exercise 2:**
+Write a function `flatten(lst)` that takes a nested list (e.g. `[[1, 2], [3, [4, 5]], 6]`) and returns a flat list `[1, 2, 3, 4, 5, 6]`. Use recursion.
+
+**Exercise 3:**
+Write a function `invert_dict(d)` that swaps keys and values of a dictionary. If multiple keys have the same value, collect the keys in a list. For example, `{"a": 1, "b": 2, "c": 1}` becomes `{1: ["a", "c"], 2: ["b"]}`.
+
+**Exercise 4:**
+A sparse vector can be represented as a `dict` mapping indices to nonzero values, e.g. `{0: 3.0, 5: -1.0, 99: 2.0}` for a vector that is zero everywhere except at positions 0, 5, 99. Write functions `sparse_add(v, w)` and `sparse_dot(v, w)` that compute the sum and inner product of two sparse vectors.
+
+## Libraries (`math`, `datetime`, `re`, `os`)
+
+**Exercise 1:**
+Using only the `math` module, write a function `taylor_sin(x, n)` that computes $\sin(x)$ using the first `n` terms of the Taylor series $\sin(x) = \sum_{k=0}^{n-1} \frac{(-1)^k x^{2k+1}}{(2k+1)!}$. Compare the result with `math.sin(x)`.
+
+**Exercise 2:**
+Write a function `days_until_birthday(birthday_str)` that takes a date string like `"1990-03-15"` and returns the number of days until the next occurrence of that birthday. (Hint: use `datetime.date`.)
+
+**Exercise 3:**
+Write a function `extract_emails(text)` that uses a regular expression to find all email addresses in a string. Test it on a string containing several email addresses mixed with other text.
+
+**Exercise 4:**
+Write a function `find_large_files(directory, min_size_mb=10)` that uses `os.walk` to find all files in `directory` (and subdirectories) that are larger than `min_size_mb` megabytes. Return a list of `(path, size_mb)` tuples, sorted by size descending.
+
+## Numerics (`np.array`, `np.linalg`, `np.random`)
+
+**Exercise 1:**
+Create a $5 \times 5$ matrix $A$ with $A_{ij} = \frac{1}{i+j+1}$ (the Hilbert matrix). Compute its condition number. Then solve $Ax = b$ for $b = (1,1,1,1,1)^\top$ and verify the result by computing $\|Ax - b\|$.
+
+**Exercise 2:**
+Write a function `power_method(A, num_iter=100)` that approximates the largest eigenvalue of a matrix $A$ using the power iteration: start with a random vector $v$, repeatedly compute $v \leftarrow Av / \|Av\|$, and return $v^\top A v$. Compare the result with `np.linalg.eig`.
+
+**Exercise 3:**
+Generate $n = 500$ points $(x_i, y_i)$ from the model $y = \sin(x) + \varepsilon$ where $x \in [0, 2\pi]$ and $\varepsilon \sim \mathcal{N}(0, 0.3^2)$. Fit polynomial models of degrees 3, 5, 10, 20 using the normal equation. Plot all fits and discuss overfitting.
+
+**Exercise 4:**
+Implement gradient descent for the function $f(x, y) = (1 - x)^2 + 100(y - x^2)^2$ (Rosenbrock). Experiment with different learning rates and starting points. Plot the trajectory of $(x_k, y_k)$ on top of a contour plot of $f$. Compare with the result of `scipy.optimize.minimize`.
+
+## Handling data (`pandas`, `csv`, `json`)
+
+**Exercise 1:**
+Create a DataFrame with columns `name`, `exam1`, `exam2`, `exam3` for 10 students (you can invent the data). Add a column `average` that contains the mean of the three exams. Filter to show only students with an average above 70.
+
+**Exercise 2:**
+Download a CSV file from the internet using `pd.read_csv(url)` (e.g. from [this collection](https://github.com/datasets)). Use `describe()`, `groupby()`, and a histogram to explore the data. Write a short summary of what you find.
+
+**Exercise 3:**
+Create a DataFrame with some missing values (`np.nan`). Compare three strategies for handling them: (a) drop rows with any missing value, (b) fill with the column mean, (c) fill with the column median. How do the summary statistics (`describe()`) change in each case?
+
+**Exercise 4:**
+Write a function `csv_to_sqlite(csv_path, db_path, table_name)` that reads a CSV file into a pandas DataFrame and writes it into an SQLite database. Then write a function `query_db(db_path, sql)` that runs an SQL query and returns the result as a DataFrame. Test with a CSV file of your choice.
+
+## Analyzing data (`matplotlib`, `scipy.stats`, MLE)
+
+**Exercise 1:**
+Generate 1000 samples from a $\mathcal{N}(2, 3^2)$ distribution. Plot a histogram together with the true density, the density of the MLE fit (`stats.norm.fit`), and the density of a fit where you deliberately set $\mu = 0$ (wrong mean). Add a legend.
+
+**Exercise 2:**
+Generate two samples: `sample_a` from $\mathcal{N}(5, 1)$ (size 30) and `sample_b` from $\mathcal{N}(5.5, 1)$ (size 30). Perform a two-sample t-test. Then repeat this experiment 1000 times and count how often the test rejects at level $\alpha = 0.05$. This is the empirical power of the test. How does it change if you increase the sample size to 100?
+
+**Exercise 3:**
+Generate 200 samples from a mixture of two normals: with probability 0.4 draw from $\mathcal{N}(-2, 1)$, otherwise from $\mathcal{N}(3, 0.5^2)$. Write a function that computes the negative log-likelihood of a two-component Gaussian mixture (with 5 parameters: $\mu_1, \sigma_1, \mu_2, \sigma_2, p$). Use `scipy.optimize.minimize` to find the MLE. Plot the histogram and the fitted density.
+
+**Exercise 4:**
+Load or generate a dataset with two numerical features and a binary target. Standardize the features. Implement logistic regression from scratch using gradient descent (see the archived Chapter 11 for guidance). Plot the decision boundary. Compare your accuracy with `scipy.optimize.minimize` applied to the negative log-likelihood.

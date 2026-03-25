@@ -193,6 +193,40 @@ Here are some important remarks on functions:
 * Sometimes, it is too much to define an own function for a very simple task. In this case, Python3 comes with `lambda`-functions, which are very quick: 
 `lambda x: x * x`. Most use cases are with container data types, and we will have one in @sec-list. 
 
+## Type hints and assertions (`assert`, type annotations)
+
+_claude generated_
+
+Python does not enforce types, but you can annotate them. This makes function signatures look like mathematical declarations (e.g. $f: \mathbb{R} \to \mathbb{R}$) and serves as documentation. The `assert` statement is a simple way to check assumptions at runtime.
+
+* `def f(x: float) -> float:`: declare that `f` takes a float and returns a float. This is not enforced by Python, but helps readability and tools like `mypy`.
+* `assert condition, "message"`: raise an `AssertionError` if `condition` is `False`.
+
+```{python}
+def square(x: float) -> float:
+    """Return x squared."""
+    return x * x
+
+print(square(3.0))
+# This also works, since Python does not enforce the type hint:
+print(square(5))
+```
+```{python}
+def safe_sqrt(x: float) -> float:
+    """Return the square root of x, but only for non-negative x."""
+    assert x >= 0, f"Expected non-negative input, got {x}"
+    return x ** 0.5
+
+print(safe_sqrt(4.0))
+```
+```{python}
+#| error: true
+# This will raise an AssertionError
+print(safe_sqrt(-1.0))
+```
+
+Type hints are not enforced, but they make your code much easier to read, especially when functions become more complex. The `assert` statement is useful for catching mistakes early during development. (It can be disabled in production code.)
+
 ## Exception handling (`raise`, `try ... except`)
 
 In code, various things happen, and some go wrong. Raising (throwing) errors, catching them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them: 
@@ -274,6 +308,56 @@ Here, `"hello.txt"` is closed at the end of the `with` block. The second argumen
 * `wb`: (over-)write (binary mode)
 * `ab`: append (binary mode)
 * `xb`: create new (i.e. throw error if already exists)
+
+## File I/O (`open`, `read`, `write`) {#sec-fileio}
+
+_claude generated_
+
+Reading and writing files is one of the most common tasks in data analysis. Python's built-in `open` function, combined with the `with` statement from above, provides a clean way to handle files. Here, `f` is an open file object.
+
+* `open(path, mode)`: open a file. The most common modes are `"r"` (read), `"w"` (write/overwrite), `"a"` (append). See the section on `with` above for the full list.
+* `f.read()`: read the entire file as a single string.
+* `f.readline()`: read a single line.
+* `f.readlines()`: read all lines into a list of strings.
+* `f.write(s)`: write string `s` to the file.
+* `f.writelines(lines)`: write a list of strings to the file.
+
+```{python}
+# writing a file
+with open("example.txt", "w") as f:
+    f.write("Line 1\n")
+    f.write("Line 2\n")
+    f.write("Line 3\n")
+print("File written.")
+```
+```{python}
+# reading the entire file
+with open("example.txt", "r") as f:
+    content = f.read()
+print(content)
+```
+```{python}
+# reading line by line (useful for large files)
+with open("example.txt", "r") as f:
+    for line in f:
+        print(line.strip())
+```
+```{python}
+# reading all lines into a list
+with open("example.txt", "r") as f:
+    lines = f.readlines()
+print(lines)
+```
+```{python}
+# appending to a file
+with open("example.txt", "a") as f:
+    f.write("Line 4\n")
+
+with open("example.txt", "r") as f:
+    print(f.read())
+```
+
+When working with data, you will usually use higher-level functions like `pd.read_csv()` (see @sec-pandas). But understanding basic file I/O is important for debugging and for handling non-standard file formats.
 
 ## Exercises
 

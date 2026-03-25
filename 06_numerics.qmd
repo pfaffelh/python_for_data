@@ -1,6 +1,6 @@
 ---
-title: Numerical mathematics 
-format: 
+title: Numerical mathematics
+format:
     pdf: default
     ipynb: default
 jupyter: python3
@@ -8,24 +8,27 @@ jupyter: python3
 
 [Download notebook](notebooks/06_numerics.ipynb).
 
-We will be using `numpy` {#sec-numpy} and some `scipy`. These packages provide powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra (using `numpy`), optimization (using `scipy`) and statistics(using `scipy`). Together with `pandas` (see @sec-pandas) for data handling, this is the basic framework for data analysis in Python3. 
+We will be using `numpy` {#sec-numpy} and some `scipy`. These packages provide powerful and fast computations for numerical mathematics. (Most of it is implemented in `C`.) We will only learn about some parts of it, some linear algebra (using `numpy`), optimization (using `scipy`) and statistics (using `scipy`). Together with `pandas` (see @sec-pandas) for data handling, this is the basic framework for data analysis in Python3.
 
+## Arrays, vectors, matrices (`np.array`)
 
-
-
-
-
-## Linear algebra (`np.array` etc)
-
-Let us start by importing `numpy`
+Let us start by importing `numpy`.
 ```{python}
 # uncomment the following line for installing numpy
-# !pip3 install numpy 
+# !pip3 install numpy
 import numpy as np
 ```
-(Then, the functions from `numpy` are called `np.something`.) 
+(Then, the functions from `numpy` are called `np.something`.)
 
-Let us start with linear algebra. A vector or matrix is an `np.array`. `numpy` interprets a vector as a column vector, and 
+A vector or matrix is an `np.array`. `numpy` interprets a vector as a column vector. Here, `x` is an `np.array` of type `float64`:
+
+* `x.ndim`: number of dimensions of `x`.
+* `x.shape`: tuple of length `x.ndim` which gives the length of dimension `i` as entry `i`. (Recall that e.g. `(3,)` is a tuple of length `1`.)
+* `x.dtype`: type of entries in `x`.
+* `x.reshape(m, n)`: returns a view of `x` with shape `(m, n)`. The total number of entries must match. Using `-1` for one dimension lets NumPy infer it.
+* `x.T`: the transpose of `x`. For a 1d array, this has no effect.
+* `x.copy()`: returns an independent copy of `x`.
+* `x.flatten()`: returns a 1d copy of `x`.
 
 ```{python}
 x = np.array([1.0, 2.0, 3.0])
@@ -33,17 +36,10 @@ A = np.array([
     [1.0, 0.0, 2.0],
     [0.0, 1.0, 1.0]
 ])
-print("x =")
-print(x)
-print()
+print("x =", x)
 print("A =")
 print(A)
 ```
-Often, we need the number of dismensions of an array (and maybe want to change it), and check the type of its entries. For this, we have
-* `x.dim`: number of dimensions of `x`.
-* `x.shape`: tuple of length `x.dim` which gives the length of dimension `i` as entry `i`. (Recall that e.g. `(3,)` is a tuple of length `1`.)
-* `x.dtype`: type of entries in `x`.
-
 ```{python}
 print("x.shape =", x.shape)
 print("A.shape =", A.shape)
@@ -51,64 +47,362 @@ print("x.ndim =", x.ndim)
 print("A.ndim =", A.ndim)
 print("x.dtype =", x.dtype)
 ```
-Sometimes, we want to alter the shape of an `array`, or its direction. For this, we have e.g.:
-* `x.reshape`: 
-* `A.T`: 
-
-only view!
-
 ```{python}
-print("A.reshape(3,2) = ", A.reshape(3,2))   # note that 3*2 = 6 and A has 6 entries
-print("A.reshape(-1,2) = ", A.reshape(-1,2)) # putting -1 means that python infers that number
-print("x.reshape(-1,1) = ", x.reshape(-1,1)) # python infers the number of rows if there is only one column
-print("A.reshape(-1) = ", A.reshape(-1))     # A as a vector
-print("x.T = ", x.T)                         # transposing x gives a column vector
-print("A.T = ", A.T)
+# reshape and transpose return views, not copies
+print("A.reshape(3,2) =")
+print(A.reshape(3,2))
+print("A.reshape(-1) =", A.reshape(-1))
+print("A.T =")
+print(A.T)
+```
+```{python}
+# column vector vs row vector vs 1d array
+x_col = x.reshape(-1, 1)
+x_row = x.reshape(1, -1)
+print("x.shape =", x.shape)
+print("x_col.shape =", x_col.shape)
+print("x_row.shape =", x_row.shape)
 ```
 
+An important observation is that the shape of a vector in NumPy is `(3,)`, not `(3, 1)`. This is mathematically convenient in some places and dangerous in others. Much of good NumPy programming consists in keeping track of such distinctions.
 
+## Creating arrays (`np.zeros`, `np.ones`, `np.arange`, `np.linspace`, `np.eye`)
 
-Generally we 
+There are several convenient ways to create arrays:
 
+* `np.zeros(n)`: array of `n` zeros.
+* `np.ones(n)`: array of `n` ones.
+* `np.arange(n)`: array `[0, 1, ..., n-1]`. Also `np.arange(start, stop, step)`.
+* `np.linspace(a, b, n)`: `n` equally spaced points from `a` to `b`.
+* `np.eye(n)`: the $n \times n$ identity matrix.
+* `np.empty(n)`: uninitialized array of length `n` (fast, but entries are garbage).
+* `np.column_stack([a, b, ...])`: stack 1d arrays as columns of a 2d array.
+* `np.vstack([A, B])` / `np.hstack([A, B])`: stack arrays vertically / horizontally.
 
-## Statistics (`scipy.stats`)
+```{python}
+print("np.zeros(4) =", np.zeros(4))
+print("np.ones(3) =", np.ones(3))
+print("np.arange(10) =", np.arange(10))
+print("np.linspace(0, 1, 5) =", np.linspace(0, 1, 5))
+```
+```{python}
+print("np.eye(3) =")
+print(np.eye(3))
+```
+```{python}
+# stacking arrays
+a = np.array([1.0, 2.0, 3.0])
+b = np.array([10.0, 20.0, 30.0])
+print("np.column_stack([a, b]) =")
+print(np.column_stack([a, b]))
+```
 
-The `scipy`-library is a powerful which covers much of numerical mathematics. It comes with several submodules, e.g. `scipy.linalg` (linear algebra), `scipy.optimize` (optimization), `scipy.integrate` (numerical integration and ODE solving), and `scipy.signal` (signal processing). It works best with `numpy`-arrays, which we will cover in xxx.
+## Basic arithmetic
 
-Here, we only describe what `scipy` has to offer in descriptive statistics. The function names are mostly self-explanatory: 
+Arithmetic operations on arrays are **elementwise**. This is different from matrix multiplication.
 
-from scipy import stats
+* `x + y`, `x - y`: elementwise addition / subtraction.
+* `x * y`: elementwise multiplication (not matrix multiplication!).
+* `x / y`: elementwise division.
+* `x ** n`: elementwise power.
+* `x @ y`: inner product of vectors, or matrix multiplication for 2d arrays.
 
-stats.norm.mean()      # mean = 0
-stats.norm.pdf(0)      # density at 0
-stats.norm.cdf(1.96)   # cumulative probability
+```{python}
+x = np.array([1.0, -2.0, 4.0])
+y = np.array([3.0, 5.0, -1.0])
+print("x + y =", x + y)
+print("x * y =", x * y)
+print("2 * x =", 2 * x)
+print("x ** 2 =", x ** 2)
+```
 
+## Indexing, slicing, views, copies
 
-data = [1, 2, 3, 4, 5]
+Indexing and slicing work similarly to lists, but NumPy arrays support multi-dimensional indexing. An important difference: slicing an array creates a **view**, not a copy. Modifying the slice modifies the original.
 
-stats.describe(data)
+* `a[i]`: element at index `i`.
+* `a[i:j]`: slice from `i` to `j-1`.
+* `a[::k]`: every `k`-th element.
+* `A[i, j]`: element at row `i`, column `j`.
+* `A[:, j]`: column `j`.
+* `A[i, :]`: row `i`.
+* `a[mask]`: elements where boolean array `mask` is `True`.
 
-stats.ttest_1samp(data, popmean=3)
+```{python}
+a = np.arange(10)
+print("a =", a)
+print("a[2:7] =", a[2:7])
+print("a[::2] =", a[::2])
+```
+```{python}
+A = np.arange(1, 13).reshape(3, 4)
+print("A =")
+print(A)
+print("A[:, 1] =", A[:, 1])
+print("A[1, :] =", A[1, :])
+print("A[:2, 1:3] =")
+print(A[:2, 1:3])
+```
+```{python}
+# views vs copies: modifying a slice modifies the original!
+a = np.arange(10)
+b = a[2:6]
+b[0] = 99
+print("a =", a)
+```
+```{python}
+# to avoid this, use .copy()
+a = np.arange(10)
+c = a[2:6].copy()
+c[0] = -7
+print("a =", a)
+print("c =", c)
+```
+```{python}
+# boolean masks
+x = np.array([3.0, -1.0, 2.5, -4.0, 0.0, 7.0])
+mask = x > 0
+print("x[mask] =", x[mask])
+```
 
+## Vectorization and broadcasting
 
-stats.ttest_ind(sample1, sample2)
+In numerical computing, we want to avoid Python loops whenever possible and instead work with full arrays at once. This is called **vectorization**. It is both faster and more readable.
 
-stats.chisquare([10, 20, 30])
+```{python}
+x = np.linspace(0.0, 1.0, 6)
+# vectorized: looks like the mathematical formula
+y = 3 * x + 2
+print("y =", y)
+```
 
-stats.pearsonr(x, y)
+**Broadcasting** allows NumPy to combine arrays of compatible but different shapes. The smaller array is "broadcast" across the larger one.
 
-stats.scoreatpercentile(data, 50)  # median
+```{python}
+X = np.array([
+    [1.0, 2.0],
+    [3.0, 4.0],
+    [5.0, 6.0]
+])
+b = np.array([10.0, 20.0])
+# b is broadcast across all rows of X
+print("X + b =")
+print(X + b)
+```
+```{python}
+# pairwise operations via broadcasting
+x = np.array([0.0, 1.5, 3.0, 5.0])
+D = np.abs(x[:, None] - x[None, :])
+print("distance matrix =")
+print(D)
+```
 
-stats.norm.rvs(size=5)
+The expression `x[:, None]` turns `x` into a column vector (shape `(4,1)`), and `x[None, :]` into a row vector (shape `(1,4)`). Broadcasting then produces the full $4 \times 4$ distance matrix without any loop.
 
-stats.tmean(data)   # mean
-stats.tstd(data)    # standard deviation
-stats.tvar(data)    # variance
+## Linear algebra (`np.linalg`) {#sec-linalg}
 
+NumPy provides a comprehensive linear algebra module. Here, `x` and `y` are vectors, `A` and `B` are matrices.
 
+* `x @ y` or `np.dot(x, y)`: inner product $\langle x, y \rangle = \sum_j x_j y_j$.
+* `A @ x`: matrix-vector product.
+* `A @ B`: matrix-matrix product.
+* `np.linalg.norm(x)`: Euclidean norm $\|x\|_2$.
+* `np.linalg.solve(A, b)`: solve $Ax = b$. Preferred over computing $A^{-1}b$.
+* `np.linalg.inv(A)`: matrix inverse. Usually `solve` is preferred.
+* `np.linalg.det(A)`: determinant.
+* `np.linalg.cond(A)`: condition number. Large values indicate numerical instability.
+* `np.linalg.eig(A)`: eigenvalues and eigenvectors.
+* `np.linalg.svd(A)`: singular value decomposition.
 
-## Random numbers (`np.rand`)
+```{python}
+x = np.array([1.0, -2.0, 2.0])
+y = np.array([3.0, 1.0, -1.0])
+print("<x,y> =", x @ y)
+print("||x||_2 =", np.linalg.norm(x))
+print("||x||_1 =", np.sum(np.abs(x)))
+print("||x||_inf =", np.max(np.abs(x)))
+```
+```{python}
+A = np.array([[1.0, 2.0], [3.0, 4.0]])
+x = np.array([1.0, -1.0])
+print("A @ x =", A @ x)
+```
+```{python}
+# solving Ax = b
+A = np.array([[3.0, 1.0], [1.0, 2.0]])
+b = np.array([9.0, 8.0])
+x = np.linalg.solve(A, b)
+print("solution x =", x)
+print("A @ x =", A @ x)
+```
+```{python}
+# eigenvalues
+A = np.array([[2.0, 1.0], [1.0, 2.0]])
+eigenvalues, eigenvectors = np.linalg.eig(A)
+print("eigenvalues =", eigenvalues)
+```
 
-## optimization (`np.optimization`)
+One often sees formulas like $x = A^{-1}b$, but numerically it is usually better to solve the system directly using `np.linalg.solve` rather than computing the inverse explicitly.
 
+## Aggregation and the `axis` parameter
 
+NumPy provides functions for aggregating arrays. When applied to 2d arrays, the `axis` parameter controls the direction.
+
+* `np.sum(x)`, `np.mean(x)`, `np.var(x)`, `np.std(x)`: sum, mean, variance, standard deviation.
+* `np.min(x)`, `np.max(x)`: minimum, maximum.
+* `np.cumsum(x)`: cumulative sum.
+* `axis=0`: aggregate down the rows (result: one entry per column).
+* `axis=1`: aggregate across the columns (result: one entry per row).
+
+```{python}
+data = np.array([
+    [1.0, 2.0, 3.0],
+    [2.0, 3.0, 4.0],
+    [3.0, 4.0, 5.0]
+])
+print("sum over all =", np.sum(data))
+print("column means =", np.mean(data, axis=0))
+print("row means =", np.mean(data, axis=1))
+```
+```{python}
+# standardization: subtract column mean, divide by column std
+X = np.array([[1.0, 10.0], [2.0, 20.0], [3.0, 30.0], [4.0, 40.0]])
+mu = np.mean(X, axis=0)
+sigma = np.std(X, axis=0)
+X_std = (X - mu) / sigma
+print("column means after standardization =", np.mean(X_std, axis=0))
+print("column stds after standardization =", np.std(X_std, axis=0))
+```
+
+Standardization is a common preprocessing step. It ensures that all features are on comparable scales, which is important e.g. for gradient-based optimization.
+
+## Random numbers (`np.random`) {#sec-random}
+
+Randomness enters data analysis in many places: synthetic data generation, random initialization of parameters, train-test splitting, and randomized algorithms. The recommended interface is `np.random.default_rng`, which creates a random number generator with a given seed.
+
+* `rng = np.random.default_rng(seed)`: create a random number generator.
+* `rng.random(n)`: `n` uniform random numbers in $[0,1)$.
+* `rng.standard_normal(n)`: `n` standard normal random numbers.
+* `rng.normal(loc, scale, size)`: normal with given mean and standard deviation.
+* `rng.integers(low, high, size)`: random integers in `[low, high)`.
+* `rng.choice(a, size, replace)`: random sample from array `a`.
+* `rng.permutation(n)`: a random permutation of `0, ..., n-1`.
+
+```{python}
+rng = np.random.default_rng(42)
+print("uniform =", rng.random(5))
+print("normal =", rng.standard_normal(5))
+print("integers =", rng.integers(0, 10, size=5))
+```
+```{python}
+# reproducibility: same seed gives same numbers
+rng1 = np.random.default_rng(123)
+rng2 = np.random.default_rng(123)
+print(rng1.standard_normal(4))
+print(rng2.standard_normal(4))
+```
+```{python}
+# a synthetic dataset
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+n = 100
+x = np.linspace(0.0, 10.0, n)
+noise = rng.normal(0.0, 1.0, size=n)
+y = 2.5 * x - 1.0 + noise
+
+plt.figure(figsize=(6, 4))
+plt.scatter(x, y, s=20)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Synthetic linear regression data")
+plt.show()
+```
+```{python}
+# train-test splitting by permutation
+rng = np.random.default_rng(7)
+n = 100
+X = rng.normal(size=(n, 3))
+y = rng.normal(size=n)
+
+perm = rng.permutation(n)
+train_size = int(0.8 * n)
+X_train = X[perm[:train_size]]
+X_test = X[perm[train_size:]]
+print("X_train.shape =", X_train.shape)
+print("X_test.shape =", X_test.shape)
+```
+
+## Optimization (`scipy.optimize`) {#sec-optimization}
+
+The `scipy.optimize` module provides tools for finding minima of functions and roots of equations. This is essential in many areas of mathematics and data analysis.
+
+* `optimize.minimize_scalar(f)`: find the minimum of a scalar function $f: \mathbb{R} \to \mathbb{R}$.
+* `optimize.minimize(f, x0)`: find the minimum of $f: \mathbb{R}^d \to \mathbb{R}$, starting from `x0`. Returns a result object with attributes `.x` (minimizer), `.fun` (minimum value), `.success`, `.nit` (number of iterations).
+* `optimize.minimize(f, x0, jac=grad_f)`: same, but with analytically supplied gradient for faster convergence.
+* `optimize.minimize(f, x0, method='...')`: choose a specific algorithm, e.g. `'BFGS'`, `'Nelder-Mead'`, `'L-BFGS-B'`.
+* `optimize.root_scalar(f, bracket=[a, b])`: find a root of $f$ in the interval $[a, b]$.
+
+```{python}
+from scipy import optimize
+```
+```{python}
+# minimizing a function of one variable
+def f(x):
+    return (x - 3)**2 + 1
+
+result = optimize.minimize_scalar(f)
+print("minimum at x =", result.x)
+print("minimum value =", result.fun)
+```
+```{python}
+# minimizing a function of several variables (Rosenbrock function)
+def rosenbrock(x):
+    return (1 - x[0])**2 + 100 * (x[1] - x[0]**2)**2
+
+x0 = np.array([0.0, 0.0])
+result = optimize.minimize(rosenbrock, x0)
+print("minimum at x =", result.x)
+print("success =", result.success)
+```
+```{python}
+# providing the gradient for faster convergence
+def rosenbrock_grad(x):
+    dfdx0 = -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2)
+    dfdx1 = 200 * (x[1] - x[0]**2)
+    return np.array([dfdx0, dfdx1])
+
+result = optimize.minimize(rosenbrock, x0, jac=rosenbrock_grad, method='BFGS')
+print("minimum at x =", result.x)
+print("iterations =", result.nit)
+```
+```{python}
+# nonlinear least squares fitting
+rng = np.random.default_rng(0)
+x_data = np.linspace(0, 4, 50)
+y_data = 2.5 * np.exp(-1.3 * x_data) + 0.1 * rng.standard_normal(50)
+
+def loss(params):
+    a, b = params
+    return np.mean((y_data - a * np.exp(-b * x_data))**2)
+
+result = optimize.minimize(loss, x0=[1.0, 1.0])
+a_fit, b_fit = result.x
+print(f"fitted parameters: a = {a_fit:.3f}, b = {b_fit:.3f}")
+
+plt.figure(figsize=(6, 4))
+plt.scatter(x_data, y_data, s=20, label="data")
+plt.plot(x_data, a_fit * np.exp(-b_fit * x_data), label="fit")
+plt.legend()
+plt.title("Nonlinear least squares fit")
+plt.show()
+```
+```{python}
+# root finding
+def g(x):
+    return x**3 - 2*x - 5
+
+result = optimize.root_scalar(g, bracket=[2, 3])
+print("root at x =", result.root)
+print("g(root) =", g(result.root))
+```
