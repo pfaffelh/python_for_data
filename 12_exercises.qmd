@@ -94,6 +94,63 @@ Create a DataFrame with some missing values (`np.nan`). Compare three strategies
 **Exercise 4:**
 Write a function `csv_to_sqlite(csv_path, db_path, table_name)` that reads a CSV file into a pandas DataFrame and writes it into an SQLite database. Then write a function `query_db(db_path, sql)` that runs an SQL query and returns the result as a DataFrame. Test with a CSV file of your choice.
 
+**Exercise 5:**
+Fetch Germany's total population from the World Bank API for the years 1960–2023 (see @sec-loading-online for how to use the API; the country code is `DEU`, the indicator is `SP.POP.TOTL`). Convert the year column to a proper datetime using `pd.to_datetime(df["year"], format="%Y")`. Then:
+(a) Add a column `decade` that contains the decade of each year (e.g. 1960, 1970, ...). Hint: use integer division `// 10 * 10`.
+(b) Compute the mean population per decade using `groupby`.
+(c) Add a column `growth` that contains the year-over-year population change. Hint: `df["population"].diff()`.
+(d) In which year was the population growth the highest? In which year was it negative for the first time?
+(e) Resample the data to 5-year intervals using `df.set_index("date").resample("5YE").mean()` and plot the result.
+
+## Visualizing data (`matplotlib`)
+
+All exercises in this section use the World Bank Indicators API (see @sec-loading-online). The following helper code fetches population data for a list of countries over a range of years. You may reuse and adapt it.
+
+```{python}
+import requests
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+def wb_population(countries, date_range="1960:2023"):
+    """Fetch total population from the World Bank API.
+
+    countries: list of ISO3 codes, e.g. ["DEU", "FRA", "ITA"]
+    date_range: year range as "start:end"
+    """
+    codes = ";".join(countries)
+    url = f"https://api.worldbank.org/v2/country/{codes}/indicator/SP.POP.TOTL"
+    response = requests.get(url, params={
+        "date": date_range, "format": "json", "per_page": 5000
+    })
+    data = response.json()[1]
+    df = pd.DataFrame([{
+        "country": e["country"]["value"],
+        "iso3": e["countryiso3code"],
+        "year": int(e["date"]),
+        "population": e["value"]
+    } for e in data if e["value"] is not None])
+    return df.sort_values(["iso3", "year"])
+```
+
+**Exercise 1:**
+Use `wb_population` to fetch the world population from 1960 to 2023 (ISO3 code `"WLD"`). Plot the result as a **line chart** with the year on the x-axis and population on the y-axis. Add a title that states the trend you observe.
+
+**Exercise 2:**
+Fetch the 2023 population for these countries: Germany (`DEU`), France (`FRA`), Italy (`ITA`), Spain (`ESP`), Poland (`POL`). Display the result as a **horizontal bar chart**, sorted by population. Which country is the most populous?
+
+**Exercise 3:**
+Fetch population data from 1960 to 2023 for Germany, France, and Italy. Plot all three as **line charts in the same figure** with a legend. Convert the year column to a datetime using `pd.to_datetime(df["year"], format="%Y")` and use it as the x-axis.
+
+**Exercise 4:**
+Using the data from Exercise 3, compute the population growth per decade (1960s, 1970s, ..., 2010s) for each country. Display the result as a **grouped bar chart** with decades on the x-axis and one bar per country.
+
+**Exercise 5:**
+Fetch a second indicator — GDP per capita (`NY.GDP.PCAP.CD`) — for at least 20 European countries for the year 2022. Also fetch their population. Create a **scatter plot** of GDP per capita (x-axis) vs. population (y-axis). What do you observe? Hint: adapt the `wb_population` function by changing the indicator code.
+
+**Exercise 6:**
+Using the population data from Exercise 3, compute the **correlation matrix** of the three countries' populations (hint: use `pivot` to reshape the DataFrame so that each country is a column, then use `np.corrcoef` or `df.corr()`). Display the result as a **heatmap**. Why are the correlations so high?
+
 ## Analyzing data (`matplotlib`, `scipy.stats`, MLE)
 
 **Exercise 1:**

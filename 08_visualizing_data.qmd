@@ -26,13 +26,13 @@ Before writing any code, it is worth thinking about what kind of chart best conv
 
 3. **Which chart form fits the comparison type?** There are five basic chart forms, and each is best suited for certain comparison types:
 
-    * **Pie chart**: Shows parts of a whole. Best for **structure** comparisons, but use sparingly — bar charts are almost always more readable. Limit to at most 5% of the charts in a report.
-    * **Bar chart** (horizontal bars): Extremely versatile. Best for **structure** and **ranking** comparisons. Should make up about 25% of charts.
+    * **Pie chart**: Shows parts of a whole. Best for **structure** comparisons, but use sparingly — bar charts are almost always more readable. 
+    * **Box plot**: Best for comparing the **distribution** of multiple groups side by side (medians, quartiles, outliers). For a single distribution, a histogram (which is a column chart of binned data) is more informative. **Violin plots** are a refined version of box plots that additionally show the shape of the distribution.
     * **Column chart** (vertical bars): The workhorse for **time series** and **frequency distributions** when the number of data points is small (up to about six).
     * **Line chart**: Best for **time series** and **frequency distributions** with many data points. Together with column charts, these should cover about half of all charts.
-    * **Scatter plot**: Best for **correlation** comparisons. Also works for time series and frequency distributions with very many data points. About 10% of charts.
-    * **Box plot**: Best for comparing the **distribution** of multiple groups side by side (medians, quartiles, outliers). For a single distribution, a histogram (which is a column chart of binned data) is more informative. **Violin plots** are a refined version of box plots that additionally show the shape of the distribution.
-
+    * **Bar chart** (horizontal bars): Extremely versatile. Best for **ranking** comparisons.
+    * **Scatter plot**: Best for **correlation** comparisons. Also works for time series and frequency distributions with very many data points. 
+    
     Beyond these basic forms, additional chart types are frequently used in data analysis, such as **heatmaps** (colored grids for correlation matrices or similar two-dimensional data).
 
 The following matrix (adapted from Zelazny, *Say It with Charts*) summarizes which chart form to use for which comparison type. Each cell contains a small example of the recommended chart form.
@@ -44,23 +44,23 @@ The following matrix (adapted from Zelazny, *Say It with Charts*) summarizes whi
 import numpy as np
 import matplotlib.pyplot as plt
 
-comparisons = ["Distribution", "Ranking", "Time series", "Frequency", "Correlation"]
+comparisons = ["Distribution", "Time series", "Ranking", "Correlation"]
 forms = ["Pie", "Box plot", "Column", "Line", "Bar", "Scatter"]
 
 # which cells get a plot: (row, col)
 active = {
-    (0, 0),                  # pie      - distribution
-    (1, 0),                  # box plot - distribution
-    (2, 0), (2, 2), (2, 3), # column   - distribution (histogram), time series, frequency
-    (3, 2), (3, 3),         # line     - time series, frequency
-    (4, 0), (4, 1),         # bar      - distribution, ranking
-    (5, 4),                  # scatter  - correlation
+    (0, 0),                 # pie      - distribution
+    (1, 0),                 # box plot - distribution
+    (2, 0), (2, 1),         # column   - distribution (histogram), time series
+    (3, 0), (3, 1),         # line     - distribution, time series
+    (4, 2),                 # bar      - ranking
+    (5, 3),                 # scatter  - correlation
 }
 
-fig, axes = plt.subplots(6, 5, figsize=(10, 9))
+fig, axes = plt.subplots(6, 4, figsize=(10, 9))
 
 for i in range(6):
-    for j in range(5):
+    for j in range(4):
         ax = axes[i, j]
         ax.set_xticks([])
         ax.set_yticks([])
@@ -92,40 +92,29 @@ ax.hist(hist_data, bins=12, color="#4878cf", edgecolor="white")
 ax.set_yticks([])
 
 # column - time series
-ax = axes[2, 2]
+ax = axes[2, 1]
 ax.bar([0, 1, 2, 3, 4], [20, 25, 22, 30, 35], color="#4878cf", width=0.6)
 ax.set_ylim(0, 42)
 
-# column - frequency
-ax = axes[2, 3]
-ax.bar([0, 1, 2, 3, 4], [5, 15, 30, 12, 3], color="#4878cf", width=0.8)
-ax.set_ylim(0, 38)
-
 # line - time series
-ax = axes[3, 2]
+ax = axes[3, 1]
 ax.plot([0, 1, 2, 3, 4, 5], [10, 15, 13, 20, 18, 25], color="#4878cf", linewidth=2)
 ax.set_ylim(5, 30)
 
-# line - frequency
-ax = axes[3, 3]
+# line - distribution
+ax = axes[3, 0]
 rng = np.random.default_rng(0)
 x = np.linspace(-3, 3, 50)
 ax.plot(x, np.exp(-x**2 / 2), color="#4878cf", linewidth=2)
 
-# bar - distribution (structure)
-ax = axes[4, 0]
-ax.barh([0, 1, 2], [35, 25, 15], color="#4878cf", height=0.6)
-ax.set_xlim(0, 45)
-ax.invert_yaxis()
-
 # bar - ranking
-ax = axes[4, 1]
+ax = axes[4, 2]
 ax.barh([0, 1, 2, 3], [40, 30, 20, 10], color="#4878cf", height=0.6)
 ax.set_xlim(0, 50)
 ax.invert_yaxis()
 
 # scatter - correlation
-ax = axes[5, 4]
+ax = axes[5, 3]
 rng = np.random.default_rng(1)
 xs = rng.normal(size=30)
 ys = 0.8 * xs + 0.3 * rng.normal(size=30)
@@ -149,18 +138,16 @@ plt.show()
 The standard plotting library in Python is `matplotlib`. Its `pyplot` module provides a MATLAB-like interface. Here, `plt` refers to `matplotlib.pyplot`.
 
 * `plt.figure(figsize=(w, h))`: create a new figure with given size in inches.
-* `plt.xlabel(...)`, `plt.ylabel(...)`, `plt.title(...)`: axis labels and title.
-* `plt.legend()`: show legend.
+* `plt.xlabel("name")`, `plt.ylabel("name")`, `plt.title("name")`: add axis labels and title.
+* `plt.xticks(positions, labels)`, `plt.yticks(positions, labels)`: set tick positions and labels on the x/y axis.
+* `plt.legend()`: show legend. Options include `loc` for positioning (e.g., `"upper left"`), `fontsize`, and `title` for the legend title.
 * `plt.show()`: display the figure.
-* `fig, axes = plt.subplots(nrows, ncols)`: create a figure with multiple subplots.
-* `plt.tight_layout()`: automatically adjust spacing between subplots.
-* `plt.colorbar()`: add a color bar to the current plot.
-
-When using subplots, each axis object supports the same methods: `axes.plot()`, `axes.bar()`, `axes.set_title()`, `axes.legend()`, etc.
+* `plt.axvline(x)` / `plt.axhline(y)`: draw a vertical / horizontal line across the plot.
 
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
+# We will generate some random data here, so we need a random number generator.
 rng = np.random.default_rng(0)
 ```
 
@@ -176,29 +163,30 @@ y = np.sin(x)
 
 plt.figure(figsize=(6, 4))
 plt.plot(x, y, label="sin(x)")
+plt.axhline(0)
 plt.xlabel("x")
 plt.ylabel("y")
 plt.title("A simple line plot")
-plt.legend()
 plt.show()
 ```
 
-## Scatter plots (`scatter`) {#sec-scatter-plot}
-
-A scatter plot shows individual data points without connecting them. It is the primary chart for **correlation** comparisons.
-
-* `plt.scatter(x, y, s=..., label=...)`: scatter plot (`s` is marker size).
+By default, `matplotlib` draws a rectangular box around the plot. For mathematical function plots, it is often cleaner to place the x- and y-axes at the origin and remove the box. This requires `fig, ax = plt.subplots(...)` to access the `ax.spines` object (see also @sec-subplots). Each **spine** is one of the four border lines of the plot area (`"left"`, `"right"`, `"top"`, `"bottom"`).
 
 ```{python}
-x = rng.normal(size=100)
-y = 2 * x + 0.5 * rng.normal(size=100)
+x = np.linspace(-2, 2, 100)
 
-plt.figure(figsize=(6, 4))
-plt.scatter(x, y, s=20, label="data")
-plt.xlabel("x")
-plt.ylabel("y")
-plt.title("A scatter plot")
-plt.legend()
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, x**3 - x, label="$x^3 - x$")
+
+# move the left and bottom spines to x=0 and y=0
+ax.spines["left"].set_position(("data", 0))
+ax.spines["bottom"].set_position(("data", 0))
+
+# hide the top and right spines
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+
+ax.set_title("Axes at the origin")
 plt.show()
 ```
 
@@ -222,7 +210,7 @@ plt.show()
 
 Bar charts are the most versatile chart form, suitable for **structure**, **ranking**, and **comparison** tasks. Vertical bars are created with `plt.bar`, horizontal bars with `plt.barh`.
 
-* `plt.bar(categories, values)`: vertical bar plot.
+* `plt.bar(categories, values)`: vertical bar plot. Use `bottom=...` to stack bars on top of previous ones, `yerr=...` to add error bars, and `capsize=...` to set the width of the error bar caps. Use `color=...` to set the bar color, and `alpha=...` (0 to 1) to control its transparency.
 * `plt.barh(categories, values)`: horizontal bar plot.
 
 ```{python}
@@ -231,7 +219,7 @@ categories = ["Japan", "France", "Italy", "Spain"]
 values = [12, 23, 37, 45]
 
 plt.figure(figsize=(6, 4))
-plt.barh(categories, values)
+plt.barh(categories, values, color="#6acc65", alpha=0.8)
 plt.xlabel("Bookings")
 plt.title("Spain is the most popular travel destination")
 plt.show()
@@ -240,76 +228,64 @@ plt.show()
 Bar charts become even more useful when comparing multiple series side by side, stacking them, showing differences, or adding error bars. To place two series next to each other, shift the bar positions by the bar width using `np.arange`.
 
 ```{python}
-# grouped bar chart: two series side by side
+# survey data: absolute number of people who named each cuisine as favourite
 cuisines = ["Italian", "Japanese", "Mexican", "Indian"]
-adults = [35, 20, 25, 20]
-kids = [45, 10, 30, 15]
+adults_abs = [70, 40, 50, 40]   # 200 adults surveyed
+kids_abs = [36, 8, 24, 12]     # 80 kids surveyed
+```
+```{python}
+# grouped bar chart: compare percentages 
+# (so group sizes don't distort the picture)
+adults_pct = [a / sum(adults_abs) * 100 for a in adults_abs]
+kids_pct = [k / sum(kids_abs) * 100 for k in kids_abs]
 
 x = np.arange(len(cuisines))
 width = 0.35
 
-fig, ax = plt.subplots(figsize=(7, 4))
-ax.bar(x - width/2, adults, width, label="Adults")
-ax.bar(x + width/2, kids, width, label="Kids")
-ax.set_xticks(x)
-ax.set_xticklabels(cuisines)
-ax.set_ylabel("Preference (%)")
-ax.set_title("Food preferences differ between adults and kids")
-ax.legend()
+plt.figure(figsize=(7, 4))
+plt.bar(x - width/2, adults_pct, width, label="Adults")
+plt.bar(x + width/2, kids_pct, width, label="Kids")
+plt.xticks(x, cuisines)
+plt.ylabel("Preference (%)")
+plt.title("Food preferences differ between adults and kids")
+plt.legend()
 plt.show()
 ```
 ```{python}
-# stacked bar chart
-fig, ax = plt.subplots(figsize=(7, 4))
-ax.bar(cuisines, adults, label="Adults")
-ax.bar(cuisines, kids, bottom=adults, label="Kids")
-ax.set_ylabel("Preference (%)")
-ax.set_title("Combined food preferences")
-ax.legend()
+# stacked bar chart: absolute numbers show the total count per cuisine
+plt.figure(figsize=(7, 4))
+plt.bar(cuisines, adults_abs, label="Adults (n=200)")
+plt.bar(cuisines, kids_abs, bottom=adults_abs, label="Kids (n=80)")
+plt.ylabel("Number of people")
+plt.title("Italian food is the overall favourite")
+plt.legend()
 plt.show()
 ```
 ```{python}
 # difference chart: horizontal bars going left and right from a center axis
-fig, ax = plt.subplots(figsize=(7, 4))
-diff = [a - b for a, b in zip(adults, kids)]
+diff = [a - b for a, b in zip(adults_pct, kids_pct)]
 colors = ["#4878cf" if d >= 0 else "#d65f5f" for d in diff]
-ax.barh(cuisines, diff, color=colors)
-ax.axvline(0, color="black", linewidth=0.8)
-ax.set_xlabel("Difference (Adults − Kids)")
-ax.set_title("Kids prefer Italian more, adults prefer Japanese")
+
+plt.figure(figsize=(7, 4))
+plt.barh(cuisines, diff, color=colors)
+plt.axvline(0, color="black", linewidth=0.8)
+plt.xlabel("Difference in preference (Adults − Kids, pp)")
+plt.title("Kids prefer Italian more, adults prefer Japanese")
 plt.show()
 ```
 
-An **error bar plot** shows data points together with their uncertainty — for example, the mean of each group with the standard deviation or a confidence interval.
-
-* `plt.errorbar(x, y, yerr=...)`: plot data points with error bars (vertical by default; use `xerr` for horizontal).
+You can add **error bars** to a bar chart to show uncertainty (e.g., standard deviations or confidence intervals) using the `yerr` parameter.
 
 ```{python}
-# error bar plot: group means with standard deviations
-groups = ["Control", "Treatment A", "Treatment B", "Treatment C"]
-means = [5.1, 6.3, 5.8, 7.2]
-stds = [0.9, 1.2, 0.7, 1.1]
+# bar chart with error bars
+sports = ["Swimming", "Running", "Cycling", "Yoga"]
+participants = [45, 38, 30, 25]
+std_dev = [5, 7, 4, 6]
 
 plt.figure(figsize=(6, 4))
-plt.errorbar(groups, means, yerr=stds, fmt="o", capsize=5, capthick=1.5,
-             markersize=8, color="#4878cf")
-plt.ylabel("Response")
-plt.title("Treatment C shows the highest response")
-plt.show()
-```
-```{python}
-# horizontal error bars (e.g., confidence intervals)
-fig, ax = plt.subplots(figsize=(6, 4))
-y_pos = range(len(groups))
-lower_err = [0.5, 0.7, 0.4, 0.6]
-upper_err = [0.6, 0.8, 0.5, 0.7]
-ax.errorbar(means, y_pos, xerr=[lower_err, upper_err], fmt="o", capsize=4,
-            color="#4878cf", markersize=8)
-ax.set_yticks(y_pos)
-ax.set_yticklabels(groups)
-ax.set_xlabel("Response (95% CI)")
-ax.set_title("Confidence intervals by group")
-plt.tight_layout()
+plt.bar(sports, participants, yerr=std_dev, capsize=5, color="#4878cf")
+plt.ylabel("Participants")
+plt.title("Swimming is the most popular sport")
 plt.show()
 ```
 
@@ -317,17 +293,16 @@ plt.show()
 
 A histogram groups numeric data into bins and shows the frequency or density of each bin. It is the standard chart for **frequency distributions**.
 
-* `plt.hist(data, bins=..., density=...)`: histogram. Use `density=True` to normalize to a probability density.
+* `plt.hist(data, bins=..., density=...)`: histogram. Use `density=True` to normalize to a probability density, `alpha=...` (0 to 1) to make the bars semi-transparent, and `rwidth=...` (0 to 1) to control the bar width relative to the bin width (default 1.0, i.e. no gaps).
 
 ```{python}
 data = rng.normal(loc=5, scale=2, size=500)
 
 plt.figure(figsize=(6, 4))
-plt.hist(data, bins=30, density=True, alpha=0.7, label="histogram")
+plt.hist(data, bins=30, density=True, alpha=0.7)
 plt.xlabel("x")
 plt.ylabel("density")
 plt.title("Histogram of normally distributed data")
-plt.legend()
 plt.show()
 ```
 
@@ -335,24 +310,26 @@ plt.show()
 
 A box plot summarizes the distribution of a dataset by showing the median, quartiles, and outliers. It is useful for comparing distributions across groups.
 
-* `plt.boxplot(data_list)`: box plot. Pass a list of arrays to compare multiple groups.
+* `plt.boxplot(data_list, tick_labels=...)`: box plot. Pass a list of arrays to compare multiple groups, and `tick_labels` to label them.
 
 ```{python}
 categories = ["A", "B", "C", "D"]
 data_groups = [rng.normal(loc=m, size=50) for m in [0, 1, 2, 3]]
 
 plt.figure(figsize=(6, 4))
-plt.boxplot(data_groups, labels=categories)
+plt.boxplot(data_groups, tick_labels=categories)
 plt.title("Box plot")
 plt.show()
 ```
 
 ## Subplots (`subplots`) {#sec-subplots}
 
-Subplots allow placing multiple plots in a single figure. Each subplot is an independent `axes` object.
+Subplots allow placing multiple plots in a single figure. Each subplot is an independent `axes` object that supports the same methods as `plt` but prefixed with `ax.` or `axes[i].` (e.g., `axes[0].plot(...)`, `axes[0].set_title(...)`).
 
-* `fig, axes = plt.subplots(nrows, ncols, figsize=...)`: create a grid of subplots.
+* `fig, axes = plt.subplots(nrows, ncols, figsize=...)`: create a grid of subplots. For a single subplot, use `fig, ax = plt.subplots(figsize=...)`.
 * `plt.tight_layout()`: automatically adjust spacing so labels do not overlap.
+* `ax.spines["side"].set_position(("data", value))`: move a spine (the border lines of the plot area) so that it crosses the axis at `value`. The `"side"` can be `"left"`, `"right"`, `"top"`, or `"bottom"`.
+* `ax.spines["side"].set_visible(False)`: hide a spine entirely.
 
 ```{python}
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
@@ -367,32 +344,57 @@ plt.tight_layout()
 plt.show()
 ```
 
+## Scatter plots (`scatter`) {#sec-scatter-plot}
+
+A scatter plot shows individual data points without connecting them. It is the primary chart for **correlation** comparisons.
+
+* `plt.scatter(x, y, s=..., label=...)`: scatter plot (`s` is marker size).
+
+```{python}
+x = rng.normal(size=100)
+y = 2 * x + 0.5 * rng.normal(size=100)
+
+plt.figure(figsize=(6, 4))
+plt.scatter(x, y, s=20)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("A scatter plot")
+plt.show()
+```
+
 ## Heatmaps (`imshow`) {#sec-heatmap}
 
 A heatmap displays a matrix of values as a grid of colored cells. It is useful for visualizing correlation matrices, confusion matrices, or any two-dimensional data where patterns emerge from color.
 
-* `plt.imshow(matrix, cmap=...)`: display a matrix as a colored grid. Use `plt.colorbar()` to add a color legend.
+* `plt.imshow(matrix, cmap=...)`: display a matrix as a colored grid. Use `vmin`/`vmax` to fix the color range. Common colormaps: `"viridis"` (default), `"coolwarm"` (diverging, blue to red), `"hot"`, `"gray"`, `"Blues"`, `"RdYlGn"`.
+* `plt.colorbar(label=...)`: add a color bar to the current plot, with an optional label.
+* `np.corrcoef(data, rowvar=False)`: compute the correlation matrix of the columns of `data` (see @sec-descriptive for more on correlation).
 
 ```{python}
 # heatmap of a correlation matrix
 data = rng.normal(size=(100, 4))
-data[:, 1] += 0.8 * data[:, 0]  # introduce correlation between columns 0 and 1
+data[:, 1] += 0.8 * data[:, 0] # introduce correlation between columns 0 and 1
 labels = ["A", "B", "C", "D"]
 corr = np.corrcoef(data, rowvar=False)
 
-fig, ax = plt.subplots(figsize=(5, 4))
-im = ax.imshow(corr, cmap="coolwarm", vmin=-1, vmax=1)
-ax.set_xticks(range(4))
-ax.set_xticklabels(labels)
-ax.set_yticks(range(4))
-ax.set_yticklabels(labels)
-# annotate each cell with the numeric value
-for i in range(4):
-    for j in range(4):
-        ax.text(j, i, f"{corr[i, j]:.2f}", ha="center", va="center", fontsize=10)
-fig.colorbar(im, label="Correlation")
-ax.set_title("Correlation matrix")
+plt.figure(figsize=(5, 4))
+plt.imshow(corr, cmap="coolwarm", vmin=-1, vmax=1)
+plt.xticks(range(4), labels)
+plt.yticks(range(4), labels)
+plt.colorbar(label="Correlation")
+plt.title("Correlation matrix")
 plt.tight_layout()
 plt.show()
 ```
+
+
+## Exercises 
+
+
+Explore confusion matrix, radar chart, bubble chart, violin chart
+
+
+Plot number of people on the planet from 1950 until 2025!
+Plot the same for some European countries. Store the data first, and then create the plot.
+
 

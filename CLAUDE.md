@@ -141,3 +141,35 @@ The old `08_analyzing_data.qmd` was split into two files, and subsequent chapter
 4. "Please get rid of all qmd files not needed in the _quarto."
 5. "Wie aus Zahlen Bilder werden heißt offenbar Say it with Charts auf englisch. Bitte alle Textstellen updaten, und die Links auf https://www.amazon.de/Say-Charts-Executivess-Communication-Executives/dp/007136997X setzen."
 6. "In Chapter 8, to my taste, the examples are way too economically driven. Please change that by using other fields of normal life (sports, hobbies, traveling) etc."
+
+### Chapter 08 structure and content refinements (2026-03-26)
+
+- Added Zelazny-style chart matrix figure (`#| echo: false`) showing chart forms vs. comparison types with small iconic plots in each active cell.
+- Added heatmap and error bar plot descriptions to the chart type overview in section 8.1.
+- Split the monolithic section 8.2 (Visualization) into separate sections: Plotting with matplotlib, Line plots, Pie charts, Bar charts, Histograms, Box plots, Subplots, Scatter plots, Heatmaps.
+- Added bar chart variations: grouped, stacked, difference chart, error bars within bars.
+- Added heatmap section with `plt.imshow` and correlation matrix example.
+- Moved scatter plots to right before heatmaps.
+- In the line plot section, simplified to plain `plt.plot`; moved `ax.spines` explanation to the subplots section where `ax` is properly introduced.
+- Replaced all `fig, ax = plt.subplots` in single-chart examples with `plt.figure`/`plt.bar`/`plt.plot` etc.
+- Heatmap: simplified code to use `plt.imshow`/`plt.xticks`/`plt.colorbar` instead of `fig, ax` pattern.
+- Audit of unexplained code: added `plt.xticks`/`plt.yticks`, `plt.axvline`/`plt.axhline` to bullet list; added `bottom`, `yerr`, `capsize`, `color`, `alpha` to bar chart bullets; added `alpha` to histogram bullet; added `np.corrcoef` and `vmin`/`vmax` to heatmap bullet list.
+- Fixed stacked bar chart: grouped chart uses percentages (`adults_pct`/`kids_pct`), stacked chart uses absolute numbers (200 adults, 80 kids) so stacking is meaningful.
+
+#### Prompts used
+
+1. "In 08..., please add a figure in 8.1, similar to the one on p. 41 from Wie aus Zahlen Bilder werden."
+2. "Add more details to barcharts. In particular, also mention difference charts, and two or more series displayed in one barchart."
+3. "Suggest three more chart-types I could add here" → suggested: area chart, heatmap, error bar plot.
+4. "Please add your suggestions 2 and 3" → added heatmap and error bar plot sections.
+5. "Please add these chart types in the description in Chapter 8.1."
+6. "The python code of lines 42ff should not appear on the rendered pages (pdf, html)" → added `#| echo: false`.
+7. "Split section 8.2 in several sections"
+8. "In section 8.3., in the line chart, move the axis to x=0 and y=0, and get rid of the box. Explain beforehand the commands you use."
+9. "Get rid of the error bar plot. Instead show how to draw error bars within a bar chart."
+10. "There is a warning in 8.8. Please fix." → simplified heatmap code to avoid `set_xticklabels` deprecation.
+11. "The scatter plot should be right before the heatmap."
+12. "In line 232, I do not understand why I need subplots. There is only one chart!" → replaced with `plt.figure`/`plt.bar`.
+13. "I also saw subplots in places where only a single charts appear. Please fix." → replaced all single-chart `fig, ax = plt.subplots` with `plt.figure` (except where `ax.spines` is needed).
+14. "Please go through the file line by line and check if everything which is used is explained beforehand." → audit and fixes as described above.
+15. "In the food preferences example, stacking percentiles does not make sense." → grouped chart uses percentages, stacked chart uses absolute numbers.

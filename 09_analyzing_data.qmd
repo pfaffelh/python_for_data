@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 ```
 
-## Descriptive statistics (`scipy.stats`)
+## Descriptive statistics (`scipy.stats`) {#sec-descriptive}
 
 The `scipy.stats` module provides functions for descriptive statistics and statistical tests. Here, `data` is a 1d array or list.
 
