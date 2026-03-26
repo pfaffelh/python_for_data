@@ -23,3 +23,9 @@ TODOs:
 * Add a remark on what you just did in the section on AI usage.
 * Please add 11_Exercises.qmd, where you list several more exercises, from easy to hard, with one header for each section. For each section, add 4 exercises. 
 * Add a folder solutions, and add it to .gitignore. In this folder, solve all exercises in the chapter which were already there, and also your new exercises. 
+
+
+For worldbank data:
+
+from pandas_datareader import wb
+
