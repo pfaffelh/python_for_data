@@ -12,55 +12,54 @@ In this chapter, we first discuss the general principles behind choosing the rig
 
 ## Choosing the right chart {#sec-choosing-chart}
 
-Before writing any code, it is worth thinking about what kind of chart best conveys your message. A useful framework (following Zelazny, [*Wie aus Zahlen Bilder werden*](https://link.springer.com/book/10.1007/978-3-658-07452-4)) proceeds in three steps:
+Before writing any code, it is worth thinking about what kind of chart best conveys your message. A useful framework (following Zelazny, [*Say It with Charts*](https://www.amazon.de/Say-Charts-Executivess-Communication-Executives/dp/007136997X)) proceeds in three steps:
 
-1. **What is your message?** The chart form should not be chosen based on the data alone, but on what you want to say about it. The same table of numbers can lead to very different charts depending on the message. A good chart title states the message, not just the topic — for example, "Revenue has doubled since January" instead of "Revenue overview".
+1. **What is your message?** The chart form should not be chosen based on the data alone, but on what you want to say about it. The same table of numbers can lead to very different charts depending on the message. A good chart title states the message, not just the topic — for example, "Pasta recipes doubled on the blog since March" instead of "Recipe overview".
 
 2. **What type of comparison does your message involve?** Every message implies one of five basic comparison types:
 
-    * **Structure**: What share does each part have of the whole? Keywords: *share, percentage, proportion*. Example: "Product A accounts for 70% of total revenue."
-    * **Ranking**: How do items compare in size or order? Keywords: *larger than, smaller than, equal*. Example: "Region South has the highest sales."
-    * **Time series**: How does a quantity change over time? Keywords: *increase, decrease, trend, fluctuation*. Example: "Revenue has grown steadily since January."
-    * **Frequency distribution**: How are values distributed across ranges? Keywords: *concentration, distribution, range*. Example: "Most orders fall between 1,000 and 2,000 euros."
-    * **Correlation**: Is there a relationship between two variables? Keywords: *relates to, follows, independent of*. Example: "There is no connection between experience and sales success."
+    * **Structure**: What share does each part have of the whole? Keywords: *share, percentage, proportion*. Example: "Italian food accounts for 40% of restaurant visits."
+    * **Ranking**: How do items compare in size or order? Keywords: *larger than, smaller than, equal*. Example: "Spain is the most popular travel destination."
+    * **Time series**: How does a quantity change over time? Keywords: *increase, decrease, trend, fluctuation*. Example: "Library visits have grown steadily since January."
+    * **Frequency distribution**: How are values distributed across ranges? Keywords: *concentration, distribution, range*. Example: "Most hiking trails in the region are between 8 and 15 km long."
+    * **Correlation**: Is there a relationship between two variables? Keywords: *relates to, follows, independent of*. Example: "There is no connection between cooking time and taste rating."
 
 3. **Which chart form fits the comparison type?** There are five basic chart forms, and each is best suited for certain comparison types:
 
-    * **Pie chart** (*Kreisdiagramm*): Shows parts of a whole. Best for **structure** comparisons, but use sparingly — bar charts are almost always more readable. Limit to at most 5% of the charts in a report.
-    * **Bar chart** (*Balkendiagramm*, horizontal bars): Extremely versatile. Best for **structure** and **ranking** comparisons. Should make up about 25% of charts.
-    * **Column chart** (*Säulendiagramm*, vertical bars): The workhorse for **time series** and **frequency distributions** when the number of data points is small (up to about six).
-    * **Line chart** (*Kurvendiagramm*): Best for **time series** and **frequency distributions** with many data points. Together with column charts, these should cover about half of all charts.
-    * **Scatter plot** (*Punktediagramm*): Best for **correlation** comparisons. Also works for time series and frequency distributions with very many data points. About 10% of charts.
+    * **Pie chart**: Shows parts of a whole. Best for **structure** comparisons, but use sparingly — bar charts are almost always more readable. Limit to at most 5% of the charts in a report.
+    * **Bar chart** (horizontal bars): Extremely versatile. Best for **structure** and **ranking** comparisons. Should make up about 25% of charts.
+    * **Column chart** (vertical bars): The workhorse for **time series** and **frequency distributions** when the number of data points is small (up to about six).
+    * **Line chart**: Best for **time series** and **frequency distributions** with many data points. Together with column charts, these should cover about half of all charts.
+    * **Scatter plot**: Best for **correlation** comparisons. Also works for time series and frequency distributions with very many data points. About 10% of charts.
+    * **Box plot**: Best for comparing the **distribution** of multiple groups side by side (medians, quartiles, outliers). For a single distribution, a histogram (which is a column chart of binned data) is more informative. **Violin plots** are a refined version of box plots that additionally show the shape of the distribution.
 
-    Beyond these five basic forms, two additional chart types are frequently used in data analysis:
+    Beyond these basic forms, additional chart types are frequently used in data analysis, such as **heatmaps** (colored grids for correlation matrices or similar two-dimensional data).
 
-    * **Heatmap**: Displays a matrix of values as a grid of colored cells. Useful for **correlation** matrices, confusion matrices, or any data with two categorical axes where patterns emerge from color intensity.
-    * **Error bar plot**: Shows point estimates (e.g., means) together with uncertainty ranges (e.g., standard deviations or confidence intervals). Common in scientific and statistical contexts, especially for **ranking** comparisons where the uncertainty matters.
-
-The following matrix (adapted from Zelazny) summarizes which chart form to use for which comparison type. Each cell contains a small example of the recommended chart form.
+The following matrix (adapted from Zelazny, *Say It with Charts*) summarizes which chart form to use for which comparison type. Each cell contains a small example of the recommended chart form.
 
 ```{python}
 #| label: fig-chart-matrix
-#| fig-cap: "Chart forms vs. comparison types (after Zelazny)"
+#| fig-cap: "Chart forms vs. comparison types (after Zelazny, *Say It with Charts*)"
 #| echo: false
 import numpy as np
 import matplotlib.pyplot as plt
 
-comparisons = ["Structure", "Ranking", "Time series", "Frequency", "Correlation"]
-forms = ["Pie", "Bar", "Column", "Line", "Scatter"]
+comparisons = ["Distribution", "Ranking", "Time series", "Frequency", "Correlation"]
+forms = ["Pie", "Box plot", "Column", "Line", "Bar", "Scatter"]
 
 # which cells get a plot: (row, col)
 active = {
-    (0, 0),                  # pie   - structure
-    (1, 0), (1, 1),         # bar   - structure, ranking
-    (2, 2), (2, 3),         # column - time series, frequency
-    (3, 2), (3, 3),         # line  - time series, frequency
-    (4, 4),                  # scatter - correlation
+    (0, 0),                  # pie      - distribution
+    (1, 0),                  # box plot - distribution
+    (2, 0), (2, 2), (2, 3), # column   - distribution (histogram), time series, frequency
+    (3, 2), (3, 3),         # line     - time series, frequency
+    (4, 0), (4, 1),         # bar      - distribution, ranking
+    (5, 4),                  # scatter  - correlation
 }
 
-fig, axes = plt.subplots(5, 5, figsize=(10, 8))
+fig, axes = plt.subplots(6, 5, figsize=(10, 9))
 
-for i in range(5):
+for i in range(6):
     for j in range(5):
         ax = axes[i, j]
         ax.set_xticks([])
@@ -73,22 +72,24 @@ for i in range(5):
             for spine in ax.spines.values():
                 spine.set_color("#333333")
 
-# pie - structure
+# pie - distribution
 ax = axes[0, 0]
 ax.pie([35, 25, 20, 20], colors=["#4878cf", "#6acc65", "#d65f5f", "#b47cc7"],
        startangle=90, wedgeprops={"edgecolor": "white"})
 
-# bar - structure
+# box plot - distribution
+rng_bp = np.random.default_rng(7)
 ax = axes[1, 0]
-ax.barh([0, 1, 2], [35, 25, 15], color="#4878cf", height=0.6)
-ax.set_xlim(0, 45)
-ax.invert_yaxis()
+bp_data = [rng_bp.normal(loc=m, size=40) for m in [0, 1, 2.5]]
+ax.boxplot(bp_data, widths=0.5)
+ax.set_xticks([])
 
-# bar - ranking
-ax = axes[1, 1]
-ax.barh([0, 1, 2, 3], [40, 30, 20, 10], color="#4878cf", height=0.6)
-ax.set_xlim(0, 50)
-ax.invert_yaxis()
+# column - distribution (histogram)
+ax = axes[2, 0]
+rng_hist = np.random.default_rng(42)
+hist_data = rng_hist.normal(size=200)
+ax.hist(hist_data, bins=12, color="#4878cf", edgecolor="white")
+ax.set_yticks([])
 
 # column - time series
 ax = axes[2, 2]
@@ -111,8 +112,20 @@ rng = np.random.default_rng(0)
 x = np.linspace(-3, 3, 50)
 ax.plot(x, np.exp(-x**2 / 2), color="#4878cf", linewidth=2)
 
+# bar - distribution (structure)
+ax = axes[4, 0]
+ax.barh([0, 1, 2], [35, 25, 15], color="#4878cf", height=0.6)
+ax.set_xlim(0, 45)
+ax.invert_yaxis()
+
+# bar - ranking
+ax = axes[4, 1]
+ax.barh([0, 1, 2, 3], [40, 30, 20, 10], color="#4878cf", height=0.6)
+ax.set_xlim(0, 50)
+ax.invert_yaxis()
+
 # scatter - correlation
-ax = axes[4, 4]
+ax = axes[5, 4]
 rng = np.random.default_rng(1)
 xs = rng.normal(size=30)
 ys = 0.8 * xs + 0.3 * rng.normal(size=30)
@@ -125,7 +138,7 @@ for j, label in enumerate(comparisons):
 # row labels
 for i, label in enumerate(forms):
     axes[i, 0].set_ylabel(label, fontsize=10, fontweight="bold", rotation=0,
-                           labelpad=50, va="center")
+                           labelpad=55, va="center")
 
 plt.tight_layout()
 plt.show()
@@ -196,12 +209,12 @@ A pie chart shows parts of a whole. Use sparingly — bar charts are almost alwa
 * `plt.pie(values, labels=...)`: pie chart. Use `autopct` to display percentages.
 
 ```{python}
-labels = ["North", "South", "East", "West"]
-values = [13, 35, 27, 25]
+labels = ["Reading", "Cycling", "Cooking", "Gaming"]
+values = [30, 25, 20, 25]
 
 plt.figure(figsize=(5, 5))
 plt.pie(values, labels=labels, autopct="%1.0f%%")
-plt.title("Revenue by region")
+plt.title("How I spend my free time")
 plt.show()
 ```
 
@@ -214,56 +227,89 @@ Bar charts are the most versatile chart form, suitable for **structure**, **rank
 
 ```{python}
 # horizontal bar chart (ranking)
-categories = ["Product D", "Product C", "Product B", "Product A"]
+categories = ["Japan", "France", "Italy", "Spain"]
 values = [12, 23, 37, 45]
 
 plt.figure(figsize=(6, 4))
 plt.barh(categories, values)
-plt.xlabel("Sales")
-plt.title("Product A leads in sales")
+plt.xlabel("Bookings")
+plt.title("Spain is the most popular travel destination")
 plt.show()
 ```
 
-Bar charts become even more useful when comparing multiple series side by side, stacking them, or showing differences. To place two series next to each other, shift the bar positions by the bar width using `np.arange`.
+Bar charts become even more useful when comparing multiple series side by side, stacking them, showing differences, or adding error bars. To place two series next to each other, shift the bar positions by the bar width using `np.arange`.
 
 ```{python}
 # grouped bar chart: two series side by side
-regions = ["North", "South", "East", "West"]
-company_a = [13, 35, 27, 25]
-company_b = [39, 6, 27, 28]
+cuisines = ["Italian", "Japanese", "Mexican", "Indian"]
+adults = [35, 20, 25, 20]
+kids = [45, 10, 30, 15]
 
-x = np.arange(len(regions))
+x = np.arange(len(cuisines))
 width = 0.35
 
 fig, ax = plt.subplots(figsize=(7, 4))
-ax.bar(x - width/2, company_a, width, label="Company A")
-ax.bar(x + width/2, company_b, width, label="Company B")
+ax.bar(x - width/2, adults, width, label="Adults")
+ax.bar(x + width/2, kids, width, label="Kids")
 ax.set_xticks(x)
-ax.set_xticklabels(regions)
-ax.set_ylabel("Revenue share (%)")
-ax.set_title("Revenue structure differs between companies")
+ax.set_xticklabels(cuisines)
+ax.set_ylabel("Preference (%)")
+ax.set_title("Food preferences differ between adults and kids")
 ax.legend()
 plt.show()
 ```
 ```{python}
 # stacked bar chart
 fig, ax = plt.subplots(figsize=(7, 4))
-ax.bar(regions, company_a, label="Company A")
-ax.bar(regions, company_b, bottom=company_a, label="Company B")
-ax.set_ylabel("Revenue share (%)")
-ax.set_title("Combined revenue by region")
+ax.bar(cuisines, adults, label="Adults")
+ax.bar(cuisines, kids, bottom=adults, label="Kids")
+ax.set_ylabel("Preference (%)")
+ax.set_title("Combined food preferences")
 ax.legend()
 plt.show()
 ```
 ```{python}
 # difference chart: horizontal bars going left and right from a center axis
 fig, ax = plt.subplots(figsize=(7, 4))
-diff = [a - b for a, b in zip(company_a, company_b)]
+diff = [a - b for a, b in zip(adults, kids)]
 colors = ["#4878cf" if d >= 0 else "#d65f5f" for d in diff]
-ax.barh(regions, diff, color=colors)
+ax.barh(cuisines, diff, color=colors)
 ax.axvline(0, color="black", linewidth=0.8)
-ax.set_xlabel("Difference (A − B)")
-ax.set_title("Company A dominates in the South, Company B in the North")
+ax.set_xlabel("Difference (Adults − Kids)")
+ax.set_title("Kids prefer Italian more, adults prefer Japanese")
+plt.show()
+```
+
+An **error bar plot** shows data points together with their uncertainty — for example, the mean of each group with the standard deviation or a confidence interval.
+
+* `plt.errorbar(x, y, yerr=...)`: plot data points with error bars (vertical by default; use `xerr` for horizontal).
+
+```{python}
+# error bar plot: group means with standard deviations
+groups = ["Control", "Treatment A", "Treatment B", "Treatment C"]
+means = [5.1, 6.3, 5.8, 7.2]
+stds = [0.9, 1.2, 0.7, 1.1]
+
+plt.figure(figsize=(6, 4))
+plt.errorbar(groups, means, yerr=stds, fmt="o", capsize=5, capthick=1.5,
+             markersize=8, color="#4878cf")
+plt.ylabel("Response")
+plt.title("Treatment C shows the highest response")
+plt.show()
+```
+```{python}
+# horizontal error bars (e.g., confidence intervals)
+fig, ax = plt.subplots(figsize=(6, 4))
+y_pos = range(len(groups))
+lower_err = [0.5, 0.7, 0.4, 0.6]
+upper_err = [0.6, 0.8, 0.5, 0.7]
+ax.errorbar(means, y_pos, xerr=[lower_err, upper_err], fmt="o", capsize=4,
+            color="#4878cf", markersize=8)
+ax.set_yticks(y_pos)
+ax.set_yticklabels(groups)
+ax.set_xlabel("Response (95% CI)")
+ax.set_title("Confidence intervals by group")
+plt.tight_layout()
 plt.show()
 ```
 
@@ -350,37 +396,3 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Error bar plots (`errorbar`) {#sec-errorbar}
-
-An error bar plot shows data points together with their uncertainty — for example, the mean of each group with the standard deviation or a confidence interval. This is common in scientific and statistical contexts.
-
-* `plt.errorbar(x, y, yerr=...)`: plot data points with error bars (vertical by default; use `xerr` for horizontal).
-
-```{python}
-# error bar plot: group means with standard deviations
-groups = ["Control", "Treatment A", "Treatment B", "Treatment C"]
-means = [5.1, 6.3, 5.8, 7.2]
-stds = [0.9, 1.2, 0.7, 1.1]
-
-plt.figure(figsize=(6, 4))
-plt.errorbar(groups, means, yerr=stds, fmt="o", capsize=5, capthick=1.5,
-             markersize=8, color="#4878cf")
-plt.ylabel("Response")
-plt.title("Treatment C shows the highest response")
-plt.show()
-```
-```{python}
-# horizontal error bars (e.g., confidence intervals)
-fig, ax = plt.subplots(figsize=(6, 4))
-y_pos = range(len(groups))
-lower_err = [0.5, 0.7, 0.4, 0.6]
-upper_err = [0.6, 0.8, 0.5, 0.7]
-ax.errorbar(means, y_pos, xerr=[lower_err, upper_err], fmt="o", capsize=4,
-            color="#4878cf", markersize=8)
-ax.set_yticks(y_pos)
-ax.set_yticklabels(groups)
-ax.set_xlabel("Response (95% CI)")
-ax.set_title("Confidence intervals by group")
-plt.tight_layout()
-plt.show()
-```

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.31">
+<meta name="generator" content="quarto-1.9.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7c69b197886ae2a34062761d21e44731.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-352f0346a3070dd3b7340e73962f3721.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b5c49d451f14625acf1737a92055c052.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -282,7 +282,7 @@ window.Quarto = {
 
 <p><a href="notebooks/09_analyzing_data.ipynb">Download notebook</a>.</p>
 <p>In this chapter, we learn about statistical analysis with <code>scipy.stats</code>, including descriptive statistics, probability distributions, statistical tests, and maximum likelihood estimation.</p>
-<div id="9bd8ce9e" class="cell" data-execution_count="1">
+<div id="5102a82d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -298,7 +298,7 @@ window.Quarto = {
 <li><code>stats.pearsonr(x, y)</code>: Pearson correlation coefficient and p-value.</li>
 <li><code>stats.spearmanr(x, y)</code>: Spearman rank correlation and p-value.</li>
 </ul>
-<div id="c8cee3ce" class="cell" data-execution_count="2">
+<div id="5fda2caa" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stats.describe(data)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -306,7 +306,7 @@ window.Quarto = {
 <pre><code>DescribeResult(nobs=np.int64(8), minmax=(np.int64(1), np.int64(8)), mean=np.float64(4.5), variance=np.float64(6.0), skewness=np.float64(0.0), kurtosis=np.float64(-1.2380952380952381))</code></pre>
 </div>
 </div>
-<div id="8abbe438" class="cell" data-execution_count="3">
+<div id="f995a984" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([<span class="fl">2.3</span>, <span class="fl">4.1</span>, <span class="fl">3.7</span>, <span class="fl">5.2</span>, <span class="fl">4.8</span>, <span class="fl">3.3</span>])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"trimmed mean ="</span>, stats.tmean(data))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"std ="</span>, stats.tstd(data))</span>
@@ -317,7 +317,7 @@ std = 1.0488088481701514
 median = 3.9</code></pre>
 </div>
 </div>
-<div id="835b2e76" class="cell" data-execution_count="4">
+<div id="7e43c159" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rng.normal(size<span class="op">=</span><span class="dv">50</span>)</span>
@@ -343,7 +343,7 @@ median = 3.9</code></pre>
 </ul>
 <p>Each distribution takes its own parameters, e.g.&nbsp;<code>stats.norm(loc=mu, scale=sigma)</code>, <code>stats.poisson(mu=lam)</code>, <code>stats.binom(n=n, p=p)</code>. See the <code>scipy.stats</code> documentation for the full list.</p>
 <p>For continuous distributions, the location-scale convention is used: <code>stats.norm(loc=mu, scale=sigma)</code> gives <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span>.</p>
-<div id="c0517771" class="cell" data-execution_count="5">
+<div id="ddbc81b7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standard normal</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mean ="</span>, stats.norm.mean())</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"pdf(0) ="</span>, stats.norm.pdf(<span class="dv">0</span>))</span>
@@ -356,7 +356,7 @@ cdf(1.96) = 0.9750021048517795
 ppf(0.975) = 1.959963984540054</code></pre>
 </div>
 </div>
-<div id="ff0f2f50" class="cell" data-execution_count="6">
+<div id="ab763a96" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># normal with given parameters</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">3</span>, scale<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> dist.rvs(size<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
@@ -369,7 +369,7 @@ mean = 3.0
 variance = 4.0</code></pre>
 </div>
 </div>
-<div id="6ea16c4e" class="cell" data-execution_count="7">
+<div id="681c63c3" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># exponential</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exp(1) mean ="</span>, stats.expon.mean())</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exp(1) samples:"</span>, stats.expon.rvs(size<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -378,14 +378,14 @@ variance = 4.0</code></pre>
 Exp(1) samples: [0.79587451 1.25593076 0.92322315 0.78720115 0.55104849]</code></pre>
 </div>
 </div>
-<div id="1ebbba64" class="cell" data-execution_count="8">
+<div id="fd6592e5" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poisson</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Poisson(3) pmf(2) ="</span>, stats.poisson.pmf(<span class="dv">2</span>, mu<span class="op">=</span><span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Poisson(3) pmf(2) = 0.22404180765538775</code></pre>
 </div>
 </div>
-<div id="26ce7ba2" class="cell" data-execution_count="9">
+<div id="0d022ad4" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># binomial</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Binom(10, 0.3) pmf(3) ="</span>, stats.binom.pmf(<span class="dv">3</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">0.3</span>))</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Binom(10, 0.3) mean ="</span>, stats.binom.mean(n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">0.3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -394,7 +394,7 @@ Exp(1) samples: [0.79587451 1.25593076 0.92322315 0.78720115 0.55104849]</code><
 Binom(10, 0.3) mean = 3.0</code></pre>
 </div>
 </div>
-<div id="02057d7c" class="cell" data-execution_count="10">
+<div id="c88976e2" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizing distributions</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">4</span>))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -436,7 +436,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <li><code>stats.chisquare(observed)</code>: chi-squared test (do observed frequencies match expected frequencies?).</li>
 <li><code>stats.kstest(data, 'norm')</code>: Kolmogorov-Smirnov test (does the data come from the given distribution?).</li>
 </ul>
-<div id="05250d85" class="cell" data-execution_count="11">
+<div id="27701f46" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="fl">5.2</span>, scale<span class="op">=</span><span class="fl">1.0</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -447,7 +447,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <pre><code>t-statistic = 0.5225, p-value = 0.6053</code></pre>
 </div>
 </div>
-<div id="e5317fb8" class="cell" data-execution_count="12">
+<div id="982430b5" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two-sample t-test</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sample1 <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="fl">5.0</span>, scale<span class="op">=</span><span class="fl">1.0</span>, size<span class="op">=</span><span class="dv">40</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sample2 <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="fl">5.5</span>, scale<span class="op">=</span><span class="fl">1.0</span>, size<span class="op">=</span><span class="dv">40</span>)</span>
@@ -458,7 +458,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <pre><code>t-statistic = -1.2000, p-value = 0.2338</code></pre>
 </div>
 </div>
-<div id="e6e65bd1" class="cell" data-execution_count="13">
+<div id="4dd86c84" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-squared test</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> np.array([<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">15</span>])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> stats.chisquare(observed)</span>
@@ -467,7 +467,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <pre><code>chi2-statistic = 2.9000, p-value = 0.5747</code></pre>
 </div>
 </div>
-<div id="85da63cd" class="cell" data-execution_count="14">
+<div id="7e2a0d5f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kolmogorov-Smirnov test</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> stats.kstest(data, <span class="st">'norm'</span>)</span>
@@ -486,7 +486,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <li><code>dist.logpdf(x, ...)</code>: log-density, useful for computing the log-likelihood.</li>
 </ul>
 <p>For cases where no closed-form MLE exists, we use numerical optimization via <code>scipy.optimize.minimize</code> (see <a href="06_numerics.html#sec-optimization" class="quarto-xref"><span>Section 6.9</span></a>).</p>
-<div id="c6f99a7f" class="cell" data-execution_count="15">
+<div id="1614e81a" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MLE for the normal distribution</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>true_mu <span class="op">=</span> <span class="fl">3.0</span></span>
@@ -503,7 +503,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 true sigma = 1.5, MLE sigma = 1.4418</code></pre>
 </div>
 </div>
-<div id="a4a58dc5" class="cell" data-execution_count="16">
+<div id="0544986c" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using scipy's fit method</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>mu_fit, sigma_fit <span class="op">=</span> stats.norm.fit(data)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"scipy fit: mu = </span><span class="sc">{</span>mu_fit<span class="sc">:.4f}</span><span class="ss">, sigma = </span><span class="sc">{</span>sigma_fit<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -511,7 +511,7 @@ true sigma = 1.5, MLE sigma = 1.4418</code></pre>
 <pre><code>scipy fit: mu = 3.0229, sigma = 1.4418</code></pre>
 </div>
 </div>
-<div id="1301d085" class="cell" data-execution_count="17">
+<div id="a0789602" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MLE for the exponential distribution</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For Exp(lambda) with density lambda * exp(-lambda * x), the MLE is lambda_hat = 1 / x_bar</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>true_lambda <span class="op">=</span> <span class="fl">2.0</span></span>
@@ -523,7 +523,7 @@ true sigma = 1.5, MLE sigma = 1.4418</code></pre>
 <pre><code>true lambda = 2.0, MLE lambda = 1.7986</code></pre>
 </div>
 </div>
-<div id="d8887e8c" class="cell" data-execution_count="18">
+<div id="582df2d5" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MLE via numerical optimization (when no closed form exists)</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Gamma distribution</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> optimize</span>
@@ -547,7 +547,7 @@ true sigma = 1.5, MLE sigma = 1.4418</code></pre>
 true scale = 1.3, MLE scale = 1.1411</code></pre>
 </div>
 </div>
-<div id="2709a5c0" class="cell" data-execution_count="19">
+<div id="a7482727" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare with scipy's built-in fit</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>a_fit, loc_fit, scale_fit <span class="op">=</span> stats.gamma.fit(data_gamma, floc<span class="op">=</span><span class="dv">0</span>)  <span class="co"># floc=0 fixes the location parameter to 0</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"scipy fit: shape = </span><span class="sc">{</span>a_fit<span class="sc">:.4f}</span><span class="ss">, scale = </span><span class="sc">{</span>scale_fit<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -555,7 +555,7 @@ true scale = 1.3, MLE scale = 1.1411</code></pre>
 <pre><code>scipy fit: shape = 2.7227, scale = 1.1411</code></pre>
 </div>
 </div>
-<div id="6fde3aa9" class="cell" data-execution_count="20">
+<div id="d460c246" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizing the MLE fit</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x_grid <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">200</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -578,7 +578,7 @@ true scale = 1.3, MLE scale = 1.1411</code></pre>
 </div>
 </div>
 </div>
-<div id="1b8a4769" class="cell" data-execution_count="21">
+<div id="466b5562" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># log-likelihood surface for N(mu, sigma^2)</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="fl">3.0</span>, scale<span class="op">=</span><span class="fl">1.5</span>, size<span class="op">=</span><span class="dv">200</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>

@@ -244,7 +244,7 @@ df
 
 Use `apply` with `axis=1` when the computation depends on multiple columns in the same row. For simple element-wise transformations on a single column, `map` is more readable. For best performance on large DataFrames, prefer vectorized operations (e.g., `df["score"] + df["bonus"]`) over `apply` whenever possible.
 
-## Iterating through a DataFrame (`iterrows`, `itertuples`) {#sec-iterating}
+## Iterating through a DataFrame (`iterrows`, `itertuples`) {#sec-df-iterating}
 
 Sometimes you need to loop over the rows of a DataFrame, for example to perform row-wise logic that is hard to express as a vectorized operation.
 

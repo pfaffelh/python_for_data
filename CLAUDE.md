@@ -120,3 +120,24 @@ The old `08_analyzing_data.qmd` was split into two files, and subsequent chapter
 #### Prompts used
 
 1. "Execute the prompt in 08..., l 9" (the prompt was: "xxx Split this file in two files, and rename the following files as 10..., 11..., 12... The first of the two files is 08_visualizing_data, the second is 09_analysing_data. In 08_visualizing, start with a Python-free text where you explain the different kinds of plots, circle, barplot (vertical and horizontal, line, scaterplot). Use the pdf in MyFiles/Wie_aus_Zahlen_Bilder_werde.pdf as a source, which you also link in the text (the url is https://link.springer.com/book/10.1007/978-3-658-07452-4), pages 21-69.")
+
+### Notation, cleanup, and chapter 08 examples (2026-03-26)
+
+- Renamed all prose occurrences of "python3"/"Python3" to "Python" across all `.qmd` files. Kept `jupyter: python3` (YAML), `{python3}` (code blocks), and backtick-wrapped command-line invocations (`` `python3 -m venv` `` etc.) unchanged.
+- Fixed broken `{#sec-numpy}` cross-reference label in Chapter 06: moved from inline text to the first section heading.
+- Executed all `xxx` prompts in chapters 02–06:
+  - **Chapters 02–05**: Added **bold** highlighting to key terms (ch02: **type**, **Integers**, **floats**, **exponent**, **mantissa**, **boolean**, **string**; ch03: **condition**, **`for`-loops**, **`while`-loops**, **function**, **private**, **positional**, **keyword arguments**, **docstring**, **Raising**, **catching**, **context manager**; ch04: **container data types**, **Indexing**, **Slicing**, **mutable**, **immutable**, **key-value pairs**, **comprehensions**; ch05: **packages**, **modules**, **submodules**, **regular expression**, **test**).
+  - **Chapter 04**: Added explanation of indexing and slicing with two new code examples (negative indexing, sublist extraction).
+  - **Chapter 06**: Changed aggregation data so column and row means differ; replaced matplotlib scatter example with text-based `rng.choice`/`rng.permutation` examples; added `result.nfev` output to `minimize_scalar`; deleted nonlinear least squares example.
+- Deleted old `08_analyzing_data.qmd` (superseded by the 08/09 split).
+- Updated Zelazny reference in Chapter 08: title changed from *Wie aus Zahlen Bilder werden* to *Say It with Charts*, link updated to Amazon.
+- Replaced all economic examples in Chapter 08 with everyday topics: revenue/products/companies → sports participants, hobbies, city comparisons (Berlin vs Munich).
+
+#### Prompts used
+
+1. "At the beginning of 6, the references are broken. Please fix."
+2. "I am using python3, and Python3 as notation. Change all this to Python. Do not touch, if in curly braces."
+3. "In 02, 03, 04, 05, 06, I have added comments starting with xxx. Please do what I wrote there, and delete the comment."
+4. "Please get rid of all qmd files not needed in the _quarto."
+5. "Wie aus Zahlen Bilder werden heißt offenbar Say it with Charts auf englisch. Bitte alle Textstellen updaten, und die Links auf https://www.amazon.de/Say-Charts-Executivess-Communication-Executives/dp/007136997X setzen."
+6. "In Chapter 8, to my taste, the examples are way too economically driven. Please change that by using other fields of normal life (sports, hobbies, traveling) etc."
