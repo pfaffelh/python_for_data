@@ -6,7 +6,7 @@ format:
 jupyter: python3
 ---
 
-[Download notebook](notebooks/09_example_project.ipynb).
+[Download notebook](notebooks/10_example_project.ipynb).
 
 
 

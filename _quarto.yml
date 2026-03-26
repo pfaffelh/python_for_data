@@ -16,10 +16,11 @@ book:
     - 05_libraries.qmd
     - 06_numerics.qmd
     - 07_handling_data.qmd
-    - 08_analyzing_data.qmd
-    - 09_example_project.qmd
-    - 10_misc.qmd
-    - 11_exercises.qmd
+    - 08_visualizing_data.qmd
+    - 09_analyzing_data.qmd
+    - 10_example_project.qmd
+    - 11_misc.qmd
+    - 12_exercises.qmd
 number-sections: true
 
 execute:

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Additional exercises</title>
+<title>12&nbsp; Additional exercises</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10_misc.html" rel="prev">
+<link href="./11_misc.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -113,7 +113,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_exercises.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Additional exercises</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12_exercises.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Additional exercises</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -177,26 +177,32 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_analyzing_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyzing data</span></span></a>
+  <a href="./08_visualizing_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_example_project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">An example project</span></span></a>
+  <a href="./09_analyzing_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Analyzing data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  <a href="./10_example_project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">An example project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_exercises.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Additional exercises</span></span></a>
+  <a href="./11_misc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_exercises.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Additional exercises</span></span></a>
   </div>
 </li>
     </ul>
@@ -209,13 +215,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#simple-data-types-int-float-str-bool" id="toc-simple-data-types-int-float-str-bool" class="nav-link active" data-scroll-target="#simple-data-types-int-float-str-bool"><span class="header-section-number">11.1</span> Simple data types (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>)</a></li>
-  <li><a href="#control-flow-if-for-while-def" id="toc-control-flow-if-for-while-def" class="nav-link" data-scroll-target="#control-flow-if-for-while-def"><span class="header-section-number">11.2</span> Control flow (<code>if</code>, <code>for</code>, <code>while</code>, <code>def</code>)</a></li>
-  <li><a href="#container-data-types-list-dict-set-tuple" id="toc-container-data-types-list-dict-set-tuple" class="nav-link" data-scroll-target="#container-data-types-list-dict-set-tuple"><span class="header-section-number">11.3</span> Container data types (<code>list</code>, <code>dict</code>, <code>set</code>, <code>tuple</code>)</a></li>
-  <li><a href="#libraries-math-datetime-re-os" id="toc-libraries-math-datetime-re-os" class="nav-link" data-scroll-target="#libraries-math-datetime-re-os"><span class="header-section-number">11.4</span> Libraries (<code>math</code>, <code>datetime</code>, <code>re</code>, <code>os</code>)</a></li>
-  <li><a href="#numerics-np.array-np.linalg-np.random" id="toc-numerics-np.array-np.linalg-np.random" class="nav-link" data-scroll-target="#numerics-np.array-np.linalg-np.random"><span class="header-section-number">11.5</span> Numerics (<code>np.array</code>, <code>np.linalg</code>, <code>np.random</code>)</a></li>
-  <li><a href="#handling-data-pandas-csv-json" id="toc-handling-data-pandas-csv-json" class="nav-link" data-scroll-target="#handling-data-pandas-csv-json"><span class="header-section-number">11.6</span> Handling data (<code>pandas</code>, <code>csv</code>, <code>json</code>)</a></li>
-  <li><a href="#analyzing-data-matplotlib-scipy.stats-mle" id="toc-analyzing-data-matplotlib-scipy.stats-mle" class="nav-link" data-scroll-target="#analyzing-data-matplotlib-scipy.stats-mle"><span class="header-section-number">11.7</span> Analyzing data (<code>matplotlib</code>, <code>scipy.stats</code>, MLE)</a></li>
+  <li><a href="#simple-data-types-int-float-str-bool" id="toc-simple-data-types-int-float-str-bool" class="nav-link active" data-scroll-target="#simple-data-types-int-float-str-bool"><span class="header-section-number">12.1</span> Simple data types (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>)</a></li>
+  <li><a href="#control-flow-if-for-while-def" id="toc-control-flow-if-for-while-def" class="nav-link" data-scroll-target="#control-flow-if-for-while-def"><span class="header-section-number">12.2</span> Control flow (<code>if</code>, <code>for</code>, <code>while</code>, <code>def</code>)</a></li>
+  <li><a href="#container-data-types-list-dict-set-tuple" id="toc-container-data-types-list-dict-set-tuple" class="nav-link" data-scroll-target="#container-data-types-list-dict-set-tuple"><span class="header-section-number">12.3</span> Container data types (<code>list</code>, <code>dict</code>, <code>set</code>, <code>tuple</code>)</a></li>
+  <li><a href="#libraries-math-datetime-re-os" id="toc-libraries-math-datetime-re-os" class="nav-link" data-scroll-target="#libraries-math-datetime-re-os"><span class="header-section-number">12.4</span> Libraries (<code>math</code>, <code>datetime</code>, <code>re</code>, <code>os</code>)</a></li>
+  <li><a href="#numerics-np.array-np.linalg-np.random" id="toc-numerics-np.array-np.linalg-np.random" class="nav-link" data-scroll-target="#numerics-np.array-np.linalg-np.random"><span class="header-section-number">12.5</span> Numerics (<code>np.array</code>, <code>np.linalg</code>, <code>np.random</code>)</a></li>
+  <li><a href="#handling-data-pandas-csv-json" id="toc-handling-data-pandas-csv-json" class="nav-link" data-scroll-target="#handling-data-pandas-csv-json"><span class="header-section-number">12.6</span> Handling data (<code>pandas</code>, <code>csv</code>, <code>json</code>)</a></li>
+  <li><a href="#analyzing-data-matplotlib-scipy.stats-mle" id="toc-analyzing-data-matplotlib-scipy.stats-mle" class="nav-link" data-scroll-target="#analyzing-data-matplotlib-scipy.stats-mle"><span class="header-section-number">12.7</span> Analyzing data (<code>matplotlib</code>, <code>scipy.stats</code>, MLE)</a></li>
   </ul>
 </nav>
     </div>
@@ -224,7 +230,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Additional exercises</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Additional exercises</span></h1>
 </div>
 
 
@@ -241,52 +247,52 @@ window.Quarto = {
 </header>
 
 
-<p><a href="notebooks/11_exercises.ipynb">Download notebook</a>.</p>
+<p><a href="notebooks/12_exercises.ipynb">Download notebook</a>.</p>
 <p>Here are additional exercises, organized by topic. They range from easy to hard within each section.</p>
-<section id="simple-data-types-int-float-str-bool" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="simple-data-types-int-float-str-bool"><span class="header-section-number">11.1</span> Simple data types (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>)</h2>
+<section id="simple-data-types-int-float-str-bool" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="simple-data-types-int-float-str-bool"><span class="header-section-number">12.1</span> Simple data types (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>)</h2>
 <p><strong>Exercise 1:</strong> Write a function <code>is_palindrome(s)</code> that returns <code>True</code> if the string <code>s</code> reads the same forwards and backwards (e.g.&nbsp;<code>"racecar"</code>), and <code>False</code> otherwise. Ignore upper/lower case.</p>
 <p><strong>Exercise 2:</strong> Given a float <code>x</code>, write a one-liner that rounds <code>x</code> to 3 decimal places without using <code>round</code>. (Hint: use arithmetic with <code>int()</code>.)</p>
 <p><strong>Exercise 3:</strong> Write a function <code>caesar(s, k)</code> that shifts every letter in the string <code>s</code> by <code>k</code> positions in the alphabet (wrapping around from <code>z</code> to <code>a</code>). Non-letter characters should remain unchanged. (Hint: use <code>ord()</code> and <code>chr()</code>.)</p>
 <p><strong>Exercise 4:</strong> IEEE 754 floating point numbers satisfy <code>0.1 + 0.2 != 0.3</code>. Write a function <code>approx_equal(x, y, tol=1e-9)</code> that returns <code>True</code> if <code>|x - y| &lt; tol</code>. Then use it to verify that <code>0.1 + 0.2</code> is approximately <code>0.3</code>. Discuss: is a relative or absolute tolerance more appropriate in general?</p>
 </section>
-<section id="control-flow-if-for-while-def" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="control-flow-if-for-while-def"><span class="header-section-number">11.2</span> Control flow (<code>if</code>, <code>for</code>, <code>while</code>, <code>def</code>)</h2>
+<section id="control-flow-if-for-while-def" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="control-flow-if-for-while-def"><span class="header-section-number">12.2</span> Control flow (<code>if</code>, <code>for</code>, <code>while</code>, <code>def</code>)</h2>
 <p><strong>Exercise 1:</strong> Write a function <code>collatz(n)</code> that returns the number of steps it takes for the Collatz sequence starting at <code>n</code> to reach <code>1</code>. (The rule is: if <code>n</code> is even, divide by 2; if odd, compute <code>3n+1</code>.)</p>
 <p><strong>Exercise 2:</strong> Write a function <code>primes_up_to(n)</code> that returns a list of all prime numbers up to <code>n</code>, using the Sieve of Eratosthenes.</p>
 <p><strong>Exercise 3:</strong> Write a function <code>newton_sqrt(a, tol=1e-10)</code> that computes <span class="math inline">\(\sqrt{a}\)</span> using Newton’s method, i.e.&nbsp;the iteration <span class="math inline">\(x_{k+1} = \frac{1}{2}\left(x_k + \frac{a}{x_k}\right)\)</span>, starting from <span class="math inline">\(x_0 = a\)</span>, and stopping when <span class="math inline">\(|x_{k+1} - x_k| &lt; \text{tol}\)</span>.</p>
 <p><strong>Exercise 4:</strong> Write a function <code>bisection(f, a, b, tol=1e-10)</code> that finds a root of a continuous function <span class="math inline">\(f\)</span> on <span class="math inline">\([a, b]\)</span> using the bisection method. Assume <span class="math inline">\(f(a)\)</span> and <span class="math inline">\(f(b)\)</span> have opposite signs. Test it on <span class="math inline">\(f(x) = x^3 - 2\)</span>.</p>
 </section>
-<section id="container-data-types-list-dict-set-tuple" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="container-data-types-list-dict-set-tuple"><span class="header-section-number">11.3</span> Container data types (<code>list</code>, <code>dict</code>, <code>set</code>, <code>tuple</code>)</h2>
+<section id="container-data-types-list-dict-set-tuple" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="container-data-types-list-dict-set-tuple"><span class="header-section-number">12.3</span> Container data types (<code>list</code>, <code>dict</code>, <code>set</code>, <code>tuple</code>)</h2>
 <p><strong>Exercise 1:</strong> Given a list of integers, write a function <code>most_frequent(lst)</code> that returns the element that appears most often. If there is a tie, return any of the most frequent ones. (Hint: use a <code>dict</code> to count.)</p>
 <p><strong>Exercise 2:</strong> Write a function <code>flatten(lst)</code> that takes a nested list (e.g.&nbsp;<code>[[1, 2], [3, [4, 5]], 6]</code>) and returns a flat list <code>[1, 2, 3, 4, 5, 6]</code>. Use recursion.</p>
 <p><strong>Exercise 3:</strong> Write a function <code>invert_dict(d)</code> that swaps keys and values of a dictionary. If multiple keys have the same value, collect the keys in a list. For example, <code>{"a": 1, "b": 2, "c": 1}</code> becomes <code>{1: ["a", "c"], 2: ["b"]}</code>.</p>
 <p><strong>Exercise 4:</strong> A sparse vector can be represented as a <code>dict</code> mapping indices to nonzero values, e.g.&nbsp;<code>{0: 3.0, 5: -1.0, 99: 2.0}</code> for a vector that is zero everywhere except at positions 0, 5, 99. Write functions <code>sparse_add(v, w)</code> and <code>sparse_dot(v, w)</code> that compute the sum and inner product of two sparse vectors.</p>
 </section>
-<section id="libraries-math-datetime-re-os" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="libraries-math-datetime-re-os"><span class="header-section-number">11.4</span> Libraries (<code>math</code>, <code>datetime</code>, <code>re</code>, <code>os</code>)</h2>
+<section id="libraries-math-datetime-re-os" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="libraries-math-datetime-re-os"><span class="header-section-number">12.4</span> Libraries (<code>math</code>, <code>datetime</code>, <code>re</code>, <code>os</code>)</h2>
 <p><strong>Exercise 1:</strong> Using only the <code>math</code> module, write a function <code>taylor_sin(x, n)</code> that computes <span class="math inline">\(\sin(x)\)</span> using the first <code>n</code> terms of the Taylor series <span class="math inline">\(\sin(x) = \sum_{k=0}^{n-1} \frac{(-1)^k x^{2k+1}}{(2k+1)!}\)</span>. Compare the result with <code>math.sin(x)</code>.</p>
 <p><strong>Exercise 2:</strong> Write a function <code>days_until_birthday(birthday_str)</code> that takes a date string like <code>"1990-03-15"</code> and returns the number of days until the next occurrence of that birthday. (Hint: use <code>datetime.date</code>.)</p>
 <p><strong>Exercise 3:</strong> Write a function <code>extract_emails(text)</code> that uses a regular expression to find all email addresses in a string. Test it on a string containing several email addresses mixed with other text.</p>
 <p><strong>Exercise 4:</strong> Write a function <code>find_large_files(directory, min_size_mb=10)</code> that uses <code>os.walk</code> to find all files in <code>directory</code> (and subdirectories) that are larger than <code>min_size_mb</code> megabytes. Return a list of <code>(path, size_mb)</code> tuples, sorted by size descending.</p>
 </section>
-<section id="numerics-np.array-np.linalg-np.random" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="numerics-np.array-np.linalg-np.random"><span class="header-section-number">11.5</span> Numerics (<code>np.array</code>, <code>np.linalg</code>, <code>np.random</code>)</h2>
+<section id="numerics-np.array-np.linalg-np.random" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="numerics-np.array-np.linalg-np.random"><span class="header-section-number">12.5</span> Numerics (<code>np.array</code>, <code>np.linalg</code>, <code>np.random</code>)</h2>
 <p><strong>Exercise 1:</strong> Create a <span class="math inline">\(5 \times 5\)</span> matrix <span class="math inline">\(A\)</span> with <span class="math inline">\(A_{ij} = \frac{1}{i+j+1}\)</span> (the Hilbert matrix). Compute its condition number. Then solve <span class="math inline">\(Ax = b\)</span> for <span class="math inline">\(b = (1,1,1,1,1)^\top\)</span> and verify the result by computing <span class="math inline">\(\|Ax - b\|\)</span>.</p>
 <p><strong>Exercise 2:</strong> Write a function <code>power_method(A, num_iter=100)</code> that approximates the largest eigenvalue of a matrix <span class="math inline">\(A\)</span> using the power iteration: start with a random vector <span class="math inline">\(v\)</span>, repeatedly compute <span class="math inline">\(v \leftarrow Av / \|Av\|\)</span>, and return <span class="math inline">\(v^\top A v\)</span>. Compare the result with <code>np.linalg.eig</code>.</p>
 <p><strong>Exercise 3:</strong> Generate <span class="math inline">\(n = 500\)</span> points <span class="math inline">\((x_i, y_i)\)</span> from the model <span class="math inline">\(y = \sin(x) + \varepsilon\)</span> where <span class="math inline">\(x \in [0, 2\pi]\)</span> and <span class="math inline">\(\varepsilon \sim \mathcal{N}(0, 0.3^2)\)</span>. Fit polynomial models of degrees 3, 5, 10, 20 using the normal equation. Plot all fits and discuss overfitting.</p>
 <p><strong>Exercise 4:</strong> Implement gradient descent for the function <span class="math inline">\(f(x, y) = (1 - x)^2 + 100(y - x^2)^2\)</span> (Rosenbrock). Experiment with different learning rates and starting points. Plot the trajectory of <span class="math inline">\((x_k, y_k)\)</span> on top of a contour plot of <span class="math inline">\(f\)</span>. Compare with the result of <code>scipy.optimize.minimize</code>.</p>
 </section>
-<section id="handling-data-pandas-csv-json" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="handling-data-pandas-csv-json"><span class="header-section-number">11.6</span> Handling data (<code>pandas</code>, <code>csv</code>, <code>json</code>)</h2>
+<section id="handling-data-pandas-csv-json" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="handling-data-pandas-csv-json"><span class="header-section-number">12.6</span> Handling data (<code>pandas</code>, <code>csv</code>, <code>json</code>)</h2>
 <p><strong>Exercise 1:</strong> Create a DataFrame with columns <code>name</code>, <code>exam1</code>, <code>exam2</code>, <code>exam3</code> for 10 students (you can invent the data). Add a column <code>average</code> that contains the mean of the three exams. Filter to show only students with an average above 70.</p>
 <p><strong>Exercise 2:</strong> Download a CSV file from the internet using <code>pd.read_csv(url)</code> (e.g.&nbsp;from <a href="https://github.com/datasets">this collection</a>). Use <code>describe()</code>, <code>groupby()</code>, and a histogram to explore the data. Write a short summary of what you find.</p>
 <p><strong>Exercise 3:</strong> Create a DataFrame with some missing values (<code>np.nan</code>). Compare three strategies for handling them: (a) drop rows with any missing value, (b) fill with the column mean, (c) fill with the column median. How do the summary statistics (<code>describe()</code>) change in each case?</p>
 <p><strong>Exercise 4:</strong> Write a function <code>csv_to_sqlite(csv_path, db_path, table_name)</code> that reads a CSV file into a pandas DataFrame and writes it into an SQLite database. Then write a function <code>query_db(db_path, sql)</code> that runs an SQL query and returns the result as a DataFrame. Test with a CSV file of your choice.</p>
 </section>
-<section id="analyzing-data-matplotlib-scipy.stats-mle" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="analyzing-data-matplotlib-scipy.stats-mle"><span class="header-section-number">11.7</span> Analyzing data (<code>matplotlib</code>, <code>scipy.stats</code>, MLE)</h2>
+<section id="analyzing-data-matplotlib-scipy.stats-mle" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="analyzing-data-matplotlib-scipy.stats-mle"><span class="header-section-number">12.7</span> Analyzing data (<code>matplotlib</code>, <code>scipy.stats</code>, MLE)</h2>
 <p><strong>Exercise 1:</strong> Generate 1000 samples from a <span class="math inline">\(\mathcal{N}(2, 3^2)\)</span> distribution. Plot a histogram together with the true density, the density of the MLE fit (<code>stats.norm.fit</code>), and the density of a fit where you deliberately set <span class="math inline">\(\mu = 0\)</span> (wrong mean). Add a legend.</p>
 <p><strong>Exercise 2:</strong> Generate two samples: <code>sample_a</code> from <span class="math inline">\(\mathcal{N}(5, 1)\)</span> (size 30) and <code>sample_b</code> from <span class="math inline">\(\mathcal{N}(5.5, 1)\)</span> (size 30). Perform a two-sample t-test. Then repeat this experiment 1000 times and count how often the test rejects at level <span class="math inline">\(\alpha = 0.05\)</span>. This is the empirical power of the test. How does it change if you increase the sample size to 100?</p>
 <p><strong>Exercise 3:</strong> Generate 200 samples from a mixture of two normals: with probability 0.4 draw from <span class="math inline">\(\mathcal{N}(-2, 1)\)</span>, otherwise from <span class="math inline">\(\mathcal{N}(3, 0.5^2)\)</span>. Write a function that computes the negative log-likelihood of a two-component Gaussian mixture (with 5 parameters: <span class="math inline">\(\mu_1, \sigma_1, \mu_2, \sigma_2, p\)</span>). Use <code>scipy.optimize.minimize</code> to find the MLE. Plot the histogram and the fitted density.</p>
@@ -698,8 +704,8 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10_misc.html" class="pagination-link" aria-label="Miscellaneous">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span>
+      <a href="./11_misc.html" class="pagination-link" aria-label="Miscellaneous">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

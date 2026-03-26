@@ -79,3 +79,44 @@ Audited chapters 02–08 for commands/variables used before being explained. Key
 #### Prompts used
 
 1. "Go through all files line by line. See if every command or variable is explained before it is used. In such a case, either try to simplify the code such that everything is explained, or, if this does not work, mark the place by 'xxx' and say what needs to be introduced."
+
+### Chapter 07 further edits (2026-03-26)
+
+- Added `count`, `mean`, `std`, `min`, `max`, `median`, `quantile`, `sum` to the DataFrame bullet list with code example.
+- Added section on iterating through DataFrames (`iterrows`, `itertuples`) with code examples.
+- Changed value counts example from department/level to major/BSc+MSc.
+- Added `Series` explanation to the introductory paragraph.
+- Added `person.db` (SQLite) output to `misc/fake_data.py`; SQL section now connects to `misc/person.db` directly instead of loading CSV into an in-memory database. Download link added alongside `person.csv` and `person.json`.
+- Replaced REST Countries API with World Bank API (`api.worldbank.org`) for population data, including filtering out regional aggregates via country metadata.
+- Added cross-reference `@sec-datetime` to Chapter 05's dates section; referenced it from the `strftime` bullet point in Chapter 07.
+- Added merge exercise (Exercise 6) exploring `pd.merge` with non-unique keys.
+- Fixed `render_notebooks.sh`: copies `misc/` into `notebooks/` before rendering (so `person.csv`/`.json`/`.db` are available), cleans up afterwards; also fixed `$file` → `$f` typo.
+
+#### Prompts used
+
+1. "In 07..., line 17-18, I wrote a prompt. Please do this." (the prompt was: "xxx count sum mean")
+2. "Add a code example on these functions in line 78ff."
+3. "Execute the prompt in l. 281" (the prompt was: "xxx change example department->major, level: BSc and MSc")
+4. "In misc/fake_data.py, create also a file which can then be read by sqlite3. Describe how to load it in lines 468ff. Also, provide a download of that file next to person.csv and person.json."
+5. "I think, Series is not explained anywhere. Check this and describe what it is."
+6. "Please use the api https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2025 instead of restcountries"
+7. "Execute the prompt in 07..., l. 426" (the prompt was: "xxx note some more options for pd.to_datetime, e.g. on the formatting of the datetime.") → replaced with cross-reference to `@sec-datetime`.
+8. "Add around l. 424, make a remark that dt.strftime is the same or similar to what we covered in 05 libraries..."
+9. "In 07..., please add a paragraph with a code example how to iterate through a DataFrame."
+10. "Execute the prompt in 07..., l. 515" (the prompt was: "xxx Make a concrete exercise from this here. If you have two DataFrames, both with a column key, which does not have unique values, find out, what pd.merge does.") → added Exercise 6.
+
+### Chapter 08/09 split and file renumbering (2026-03-26)
+
+The old `08_analyzing_data.qmd` was split into two files, and subsequent chapters were renumbered:
+
+- **`08_visualizing_data.qmd`** (new): Python-free introductory section on choosing the right chart type, based on Zelazny's *Wie aus Zahlen Bilder werden* (pp. 21–41). Covers the 3-step framework (message → comparison type → chart form), five comparison types (structure, ranking, time series, frequency distribution, correlation), five chart forms (pie, bar, column, line, scatter), and a summary table. Then the `matplotlib` section from the old Chapter 08, extended with pie chart and horizontal bar chart examples.
+- **`09_analyzing_data.qmd`** (new): All statistical content from the old Chapter 08 — descriptive statistics, probability distributions, statistical tests, and maximum likelihood estimation.
+- **`10_example_project.qmd`**: renamed from `09_example_project.qmd`.
+- **`11_misc.qmd`**: renamed from `10_misc.qmd`.
+- **`12_exercises.qmd`**: renamed from `11_exercises.qmd`.
+- **`_quarto.yml`**: updated chapter list.
+- Download notebook links updated in all renamed files.
+
+#### Prompts used
+
+1. "Execute the prompt in 08..., l 9" (the prompt was: "xxx Split this file in two files, and rename the following files as 10..., 11..., 12... The first of the two files is 08_visualizing_data, the second is 09_analysing_data. In 08_visualizing, start with a Python-free text where you explain the different kinds of plots, circle, barplot (vertical and horizontal, line, scaterplot). Use the pdf in MyFiles/Wie_aus_Zahlen_Bilder_werde.pdf as a source, which you also link in the text (the url is https://link.springer.com/book/10.1007/978-3-658-07452-4), pages 21-69.")
