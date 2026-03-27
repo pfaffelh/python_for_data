@@ -332,15 +332,19 @@ Define a function computing the sum of the first `n` integers.
 **Exercise 8**
 Write a function (without using imports) which computes the sum of all digits (cross sum) of an int. 
 
-```{python}
-def check_age(age_as_string):
-    try:
-        age = int(age_as_string)
-    except ValueError as e:
-        print("Age must be an int.")
-        age = -1
-    return age
+**Exercise 9**
+The following function is supposed to compute the average of a list of numbers, but it contains a subtle bug. Find and fix it. (Hint: try it with a few inputs and compare the result to what you expect. Debugging with `print` statements or the built-in debugger can help — see @sec-debugging.)
 
-print(check_age(25))
-print(check_age("abc"))
+```{python}
+def average(numbers):
+    total = 0
+    count = 0
+    for n in numbers:
+        total += n
+        count += 1
+    return total // count
+
+print(average([10, 20, 30]))    # expected: 20.0
+print(average([1, 2, 3, 4]))    # expected: 2.5
+print(average([7, 8]))          # expected: 7.5
 ```

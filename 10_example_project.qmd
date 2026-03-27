@@ -11,3 +11,5 @@ jupyter: python3
 
 
 Human population data
+
+When loading data from external files (e.g. CSV), you may encounter encoding issues — especially with non-ASCII characters such as German umlauts or accented letters. See @sec-encoding for an overview of encodings and how to handle them in Python.

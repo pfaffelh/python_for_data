@@ -29,3 +29,8 @@ For worldbank data:
 
 from pandas_datareader import wb
 
+Maybe add?
+
+PCA / dimensionality reduction — mentioned in the index as a goal but not covered yet. A natural fit for chapter 09 given you already have np.linalg and linear regression.
+Reshaping data (pivot, melt, pivot_table) — very common in practice, missing from chapter 07.
+Window/rolling functions in pandas (moving averages, cumulative sums) — useful for time series in the example project.

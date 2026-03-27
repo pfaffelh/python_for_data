@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.31">
+<meta name="generator" content="quarto-1.9.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7c69b197886ae2a34062761d21e44731.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-352f0346a3070dd3b7340e73962f3721.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b5c49d451f14625acf1737a92055c052.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -320,16 +320,16 @@ print(f"My constant is {one.myConst()}.")</code></pre>
 <pre><code>import myPackage.one as myName
 print(f"My constant is {myName.myConst()}.")</code></pre>
 <ol start="2" type="1">
-<li><p>You want to use functions from a built-in library. Then, a simple <code>import module</code> is often the best choice. We will see examples in <a href="#sec-math" class="quarto-xref"><span>Section 5.2</span></a>.</p></li>
+<li><p>You want to use functions from a built-in library. Then, a simple <code>import module</code> is often the best choice. We will see examples in <a href="#sec-math" class="quarto-xref"><span class="quarto-unresolved-ref">sec-math</span></a>.</p></li>
 <li><p>You want to use functions from a library, which needs to be installed. Here, before the <code>import module</code> even works, you need to install the module in your python environment. In a terminal, within your Python environment, use</p></li>
 </ol>
-<div id="8e96411d" class="cell" data-execution_count="1">
+<div id="86d42a58" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the next line and run the cell for installation.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This only needs to be done once for every package.</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If pip3 does not work, use pip instead. </span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip3 install numpy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>and then, <code>import numpy</code> will work. We will see examples for this e.g.&nbsp;in <a href="07_handling_data.html#sec-loading-files" class="quarto-xref"><span>Section 7.8</span></a>.</p>
+<p>and then, <code>import numpy</code> will work. We will see examples for this e.g.&nbsp;in <a href="#sec-loading-files" class="quarto-xref"><span class="quarto-unresolved-ref">sec-loading-files</span></a>.</p>
 </section>
 <section id="sec-math" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="sec-math"><span class="header-section-number">5.2</span> Mathematics (<code>math</code>)</h2>
@@ -347,12 +347,12 @@ print(f"My constant is {myName.myConst()}.")</code></pre>
 <li><code>tzinfo</code> and <code>timezone</code>: handling timezones</li>
 </ul>
 <p>We will here use</p>
-<div id="813a2005" class="cell" data-execution_count="2">
+<div id="f7059fff" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>at the cost that <code>datetime</code>-objects are only accessible by saying <code>datetime.datetime</code> (the first <code>datetime</code> being the package, the second <code>datetime</code> being the class/submodule).</p>
 <p>Let us create a <code>datetime</code>-object`:</p>
-<div id="5b887861" class="cell" data-execution_count="3">
+<div id="71b0cea0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime(<span class="dv">2026</span>, <span class="dv">4</span>, <span class="dv">21</span>, <span class="dv">12</span>, <span class="dv">15</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"year: </span><span class="sc">{</span>dt<span class="sc">.</span>year<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -379,7 +379,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the starting time of the first session in this course. As we see here, we can extract year,…, microseconds from the <code>datetime</code>-object.</p>
 <p>Often, we are given strings such as <code>"21.4.26, 12:15"</code>, and want to convert this into a <code>datetime</code> object. For this, we have <code>datetime.datetime.strptime</code>:</p>
-<div id="02892ba3" class="cell" data-execution_count="4">
+<div id="3f7ce6d2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"21.4.26, 12:15"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime.strptime(s, <span class="st">"%y.%m.</span><span class="sc">%d</span><span class="st">, %H:%M"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s <span class="op">+</span> <span class="ss">f" is converted to </span><span class="sc">{</span>dt<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -389,7 +389,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>(For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.)</p>
 <p>Reversely, we want to print a <code>datetime</code>-object in a certain way. For this, we have <code>datetime.datetime.strftime</code>:</p>
-<div id="4e2fb972" class="cell" data-execution_count="5">
+<div id="62b83c77" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt.strftime(<span class="st">"%-m/</span><span class="sc">%-d</span><span class="st">/%y, %H:%M"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4/26/21, 12:15</code></pre>
@@ -397,7 +397,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the US-style output.</p>
 <p>Next, assume we want to compute the same time 12 weeks from now. For this, we use <code>datetime.timedelta</code>.</p>
-<div id="40bfac60" class="cell" data-execution_count="6">
+<div id="708401f5" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt <span class="op">+</span> datetime.timedelta(days<span class="op">=</span><span class="dv">84</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2021-07-19 12:15:00</code></pre>
@@ -413,14 +413,14 @@ time: 12:15:00</code></pre>
 <section id="decimal-numbers-decimal" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="decimal-numbers-decimal"><span class="header-section-number">5.4</span> Decimal numbers (<code>decimal</code>)</h2>
 <p>We already saw that:</p>
-<div id="82c5e3df" class="cell" data-execution_count="7">
+<div id="b5edeff1" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rounding error: 0.2 + 0.1 = </span><span class="sc">{</span><span class="fl">0.2</span> <span class="op">+</span> <span class="fl">0.1</span><span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rounding error: 0.2 + 0.1 = 0.30000000000000004.</code></pre>
 </div>
 </div>
 <p>The reason is that computers in general use a base of 2 for all computations, and 0.3 has a bad representation in this system. While this small <strong>rounding error</strong> is acceptable often, it is not in some contexts (above all, finance). In this case, we can use the <code>decimal</code> library. Within <code>decimal</code>, a base of 10 is used, but calculations are slower than for <code>float</code>s.</p>
-<div id="d36a9f03" class="cell" data-execution_count="8">
+<div id="f9f69c0f" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> decimal <span class="im">import</span> Decimal</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Exact calculation: 0.2 + 0.1 = </span><span class="sc">{</span>Decimal(<span class="st">'0.2'</span>) <span class="op">+</span> Decimal(<span class="st">'0.1'</span>)<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -431,7 +431,7 @@ time: 12:15:00</code></pre>
 <section id="sec-re" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="sec-re"><span class="header-section-number">5.5</span> Regular expressions (<code>re</code>)</h2>
 <p>Sometimes, you need to find <strong>patterns</strong> in a string. In data science, this happens if some field contains unstructured text, and you want to extract information. As an example, assume you load data from a csv-file, and one columns contains all email-adresses of the corresponding item. If you read this, you have something like <code>"muller@gmail.com; muller@yahoo.com"</code>. However, you want to separate the two addresses, and store them in a <code>list</code>. One way to approach this is using a <strong>regular expression</strong> (which in this case reads <code>"\S+@\S+\.\S+"</code>):</p>
-<div id="c5ad3c4a" class="cell" data-execution_count="9">
+<div id="56a85a10" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"muller@gmail.com; muller@yahoo.com"</span></span>
@@ -448,7 +448,7 @@ time: 12:15:00</code></pre>
 <section id="storing-and-restoring-objects-pickle" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="storing-and-restoring-objects-pickle"><span class="header-section-number">5.6</span> Storing and restoring objects (<code>pickle</code>)</h2>
 <p>Sometimes, you want to store intermediate objects. One way is to write them out in files, but you can also use the <code>pickle</code>-library in order to <strong>pickle</strong> (i.e.&nbsp;serialize) Python objects to disc. Here is an example:</p>
-<div id="c3904232" class="cell" data-execution_count="10">
+<div id="20edbab2" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
@@ -469,7 +469,7 @@ time: 12:15:00</code></pre>
 </section>
 <section id="testing-code-pytest" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="testing-code-pytest"><span class="header-section-number">5.7</span> Testing code (<code>pytest</code>)</h2>
-<div id="284ee8f9" class="cell" data-execution_count="11">
+<div id="3e83eeee" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the next line and run the cell for installation.</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If pip3 does not work, use pip instead. </span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip3 install pytest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -477,7 +477,7 @@ time: 12:15:00</code></pre>
 <p>When starting to code, producing reliable programs is both important and difficult. One – not the best – way to approach this is to rely on the program until something breaks. It is actually better to <em>test</em> the code, i.e.&nbsp;to write <strong>tests</strong>. This means that you tell your program that you expect a certain behavior.</p>
 <p>A simple and powerful library for this is <code>pytest</code>. When working with <code>.py</code>-files, you usually separate such tests in a separate file. Every test-case is within a function with name starting with <code>test_</code>. In a terminal, you can run <code>pytest</code> on that file, which performs all tests, and reports any error.</p>
 <p>However, we are working with Jupyter notebooks here, so we cannot run <code>pytest</code> on separate files. Although there are workarounds (the package <code>ipytest</code>), we will only go through some basics here, without importing <code>pytest</code>. This means we are introducing <code>assert</code>.</p>
-<div id="33545551" class="cell" data-execution_count="12">
+<div id="7a244426" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">4</span></span>
@@ -499,14 +499,14 @@ time: 12:15:00</code></pre>
 <section id="using-the-operating-system-os" class="level2" data-number="5.8">
 <h2 data-number="5.8" class="anchored" data-anchor-id="using-the-operating-system-os"><span class="header-section-number">5.8</span> Using the operating system (<code>os</code>)</h2>
 <p>For the kind of projects we envision, we often must access files, which happens via the <strong>operating system</strong>. We might also want to see all files in some directory, access them one by one, etc. Here, <code>folder</code> is the string of the name of a folder, and <code>file</code> is the string for the name of a file. * <code>os.getcwd()</code>: returns the current working directory. * <code>os.chdir(folder)</code>: this is a Python command for <code>cd</code>. * <code>os.path.join(folder", file)</code>: gives a complete path from the folder and file name. * <code>os.listdir(folder)</code>: returns a list of files within the folder. * <code>os.path.exists(file)</code>: returns true or false if the file exists or not. * <code>os.walk(folder)</code>: gives the triple <code>(root, dirs, files)</code>, where <code>root</code> is the absolute path of the folder, <code>dirs</code> are all direct subfolders in that folder, and <code>files</code> are the files in that folder. If folder has subfolders, it returns a list of triples for all subfolders.</p>
-<div id="85614790" class="cell" data-execution_count="13">
+<div id="1900c926" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Print all ipynb-files in the current folder</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> os.listdir(<span class="st">"."</span>):</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">".ipynb"</span>):  <span class="co"># .endswith() checks if a string ends with the given suffix</span></span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">file</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="3e7e5c7b" class="cell" data-execution_count="14">
+<div id="f3c52060" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print folders and files (only first 5 entries of os.walk)</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (root, dirs, files) <span class="kw">in</span> <span class="bu">enumerate</span>(os.walk(<span class="st">"."</span>)):  <span class="co"># enumerate() gives pairs (index, element) for iteration</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
@@ -518,24 +518,24 @@ time: 12:15:00</code></pre>
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ROOT: .
-DIRS: ['myFiles', 'docs', 'index_files', 'latex', '.claude'] ...
-FILES: ['README.md', '00_Getting_started.pdf', '10_example_project.quarto_ipynb', '05_libraries.qmd', 'index.quarto_ipynb'] ...
+DIRS: ['myFiles', 'archive', '.claude', '.quarto', 'solutions'] ...
+FILES: ['04_container_data_types.quarto_ipynb', 'hello.txt', '09_analyzing_data.qmd', '07_handling_data.quarto_ipynb', '09_analyzing_data.quarto_ipynb'] ...
 
 ROOT: ./myFiles
-DIRS: [] 
-FILES: ['test.qmd', '01.ipynb', 'Wie_aus_Zahlen_Bilder_werden.pdf'] 
+DIRS: ['myPackage'] 
+FILES: ['01.ipynb', 'two.py', 'one.py'] 
 
-ROOT: ./docs
-DIRS: [] 
-FILES: [] 
+ROOT: ./myFiles/myPackage
+DIRS: ['__pycache__'] 
+FILES: ['one.py'] 
 
-ROOT: ./index_files
-DIRS: ['figure-pdf'] 
-FILES: [] 
-
-ROOT: ./index_files/figure-pdf
+ROOT: ./myFiles/myPackage/__pycache__
 DIRS: [] 
-FILES: [] 
+FILES: ['one.cpython-313.pyc'] 
+
+ROOT: ./archive
+DIRS: [] 
+FILES: ['11_numpy_from_chatgpt.qmd'] 
 
 ... (truncated)</code></pre>
 </div>
@@ -570,7 +570,7 @@ except FileNotFoundError:
 <li>Write a function, with <code>start</code> and <code>end</code> as <code>datetime</code> as input, which gives you the total amount of sales during this time. (You will need to convert <code>date</code> as given in the data to <code>datetime</code>. Note that <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code> work for <code>datetime</code> as expected.)</li>
 <li>Write a function, with a date <code>date</code> and a number days <code>days</code> as input, which returns the average amount of sales per day during the last <code>days</code> since <code>date</code>.</li>
 </ul>
-<div id="41980944" class="cell" data-execution_count="15">
+<div id="26d9b0e7" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"2026-01-01"</span>, <span class="dv">120</span>),</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"2026-01-02"</span>, <span class="dv">135</span>),</span>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.31">
+<meta name="generator" content="quarto-1.9.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7c69b197886ae2a34062761d21e44731.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-352f0346a3070dd3b7340e73962f3721.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b5c49d451f14625acf1737a92055c052.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -311,7 +311,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 <li><code>plt.show()</code>: display the figure.</li>
 <li><code>plt.axvline(x)</code> / <code>plt.axhline(y)</code>: draw a vertical / horizontal line across the plot.</li>
 </ul>
-<div id="8e96d033" class="cell" data-execution_count="2">
+<div id="adcfc5a0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We will generate some random data here, so we need a random number generator.</span></span>
@@ -322,9 +322,9 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 <h2 data-number="8.3" class="anchored" data-anchor-id="sec-line-plot"><span class="header-section-number">8.3</span> Line plots (<code>plot</code>)</h2>
 <p>A line plot connects data points with straight line segments. It is the standard chart for <strong>time series</strong> and continuous functions.</p>
 <ul>
-<li><code>plt.plot(x, y, label=...)</code>: line plot.</li>
+<li><code>plt.plot(x, y, fmt, label=..., linestyle=...)</code>: line plot. The optional <code>fmt</code> is a shorthand format string combining color, marker, and line style, e.g.&nbsp;<code>"r*"</code> (red stars), <code>"b--"</code> (blue dashed), <code>"go-"</code> (green circles with solid line). Colors: <code>"r"</code> red, <code>"b"</code> blue, <code>"g"</code> green, <code>"k"</code> black. Markers: <code>"o"</code> circle, <code>"*"</code> star, <code>"s"</code> square, <code>"^"</code> triangle. The <code>linestyle</code> (or <code>ls</code>) option controls the line appearance: <code>"-"</code> solid (default), <code>"--"</code> dashed, <code>"-."</code> dash-dot, <code>":"</code> dotted.</li>
 </ul>
-<div id="20cf9ade" class="cell" data-execution_count="3">
+<div id="72003889" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">100</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -343,8 +343,8 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 </div>
 </div>
 </div>
-<p>By default, <code>matplotlib</code> draws a rectangular box around the plot. For mathematical function plots, it is often cleaner to place the x- and y-axes at the origin and remove the box. This requires <code>fig, ax = plt.subplots(...)</code> to access the <code>ax.spines</code> object (see also <a href="#sec-subplots" class="quarto-xref"><span>Section 8.8</span></a>). Each <strong>spine</strong> is one of the four border lines of the plot area (<code>"left"</code>, <code>"right"</code>, <code>"top"</code>, <code>"bottom"</code>).</p>
-<div id="393cfd9c" class="cell" data-execution_count="4">
+<p>By default, <code>matplotlib</code> draws a rectangular box around the plot. For mathematical function plots, it is often cleaner to place the x- and y-axes at the origin and remove the box. This requires <code>fig, ax = plt.subplots(...)</code> to access the <code>ax.spines</code> object (see also <a href="#sec-subplots" class="quarto-xref"><span class="quarto-unresolved-ref">sec-subplots</span></a>). Each <strong>spine</strong> is one of the four border lines of the plot area (<code>"left"</code>, <code>"right"</code>, <code>"top"</code>, <code>"bottom"</code>).</p>
+<div id="109af79e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
@@ -375,7 +375,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 <ul>
 <li><code>plt.pie(values, labels=...)</code>: pie chart. Use <code>autopct</code> to display percentages.</li>
 </ul>
-<div id="b838d5bd" class="cell" data-execution_count="5">
+<div id="359f4022" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"Reading"</span>, <span class="st">"Cycling"</span>, <span class="st">"Cooking"</span>, <span class="st">"Gaming"</span>]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">20</span>, <span class="dv">25</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -399,7 +399,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 <li><code>plt.bar(categories, values)</code>: vertical bar plot. Use <code>bottom=...</code> to stack bars on top of previous ones, <code>yerr=...</code> to add error bars, and <code>capsize=...</code> to set the width of the error bar caps. Use <code>color=...</code> to set the bar color, and <code>alpha=...</code> (0 to 1) to control its transparency.</li>
 <li><code>plt.barh(categories, values)</code>: horizontal bar plot.</li>
 </ul>
-<div id="a9f94acb" class="cell" data-execution_count="6">
+<div id="ebf450b9" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># horizontal bar chart (ranking)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> [<span class="st">"Japan"</span>, <span class="st">"France"</span>, <span class="st">"Italy"</span>, <span class="st">"Spain"</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">23</span>, <span class="dv">37</span>, <span class="dv">45</span>]</span>
@@ -418,13 +418,13 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 </div>
 </div>
 <p>Bar charts become even more useful when comparing multiple series side by side, stacking them, showing differences, or adding error bars. To place two series next to each other, shift the bar positions by the bar width using <code>np.arange</code>.</p>
-<div id="3d75658d" class="cell" data-execution_count="7">
+<div id="ab06ed7c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># survey data: absolute number of people who named each cuisine as favourite</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cuisines <span class="op">=</span> [<span class="st">"Italian"</span>, <span class="st">"Japanese"</span>, <span class="st">"Mexican"</span>, <span class="st">"Indian"</span>]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>adults_abs <span class="op">=</span> [<span class="dv">70</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">40</span>]   <span class="co"># 200 adults surveyed</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>kids_abs <span class="op">=</span> [<span class="dv">36</span>, <span class="dv">8</span>, <span class="dv">24</span>, <span class="dv">12</span>]     <span class="co"># 80 kids surveyed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="06866843" class="cell" data-execution_count="8">
+<div id="f661c17c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grouped bar chart: compare percentages </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (so group sizes don't distort the picture)</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>adults_pct <span class="op">=</span> [a <span class="op">/</span> <span class="bu">sum</span>(adults_abs) <span class="op">*</span> <span class="dv">100</span> <span class="cf">for</span> a <span class="kw">in</span> adults_abs]</span>
@@ -449,7 +449,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 </div>
 </div>
 </div>
-<div id="79f6ae5f" class="cell" data-execution_count="9">
+<div id="4ce44844" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stacked bar chart: absolute numbers show the total count per cuisine</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.bar(cuisines, adults_abs, label<span class="op">=</span><span class="st">"Adults (n=200)"</span>)</span>
@@ -466,7 +466,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 </div>
 </div>
 </div>
-<div id="6d11ca71" class="cell" data-execution_count="10">
+<div id="07a2c355" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># difference chart: horizontal bars going left and right from a center axis</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>diff <span class="op">=</span> [a <span class="op">-</span> b <span class="cf">for</span> a, b <span class="kw">in</span> <span class="bu">zip</span>(adults_pct, kids_pct)]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">"#4878cf"</span> <span class="cf">if</span> d <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"#d65f5f"</span> <span class="cf">for</span> d <span class="kw">in</span> diff]</span>
@@ -486,7 +486,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 </div>
 </div>
 <p>You can add <strong>error bars</strong> to a bar chart to show uncertainty (e.g., standard deviations or confidence intervals) using the <code>yerr</code> parameter.</p>
-<div id="b4d33340" class="cell" data-execution_count="11">
+<div id="9499d57f" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bar chart with error bars</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sports <span class="op">=</span> [<span class="st">"Swimming"</span>, <span class="st">"Running"</span>, <span class="st">"Cycling"</span>, <span class="st">"Yoga"</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>participants <span class="op">=</span> [<span class="dv">45</span>, <span class="dv">38</span>, <span class="dv">30</span>, <span class="dv">25</span>]</span>
@@ -512,7 +512,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 <ul>
 <li><code>plt.hist(data, bins=..., density=...)</code>: histogram. Use <code>density=True</code> to normalize to a probability density, <code>alpha=...</code> (0 to 1) to make the bars semi-transparent, and <code>rwidth=...</code> (0 to 1) to control the bar width relative to the bin width (default 1.0, i.e.&nbsp;no gaps).</li>
 </ul>
-<div id="993535d4" class="cell" data-execution_count="12">
+<div id="1d0efa90" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">5</span>, scale<span class="op">=</span><span class="dv">2</span>, size<span class="op">=</span><span class="dv">500</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
@@ -532,11 +532,11 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 </section>
 <section id="sec-box-plot" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="sec-box-plot"><span class="header-section-number">8.7</span> Box plots (<code>boxplot</code>)</h2>
-<p>A box plot summarizes the distribution of a dataset by showing the median, quartiles, and outliers. It is useful for comparing distributions across groups.</p>
+<p>A box plot summarizes the distribution of a dataset. The <strong>box</strong> spans from the first quartile (Q1, 25th percentile) to the third quartile (Q3, 75th percentile), so it contains the middle 50% of the data. The line inside the box marks the <strong>median</strong> (Q2, 50th percentile). The <strong>whiskers</strong> extend from the box to the most extreme data points that are still within 1.5 times the interquartile range (IQR = Q3 − Q1) from the box edges. Points beyond the whiskers are shown as individual dots and considered <strong>outliers</strong>. Box plots are especially useful for comparing distributions across groups.</p>
 <ul>
 <li><code>plt.boxplot(data_list, tick_labels=...)</code>: box plot. Pass a list of arrays to compare multiple groups, and <code>tick_labels</code> to label them.</li>
 </ul>
-<div id="0ff0cd96" class="cell" data-execution_count="13">
+<div id="038b8a36" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data_groups <span class="op">=</span> [rng.normal(loc<span class="op">=</span>m, size<span class="op">=</span><span class="dv">50</span>) <span class="cf">for</span> m <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -562,7 +562,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 <li><code>ax.spines["side"].set_position(("data", value))</code>: move a spine (the border lines of the plot area) so that it crosses the axis at <code>value</code>. The <code>"side"</code> can be <code>"left"</code>, <code>"right"</code>, <code>"top"</code>, or <code>"bottom"</code>.</li>
 <li><code>ax.spines["side"].set_visible(False)</code>: hide a spine entirely.</li>
 </ul>
-<div id="212921a4" class="cell" data-execution_count="14">
+<div id="29ba1cdf" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].plot(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">50</span>), np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">50</span>)<span class="op">**</span><span class="dv">2</span>)</span>
@@ -588,7 +588,7 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 <ul>
 <li><code>plt.scatter(x, y, s=..., label=...)</code>: scatter plot (<code>s</code> is marker size).</li>
 </ul>
-<div id="66821e47" class="cell" data-execution_count="15">
+<div id="da5ccb72" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rng.normal(size<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> rng.normal(size<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -609,13 +609,14 @@ Figure&nbsp;8.1: Chart forms vs.&nbsp;comparison types (after Zelazny, <em>Say I
 </section>
 <section id="sec-heatmap" class="level2" data-number="8.10">
 <h2 data-number="8.10" class="anchored" data-anchor-id="sec-heatmap"><span class="header-section-number">8.10</span> Heatmaps (<code>imshow</code>)</h2>
-<p>A heatmap displays a matrix of values as a grid of colored cells. It is useful for visualizing correlation matrices, confusion matrices, or any two-dimensional data where patterns emerge from color.</p>
+<p>A heatmap displays a matrix of values as a grid of colored cells. It is useful for visualizing correlation matrices, confusion matrices, or any two-dimensional data where patterns emerge from color. A related function is <code>plt.contourf</code>, which draws filled contour lines for data given on a 2d grid (see <a href="#sec-mle" class="quarto-xref"><span class="quarto-unresolved-ref">sec-mle</span></a> for an example).</p>
 <ul>
 <li><code>plt.imshow(matrix, cmap=...)</code>: display a matrix as a colored grid. Use <code>vmin</code>/<code>vmax</code> to fix the color range. Common colormaps: <code>"viridis"</code> (default), <code>"coolwarm"</code> (diverging, blue to red), <code>"hot"</code>, <code>"gray"</code>, <code>"Blues"</code>, <code>"RdYlGn"</code>.</li>
+<li><code>plt.contourf(X, Y, Z, levels=..., cmap=...)</code>: draw filled contour lines for values <code>Z</code> on a grid defined by <code>X</code> and <code>Y</code>. Use <code>levels</code> to control the number of contour levels.</li>
 <li><code>plt.colorbar(label=...)</code>: add a color bar to the current plot, with an optional label.</li>
-<li><code>np.corrcoef(data, rowvar=False)</code>: compute the correlation matrix of the columns of <code>data</code> (see <a href="09_analyzing_data.html#sec-descriptive" class="quarto-xref"><span>Section 9.1</span></a> for more on correlation).</li>
+<li><code>np.corrcoef(data, rowvar=False)</code>: compute the correlation matrix of the columns of <code>data</code> (see <a href="#sec-descriptive" class="quarto-xref"><span class="quarto-unresolved-ref">sec-descriptive</span></a> for more on correlation).</li>
 </ul>
-<div id="98e2b688" class="cell" data-execution_count="16">
+<div id="08a5b221" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># heatmap of a correlation matrix</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> rng.normal(size<span class="op">=</span>(<span class="dv">100</span>, <span class="dv">4</span>))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data[:, <span class="dv">1</span>] <span class="op">+=</span> <span class="fl">0.8</span> <span class="op">*</span> data[:, <span class="dv">0</span>] <span class="co"># introduce correlation between columns 0 and 1</span></span>

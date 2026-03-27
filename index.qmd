@@ -18,7 +18,7 @@ Within the first two parts, you will be assigned homeworks, which you can find a
 Let us discuss some preliminairies.
 
 **Your python environment:**
-We will assume that python and jupyter is installed on your system. These course notes are written with python 3.13, but other versions might work as well. In addition to plain `python`, we will need some libraries. Which ones we need (including their versions) is written in the file [`requirements.txt`](https://github.com/pfaffelh/python_for_data/blob/master/requirements.txt). Some jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the jupyter server which runs the notebools.)
+We will assume that python and jupyter is installed on your system. These course notes are written with python 3.13, but other versions might work as well. In addition to plain `python`, we will need some libraries. Which ones we need (including their versions) is written in the file [`requirements.txt`](https://github.com/pfaffelh/python_for_data/blob/master/requirements.txt). Some jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the jupyter server which runs the notebools.) It is recommended to use a virtual environment for managing your Python packages — see @sec-venv for details.
 
 
 _General note: We avoid repeating the distinction between the commands `python` and `python3`, and will simply write Python in the sequel._
@@ -36,7 +36,7 @@ For Jupyter notebooks, there are at least two ways to run them:
 2. Use `vscode` as you IDE and work from there; see below.
 
 **Integrated Development Environment (IDE):**
-When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as [`vscode`](https://code.visualstudio.com/) or [pycharm](https://www.jetbrains.com/de-de/pycharm/). It is best to acticvate your vertual environment using `source venv/bin/activate` before starting your IDE. In order to start vscode, go to the main folder of the course notes, and type `code .` E.g., vscode can be used for all three ways to write Python commands: 
+When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as [`vscode`](https://code.visualstudio.com/) or [pycharm](https://www.jetbrains.com/de-de/pycharm/). It is best to activate your virtual environment (see @sec-venv) using `source venv/bin/activate` before starting your IDE. For collaborative work and version control, we recommend using `git` (see @sec-git). In order to start vscode, go to the main folder of the course notes, and type `code .` E.g., vscode can be used for all three ways to write Python commands: 
 
 1. Use `Terminal -> New Terminal` in order to open a terminal, type `python3` and you are in interactive mode,
 2. Write a Python script and run it using the opoened terminal,

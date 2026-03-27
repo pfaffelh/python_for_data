@@ -31,15 +31,11 @@ name = input("What is your name?")
 print(f"Hello, {name}!")
 ```
 
-## Regular expressions 
-
-ask the AI!
-
-## dot-notation
+## Dot-notation {#sec-dot-notation}
 
 Here is another very useful notation convention, known as dot-notation: For a function `str.something(s,...)`, where `s` is of type `str`, you can as well write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. 
 
-## Type hints and assertions (`assert`, type annotations)
+## Type hints and assertions (`assert`, type annotations) {#sec-type-hints}
 
 Python does not enforce that you say which type a variable has (in contrast to C, say), but you can annotate them. This is not enforced by Python, but helps readability.
 
@@ -181,7 +177,7 @@ with open("example_utf8.txt", "r", encoding="utf-8") as f:
 
 When you encounter a `UnicodeDecodeError` while reading a file, the most common fix is to specify the correct encoding in `open(..., encoding="...")`. Common candidates are `"utf-8"`, `"latin-1"`, and `"cp1252"` (Windows). If you are unsure about the encoding of a file, the `chardet` library can help guess it.
 
-## git and github
+## git and github {#sec-git}
 
 `git` is a version control system: it tracks changes to files over time, so you can go back to earlier versions, collaborate with others, and see who changed what and when. `github` is a website that hosts `git` repositories online.
 

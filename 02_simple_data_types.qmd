@@ -23,7 +23,15 @@ Every **variable** or other object in python has a **type**. This is the kind of
 
 - You can find about the type of any expression `x` in Python using `type(x)`. 
 - In fact, `type(x)` is already the first example of a built-in-function. The function `type` takes a single value as input, and returns its type. We will encounter various more functions already in this section. We will learn more about functions (built-in and self-written) in  @sec-functions.
-- There are conversions between some types. For example, `"0"` is a string, but `int("0")` (again a function, taking a single value, and returning its integer value) the integer `0`. Conversely, `str(0)` is the string `"0"`. We will have more examples below. 
+- There are conversions between some types. For example, `"0"` is a string, but `int("0")` (again a function, taking a single value, and returning its integer value) the integer `0`. Conversely, `str(0)` is the string `"0"`. We will have more examples below.
+- You can optionally annotate variables with their type using **type hints**, e.g. `x: int = 5`. Python does not enforce these annotations, but they help readability. See @sec-type-hints for more details.
+
+```{python}
+x: int = 5
+y: float = 3.14
+name: str = "Alice"
+print(type(x), type(y), type(name))
+```
 
 ## Integers (`int`)
 
@@ -220,7 +228,7 @@ For strings, there are various build-in functions. We mention some of them. Here
 * `str.isupper(s)`: Returns `True` if the string consists only of upper case letters, and `False` otherwise.
 * `str.count(s, "x")`: Counts how ofter `"x"` appears in `s`. 
 
-Here is another very useful notation convention, known as dot-notation: For a function `str.something(s,...)`, where `s` is of type `str`, you can as well write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. 
+Note that for a function `str.something(s,...)`, you can also write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. This is called dot-notation and is explained in @sec-dot-notation. 
 
 
 ### Formatting numbers in f-strings {#sec-formatting}

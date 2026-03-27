@@ -173,3 +173,77 @@ The old `08_analyzing_data.qmd` was split into two files, and subsequent chapter
 13. "I also saw subplots in places where only a single charts appear. Please fix." → replaced all single-chart `fig, ax = plt.subplots` with `plt.figure` (except where `ax.spines` is needed).
 14. "Please go through the file line by line and check if everything which is used is explained beforehand." → audit and fixes as described above.
 15. "In the food preferences example, stacking percentiles does not make sense." → grouped chart uses percentages, stacked chart uses absolute numbers.
+
+### Chapter 08 example diversification and chart matrix refinements (2026-03-27)
+
+- Diversified chapter 08 examples away from sports: text examples now cover food/restaurants, travel, library visits, hiking, cooking; bar chart ranking uses travel destinations; grouped/stacked/difference bars use food preferences (cuisines, adults vs kids).
+- Removed German chart names (*Kreisdiagramm*, *Balkendiagramm*, etc.) from the chart type descriptions.
+- Moved error bar plots into the bar chart section (since they extend bar charts); removed the standalone error bar section.
+- Added box plot as a chart form in section 8.1 with description of distribution comparison, histograms for single distributions, and violin plots as refined box plots.
+- Reworked the chart matrix figure multiple times: added "Distribution" column, added box plot row, reorganized to 6×4 grid with columns Distribution, Time series, Ranking, Correlation and rows Pie, Box plot, Column, Line, Bar, Scatter.
+- Added description of box/whiskers anatomy (Q1–Q3 box, median line, 1.5×IQR whiskers, outlier dots) to the box plot section.
+- Added `linestyle` option (`"-"`, `"--"`, `"-."`, `":"`) and format strings (`fmt` parameter with colors and markers) to `plt.plot` bullet.
+- Added `plt.contourf` to the heatmap section with parameter description and cross-reference to @sec-mle.
+
+#### Prompts used
+
+1. "The examples are now a bit heavy on the sport side. What about eating and cooking? Add some examples for other areas please."
+2. "The German names for the charts can go."
+3. "Please extend the basic charts by the boxplot. Add it to the figure on l. 40ff. ..."
+4. "Sorry, I did something wrong. Ranking does not fit with boxplot. The barplot with vertical bars needs its own line, let us place it at the second to last line/column."
+5. "In 8.7, add a description what the box and the whiskers are for."
+6. "In chapter 8, describe the linestyle option, with a few options."
+7. "Is plt.contourf covered in chapter 8? If not, please add somewhere at the heatmaps."
+8. "What does r* mean, and what is its effect? Make a small note."
+
+### Chapter 09 refinements and linear regression (2026-03-27)
+
+- Fixed duplicate `{#sec-iterating}` label: renamed chapter 07's to `{#sec-df-iterating}`.
+- Added note distinguishing `stats.describe` (scipy, 1d array, skewness/kurtosis) from `df.describe()` (pandas, DataFrame columns), with cross-reference to @sec-pandas.
+- Expanded trimmed mean/std/var bullet points with `limits=(low, high)` parameter description.
+- Reformatted `stats.describe` output: replaced single `print(result)` with individual field prints (nobs, minmax, mean, variance, skewness, kurtosis).
+- Added link to [scipy.stats documentation](https://docs.scipy.org/doc/scipy/reference/stats.html).
+- Expanded `dist.rvs` description with `size` (integer or tuple) and `random_state` parameters.
+- Increased sample size to 1000 in normal distribution example; added empirical mean/variance alongside theoretical values.
+- Added explanation that all listed tests return named tuples with `.statistic` and `.pvalue`; added brief p-value interpretation.
+- Added section 9.5 "Linear regression": simple regression with `stats.linregress`, visualization, multiple regression with `np.linalg.lstsq`, R-squared.
+- Noted that `dist.fit` returns only point estimates (no standard errors); switched gamma MLE example from Nelder-Mead to BFGS to get `result.hess_inv`; added standard error computation from inverse Hessian.
+- Added explanatory paragraph for the log-likelihood surface plot describing `np.meshgrid` and `np.zeros_like`.
+- Changed log-likelihood surface example from normal to gamma distribution (reusing `data_gamma`/`a_hat`/`scale_hat`).
+- Added both loop-based and vectorized (broadcasting) versions for computing the log-likelihood grid.
+
+#### Prompts used
+
+1. "In 9, I think stats.describe was already explained. If so, please delete the description here, but make a reference."
+2. "Yes, make a note that these are different functions, and describe their difference. Add a reference to the other function."
+3. "Also, explain what a 'trimmed' mean and variance is, and which parameters it has."
+4. "Please reformat the output in the first cell in 9.1, since it spans over the whole line."
+5. "Add a link to the scipy.stats documentation you were referring to."
+6. "dist.rvs is used but not introduced. Please fix, and describe its parameters."
+7. "In the normal with given parameters, please also compute the empirical mean and variance!"
+8. "In 9.3, is it true that every test returns a tuple of size 2? If so, please say this."
+9. "Add a section 9.5 for linear regression."
+10. "Does dist.fit come with the error it produces? If so, describe and use in the gamma distribution example."
+11. "After the plot of the gamma densities and their estimates, add some explanation for the following heatplot. In particular, describe what np.meshgrid does."
+12. "Add a description of np.zeros_like in the same paragraph."
+13. "Can you change the last example in 9.4 to the gamma distribution?"
+14. "In the lines after np.zeros_like(MU), is there a way to do this vectorized instead of using for-loops? If yes, give both options for pedagogical reasons."
+15. "Is cmap:'viridis' described somewhere? If not, please fix." → already described in chapter 08 heatmap section.
+
+### Cross-references and minor additions (2026-03-27)
+
+- **Chapter 02**: Added type hints example (`x: int = 5`, `y: float = 3.14`, `name: str = "Alice"`) with cross-reference to @sec-type-hints in chapter 11.
+- **Chapter 02**: Replaced duplicate dot-notation explanation with short note and cross-reference to @sec-dot-notation in chapter 11.
+- **Chapter 03**: Added Exercise 9 — debugging exercise with subtle `//` vs `/` bug; includes hint referencing @sec-debugging.
+- **Chapter 10**: Added note about encoding issues when loading external data, with cross-reference to @sec-encoding.
+- **Chapter 11**: Added cross-reference labels `{#sec-dot-notation}`, `{#sec-type-hints}`, `{#sec-git}`.
+- **Index (chapter 01)**: Added cross-references to @sec-venv (virtual environments) and @sec-git (version control); fixed "vertual" typo.
+
+#### Prompts used
+
+1. "Where is dot-notation described?" → found duplicate in ch02 and ch11.
+2. "Keep the text in chapter 11, but add a reference in section 2."
+3. "In chapter 2, add type hints in one example, mention there that these are type hints, and give a reference to the corresponding section in chapter 11."
+4. "In chapter 1, would there be a place to give references to virtual environments and git from section 11? If so, proceed."
+5. "In chapter 3, add an exercise with a code with a spurious, hard to detect error, which is ideal for experiences with debugging."
+6. "Make a note in chapter 10 that we need to discuss encodings, and set a link to the section in chapter 11."

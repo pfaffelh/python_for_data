@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.31">
+<meta name="generator" content="quarto-1.9.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7c69b197886ae2a34062761d21e44731.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-352f0346a3070dd3b7340e73962f3721.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b5c49d451f14625acf1737a92055c052.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Basically, the course has three parts: 1. Python basics: data types, functions, loops, conditions etc; (Lessons 01, 02, 03, 04) 2. Tools for data analysis: numpy, matplotlib, pandas; (Lessons 05, 05, 07, 08) 3: Project: choose data that interests you and creat a dashboard</p>
 <p>Within the first two parts, you will be assigned homeworks, which you can find at the end of each section. For the third part, you will have to find a project by yourself.</p>
 <p>Let us discuss some preliminairies.</p>
-<p><strong>Your python environment:</strong> We will assume that python and jupyter is installed on your system. These course notes are written with python 3.13, but other versions might work as well. In addition to plain <code>python</code>, we will need some libraries. Which ones we need (including their versions) is written in the file <a href="https://github.com/pfaffelh/python_for_data/blob/master/requirements.txt"><code>requirements.txt</code></a>. Some jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the jupyter server which runs the notebools.)</p>
+<p><strong>Your python environment:</strong> We will assume that python and jupyter is installed on your system. These course notes are written with python 3.13, but other versions might work as well. In addition to plain <code>python</code>, we will need some libraries. Which ones we need (including their versions) is written in the file <a href="https://github.com/pfaffelh/python_for_data/blob/master/requirements.txt"><code>requirements.txt</code></a>. Some jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the jupyter server which runs the notebools.) It is recommended to use a virtual environment for managing your Python packages — see <a href="#sec-venv" class="quarto-xref"><span class="quarto-unresolved-ref">sec-venv</span></a> for details.</p>
 <p><em>General note: We avoid repeating the distinction between the commands <code>python</code> and <code>python3</code>, and will simply write Python in the sequel.</em></p>
 <p><strong>Starting a Jupyter notebook:</strong></p>
 <p>There are basically three ways <code>python</code> commands can be run: 1. In interactive mode on the command line by typing <code>python3</code> in your shell, 2. In <code>python</code>-scripts, usually ending with <code>myScript.py</code>. You can run these using <code>python3 myScript.py</code>. 3. Jupyter notebooks have the opportunity to mix usual text with <code>python</code> commands. We will use these in this course.</p>
@@ -254,14 +254,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Start the Jupyter server using <code>jupyter lab</code> (hopefully, it is already installed), which opens your browser where you can edit and save what you have done;</li>
 <li>Use <code>vscode</code> as you IDE and work from there; see below.</li>
 </ol>
-<p><strong>Integrated Development Environment (IDE):</strong> When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as <a href="https://code.visualstudio.com/"><code>vscode</code></a> or <a href="https://www.jetbrains.com/de-de/pycharm/">pycharm</a>. It is best to acticvate your vertual environment using <code>source venv/bin/activate</code> before starting your IDE. In order to start vscode, go to the main folder of the course notes, and type <code>code .</code> E.g., vscode can be used for all three ways to write Python commands:</p>
+<p><strong>Integrated Development Environment (IDE):</strong> When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as <a href="https://code.visualstudio.com/"><code>vscode</code></a> or <a href="https://www.jetbrains.com/de-de/pycharm/">pycharm</a>. It is best to activate your virtual environment (see <a href="#sec-venv" class="quarto-xref"><span class="quarto-unresolved-ref">sec-venv</span></a>) using <code>source venv/bin/activate</code> before starting your IDE. For collaborative work and version control, we recommend using <code>git</code> (see <a href="#sec-git" class="quarto-xref"><span class="quarto-unresolved-ref">sec-git</span></a>). In order to start vscode, go to the main folder of the course notes, and type <code>code .</code> E.g., vscode can be used for all three ways to write Python commands:</p>
 <ol type="1">
 <li>Use <code>Terminal -&gt; New Terminal</code> in order to open a terminal, type <code>python3</code> and you are in interactive mode,</li>
 <li>Write a Python script and run it using the opoened terminal,</li>
 <li>Click on some Jupyther notebook, and vscode starts the Jupyter server for you.</li>
 </ol>
 <p><strong>A first Python cell:</strong> Here is the first cell of Python-code:</p>
-<div id="0f3c962b" class="cell" data-execution_count="1">
+<div id="0f03f6c7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Hello, "</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"world!"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x<span class="op">+</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

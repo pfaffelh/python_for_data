@@ -18,19 +18,24 @@ from scipy import stats
 
 ## Descriptive statistics (`scipy.stats`) {#sec-descriptive}
 
-The `scipy.stats` module provides functions for descriptive statistics and statistical tests. Here, `data` is a 1d array or list.
+The [`scipy.stats`](https://docs.scipy.org/doc/scipy/reference/stats.html) module provides functions for descriptive statistics and statistical tests. Here, `data` is a 1d array or list. Note that `stats.describe(data)` is different from the pandas method `df.describe()` (see @sec-pandas): `stats.describe` works on a single 1d array and additionally returns skewness and kurtosis, while `df.describe()` gives summary statistics (count, mean, std, min, quartiles, max) for all numeric columns of a DataFrame.
 
 * `stats.describe(data)`: returns count, min, max, mean, variance, skewness, kurtosis.
-* `stats.tmean(data)`: trimmed mean.
-* `stats.tstd(data)`: trimmed standard deviation.
-* `stats.tvar(data)`: trimmed variance.
+* `stats.tmean(data, limits=(low, high))`: trimmed mean — the mean computed only over values in the interval `[low, high]`. Without `limits`, it returns the ordinary mean. This is useful to reduce the influence of outliers.
+* `stats.tstd(data, limits=(low, high))`: trimmed standard deviation (same idea).
+* `stats.tvar(data, limits=(low, high))`: trimmed variance (same idea).
 * `stats.pearsonr(x, y)`: Pearson correlation coefficient and p-value.
 * `stats.spearmanr(x, y)`: Spearman rank correlation and p-value.
 
 ```{python}
 data = [1, 2, 3, 4, 5, 6, 7, 8]
 result = stats.describe(data)
-print(result)
+print("count =", result.nobs)
+print("min, max =", result.minmax)
+print("mean =", result.mean)
+print("variance =", result.variance)
+print("skewness =", result.skewness)
+print("kurtosis =", result.kurtosis)
 ```
 ```{python}
 data = np.array([2.3, 4.1, 3.7, 5.2, 4.8, 3.3])
@@ -52,7 +57,7 @@ print(f"Pearson r = {r:.4f}, p-value = {p_value:.6f}")
 
 `scipy.stats` provides a large number of probability distributions. Each distribution object has a common interface. Here, `dist` is a distribution object (e.g. `stats.norm`, `stats.expon`, `stats.poisson`).
 
-* `dist.rvs(size=n)`: draw `n` random samples.
+* `dist.rvs(size=n, random_state=seed)`: draw `n` random samples. `size` can be an integer or a tuple for multi-dimensional output (e.g. `size=(3, 4)` for a 3×4 array). `random_state` accepts an integer seed or a `np.random.Generator` for reproducibility.
 * `dist.pdf(x)` / `dist.pmf(x)`: density / probability mass function.
 * `dist.cdf(x)`: cumulative distribution function.
 * `dist.ppf(q)`: quantile function (inverse of `cdf`).
@@ -73,10 +78,12 @@ print("ppf(0.975) =", stats.norm.ppf(0.975))
 ```{python}
 # normal with given parameters
 dist = stats.norm(loc=3, scale=2)
-samples = dist.rvs(size=5, random_state=42)
-print("samples:", samples)
-print("mean =", dist.mean())
-print("variance =", dist.var())
+samples = dist.rvs(size=1000, random_state=42)
+print("first 5 samples:", samples[:5])
+print("theoretical mean =", dist.mean())
+print("theoretical variance =", dist.var())
+print("empirical mean =", np.mean(samples))
+print("empirical variance =", np.var(samples))
 ```
 ```{python}
 # exponential
@@ -120,7 +127,7 @@ plt.show()
 
 ## Statistical tests {#sec-tests}
 
-`scipy.stats` provides many standard statistical tests. Each test returns a test statistic and a p-value.
+`scipy.stats` provides many standard statistical tests. Each of the tests below returns a named tuple with two entries: a test statistic (`.statistic`) and a p-value (`.pvalue`). The p-value is the probability of observing a test statistic at least as extreme as the one computed, assuming the null hypothesis is true. A small p-value (typically below 0.05) suggests rejecting the null hypothesis.
 
 * `stats.ttest_1samp(data, popmean)`: one-sample t-test (is the mean equal to `popmean`?).
 * `stats.ttest_ind(sample1, sample2)`: two-sample t-test (do two independent samples have the same mean?).
@@ -166,10 +173,10 @@ The MLE is the parameter value that maximizes $\ell(\theta)$, or equivalently mi
 
 In `scipy.stats`, the `fit` method computes the MLE for any distribution:
 
-* `dist.fit(data)`: returns the MLE of the distribution parameters.
+* `dist.fit(data)`: returns the MLE of the distribution parameters. Note that `dist.fit` returns only point estimates, not standard errors.
 * `dist.logpdf(x, ...)`: log-density, useful for computing the log-likelihood.
 
-For cases where no closed-form MLE exists, we use numerical optimization via `scipy.optimize.minimize` (see @sec-optimization).
+For cases where no closed-form MLE exists, we use numerical optimization via `scipy.optimize.minimize` (see @sec-optimization). When using `method='BFGS'`, the result includes an approximate inverse Hessian (`result.hess_inv`), whose diagonal entries are the asymptotic variances of the parameter estimates. Taking square roots gives the standard errors.
 
 ```{python}
 # MLE for the normal distribution
@@ -191,9 +198,11 @@ print(f"scipy fit: mu = {mu_fit:.4f}, sigma = {sigma_fit:.4f}")
 ```
 ```{python}
 # MLE for the exponential distribution
-# For Exp(lambda) with density lambda * exp(-lambda * x), the MLE is lambda_hat = 1 / x_bar
+# For Exp(lambda) with density lambda * exp(-lambda * x), the MLE is 
+# lambda_hat = 1 / x_bar
 true_lambda = 2.0
-data_exp = rng.exponential(scale=1/true_lambda, size=150)  # rng.exponential(scale, size) draws from an exponential distribution
+# rng.exponential(scale, size) draws from an exponential distribution
+data_exp = rng.exponential(scale=1/true_lambda, size=150)  
 
 lambda_hat = 1 / np.mean(data_exp)
 print(f"true lambda = {true_lambda}, MLE lambda = {lambda_hat:.4f}")
@@ -205,7 +214,8 @@ from scipy import optimize
 
 true_shape = 2.5
 true_scale = 1.3
-data_gamma = rng.gamma(shape=true_shape, scale=true_scale, size=300)  # rng.gamma(shape, scale, size) draws from a gamma distribution
+# rng.gamma(shape, scale, size) draws from a gamma distribution
+data_gamma = rng.gamma(shape=true_shape, scale=true_scale, size=300)  
 
 def neg_log_likelihood_gamma(params):
     a, scale = params
@@ -213,14 +223,21 @@ def neg_log_likelihood_gamma(params):
         return np.inf  # np.inf represents positive infinity
     return -np.sum(stats.gamma.logpdf(data_gamma, a=a, scale=scale))
 
-result = optimize.minimize(neg_log_likelihood_gamma, x0=[1.0, 1.0], method='Nelder-Mead')  # Nelder-Mead is a gradient-free optimization method
+# BFGS provides an approximate inverse Hessian, from which we get standard errors
+result = optimize.minimize(neg_log_likelihood_gamma, x0=[1.0, 1.0], method='BFGS')
 a_hat, scale_hat = result.x
 print(f"true shape = {true_shape}, MLE shape = {a_hat:.4f}")
 print(f"true scale = {true_scale}, MLE scale = {scale_hat:.4f}")
+
+# standard errors from the inverse Hessian (asymptotic covariance matrix)
+se = np.sqrt(np.diag(result.hess_inv))
+print(f"std error of shape = {se[0]:.4f}")
+print(f"std error of scale = {se[1]:.4f}")
 ```
 ```{python}
 # compare with scipy's built-in fit
-a_fit, loc_fit, scale_fit = stats.gamma.fit(data_gamma, floc=0)  # floc=0 fixes the location parameter to 0
+# floc=0 fixes the location parameter to 0
+a_fit, loc_fit, scale_fit = stats.gamma.fit(data_gamma, floc=0)  
 print(f"scipy fit: shape = {a_fit:.4f}, scale = {scale_fit:.4f}")
 ```
 ```{python}
@@ -239,30 +256,101 @@ plt.title("Gamma distribution: data and MLE fit")
 plt.legend()
 plt.show()
 ```
+The following plot shows the log-likelihood as a function of the two parameters shape and scale (for the gamma distribution fitted above). To evaluate a function on a 2d grid of parameter values, we use `np.meshgrid`: given two 1d arrays `shape_grid` and `scale_grid` of lengths $m$ and $n$, `np.meshgrid(shape_grid, scale_grid)` returns two $n \times m$ arrays `SHAPE` and `SCALE` such that `(SHAPE[i,j], SCALE[i,j])` is the point `(shape_grid[j], scale_grid[i])`. This allows evaluating the log-likelihood at every grid point with a simple loop (or vectorized). We store the results in an array created by `np.zeros_like(SHAPE)`, which returns an array of zeros with the same shape as `SHAPE`. The result is visualized with `plt.contourf`, which draws filled contour lines.
+
 ```{python}
-# log-likelihood surface for N(mu, sigma^2)
-data = rng.normal(loc=3.0, scale=1.5, size=200)
+# log-likelihood surface for the Gamma distribution
+shape_grid = np.linspace(1.5, 4.0, 100)
+scale_grid = np.linspace(0.7, 2.0, 100)
+SHAPE, SCALE = np.meshgrid(shape_grid, scale_grid)
 
-mu_grid = np.linspace(2.0, 4.0, 100)
-sigma_grid = np.linspace(1.0, 2.0, 100)
-MU, SIGMA = np.meshgrid(mu_grid, sigma_grid)  # np.meshgrid creates 2D coordinate grids from 1D arrays
+# option 1: explicit loop (clear, but slow for large grids)
+log_lik = np.zeros_like(SHAPE)
+for i in range(len(scale_grid)):
+    for j in range(len(shape_grid)):
+        log_lik[i, j] = np.sum(stats.gamma.logpdf(data_gamma, a=SHAPE[i, j], scale=SCALE[i, j]))
 
-log_lik = np.zeros_like(MU)  # np.zeros_like creates an array of zeros with the same shape
-for i in range(len(sigma_grid)):
-    for j in range(len(mu_grid)):
-        log_lik[i, j] = np.sum(stats.norm.logpdf(data, loc=MU[i, j], scale=SIGMA[i, j]))
+# option 2: vectorized via broadcasting (much faster)
+# data_gamma has shape (300,), SHAPE and SCALE have shape (100, 100)
+# by reshaping data to (300, 1, 1), logpdf broadcasts to shape (300, 100, 100)
+log_lik = np.sum(stats.gamma.logpdf(data_gamma[:, None, None], a=SHAPE[None, :, :], scale=SCALE[None, :, :]), axis=0)
 
 plt.figure(figsize=(6, 5))
-plt.contourf(MU, SIGMA, log_lik, levels=30, cmap="viridis")
+plt.contourf(SHAPE, SCALE, log_lik, levels=30, cmap="viridis")
 plt.colorbar(label="log-likelihood")
-plt.xlabel("mu")
-plt.ylabel("sigma")
-plt.title("Log-likelihood surface for N(mu, sigma^2)")
-mu_mle = np.mean(data)
-sigma_mle = np.std(data)
-plt.plot(mu_mle, sigma_mle, "r*", markersize=15, label="MLE")
+plt.xlabel("shape")
+plt.ylabel("scale")
+plt.title("Log-likelihood surface for Gamma(shape, scale)")
+# "r*" is a format string: "r" = red color, "*" = star marker
+plt.plot(a_hat, scale_hat, "r*", markersize=15, label="MLE")
 plt.legend()
 plt.show()
 ```
 
 Plotting the log-likelihood surface helps build geometric intuition: the MLE is the peak of the surface. For well-behaved models, the surface is concave near the maximum, and the curvature encodes the precision of the estimate (related to the Fisher information).
+
+## Linear regression {#sec-linear-regression}
+
+Linear regression fits a linear model $y = \beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p + \varepsilon$ to data, where $\varepsilon$ is the error term. The goal is to find the coefficients $\beta_0, \dots, \beta_p$ that minimize the sum of squared residuals $\sum_i (y_i - \hat{y}_i)^2$. This is called **ordinary least squares** (OLS).
+
+* `stats.linregress(x, y)`: simple linear regression ($y = \beta_0 + \beta_1 x$). Returns a named tuple with `slope`, `intercept`, `rvalue` (correlation coefficient), `pvalue` (for the null hypothesis that the slope is zero), and `stderr` (standard error of the slope).
+* `np.polyfit(x, y, deg)`: fit a polynomial of degree `deg` to the data. For `deg=1`, this gives the same result as linear regression.
+* `np.polyval(coeffs, x)`: evaluate a polynomial with the given coefficients at `x`.
+
+```{python}
+# simple linear regression
+rng = np.random.default_rng(42)
+x = np.linspace(0, 10, 50)
+y = 2.5 * x + 1.0 + rng.normal(scale=2.0, size=50)
+
+result = stats.linregress(x, y)
+print(f"slope = {result.slope:.4f}")
+print(f"intercept = {result.intercept:.4f}")
+print(f"R-squared = {result.rvalue**2:.4f}")
+print(f"p-value = {result.pvalue:.6f}")
+print(f"std error of slope = {result.stderr:.4f}")
+```
+```{python}
+# visualizing the fit
+plt.figure(figsize=(6, 4))
+plt.scatter(x, y, s=20, label="data")
+plt.plot(x, result.slope * x + result.intercept, color="red",
+    label="linear fit")
+plt.xlabel("x")
+plt.ylabel("y")
+title = (f"y = {result.slope:.2f}x + {result.intercept:.2f}"
+         f" (R² = {result.rvalue**2:.2f})")
+plt.title(title)
+plt.legend()
+plt.show()
+```
+
+For multiple linear regression ($p > 1$ predictors), `scipy.stats.linregress` does not suffice. Instead, we can solve the normal equations directly using `np.linalg.lstsq`, which computes the least squares solution of an overdetermined system.
+
+* `np.linalg.lstsq(A, b, rcond=None)`: solve $A \beta \approx b$ in the least squares sense. Returns a tuple; the first entry is the coefficient vector $\beta$.
+
+```{python}
+# multiple linear regression: y = beta0 + beta1 * x1 + beta2 * x2
+rng = np.random.default_rng(7)
+n = 100
+x1 = rng.normal(size=n)
+x2 = rng.normal(size=n)
+y = 3.0 + 1.5 * x1 - 2.0 * x2 + rng.normal(scale=0.5, size=n)
+
+# design matrix with intercept column
+A = np.column_stack([np.ones(n), x1, x2])
+beta, residuals, rank, sv = np.linalg.lstsq(A, y, rcond=None)
+print(f"intercept = {beta[0]:.4f} (true: 3.0)")
+print(f"beta1 = {beta[1]:.4f} (true: 1.5)")
+print(f"beta2 = {beta[2]:.4f} (true: -2.0)")
+```
+```{python}
+# R-squared for the multiple regression
+y_pred = A @ beta
+ss_res = np.sum((y - y_pred)**2)
+ss_tot = np.sum((y - np.mean(y))**2)
+r_squared = 1 - ss_res / ss_tot
+print(f"R-squared = {r_squared:.4f}")
+```
+
+The R-squared value ($R^2 = 1 - \text{SS}_{\text{res}} / \text{SS}_{\text{tot}}$) measures the fraction of variance in $y$ explained by the model. A value close to 1 indicates a good fit.

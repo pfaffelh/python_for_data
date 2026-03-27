@@ -155,7 +155,7 @@ rng = np.random.default_rng(0)
 
 A line plot connects data points with straight line segments. It is the standard chart for **time series** and continuous functions.
 
-* `plt.plot(x, y, label=...)`: line plot.
+* `plt.plot(x, y, fmt, label=..., linestyle=...)`: line plot. The optional `fmt` is a shorthand format string combining color, marker, and line style, e.g. `"r*"` (red stars), `"b--"` (blue dashed), `"go-"` (green circles with solid line). Colors: `"r"` red, `"b"` blue, `"g"` green, `"k"` black. Markers: `"o"` circle, `"*"` star, `"s"` square, `"^"` triangle. The `linestyle` (or `ls`) option controls the line appearance: `"-"` solid (default), `"--"` dashed, `"-."` dash-dot, `":"` dotted.
 
 ```{python}
 x = np.linspace(0, 2 * np.pi, 100)
@@ -308,7 +308,7 @@ plt.show()
 
 ## Box plots (`boxplot`) {#sec-box-plot}
 
-A box plot summarizes the distribution of a dataset by showing the median, quartiles, and outliers. It is useful for comparing distributions across groups.
+A box plot summarizes the distribution of a dataset. The **box** spans from the first quartile (Q1, 25th percentile) to the third quartile (Q3, 75th percentile), so it contains the middle 50% of the data. The line inside the box marks the **median** (Q2, 50th percentile). The **whiskers** extend from the box to the most extreme data points that are still within 1.5 times the interquartile range (IQR = Q3 − Q1) from the box edges. Points beyond the whiskers are shown as individual dots and considered **outliers**. Box plots are especially useful for comparing distributions across groups.
 
 * `plt.boxplot(data_list, tick_labels=...)`: box plot. Pass a list of arrays to compare multiple groups, and `tick_labels` to label them.
 
@@ -364,9 +364,10 @@ plt.show()
 
 ## Heatmaps (`imshow`) {#sec-heatmap}
 
-A heatmap displays a matrix of values as a grid of colored cells. It is useful for visualizing correlation matrices, confusion matrices, or any two-dimensional data where patterns emerge from color.
+A heatmap displays a matrix of values as a grid of colored cells. It is useful for visualizing correlation matrices, confusion matrices, or any two-dimensional data where patterns emerge from color. A related function is `plt.contourf`, which draws filled contour lines for data given on a 2d grid (see @sec-mle for an example).
 
 * `plt.imshow(matrix, cmap=...)`: display a matrix as a colored grid. Use `vmin`/`vmax` to fix the color range. Common colormaps: `"viridis"` (default), `"coolwarm"` (diverging, blue to red), `"hot"`, `"gray"`, `"Blues"`, `"RdYlGn"`.
+* `plt.contourf(X, Y, Z, levels=..., cmap=...)`: draw filled contour lines for values `Z` on a grid defined by `X` and `Y`. Use `levels` to control the number of contour levels.
 * `plt.colorbar(label=...)`: add a color bar to the current plot, with an optional label.
 * `np.corrcoef(data, rowvar=False)`: compute the correlation matrix of the columns of `data` (see @sec-descriptive for more on correlation).
 
