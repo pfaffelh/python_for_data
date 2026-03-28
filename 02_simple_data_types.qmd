@@ -25,6 +25,7 @@ Every **variable** or other object in python has a **type**. This is the kind of
 - In fact, `type(x)` is already the first example of a built-in-function. The function `type` takes a single value as input, and returns its type. We will encounter various more functions already in this section. We will learn more about functions (built-in and self-written) in  @sec-functions.
 - There are conversions between some types. For example, `"0"` is a string, but `int("0")` (again a function, taking a single value, and returning its integer value) the integer `0`. Conversely, `str(0)` is the string `"0"`. We will have more examples below.
 - You can optionally annotate variables with their type using **type hints**, e.g. `x: int = 5`. Python does not enforce these annotations, but they help readability. See @sec-type-hints for more details.
+- We will use `print()` throughout to display output. It takes one or more values and prints them to the screen.
 
 ```{python}
 x: int = 5
@@ -216,7 +217,7 @@ For strings, there are various build-in functions. We mention some of them. Here
 * `str.strip(s)`: Deletes spaces in the front and back. 
 * `len(s)`: gives the length of the string. 
 * `str.replace(s, "x", "y")`: Replaces each occurrence of `"x"` in `s` by `"y"`.
-* `str.split(s, "x")`: Splits `s` at each occurrence of `"x". The result is a `list`, which we will encounter in @sec-list.
+* `str.split(s, "x")`: Splits `s` at each occurrence of `"x"`. The result is a `list`, which we will encounter in @sec-list.
 * `", ".join(list)`: Joins the elements of a list into a single string, separated by the given string.
 * `str.lower(s)`: Return the same string, but all letters are lowercase. 
 * `str.upper(s)`: Return the same string, but all letters are uppercase. 
@@ -259,6 +260,8 @@ When analysing data, it is common to have **missing values**. These usually come
 x = None
 print(x)
 ```
+The `is` operator checks whether two variables refer to the same object in memory, as opposed to `==` which checks whether they have the same value. For `None`, always use `is` rather than `==`.
+
 ```{python}
 print("(x is None) =", x is None)
 ```
@@ -293,57 +296,29 @@ Print `"Hello, world!"` including the quotation marks in the output.
 ```
 
 **Exercise 4**
-Do newlines and tabs `\n`, `\t` count in `str.isspace()`? How do numbers interact with `str.islower()`? If `s` is the string of a number, what is `s.lower()`? Play around a bit with these functions and edge cases you might see in data. Then write a function `classify_char(c)` that takes a single character and returns `"letter"`, `"digit"`, `"whitespace"`, or `"other"`.
+If you are on Windows, it is annoying that file paths come with `\`, which is interpreted as the start of a special character. Find out two ways how to give the string of the file path `C:\Users\Alice\Documents\file.txt`.
 
 ```{python}
 # Exercise 4
 ```
 
 **Exercise 5**
-If you are on Windows, it is annoying that file paths come with `\`, which is interpreted as the start of a special character. Find out two ways how to give the string of the file path `C:\Users\Alice\Documents\file.txt`.
+What is `bool(None)`? What is `int(None)`?
 
 ```{python}
 # Exercise 5
 ```
 
 **Exercise 6**
-What is `bool(None)`? What is `int(None)`?
+In tables, we often have `""` for a missing value. Is this the same as `None`?
 
 ```{python}
 # Exercise 6
 ```
 
 **Exercise 7**
-In tables, we often have `""` for a missing value. Is this the same as `None`?
-
-```{python}
-# Exercise 7
-```
-
-**Exercise 8**
-Write a function `is_palindrome(s)` that returns `True` if the string `s` reads the same forwards and backwards (e.g. `"racecar"`), and `False` otherwise. Ignore upper/lower case.
-
-```{python}
-# Exercise 8
-```
-
-**Exercise 9**
 Given a float `x`, write a one-liner that rounds `x` to 3 decimal places without using `round`. (Hint: use arithmetic with `int()`.)
 
 ```{python}
-# Exercise 9
-```
-
-**Exercise 10**
-IEEE 754 floating point numbers satisfy `0.1 + 0.2 != 0.3`. Write a function `approx_equal(x, y, tol=1e-9)` that returns `True` if `|x - y| < tol`. Then use it to verify that `0.1 + 0.2` is approximately `0.3`. Discuss: is a relative or absolute tolerance more appropriate in general?
-
-```{python}
-# Exercise 10
-```
-
-**Exercise 11**
-Write a function `caesar(s, k)` that shifts every letter in the string `s` by `k` positions in the alphabet (wrapping around from `z` to `a`). Non-letter characters should remain unchanged. (Hint: use `ord()` and `chr()`.)
-
-```{python}
-# Exercise 11
+# Exercise 7
 ```

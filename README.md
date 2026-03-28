@@ -34,3 +34,17 @@ Maybe add?
 PCA / dimensionality reduction — mentioned in the index as a goal but not covered yet. A natural fit for chapter 09 given you already have np.linalg and linear regression.
 Reshaping data (pivot, melt, pivot_table) — very common in practice, missing from chapter 07.
 Window/rolling functions in pandas (moving averages, cumulative sums) — useful for time series in the example project.
+
+
+In str.split() there is a typo
+
+Chapter 1, Ex 4 needs controlflow which is not there yet. -> easy exercise in chapter 03
+Ex 8 for reversing a string does not work, since it needs lists. 
+Ex 10 and 11 do not work since the students need to write out a function, which appears later
+Ex 11: Explain chr() and ord() in the hint.
+
+Chapter 2, Ex 1 is too hard in order to count as easy
+
+Ex 8: The FizzBuzz example does not work with match. Use a different examplt!
+
+Ex 9: The error needs to be way more subtle!

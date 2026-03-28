@@ -91,7 +91,8 @@ df_sorted = df.sort_values("income", ascending=False)
 print(df_sorted)
 ```
 ```{python}
-# groupby
+# groupby — numeric_only=True restricts the computation to numeric columns,
+# ignoring string columns (which cannot be averaged)
 grouped = df.groupby("passed").mean(numeric_only=True)
 print(grouped)
 ```
@@ -453,6 +454,7 @@ df[["first_name", "last_name", "birth_year", "birth_month"]].head()
 # compute age in completed years
 today = pd.Timestamp.now()
 print(today)
+# Subtracting two datetimes gives a timedelta; .dt.days extracts the number of days from it
 df["age"] = (today - df["date_of_birth"]).dt.days // 365
 df[["first_name", "last_name", "date_of_birth", "age"]].head()
 ```
@@ -528,7 +530,7 @@ Add a column `birth_year` extracted from `date_of_birth`. Then use `df.describe(
 ```
 
 **Exercise 3**
-Write a function `filter_generation(df, gen_name)` that takes the DataFrame and a generation name (e.g., `"Millennial"`) and returns only the rows belonging to that generation. Use it to display all millennials. How many are there?
+Using the `generations` dictionary from Exercise 6, write a function `get_generation(year)` that returns the generation name (or `"Other"`). Add a column `generation` to `df` using this function. Then write a function `filter_generation(df, gen_name)` that returns only the rows belonging to a given generation. Use it to display all millennials. How many are there?
 
 ```{python}
 # Exercise 3

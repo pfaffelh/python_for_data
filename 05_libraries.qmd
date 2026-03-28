@@ -222,17 +222,21 @@ For the kind of projects we envision, we often must access files, which happens 
 * `os.path.exists(file)`: returns true or false if the file exists or not.
 * `os.walk(folder)`: gives the triple `(root, dirs, files)`, where `root` is the absolute path of the folder, `dirs` are all direct subfolders in that folder, and `files` are the files in that folder. If folder has subfolders, it returns a list of triples for all subfolders.
 
+The string method `.endswith(suffix)` checks whether a string ends with the given suffix and returns `True` or `False`.
+
 ```{python}
 import os
 # Print all ipynb-files in the current folder
 for file in os.listdir("."):
-    if file.endswith(".ipynb"):  # .endswith() checks if a string ends with the given suffix
+    if file.endswith(".ipynb"):
         print(file)
 ```
 
+The built-in function `enumerate(iterable)` returns pairs `(index, element)` for each element, which is useful when you need both the position and the value during iteration.
+
 ```{python}
 # Print folders and files (only first 5 entries of os.walk)
-for i, (root, dirs, files) in enumerate(os.walk(".")):  # enumerate() gives pairs (index, element) for iteration
+for i, (root, dirs, files) in enumerate(os.walk(".")):
     if i >= 5:
         print("... (truncated)")
         break
@@ -281,34 +285,20 @@ Write a function `days_until_birthday(birthday_str)` that takes a date string li
 ```
 
 **Exercise 3**
-Write a function `extract_emails(text)` that uses a regular expression to find all email addresses in a string. Test it on a string containing several email addresses mixed with other text.
+Write a function `extract_emails(text)` that uses a regular expression to find all email addresses in a string. Test it on `"Contact us at info@example.com or support@example.org, but not at wrong-email."`. (Hint: a simple pattern like `r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"` is a good starting point.)
 
 ```{python}
 # Exercise 3
 ```
 
 **Exercise 4**
-Apparently, `"muller@gmail.com; wrong-email; muller@yahoo.com"` only contains two valid email addresses. Use AI and `re` in order to produce and understand code, which separates the correct from the incorrect email addresses.
+Create some `txt`-files in the current working directory. Then, write a Python program that iterates through all such files, creates `all.txt`, where the content of all your `txt`-files is appended. If `all.txt` already exists, the program should give a warning that this file is overridden. (Hint: you can generate fake text files using the `faker` library, e.g. `from faker import Faker; fake = Faker(); fake.text()`.)
 
 ```{python}
 # Exercise 4
 ```
 
 **Exercise 5**
-Instead of `os.walk()`, we can also use the `pathlib` library. Find out how the equivalent of `os.walk()` works when using `pathlib`.
-
-```{python}
-# Exercise 5
-```
-
-**Exercise 6**
-Create some `txt`-files in the current working directory. Then, write a Pathon3 program that iterates through all such files, creates `all.txt`, where the content of all you `txt`files is appended. If `all.txt` already exists, the program should give a warning that this file is overridden.
-
-```{python}
-# Exercise 6
-```
-
-**Exercise 7**
 Below are some sales dates and quantities.
 
 * Write a function, with `start` and `end` as `datetime` as input, which gives you the total amount of sales during this time. (You will need to convert `date` as given in the data to `datetime`. Note that `<`, `>`, `<=`, `>=`, `==` work for `datetime` as expected.)
@@ -325,29 +315,22 @@ data = [
 ```
 
 ```{python}
-# Exercise 7
+# Exercise 5
 ```
 
-**Exercise 8**
-Using only the `math` module, write a function `taylor_sin(x, n)` that computes $\sin(x)$ using the first `n` terms of the Taylor series $\sin(x) = \sum_{k=0}^{n-1} \frac{(-1)^k x^{2k+1}}{(2k+1)!}$. Compare the result with `math.sin(x)`.
-
-```{python}
-# Exercise 8
-```
-
-**Exercise 9**
+**Exercise 6**
 Write a function `find_large_files(directory, min_size_mb=10)` that uses `os.walk` to find all files in `directory` (and subdirectories) that are larger than `min_size_mb` megabytes. Return a list of `(path, size_mb)` tuples, sorted by size descending.
 
 ```{python}
-# Exercise 9
+# Exercise 6
 ```
 
-**Exercise 10**
+**Exercise 7**
 A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.)
 Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year.
 * Compute the account balance _as usual_, i.e. keeping sub-cents at all days.
 * Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day.
 
 ```{python}
-# Exercise 10
+# Exercise 7
 ```

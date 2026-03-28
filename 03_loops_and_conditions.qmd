@@ -309,7 +309,7 @@ Here, `"hello.txt"` is closed at the end of the `with` block. The second argumen
 ## Exercises
 
 **Exercise 1**
-Write a version of the code for finding the gcd by running (not from 1 to `a`, but) from `a` to `1`, and see if the corresponding number divides both, `a` and `b`. Apparently, you can break the `for`-loop when you found the first such number. Implement that breaking of the `for`-loop.
+Do newlines and tabs `\n`, `\t` count in `str.isspace()`? How do numbers interact with `str.islower()`? If `s` is the string of a number, what is `s.lower()`? Play around a bit with these functions and edge cases you might see in data. Then write a function `classify_char(c)` that takes a single character and returns `"letter"`, `"digit"`, `"whitespace"`, or `"other"`.
 
 ```{python}
 # Exercise 1
@@ -337,44 +337,35 @@ Find the largest $n$ such that $\sum_{i=1}^n i < 1000$.
 ```
 
 **Exercise 5**
-Define a function computing the sum of the first `n` integers.
+Write a function (without using imports) which computes the sum of all digits (cross sum) of an int.
 
 ```{python}
 # Exercise 5
 ```
 
 **Exercise 6**
-Write a function (without using imports) which computes the sum of all digits (cross sum) of an int.
+Can you code the `FizzBuzz` example in a single line of code? So, dependent on some `n`, give one line of code, which gives `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
 
 ```{python}
 # Exercise 6
 ```
 
 **Exercise 7**
-Can you code the `FizzBuzz` example in a single line of code? So, dependent on some `n`, give one line of code, which gives `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
+Python (since version 3.10) comes with `match`, which is useful for branching on specific values. Write a function `season(month)` that takes a month number (1–12) and returns the season (`"Winter"`, `"Spring"`, `"Summer"`, `"Fall"`). Use `match` with grouped patterns (e.g. `case 3 | 4 | 5:`) and a wildcard `_` for invalid inputs. Find out how `match` differs from a chain of `elif`s.
 
 ```{python}
 # Exercise 7
 ```
 
 **Exercise 8**
-Multiple `elif`s in a row are not very elegant. Python (since version 3.10) comes with `match`. Find out how you can change the `FizzBuzz` example of the main text by using `match` instead of `elif`s.
-
-```{python}
-# Exercise 8
-```
-
-**Exercise 9**
-The following function is supposed to compute the average of a list of numbers, but it contains a subtle bug. Find and fix it. (Hint: try it with a few inputs and compare the result to what you expect. Debugging with `print` statements or the built-in debugger can help — see @sec-debugging.)
+The following function is supposed to compute the average of a list of numbers, but it contains a subtle bug. Find and fix it. (Hint: try it with a few inputs of different lengths and compare the result to what you expect. Debugging with `print` statements or the built-in debugger can help — see @sec-debugging.)
 
 ```{python}
 def average(numbers):
     total = 0
-    count = 0
-    for n in numbers:
-        total += n
-        count += 1
-    return total // count
+    for i in range(1, len(numbers)):
+        total += numbers[i]
+    return total / len(numbers)
 
 print(average([10, 20, 30]))    # expected: 20.0
 print(average([1, 2, 3, 4]))    # expected: 2.5
@@ -382,32 +373,39 @@ print(average([7, 8]))          # expected: 7.5
 ```
 
 ```{python}
+# Exercise 8
+```
+
+**Exercise 9**
+Write a function `collatz(n)` that returns the number of steps it takes for the Collatz sequence starting at `n` to reach `1`. (The rule is: if `n` is even, divide by 2; if odd, compute `3n+1`.)
+
+```{python}
 # Exercise 9
 ```
 
 **Exercise 10**
-Write a function `collatz(n)` that returns the number of steps it takes for the Collatz sequence starting at `n` to reach `1`. (The rule is: if `n` is even, divide by 2; if odd, compute `3n+1`.)
+Write a function `newton_sqrt(a, tol=1e-10)` that computes $\sqrt{a}$ using Newton's method, i.e. the iteration $x_{k+1} = \frac{1}{2}\left(x_k + \frac{a}{x_k}\right)$, starting from $x_0 = a$, and stopping when $|x_{k+1} - x_k| < \text{tol}$.
 
 ```{python}
 # Exercise 10
 ```
 
 **Exercise 11**
-Write a function `newton_sqrt(a, tol=1e-10)` that computes $\sqrt{a}$ using Newton's method, i.e. the iteration $x_{k+1} = \frac{1}{2}\left(x_k + \frac{a}{x_k}\right)$, starting from $x_0 = a$, and stopping when $|x_{k+1} - x_k| < \text{tol}$.
+Write a function `primes_up_to(n)` that returns a list of all prime numbers up to `n`, using the Sieve of Eratosthenes.
 
 ```{python}
 # Exercise 11
 ```
 
 **Exercise 12**
-Write a function `primes_up_to(n)` that returns a list of all prime numbers up to `n`, using the Sieve of Eratosthenes.
+Write a function `bisection(f, a, b, tol=1e-10)` that finds a root of a continuous function $f$ on $[a, b]$ using the bisection method. The function should raise a `ValueError` if $f(a)$ and $f(b)$ have the same sign. Test it on $f(x) = x^3 - 2$.
 
 ```{python}
 # Exercise 12
 ```
 
 **Exercise 13**
-Write a function `bisection(f, a, b, tol=1e-10)` that finds a root of a continuous function $f$ on $[a, b]$ using the bisection method. Assume $f(a)$ and $f(b)$ have opposite signs. Test it on $f(x) = x^3 - 2$.
+Write a function `caesar(s, k)` that shifts every letter in the string `s` by `k` positions in the alphabet (wrapping around from `z` to `a`). Non-letter characters should remain unchanged. (Hint: `ord(c)` returns the integer code of a character, e.g. `ord("a") == 97`, and `chr(n)` converts an integer back to a character, e.g. `chr(97) == "a"`.)
 
 ```{python}
 # Exercise 13

@@ -274,4 +274,16 @@ Additional exercises were added to chapters 06, 08, and 09 to ensure all concept
 ### Exercise quality and optimizer warnings (2026-03-28)
 
 - Added `#| warning: false` to the BFGS optimization cell in chapter 09 to suppress spurious path/warning output in the rendered PDF.
-- Final exercise counts: ch02: 11, ch03: 13, ch04: 12, ch05: 10, ch06: 10, ch07: 11, ch08: 9, ch09: 12 (total: 88).
+
+### Exercise review and redistribution (2026-03-28)
+
+Exercises were reviewed for prerequisite correctness and quality. Exercises requiring concepts not yet introduced were moved to the appropriate chapter or deleted.
+
+- **Chapter 02** (7 exercises, was 11): Fixed `str.split()` typo (missing closing backtick). Removed: Ex 4 (classify_char, needs control flow) → moved to ch03; Ex 8 (palindrome, needs lists) → moved to ch04; Ex 10 (approx_equal, needs functions) → deleted; Ex 11 (caesar, needs functions+loops) → moved to ch03. Added `chr()`/`ord()` explanation to caesar hint.
+- **Chapter 03** (13 exercises, was 13): Added classify_char as Ex 1 (from ch02). Deleted gcd exercise and "sum of first n integers" exercise. Replaced FizzBuzz `match` exercise with `season(month)` (FizzBuzz doesn't work well with `match`). Made debugging exercise more subtle: replaced obvious `//` vs `/` bug with off-by-one error (`range(1, len(numbers))` skips first element). Added caesar as Ex 13 (from ch02).
+- **Chapter 04** (13 exercises, was 12): Added palindrome as Ex 2 (from ch02, uses string slicing reversal). Fixed missing closing backtick in masking exercise.
+- **Chapter 05** (7 exercises, was 10): Added regex hint to extract_emails exercise. Deleted: separate valid/invalid emails exercise (redundant with updated Ex 3), pathlib exercise, taylor_sin exercise. Added `faker` hint to txt-files exercise.
+- **Chapter 06** (9 exercises, was 10): Deleted: Hilbert matrix/condition number exercise, polynomial fitting exercise, root_scalar exercise, Rosenbrock gradient descent exercise. Added 3 easy exercises on vectorization and broadcasting (Celsius→Fahrenheit, prices×quantities, distance matrix).
+- **Chapter 07** (11 exercises, unchanged count): Exercise 3 now references the `generations` dictionary from Exercise 6 and asks to add a `generation` column before filtering.
+
+Final exercise counts: ch02: 7, ch03: 13, ch04: 13, ch05: 7, ch06: 9, ch07: 11, ch08: 9, ch09: 12 (total: 81).

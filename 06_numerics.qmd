@@ -105,6 +105,7 @@ Arithmetic operations on arrays are **elementwise**. This is different from matr
 * `x * y`: elementwise multiplication (not matrix multiplication!).
 * `x / y`: elementwise division.
 * `x ** n`: elementwise power.
+* `np.abs(x)`: elementwise absolute value. Also `np.sqrt(x)`, `np.exp(x)`, `np.log(x)`, `np.sin(x)`, etc.
 
 ```{python}
 x = np.array([1.0, -2.0, 4.0])
@@ -191,7 +192,6 @@ print(X + b)
 ```{python}
 # pairwise operations via broadcasting
 x = np.array([0.0, 1.5, 3.0, 5.0])
-# np.abs() computes the absolute value elementwise
 D = np.abs(x[:, None] - x[None, :])
 print("distance matrix =")
 print(D)
@@ -203,9 +203,7 @@ The expression `x[:, None]` turns `x` into a column vector (shape `(4,1)`), and 
 
 NumPy provides a comprehensive linear algebra module. Here, `x` and `y` are vectors, `A` and `B` are matrices.
 
-* `x @ y` or `np.dot(x, y)`: inner product $\langle x, y \rangle = \sum_j x_j y_j$.
-* `A @ x`: matrix-vector product.
-* `A @ B`: matrix-matrix product.
+* `A @ B` or `np.dot(A, B)`: matrix multiplication. For two vectors, `x @ y` computes the inner product $\langle x, y \rangle = \sum_j x_j y_j$. For a matrix and a vector, `A @ x` is the matrix-vector product.
 * `np.linalg.norm(x)`: Euclidean norm $\|x\|_2$.
 * `np.linalg.solve(A, b)`: solve $Ax = b$. Preferred over computing $A^{-1}b$.
 * `np.linalg.inv(A)`: matrix inverse. Usually `solve` is preferred.
@@ -218,7 +216,8 @@ x = np.array([1.0, -2.0, 2.0])
 y = np.array([3.0, 1.0, -1.0])
 print("<x,y> =", x @ y)
 print("||x||_2 =", np.linalg.norm(x))
-# np.sum() and np.max() are aggregation functions, explained below
+# np.abs(), np.sum(), np.max() are elementwise/aggregation functions
+# described in detail in the aggregation section below
 print("||x||_1 =", np.sum(np.abs(x)))
 print("||x||_inf =", np.max(np.abs(x)))
 ```
@@ -248,7 +247,7 @@ One often sees formulas like $x = A^{-1}b$, but numerically it is usually better
 
 NumPy provides functions for aggregating arrays. When applied to 2d arrays, the `axis` parameter controls the direction.
 
-* `np.sum(x)`, `np.mean(x)`, `np.var(x)`, `np.std(x)`: sum, mean, variance, standard deviation.
+* `np.sum(x)`, `np.mean(x)`, `np.median(x)`, `np.var(x)`, `np.std(x)`: sum, mean, median, variance, standard deviation.
 * `np.min(x)`, `np.max(x)`: minimum, maximum.
 * `np.cumsum(x)`: cumulative sum.
 * `axis=0`: aggregate down the rows (result: one entry per column).
@@ -395,57 +394,51 @@ Why is it better to use `np.linalg.solve` rather than `np.linalg.inv`? Demonstra
 ```
 
 **Exercise 3**
-Create a $5 \times 5$ matrix $A$ with $A_{ij} = \frac{1}{i+j+1}$ (the Hilbert matrix). Compute its condition number. Then solve $Ax = b$ for $b = (1,1,1,1,1)^\top$ and verify the result by computing $\|Ax - b\|$.
+Write a function `power_method(A, num_iter=100)` that approximates the largest eigenvalue of a matrix $A$ using the power iteration: start with a random vector $v$, repeatedly compute $v \leftarrow Av / \|Av\|$, and return $v^\top A v$. Compare the result with `np.linalg.eig`.
 
 ```{python}
 # Exercise 3
 ```
 
 **Exercise 4**
-Write a function `power_method(A, num_iter=100)` that approximates the largest eigenvalue of a matrix $A$ using the power iteration: start with a random vector $v$, repeatedly compute $v \leftarrow Av / \|Av\|$, and return $v^\top A v$. Compare the result with `np.linalg.eig`.
+Create a 1d array of 20 equally spaced values between 0 and $2\pi$ using `np.linspace`. Compute $\sin(x)$ and $\cos(x)$ for these values (vectorized, no loop). Then use boolean masking to select only those entries where $\sin(x) > 0.5$.
 
 ```{python}
 # Exercise 4
 ```
 
 **Exercise 5**
-Generate $n = 500$ points $(x_i, y_i)$ from the model $y = \sin(x) + \varepsilon$ where $x \in [0, 2\pi]$ and $\varepsilon \sim \mathcal{N}(0, 0.3^2)$. Fit polynomial models of degrees 3, 5, 10, 20 using the normal equation. Plot all fits and discuss overfitting.
+Use `np.random.default_rng(seed=0)` to generate a $100 \times 4$ matrix of standard normal random numbers. Compute the mean and standard deviation of each column using the `axis` parameter. Then standardize the matrix (subtract column means, divide by column standard deviations) and verify that the result has column means $\approx 0$ and column standard deviations $\approx 1$.
 
 ```{python}
 # Exercise 5
 ```
 
 **Exercise 6**
-Create a 1d array of 20 equally spaced values between 0 and $2\pi$ using `np.linspace`. Compute $\sin(x)$ and $\cos(x)$ for these values (vectorized, no loop). Then use boolean masking to select only those entries where $\sin(x) > 0.5$.
+Broadcasting exercise: create a column vector $a = (1, 2, 3, 4)^\top$ and a row vector $b = (10, 20, 30)$. Compute their outer product using broadcasting (i.e., `a * b` with appropriate shapes). Verify the result by comparing with `np.outer(a, b)`.
 
 ```{python}
 # Exercise 6
 ```
 
 **Exercise 7**
-Use `np.random.default_rng(seed=0)` to generate a $100 \times 4$ matrix of standard normal random numbers. Compute the mean and standard deviation of each column using the `axis` parameter. Then standardize the matrix (subtract column means, divide by column standard deviations) and verify that the result has column means $\approx 0$ and column standard deviations $\approx 1$.
+Given the array `temps = np.array([15.2, 18.5, 22.1, 25.3, 19.8])` of temperatures in Celsius, convert all values to Fahrenheit using the formula $F = C \cdot 9/5 + 32$ — without using a loop. Then find all temperatures above $70°F$ using boolean masking.
 
 ```{python}
 # Exercise 7
 ```
 
 **Exercise 8**
-Broadcasting exercise: create a column vector $a = (1, 2, 3, 4)^\top$ and a row vector $b = (10, 20, 30)$. Compute their outer product using broadcasting (i.e., `a * b` with appropriate shapes). Verify the result by comparing with `np.outer(a, b)`.
+Create two arrays: `prices = np.array([10.0, 20.0, 30.0])` and `quantities = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])`, where each row represents a customer's order. Compute the total cost per customer using broadcasting and `np.sum` with the `axis` parameter.
 
 ```{python}
 # Exercise 8
 ```
 
 **Exercise 9**
-Use `scipy.optimize.root_scalar` to find all three roots of $f(x) = x^3 - 6x^2 + 11x - 6$ on the interval $[0, 4]$. Hint: the roots are integers. Plot the function and mark the roots.
+Create a $5 \times 5$ matrix where entry $(i, j)$ contains the value $|i - j|$ (the distance between row and column index). Do this without loops, using broadcasting with `np.arange` and `np.abs`.
 
 ```{python}
 # Exercise 9
 ```
 
-**Exercise 10**
-Implement gradient descent for the function $f(x, y) = (1 - x)^2 + 100(y - x^2)^2$ (Rosenbrock). Experiment with different learning rates and starting points. Plot the trajectory of $(x_k, y_k)$ on top of a contour plot of $f$. Compare with the result of `scipy.optimize.minimize`.
-
-```{python}
-# Exercise 10
-```

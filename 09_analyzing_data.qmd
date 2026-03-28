@@ -333,7 +333,7 @@ plt.show()
 
 For multiple linear regression ($p > 1$ predictors), `scipy.stats.linregress` does not suffice. Instead, we can solve the normal equations directly using `np.linalg.lstsq`, which computes the least squares solution of an overdetermined system.
 
-* `np.linalg.lstsq(A, b, rcond=None)`: solve $A \beta \approx b$ in the least squares sense. Returns a tuple; the first entry is the coefficient vector $\beta$.
+* `np.linalg.lstsq(A, b, rcond=None)`: solve $A \beta \approx b$ in the least squares sense. Returns a tuple of four values: the coefficient vector $\beta$, the sum of squared residuals (empty if `A` has fewer rows than columns), the rank of `A`, and its singular values.
 
 ```{python}
 # multiple linear regression: y = beta0 + beta1 * x1 + beta2 * x2
@@ -376,7 +376,7 @@ Since $C$ is symmetric and positive semi-definite, it has an eigendecomposition 
 To reduce the data from $p$ dimensions to $k$, we project: $X_k = \tilde{X} V_k$, where $V_k = (v_1, \dots, v_k) \in \mathbb{R}^{p \times k}$ contains the first $k$ eigenvectors. The resulting matrix $X_k \in \mathbb{R}^{n \times k}$ gives the coordinates of each observation in the new $k$-dimensional space.
 
 * `np.cov(X, rowvar=False)`: compute $C = \frac{1}{n-1} \tilde{X}^\top \tilde{X}$, where rows of `X` are observations and columns are features. The option `rowvar=False` tells NumPy that rows are observations (the default assumes the opposite).
-* `np.linalg.eigh(C)`: eigendecomposition of a symmetric matrix $C$. Returns eigenvalues (sorted ascending) and eigenvectors as columns.
+* `np.linalg.eigh(C)`: eigendecomposition of a symmetric matrix $C$. This is a variant of `np.linalg.eig` (see @sec-linalg) specialized for symmetric (Hermitian) matrices: it guarantees real eigenvalues and returns them sorted in ascending order. Returns eigenvalues and eigenvectors as columns.
 * Projection: `X_centered @ V[:, :k]` computes $X_k = \tilde{X} V_k$, i.e. projects the data onto the first `k` principal components (after reversing the order so that the largest eigenvalue comes first).
 
 ```{python}
