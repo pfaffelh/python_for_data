@@ -20,7 +20,6 @@ book:
     - 09_analyzing_data.qmd
     - 10_example_project.qmd
     - 11_misc.qmd
-    - 12_exercises.qmd
 number-sections: true
 
 execute:

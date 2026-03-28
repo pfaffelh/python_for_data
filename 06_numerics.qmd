@@ -379,6 +379,73 @@ print("g(root) =", g(result.root))
 
 
 ## Exercises
-Find out about the singular value decomposition in `np.linalg.svd`!
 
-Why is it better to use np.linalg.solve rather than np.linalg.inv?
+**Exercise 1**
+Find out about the singular value decomposition in `np.linalg.svd`. Compute the SVD of the matrix $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{pmatrix}$ and verify that $A = U \Sigma V^\top$ by reconstructing $A$ from the three factors.
+
+```{python}
+# Exercise 1
+```
+
+**Exercise 2**
+Why is it better to use `np.linalg.solve` rather than `np.linalg.inv`? Demonstrate with a concrete example: create a $10 \times 10$ random matrix $A$ and a vector $b$. Solve $Ax = b$ both ways and compare the residuals $\|Ax - b\|$. Then try with a nearly singular matrix (e.g., add a row that is almost a copy of another) and compare again.
+
+```{python}
+# Exercise 2
+```
+
+**Exercise 3**
+Create a $5 \times 5$ matrix $A$ with $A_{ij} = \frac{1}{i+j+1}$ (the Hilbert matrix). Compute its condition number. Then solve $Ax = b$ for $b = (1,1,1,1,1)^\top$ and verify the result by computing $\|Ax - b\|$.
+
+```{python}
+# Exercise 3
+```
+
+**Exercise 4**
+Write a function `power_method(A, num_iter=100)` that approximates the largest eigenvalue of a matrix $A$ using the power iteration: start with a random vector $v$, repeatedly compute $v \leftarrow Av / \|Av\|$, and return $v^\top A v$. Compare the result with `np.linalg.eig`.
+
+```{python}
+# Exercise 4
+```
+
+**Exercise 5**
+Generate $n = 500$ points $(x_i, y_i)$ from the model $y = \sin(x) + \varepsilon$ where $x \in [0, 2\pi]$ and $\varepsilon \sim \mathcal{N}(0, 0.3^2)$. Fit polynomial models of degrees 3, 5, 10, 20 using the normal equation. Plot all fits and discuss overfitting.
+
+```{python}
+# Exercise 5
+```
+
+**Exercise 6**
+Create a 1d array of 20 equally spaced values between 0 and $2\pi$ using `np.linspace`. Compute $\sin(x)$ and $\cos(x)$ for these values (vectorized, no loop). Then use boolean masking to select only those entries where $\sin(x) > 0.5$.
+
+```{python}
+# Exercise 6
+```
+
+**Exercise 7**
+Use `np.random.default_rng(seed=0)` to generate a $100 \times 4$ matrix of standard normal random numbers. Compute the mean and standard deviation of each column using the `axis` parameter. Then standardize the matrix (subtract column means, divide by column standard deviations) and verify that the result has column means $\approx 0$ and column standard deviations $\approx 1$.
+
+```{python}
+# Exercise 7
+```
+
+**Exercise 8**
+Broadcasting exercise: create a column vector $a = (1, 2, 3, 4)^\top$ and a row vector $b = (10, 20, 30)$. Compute their outer product using broadcasting (i.e., `a * b` with appropriate shapes). Verify the result by comparing with `np.outer(a, b)`.
+
+```{python}
+# Exercise 8
+```
+
+**Exercise 9**
+Use `scipy.optimize.root_scalar` to find all three roots of $f(x) = x^3 - 6x^2 + 11x - 6$ on the interval $[0, 4]$. Hint: the roots are integers. Plot the function and mark the roots.
+
+```{python}
+# Exercise 9
+```
+
+**Exercise 10**
+Implement gradient descent for the function $f(x, y) = (1 - x)^2 + 100(y - x^2)^2$ (Rosenbrock). Experiment with different learning rates and starting points. Plot the trajectory of $(x_k, y_k)$ on top of a contour plot of $f$. Compare with the result of `scipy.optimize.minimize`.
+
+```{python}
+# Exercise 10
+```

@@ -309,28 +309,60 @@ Here, `"hello.txt"` is closed at the end of the `with` block. The second argumen
 ## Exercises
 
 **Exercise 1**
-Can you code the `FizzBuzz` example in a single line of code? So, dependent on some `n`, give one line of code, which gives `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
+Write a version of the code for finding the gcd by running (not from 1 to `a`, but) from `a` to `1`, and see if the corresponding number divides both, `a` and `b`. Apparently, you can break the `for`-loop when you found the first such number. Implement that breaking of the `for`-loop.
+
+```{python}
+# Exercise 1
+```
 
 **Exercise 2**
-Multiple `elif`s in a row are not very elegant. Python (since version 3.10) comes with `match`. Find out how you can change the `FizzBuzz` example of the main text by using `match` instead of `elif`s.  
+Compute $\sum_{i=1}^{100} i$ using a `for`-loop.
+
+```{python}
+# Exercise 2
+```
 
 **Exercise 3**
-Write a version of the code for finding the gcd by running (not from 1 to `a`, but) from `a` to `1`, and see if the corresponding number divides both, `a` and `b`. Apparently, you can break the `for`-loop when you found the first such number. Implement that breaking of the `for`-loop. 
+Find the largest $n$ such that $\sum_{i=1}^n i < 1000$.
+
+```{python}
+# Exercise 3
+```
 
 **Exercise 4**
-Compute $\sum_{i=1}^{100} i$ using a `for`-loop. 
-
-**Exercise 5**
-Find the largest $n$ such that $\sum_{i=1}^n i < 1000$.  
-
-**Exercise 6**
 `for`-loops can also become nested. Compute $\sum_{i=1}^{100} \sum_{j=1}^i j$. (Note the double indentation for the inner `for`-loop!)
 
+```{python}
+# Exercise 4
+```
+
+**Exercise 5**
+Define a function computing the sum of the first `n` integers.
+
+```{python}
+# Exercise 5
+```
+
+**Exercise 6**
+Write a function (without using imports) which computes the sum of all digits (cross sum) of an int.
+
+```{python}
+# Exercise 6
+```
+
 **Exercise 7**
-Define a function computing the sum of the first `n` integers. 
+Can you code the `FizzBuzz` example in a single line of code? So, dependent on some `n`, give one line of code, which gives `Fizz` if `n` is a multiple of 3, `Buzz`, if it is a multiple of 5, and `FizzBuzz` if both conditions are satisfied.
+
+```{python}
+# Exercise 7
+```
 
 **Exercise 8**
-Write a function (without using imports) which computes the sum of all digits (cross sum) of an int. 
+Multiple `elif`s in a row are not very elegant. Python (since version 3.10) comes with `match`. Find out how you can change the `FizzBuzz` example of the main text by using `match` instead of `elif`s.
+
+```{python}
+# Exercise 8
+```
 
 **Exercise 9**
 The following function is supposed to compute the average of a list of numbers, but it contains a subtle bug. Find and fix it. (Hint: try it with a few inputs and compare the result to what you expect. Debugging with `print` statements or the built-in debugger can help — see @sec-debugging.)
@@ -347,4 +379,36 @@ def average(numbers):
 print(average([10, 20, 30]))    # expected: 20.0
 print(average([1, 2, 3, 4]))    # expected: 2.5
 print(average([7, 8]))          # expected: 7.5
+```
+
+```{python}
+# Exercise 9
+```
+
+**Exercise 10**
+Write a function `collatz(n)` that returns the number of steps it takes for the Collatz sequence starting at `n` to reach `1`. (The rule is: if `n` is even, divide by 2; if odd, compute `3n+1`.)
+
+```{python}
+# Exercise 10
+```
+
+**Exercise 11**
+Write a function `newton_sqrt(a, tol=1e-10)` that computes $\sqrt{a}$ using Newton's method, i.e. the iteration $x_{k+1} = \frac{1}{2}\left(x_k + \frac{a}{x_k}\right)$, starting from $x_0 = a$, and stopping when $|x_{k+1} - x_k| < \text{tol}$.
+
+```{python}
+# Exercise 11
+```
+
+**Exercise 12**
+Write a function `primes_up_to(n)` that returns a list of all prime numbers up to `n`, using the Sieve of Eratosthenes.
+
+```{python}
+# Exercise 12
+```
+
+**Exercise 13**
+Write a function `bisection(f, a, b, tol=1e-10)` that finds a root of a continuous function $f$ on $[a, b]$ using the bisection method. Assume $f(a)$ and $f(b)$ have opposite signs. Test it on $f(x) = x^3 - 2$.
+
+```{python}
+# Exercise 13
 ```

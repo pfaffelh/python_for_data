@@ -208,6 +208,7 @@ lambda_hat = 1 / np.mean(data_exp)
 print(f"true lambda = {true_lambda}, MLE lambda = {lambda_hat:.4f}")
 ```
 ```{python}
+#| warning: false
 # MLE via numerical optimization (when no closed form exists)
 # Example: Gamma distribution
 from scipy import optimize
@@ -223,8 +224,10 @@ def neg_log_likelihood_gamma(params):
         return np.inf  # np.inf represents positive infinity
     return -np.sum(stats.gamma.logpdf(data_gamma, a=a, scale=scale))
 
-# BFGS provides an approximate inverse Hessian, from which we get standard errors
-result = optimize.minimize(neg_log_likelihood_gamma, x0=[1.0, 1.0], method='BFGS')
+# BFGS provides an approximate inverse Hessian, from which we get 
+# standard errors
+result = optimize.minimize(neg_log_likelihood_gamma, x0=[1.0, 1.0], 
+    method='BFGS')
 a_hat, scale_hat = result.x
 print(f"true shape = {true_shape}, MLE shape = {a_hat:.4f}")
 print(f"true scale = {true_scale}, MLE scale = {scale_hat:.4f}")
@@ -249,7 +252,8 @@ plt.hist(data_gamma, bins=30, density=True, alpha=0.7, label="data")
 plt.plot(x_grid, stats.gamma.pdf(x_grid, a=true_shape, scale=true_scale),
          label=f"true: shape={true_shape}, scale={true_scale}")
 plt.plot(x_grid, stats.gamma.pdf(x_grid, a=a_hat, scale=scale_hat),
-         label=f"MLE: shape={a_hat:.2f}, scale={scale_hat:.2f}", linestyle="--")
+         label=f"MLE: shape={a_hat:.2f}, scale={scale_hat:.2f}", 
+         linestyle="--")
 plt.xlabel("x")
 plt.ylabel("density")
 plt.title("Gamma distribution: data and MLE fit")
@@ -268,12 +272,14 @@ SHAPE, SCALE = np.meshgrid(shape_grid, scale_grid)
 log_lik = np.zeros_like(SHAPE)
 for i in range(len(scale_grid)):
     for j in range(len(shape_grid)):
-        log_lik[i, j] = np.sum(stats.gamma.logpdf(data_gamma, a=SHAPE[i, j], scale=SCALE[i, j]))
+        log_lik[i, j] = np.sum(stats.gamma.logpdf(data_gamma, a=SHAPE[i, j], 
+                scale=SCALE[i, j]))
 
 # option 2: vectorized via broadcasting (much faster)
 # data_gamma has shape (300,), SHAPE and SCALE have shape (100, 100)
 # by reshaping data to (300, 1, 1), logpdf broadcasts to shape (300, 100, 100)
-log_lik = np.sum(stats.gamma.logpdf(data_gamma[:, None, None], a=SHAPE[None, :, :], scale=SCALE[None, :, :]), axis=0)
+log_lik = np.sum(stats.gamma.logpdf(data_gamma[:, None, None], 
+        a=SHAPE[None, :, :], scale=SCALE[None, :, :]), axis=0)
 
 plt.figure(figsize=(6, 5))
 plt.contourf(SHAPE, SCALE, log_lik, levels=30, cmap="viridis")
@@ -354,3 +360,168 @@ print(f"R-squared = {r_squared:.4f}")
 ```
 
 The R-squared value ($R^2 = 1 - \text{SS}_{\text{res}} / \text{SS}_{\text{tot}}$) measures the fraction of variance in $y$ explained by the model. A value close to 1 indicates a good fit.
+
+## Principal component analysis (PCA) {#sec-pca}
+
+**Principal component analysis** (PCA) is a technique for reducing the dimensionality of a dataset while retaining as much variance as possible. Given $n$ observations with $p$ features, PCA finds new orthogonal axes (called **principal components**) along which the data varies most. The first principal component captures the most variance, the second the most remaining variance (orthogonal to the first), and so on. This is useful for visualization (projecting high-dimensional data to 2d), noise reduction, and understanding the structure of a dataset.
+
+Mathematically, let $X \in \mathbb{R}^{n \times p}$ be the data matrix with $n$ observations (rows) and $p$ features (columns). Write the rows as $x_1, \dots, x_n \in \mathbb{R}^p$. First, center the data by subtracting the column-wise mean $\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i$:
+$$\tilde{x}_i = x_i - \bar{x}, \qquad \tilde{X} = \begin{pmatrix} \tilde{x}_1^\top \\ \vdots \\ \tilde{x}_n^\top \end{pmatrix} \in \mathbb{R}^{n \times p}.$$
+The **sample covariance matrix** $C \in \mathbb{R}^{p \times p}$ has entries
+$$C_{jk} = \frac{1}{n-1} \sum_{i=1}^n \tilde{x}_{ij} \, \tilde{x}_{ik}, \qquad j,k = 1, \dots, p,$$
+or in matrix form $C = \frac{1}{n-1} \tilde{X}^\top \tilde{X}$. The diagonal entry $C_{jj}$ is the sample variance of feature $j$, and $C_{jk}$ ($j \neq k$) measures how features $j$ and $k$ co-vary: positive if they tend to increase together, negative if one increases when the other decreases, and zero if they are uncorrelated.
+
+Since $C$ is symmetric and positive semi-definite, it has an eigendecomposition $C = V \Lambda V^\top$, where $V = (v_1, \dots, v_p)$ is an orthogonal matrix of eigenvectors and $\Lambda = \text{diag}(\lambda_1, \dots, \lambda_p)$ contains the eigenvalues $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_p \geq 0$. The eigenvector $v_j$ is the $j$-th **principal component direction**, and $\lambda_j$ is the variance of the data when projected onto $v_j$, i.e. $\lambda_j = \text{Var}(\tilde{X} v_j) = \frac{1}{n-1} \| \tilde{X} v_j \|^2$. The fraction of total variance explained by the first $k$ components is $\sum_{j=1}^k \lambda_j \,/\, \sum_{j=1}^p \lambda_j$.
+
+To reduce the data from $p$ dimensions to $k$, we project: $X_k = \tilde{X} V_k$, where $V_k = (v_1, \dots, v_k) \in \mathbb{R}^{p \times k}$ contains the first $k$ eigenvectors. The resulting matrix $X_k \in \mathbb{R}^{n \times k}$ gives the coordinates of each observation in the new $k$-dimensional space.
+
+* `np.cov(X, rowvar=False)`: compute $C = \frac{1}{n-1} \tilde{X}^\top \tilde{X}$, where rows of `X` are observations and columns are features. The option `rowvar=False` tells NumPy that rows are observations (the default assumes the opposite).
+* `np.linalg.eigh(C)`: eigendecomposition of a symmetric matrix $C$. Returns eigenvalues (sorted ascending) and eigenvectors as columns.
+* Projection: `X_centered @ V[:, :k]` computes $X_k = \tilde{X} V_k$, i.e. projects the data onto the first `k` principal components (after reversing the order so that the largest eigenvalue comes first).
+
+```{python}
+# generate correlated 3d data
+rng = np.random.default_rng(42)
+n = 200
+z1 = rng.normal(size=n)
+z2 = rng.normal(size=n)
+z3 = rng.normal(size=n) * 0.1  # very little variance in this direction
+
+# the three features are mixtures of z1, z2, z3
+X = np.column_stack([
+    2 * z1 + 0.5 * z2,
+    z1 + z2,
+    0.5 * z1 + 0.3 * z2 + z3
+])
+```
+```{python}
+# step 1: center the data
+X_centered = X - X.mean(axis=0)
+
+# step 2: compute the covariance matrix
+C = np.cov(X_centered, rowvar=False)
+print("Covariance matrix:")
+print(np.round(C, 3))
+```
+```{python}
+# step 3: eigendecomposition
+eigenvalues, eigenvectors = np.linalg.eigh(C)
+
+# eigh returns eigenvalues in ascending order — reverse for descending
+eigenvalues = eigenvalues[::-1]
+eigenvectors = eigenvectors[:, ::-1]
+
+print("Eigenvalues:", np.round(eigenvalues, 3))
+print("Variance explained (%):", np.round(eigenvalues / eigenvalues.sum() * 100, 1))
+```
+```{python}
+# step 4: project onto the first 2 principal components
+X_pca = X_centered @ eigenvectors[:, :2]
+
+plt.figure(figsize=(6, 5))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], s=15, alpha=0.6)
+plt.xlabel("PC 1")
+plt.ylabel("PC 2")
+plt.title("Data projected onto first two principal components")
+plt.show()
+```
+```{python}
+# scree plot: how much variance does each component explain?
+plt.figure(figsize=(5, 3))
+plt.bar(range(1, len(eigenvalues) + 1), eigenvalues / eigenvalues.sum() * 100)
+plt.xlabel("Principal component")
+plt.ylabel("Variance explained (%)")
+plt.title("Scree plot")
+plt.xticks(range(1, len(eigenvalues) + 1))
+plt.show()
+```
+
+The **scree plot** shows the variance explained by each principal component. A sharp drop suggests that only the first few components carry meaningful information — the rest is mostly noise. In this example, the third component explains very little variance, so projecting from 3d to 2d loses almost no information.
+
+
+
+## Exercises
+
+**Exercise 1**
+Load the [Auto MPG dataset](https://raw.githubusercontent.com/kirenz/datasets/master/Auto.csv) (originally from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/9/auto+mpg)) using `pd.read_csv`. Use `stats.describe` on the `mpg` column and compare the output with `df["mpg"].describe()`. Compute the Pearson and Spearman correlation between `weight` and `mpg`. Which is stronger? Why might they differ?
+
+```{python}
+# Exercise 1
+```
+
+**Exercise 2**
+Generate 1000 samples from a $\mathcal{N}(2, 3^2)$ distribution. Plot a histogram together with the true density, the density of the MLE fit (`stats.norm.fit`), and the density of a fit where you deliberately set $\mu = 0$ (wrong mean). Add a legend.
+
+```{python}
+# Exercise 2
+```
+
+**Exercise 3**
+Load the [Advertising dataset](https://raw.githubusercontent.com/kirenz/datasets/master/advertising.csv) (from the textbook *An Introduction to Statistical Learning* by James, Witten, Hastie, and Tibshirani) using `pd.read_csv`. Use `stats.linregress` to fit a simple linear regression of `sales` on `TV`. Report the slope, intercept, R-squared, and p-value. Plot the data as a scatter plot with the regression line. Then fit a multiple regression of `sales` on `TV`, `radio`, and `newspaper` using `np.linalg.lstsq`. Compare the R-squared values. Which predictor contributes least?
+
+```{python}
+# Exercise 3
+```
+
+**Exercise 4**
+Load the Auto MPG dataset (same URL as Exercise 1). Select the numeric columns `mpg`, `cylinders`, `displacement`, `horsepower`, `weight`, `acceleration`. Drop rows with missing values. Perform PCA on the standardized data. How much variance do the first two components explain? Plot the data projected onto the first two principal components, coloring points by `cylinders`. What structure do you see?
+
+```{python}
+# Exercise 4
+```
+
+**Exercise 5**
+Generate two samples of size 50: one from an exponential distribution with rate 1, the other from a normal distribution with mean 1 and standard deviation 1. Use a Kolmogorov-Smirnov test (`stats.kstest`) to test whether each sample could come from a normal distribution. Interpret the p-values. Then use a chi-squared test on binned data to test the same hypothesis.
+
+```{python}
+# Exercise 5
+```
+
+**Exercise 6**
+A **QQ-plot** (quantile-quantile plot) compares the quantiles of a sample against the theoretical quantiles of a reference distribution. If the data follow the reference distribution, the points lie on a straight line. Use `stats.probplot(data, dist="norm", plot=plt)` to create QQ-plots for: (a) 200 samples from a standard normal, (b) 200 samples from an exponential distribution, (c) 200 samples from a $t$-distribution with 3 degrees of freedom (`stats.t.rvs(df=3, size=200)`). Which sample deviates most from normality, and how does the deviation appear in the QQ-plot?
+
+```{python}
+# Exercise 6
+```
+
+**Exercise 7**
+Generate two samples: `sample_a` from $\mathcal{N}(5, 1)$ (size 30) and `sample_b` from $\mathcal{N}(5.5, 1)$ (size 30). Perform a two-sample t-test. Then repeat this experiment 1000 times and count how often the test rejects at level $\alpha = 0.05$. This is the empirical power of the test. How does it change if you increase the sample size to 100?
+
+```{python}
+# Exercise 6
+```
+
+**Exercise 8**
+Using the [World Bank API](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation) (see @sec-loading-online), fetch GDP per capita (`NY.GDP.PCAP.CD`) and life expectancy (`SP.DYN.LE00.IN`) for all countries for the year 2022. Drop missing values. Use `stats.pearsonr` and `stats.spearmanr` to compute both correlation coefficients. Create a scatter plot of GDP per capita vs. life expectancy. Why does the Spearman correlation differ from the Pearson correlation? Hint: try plotting GDP on a log scale (`plt.xscale("log")`).
+
+```{python}
+# Exercise 8
+```
+
+**Exercise 9**
+Using the World Bank API, fetch Germany's total population (`SP.POP.TOTL`) for each year from 1960 to 2023. Use `stats.linregress` to fit a linear trend to the data. Plot the population over time together with the regression line. Compute the residuals and plot them. Does a linear model fit well? What happens around 1990?
+
+```{python}
+# Exercise 9
+```
+
+**Exercise 10**
+Using the World Bank API, fetch GDP per capita (`NY.GDP.PCAP.CD`) for all countries for the years 2010 and 2020. Merge the two years into a single DataFrame so that each country has columns `gdp_2010` and `gdp_2020`. Drop rows with missing values. Use a paired t-test (`stats.ttest_rel`) to test whether GDP per capita has changed significantly. Then fit a normal distribution to the differences `gdp_2020 - gdp_2010` using `stats.norm.fit` and plot the histogram together with the fitted density.
+
+```{python}
+# Exercise 10
+```
+
+**Exercise 11**
+Generate 200 samples from a mixture of two normals: with probability 0.4 draw from $\mathcal{N}(-2, 1)$, otherwise from $\mathcal{N}(3, 0.5^2)$. Write a function that computes the negative log-likelihood of a two-component Gaussian mixture (with 5 parameters: $\mu_1, \sigma_1, \mu_2, \sigma_2, p$). Use `scipy.optimize.minimize` to find the MLE. Plot the histogram and the fitted density.
+
+```{python}
+# Exercise 11
+```
+
+**Exercise 12**
+Using the World Bank API, fetch life expectancy (`SP.DYN.LE00.IN`) and GDP per capita (`NY.GDP.PCAP.CD`) for all countries for the year 2022. Drop missing values. Standardize both variables. Perform PCA on the two-dimensional data. What fraction of the variance is explained by the first principal component? Plot the data in the original and in the PCA coordinate system. Does PCA help here, given that there are only two features?
+
+```{python}
+# Exercise 12
+```

@@ -514,33 +514,27 @@ df = pd.read_csv("misc/person.csv")
 ```
 
 **Exercise 1**
-Add a column `age` to `df` that contains each person's age in completed years (as an integer). Hint: use `pd.to_datetime` to convert `date_of_birth`, then compute the difference to today's date.
+Add a column `age` to `df` that contains each person's age in completed years (as an integer). Hint: use `pd.to_datetime` to convert `date_of_birth`, then compute the difference to today's date. Then use `map` to add a column `age_group` that maps each age to `"young"` (under 30), `"middle"` (30–59), or `"senior"` (60+).
+
+```{python}
+# Exercise 1
+```
 
 **Exercise 2**
 Add a column `birth_year` extracted from `date_of_birth`. Then use `df.describe()` and `df["birth_year"].value_counts()` to explore the distribution of birth years.
 
-**Exercise 3**
-The following dictionary defines generational cohorts by birth year ranges:
-
 ```{python}
-generations = {
-    "Silent Generation": (1928, 1945),
-    "Baby Boomer": (1946, 1964),
-    "Generation X": (1965, 1980),
-    "Millennial": (1981, 1996),
-    "Generation Z": (1997, 2012),
-}
+# Exercise 2
 ```
 
-Write a function `get_generation(year)` that takes a birth year and returns the generation name (or `"Other"` if the year does not fall into any range). Then use `map` or `apply` to add a column `generation` to `df`. How many persons belong to each generation?
-
-**Exercise 4**
+**Exercise 3**
 Write a function `filter_generation(df, gen_name)` that takes the DataFrame and a generation name (e.g., `"Millennial"`) and returns only the rows belonging to that generation. Use it to display all millennials. How many are there?
 
-**Exercise 5**
-The `hobbies` column in the CSV is a semicolon-separated string. The `.str` accessor on a pandas Series gives access to string methods, so `df["hobbies"].str.split(";")` splits each entry into a Python list. Use this to split the hobbies. Then find out: what is the most common hobby across all persons? Hint: `series.explode()` turns a Series of lists into individual rows (one row per list element); then use `value_counts`.
+```{python}
+# Exercise 3
+```
 
-**Exercise 6**
+**Exercise 4**
 Consider the following two DataFrames where the `city` column contains duplicate values:
 
 ```{python}
@@ -556,3 +550,73 @@ deliveries = pd.DataFrame({
 ```
 
 What does `pd.merge(shops, deliveries, on="city")` return? Run it and explain the result. How many rows does the output have, and why?
+
+```{python}
+# Exercise 4
+```
+
+**Exercise 5**
+Create a DataFrame with columns `name`, `exam1`, `exam2`, `exam3` for 10 students (you can invent the data). Add a column `average` that contains the mean of the three exams. Filter to show only students with an average above 70.
+
+```{python}
+# Exercise 5
+```
+
+**Exercise 6**
+The following dictionary defines generational cohorts by birth year ranges:
+
+```{python}
+generations = {
+    "Silent Generation": (1928, 1945),
+    "Baby Boomer": (1946, 1964),
+    "Generation X": (1965, 1980),
+    "Millennial": (1981, 1996),
+    "Generation Z": (1997, 2012),
+}
+```
+
+Write a function `get_generation(year)` that takes a birth year and returns the generation name (or `"Other"` if the year does not fall into any range). Then use `map` or `apply` to add a column `generation` to `df`. How many persons belong to each generation?
+
+```{python}
+# Exercise 6
+```
+
+**Exercise 7**
+The `hobbies` column in the CSV is a semicolon-separated string. The `.str` accessor on a pandas Series gives access to string methods, so `df["hobbies"].str.split(";")` splits each entry into a Python list. Use this to split the hobbies. Then find out: what is the most common hobby across all persons? Hint: `series.explode()` turns a Series of lists into individual rows (one row per list element); then use `value_counts`.
+
+```{python}
+# Exercise 7
+```
+
+**Exercise 8**
+Download a CSV file from the internet using `pd.read_csv(url)` (e.g. from [this collection](https://github.com/datasets)). Use `describe()`, `groupby()`, and a histogram to explore the data. Write a short summary of what you find.
+
+```{python}
+# Exercise 8
+```
+
+**Exercise 9**
+Create a DataFrame with some missing values (`np.nan`). Compare three strategies for handling them: (a) drop rows with any missing value, (b) fill with the column mean, (c) fill with the column median. How do the summary statistics (`describe()`) change in each case?
+
+```{python}
+# Exercise 9
+```
+
+**Exercise 10**
+Write a function `csv_to_sqlite(csv_path, db_path, table_name)` that reads a CSV file into a pandas DataFrame and writes it into an SQLite database. Then write a function `query_db(db_path, sql)` that runs an SQL query and returns the result as a DataFrame. Test with a CSV file of your choice.
+
+```{python}
+# Exercise 10
+```
+
+**Exercise 11**
+Fetch Germany's total population from the World Bank API for the years 1960–2023 (see @sec-loading-online for how to use the API; the country code is `DEU`, the indicator is `SP.POP.TOTL`). Convert the year column to a proper datetime using `pd.to_datetime(df["year"], format="%Y")`. Then:
+(a) Add a column `decade` that contains the decade of each year (e.g. 1960, 1970, ...). Hint: use integer division `// 10 * 10`.
+(b) Compute the mean population per decade using `groupby`.
+(c) Add a column `growth` that contains the year-over-year population change. Hint: `df["population"].diff()`.
+(d) In which year was the population growth the highest? In which year was it negative for the first time?
+(e) Resample the data to 5-year intervals using `df.set_index("date").resample("5YE").mean()` and plot the result.
+
+```{python}
+# Exercise 11
+```

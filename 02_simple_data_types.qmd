@@ -271,25 +271,79 @@ print("(None == nan) =", None == float("nan"))
 
 ## Exercises 
 
-**Exercise 1:**
+**Exercise 1**
 Find out how to use scientific notation in Python. (If you don't know what this is, please find out!)
 
-**Exercise 2:**
+```{python}
+# Exercise 1
+```
+
+**Exercise 2**
 Is there a Python package which can compute `0.1 + 0.2 == 0.3` without error?
 
-**Exercise 3:**
+```{python}
+# Exercise 2
+```
+
+**Exercise 3**
 Print `"Hello, world!"` including the quotation marks in the output.
 
-**Exercise 4:**
-Do newlines and tabs `\n`, `\t` count in `str.isspacce()`? How do numbers interact with `str.islower()`? If `s` is the strign of a number, what is `s.lower()`? Play around a bit with these fucntions and edge cases you might see in data. 
+```{python}
+# Exercise 3
+```
 
-**Exercise 5:**
+**Exercise 4**
+Do newlines and tabs `\n`, `\t` count in `str.isspace()`? How do numbers interact with `str.islower()`? If `s` is the string of a number, what is `s.lower()`? Play around a bit with these functions and edge cases you might see in data. Then write a function `classify_char(c)` that takes a single character and returns `"letter"`, `"digit"`, `"whitespace"`, or `"other"`.
+
+```{python}
+# Exercise 4
+```
+
+**Exercise 5**
 If you are on Windows, it is annoying that file paths come with `\`, which is interpreted as the start of a special character. Find out two ways how to give the string of the file path `C:\Users\Alice\Documents\file.txt`.
 
-**Exercise 6:**
+```{python}
+# Exercise 5
+```
+
+**Exercise 6**
 What is `bool(None)`? What is `int(None)`?
 
-**Exercise 7:**
+```{python}
+# Exercise 6
+```
+
+**Exercise 7**
 In tables, we often have `""` for a missing value. Is this the same as `None`?
 
+```{python}
+# Exercise 7
+```
 
+**Exercise 8**
+Write a function `is_palindrome(s)` that returns `True` if the string `s` reads the same forwards and backwards (e.g. `"racecar"`), and `False` otherwise. Ignore upper/lower case.
+
+```{python}
+# Exercise 8
+```
+
+**Exercise 9**
+Given a float `x`, write a one-liner that rounds `x` to 3 decimal places without using `round`. (Hint: use arithmetic with `int()`.)
+
+```{python}
+# Exercise 9
+```
+
+**Exercise 10**
+IEEE 754 floating point numbers satisfy `0.1 + 0.2 != 0.3`. Write a function `approx_equal(x, y, tol=1e-9)` that returns `True` if `|x - y| < tol`. Then use it to verify that `0.1 + 0.2` is approximately `0.3`. Discuss: is a relative or absolute tolerance more appropriate in general?
+
+```{python}
+# Exercise 10
+```
+
+**Exercise 11**
+Write a function `caesar(s, k)` that shifts every letter in the string `s` by `k` positions in the alphabet (wrapping around from `z` to `a`). Non-letter characters should remain unchanged. (Hint: use `ord()` and `chr()`.)
+
+```{python}
+# Exercise 11
+```

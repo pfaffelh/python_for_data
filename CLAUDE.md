@@ -247,3 +247,31 @@ The old `08_analyzing_data.qmd` was split into two files, and subsequent chapter
 4. "In chapter 1, would there be a place to give references to virtual environments and git from section 11? If so, proceed."
 5. "In chapter 3, add an exercise with a code with a spurious, hard to detect error, which is ideal for experiences with debugging."
 6. "Make a note in chapter 10 that we need to discuss encodings, and set a link to the section in chapter 11."
+
+### Exercises consolidation and expansion (2026-03-28)
+
+All exercises from the former Chapter 12 (`12_exercises.qmd`) were moved into the respective chapter files (02–09). Chapter 12 was deleted and removed from `_quarto.yml`. Every exercise now has a `{python}` code block with a comment placeholder so the Jupyter notebooks are ready for students. Within each chapter, exercises were reordered from easy to hard.
+
+Additional exercises were added to chapters 06, 08, and 09 to ensure all concepts are covered:
+
+- **Chapter 06** (10 exercises total, +4 new): added exercises on boolean masking with `np.linspace`/`np.sin`, column-wise aggregation and standardization with the `axis` parameter, broadcasting and outer products, and `scipy.optimize.root_scalar`.
+- **Chapter 08** (9 exercises total, +3 new): added exercises for pie charts (with bar chart comparison), box plots (comparing group distributions), and histograms with density overlay.
+- **Chapter 09** (8 exercises total, +4 new): added exercises on descriptive statistics using the Auto MPG dataset (`https://raw.githubusercontent.com/kirenz/datasets/master/Auto.csv`), linear regression using the Advertising dataset (`https://raw.githubusercontent.com/kirenz/datasets/master/advertising.csv`), PCA on the Auto MPG dataset, and KS/chi-squared goodness-of-fit tests. The PCA section was also expanded with full mathematical derivation (centering, covariance matrix formula, eigendecomposition, variance explained, projection).
+
+#### Prompts used
+
+1. "Please put the exercises from chapter 12 at the ends of all chapter where they belong. Use headers for each exercises like you find e.g. at the end of chapter 3. Every exercises should come with a code block, such that the jupyther notebook is already ready to start solving the exercises."
+2. "We don't need chapter 12 anymore. Please take care of everything related to deleting chapter 12."
+3. "Do the old exercises also have the {python} block?" → added code blocks to all old exercises across chapters 02–07.
+4. "Within each chapter, order the exercises from easy to hard." → reordered exercises in chapters 02, 03, 04, 05, 07; chapters 06, 08, 09 were already ordered.
+5. "Please add 4 exercises in chapter 6. Take care that all concepts in this chapter are covered in the exercises. Do the same for chapter 8. Add 6 exercises for chapter 9. It would be best if you find some online resources for the exercises in chapter 9."
+6. "Mathematically, PCA computes the eigendecomposition... This needs more explanation." → expanded with row notation, entry-wise covariance formula $C_{jk}$, interpretation of diagonal/off-diagonal entries, variance formula $\lambda_j = \frac{1}{n-1}\|\tilde{X}v_j\|^2$, explicit `np.cov` formula.
+7. "Can you use some worldbank data in order to make three more exercises for chapter 9?" → added exercises 8–10 (GDP vs. life expectancy correlation, Germany population linear regression, paired t-test on GDP 2010 vs. 2020).
+8. "No references to archived material should appear." → replaced logistic regression exercise (which referenced archived Chapter 11) with a PCA exercise on World Bank data (life expectancy vs. GDP).
+9. "Do you have suggestions what to improve on the exercises?" → implemented: added `classify_char` coding task to ch02 Ex 4; added `map` task (age groups) to ch07 Ex 1; added QQ-plot exercise (ch09 Ex 6) using `stats.probplot`; made ch06 Ex 1 (SVD) and Ex 2 (solve vs. inv) concrete with specific examples; unified exercise header format to `**Exercise N**` (without colon) across all chapters.
+10. "Never give urls in plain text. Always use links." → converted plain-text URLs in ch09 exercise text to markdown links ([Auto MPG dataset](url), [Advertising dataset](url)).
+
+### Exercise quality and optimizer warnings (2026-03-28)
+
+- Added `#| warning: false` to the BFGS optimization cell in chapter 09 to suppress spurious path/warning output in the rendered PDF.
+- Final exercise counts: ch02: 11, ch03: 13, ch04: 12, ch05: 10, ch06: 10, ch07: 11, ch08: 9, ch09: 12 (total: 88).

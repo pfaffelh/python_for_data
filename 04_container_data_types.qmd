@@ -314,26 +314,85 @@ print("People who like cycling are " +
 ## Exercises
 
 **Exercise 1**
-For two strings `s` and `t`, write a function `myCount(s, t)`, which counts the numbers of occurrences of `t` in `s`. Unlike `count`, it should count the number of positions in `s` starting with `t`. For example, `"bababab".count("bab")` gives 2, but `"bababab".myCount("bab")` should give 3. 
+Find out how you can sort a list descendingly.
+
+```{python}
+# Exercise 1
+```
 
 **Exercise 2**
-Find out how you can sort a list descendingly. 
-
-**Exercise 3**
-Write a function which removes duplicates from a list (you might want to use `set` here), but keeps the order of the list. 
-
-**Exercise 4**
 Given a list of names ["ALICE", "BOB", "CHARLIE"], convert them all to lowercase.
 
-**Exercise 5**
+```{python}
+# Exercise 2
+```
+
+**Exercise 3**
 From a list of fruits ["apple", "banana", "kiwi", "mango", "pear"], create a list of fruits that have exactly 5 letters.
 
-**Exercise 6**
+```{python}
+# Exercise 3
+```
+
+**Exercise 4**
 Create a list of tuples representing all possible `(x, y)` coordinates where `x` is from `[1, 2, 3]` and `y` is from `[4, 5]`.
 
+```{python}
+# Exercise 4
+```
+
+**Exercise 5**
+Given the dict `{"a": 1, "b": 2, "c": 3}`, create a new dictionary that swaps keys and values `{1: "a", ...}`. This is best done using a comprehension.
+
+```{python}
+# Exercise 5
+```
+
+**Exercise 6**
+For two strings `s` and `t`, write a function `myCount(s, t)`, which counts the numbers of occurrences of `t` in `s`. Unlike `count`, it should count the number of positions in `s` starting with `t`. For example, `"bababab".count("bab")` gives 2, but `"bababab".myCount("bab")` should give 3.
+
+```{python}
+# Exercise 6
+```
+
 **Exercise 7**
-Given the dict `{"a": 1, "b": 2, "c": 3}`, create a new dictionary that swaps keys and values `{1: "a", ...}`. This is best done using a comprehension. 
+Write a function which removes duplicates from a list (you might want to use `set` here), but keeps the order of the list.
+
+```{python}
+# Exercise 7
+```
 
 **Exercise 8**
 Assume you have `a = [10, 20, 30, 40]` and `mask = [True, False, True, False]`, you might want obtain a sublist of `a` which only contains the positions where `mask` has `True. Find out (using AI) how this works (without using other libraries), and describe what your code does. (You will probably find out about the `zip`-function, which you should look at more closely.)
 
+```{python}
+# Exercise 8
+```
+
+**Exercise 9**
+Given a list of integers, write a function `most_frequent(lst)` that returns the element that appears most often. If there is a tie, return any of the most frequent ones. (Hint: use a `dict` to count.)
+
+```{python}
+# Exercise 9
+```
+
+**Exercise 10**
+Write a function `flatten(lst)` that takes a nested list (e.g. `[[1, 2], [3, [4, 5]], 6]`) and returns a flat list `[1, 2, 3, 4, 5, 6]`. Use recursion.
+
+```{python}
+# Exercise 10
+```
+
+**Exercise 11**
+Write a function `invert_dict(d)` that swaps keys and values of a dictionary. If multiple keys have the same value, collect the keys in a list. For example, `{"a": 1, "b": 2, "c": 1}` becomes `{1: ["a", "c"], 2: ["b"]}`.
+
+```{python}
+# Exercise 11
+```
+
+**Exercise 12**
+A sparse vector can be represented as a `dict` mapping indices to nonzero values, e.g. `{0: 3.0, 5: -1.0, 99: 2.0}` for a vector that is zero everywhere except at positions 0, 5, 99. Write functions `sparse_add(v, w)` and `sparse_dot(v, w)` that compute the sum and inner product of two sparse vectors.
+
+```{python}
+# Exercise 12
+```

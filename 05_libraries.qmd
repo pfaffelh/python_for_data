@@ -267,28 +267,52 @@ except FileNotFoundError:
 ## Exercises
 
 **Exercise 1**
-Apparently, `"muller@gmail.com; wrong-email; muller@yahoo.com"` only contains two valid email addresses. Use AI and `re` in order to produce and understand code, which separates the correct from the incorrect email addresses. 
-
-**Exercise 2**
-A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.)
-Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year. 
-* Compute the account balance _as usual_, i.e. keeping sub-cents at all days. 
-* Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day. 
-
-**Exercise 3**
-Instead of `os.walk()`, we can also use the `pathlib` library. Find out how the equivalent of `os.walk()` works when using `pathlib`.
-
-**Exercise 4**
-Create some `txt`-files in the current working directory. Then, write a Pathon3 program that iterates through all such files, creates `all.txt`, where the content of all you `txt`files is appended. If `all.txt` already exists, the program should give a warning that this file is overridden.
-
-**Exercise 5**
 What is your age in seconds/minutes/hours/days/months?
 
+```{python}
+# Exercise 1
+```
+
+**Exercise 2**
+Write a function `days_until_birthday(birthday_str)` that takes a date string like `"1990-03-15"` and returns the number of days until the next occurrence of that birthday. (Hint: use `datetime.date`.)
+
+```{python}
+# Exercise 2
+```
+
+**Exercise 3**
+Write a function `extract_emails(text)` that uses a regular expression to find all email addresses in a string. Test it on a string containing several email addresses mixed with other text.
+
+```{python}
+# Exercise 3
+```
+
+**Exercise 4**
+Apparently, `"muller@gmail.com; wrong-email; muller@yahoo.com"` only contains two valid email addresses. Use AI and `re` in order to produce and understand code, which separates the correct from the incorrect email addresses.
+
+```{python}
+# Exercise 4
+```
+
+**Exercise 5**
+Instead of `os.walk()`, we can also use the `pathlib` library. Find out how the equivalent of `os.walk()` works when using `pathlib`.
+
+```{python}
+# Exercise 5
+```
+
 **Exercise 6**
-Below are some sales dates and quantities. 
+Create some `txt`-files in the current working directory. Then, write a Pathon3 program that iterates through all such files, creates `all.txt`, where the content of all you `txt`files is appended. If `all.txt` already exists, the program should give a warning that this file is overridden.
+
+```{python}
+# Exercise 6
+```
+
+**Exercise 7**
+Below are some sales dates and quantities.
 
 * Write a function, with `start` and `end` as `datetime` as input, which gives you the total amount of sales during this time. (You will need to convert `date` as given in the data to `datetime`. Note that `<`, `>`, `<=`, `>=`, `==` work for `datetime` as expected.)
-* Write a function, with a date `date` and a number days `days` as input, which returns the average amount of sales per day during the last `days` since `date`. 
+* Write a function, with a date `date` and a number days `days` as input, which returns the average amount of sales per day during the last `days` since `date`.
 
 ```{python}
 data = [
@@ -298,4 +322,32 @@ data = [
         ("2026-01-08", 150),
         ("2026-02-01", 210),
         ("2026-02-03", 215)]
+```
+
+```{python}
+# Exercise 7
+```
+
+**Exercise 8**
+Using only the `math` module, write a function `taylor_sin(x, n)` that computes $\sin(x)$ using the first `n` terms of the Taylor series $\sin(x) = \sum_{k=0}^{n-1} \frac{(-1)^k x^{2k+1}}{(2k+1)!}$. Compare the result with `math.sin(x)`.
+
+```{python}
+# Exercise 8
+```
+
+**Exercise 9**
+Write a function `find_large_files(directory, min_size_mb=10)` that uses `os.walk` to find all files in `directory` (and subdirectories) that are larger than `min_size_mb` megabytes. Return a list of `(path, size_mb)` tuples, sorted by size descending.
+
+```{python}
+# Exercise 9
+```
+
+**Exercise 10**
+A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.)
+Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year.
+* Compute the account balance _as usual_, i.e. keeping sub-cents at all days.
+* Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day.
+
+```{python}
+# Exercise 10
 ```
