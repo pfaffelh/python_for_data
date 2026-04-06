@@ -13,7 +13,7 @@ In this chapter, we take a little break. Although there are lots of things to le
 
 ## Loading modules (`import`)
 
-As in all programming languages, not all python programs come in a single file. If a Python project spans multiple files, an `import` becomes necessary. In Python, there is syntax for `import`s as follows:
+As in all programming languages, not all Python programs come in a single file. If a Python project spans multiple files, an `import` becomes necessary. In Python, there is syntax for `import`s as follows:
 
 | Syntax                    | Meaning            |
 | ------------------------- | ------------------ |
@@ -68,7 +68,7 @@ print(f"My constant is {myName.myConst()}.")
 
 2. You want to use functions from a built-in library. Then, a simple `import module` is often the best choice. We will see examples in @sec-math. 
 
-3. You want to use functions from a library, which needs to be installed. Here, before the `import module` even works, you need to install the module in your python environment. In a terminal, within your Python environment, use
+3. You want to use functions from a library, which needs to be installed. Here, before the `import module` even works, you need to install the module in your Python environment. In a terminal, within your Python environment, use
 ```{python}
 # Uncomment the next line and run the cell for installation.
 # This only needs to be done once for every package.

@@ -12,15 +12,15 @@ These are the materials which are used for a course on _Python for Data Analysis
 
 Basically, the course has three parts:
 
-1. Python basics: data types, functions, loops, conditions, libraries (Chapters 02–05)
-2. Tools for data analysis: numpy, pandas, matplotlib, scipy.stats (Chapters 06–09)
+1. Python basics: data types, functions, loops, conditions, libraries (Chapters 2–5)
+2. Tools for data analysis: numpy, pandas, matplotlib, scipy.stats (Chapters 6–9)
 3. Project: choose data that interests you and create an analysis (Chapter 10)
 
-Within the first two parts, you will be assigned homeworks, which you can find at the end of each section. For the third part, you will have to find a project by yourself. Chapter 11 collects miscellaneous topics (debugging, type hints, git, etc.) that are useful throughout the course.
+Within the first two parts, you will be assigned homeworks, which you can find at the end of each section. For the third part, you will have to find a project by yourself. Chapter 11 collects miscellaneous topics (error messages, type hints, git, etc.) that are useful throughout the course.
 
 Let us discuss some preliminaries.
 
-**Your python environment:**
+**Your Python environment:**
 We will assume that Python and Jupyter is installed on your system. These course notes are written with Python 3.13, but other versions might work as well. In addition to plain `python`, we will need some libraries. Which ones we need (including their versions) is written in the file [`requirements.txt`](https://github.com/pfaffelh/python_for_data/blob/master/requirements.txt). Some Jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the Jupyter server which runs the notebooks.) It is recommended to use a virtual environment for managing your Python packages — see @sec-venv for details.
 
 
@@ -28,14 +28,12 @@ _General note: We avoid repeating the distinction between the commands `python` 
 
 **Starting a Jupyter notebook:**
 
-There are basically three ways `python` commands can be run:
+There are basically three ways Python commands can be run:
 1. In interactive mode on the command line by typing `python3` in your shell,
-2. In `python`-scripts, usually ending with `myScript.py`. You can run these using `python3 myScript.py`.
-3. Jupyter notebooks have the opportunity to mix usual text with `python` commands.
+2. In Python-scripts, usually ending with `myScript.py`. You can run these using `python3 myScript.py`.
+3. Jupyter notebooks have the opportunity to mix usual text with Python commands.
 
-In this course, we will only use option 3.
-
-For Jupyter notebooks, there are at least two ways to run them: 
+In this course, we will only use option 3. For such Jupyter notebooks, there are at least two ways to run them: 
 
 1. Start the Jupyter server using `jupyter lab` (hopefully, it is already installed), which opens your browser where you can edit and save what you have done;
 2. Use `vscode` as you IDE and work from there; see below.
@@ -61,5 +59,5 @@ If you are working within the Jupyter notebook (and not just in the html-file), 
 
 During the last years, AI has increasingly improved in code writing. You are encouraged to use this new technology! As usual when learning new things, this new tool can help a lot, and will be able to solve the exercises within the Jupyter notebooks. However, you still have to undestand the code, and what might go wrong during execution. As a first course in Python, you will end up having up to a few hundred lines of code, which has to be coherent. You must know the structure of that code, and in order to extend it, fix bugs etc. If you are ever involved in bigger projects, this is even more important. 
 
-For these course notes, I have also used AI (ChatGPT, Gemini) in order to ask the AI which topics I should cover, and make concrete suggestions for a workflow. (While I have been programming in Python for some years now, my experience with `numpy` and `matplotlib` was still limited when I started to write the course, since I have used `R` for such topics in the past.) Not all suggestions from the AI were great. However, I think that the end result for this course is much better than without the help of AI. I hope this also helps the learning experience. In particular, an earlier version of Chapter 11 (generated with ChatGPT) served as a source of material: its content on `numpy`, `pandas`, and `scipy.stats` was integrated into Chapters 06, 07, 08, and 09 with the help of Claude Code, while the machine learning portions remain in the archived original.
+For these course notes, I have also used AI (ChatGPT, Gemini) in order to ask the AI which topics I should cover, and make concrete suggestions for a workflow. (While I have been programming in Python for some years now, my experience with `numpy` and `matplotlib` was still limited when I started to write the course, since I have used `R` for such topics in the past.) Not all suggestions from the AI were great. However, I think that the end result for this course is much better than without the help of AI. I hope this also helps the learning experience. In particular, an earlier version of Chapter 11 (generated with ChatGPT) served as a source of material: its content on `numpy`, `pandas`, and `scipy.stats` was integrated into Chapters 06, 07, 08, and 09 with the help of Claude Code, while the machine learning portions remain in the archived original. A detailed log of all AI-assisted edits (including the prompts used) is available in [`CLAUDE.md`](https://github.com/pfaffelh/python_for_data/blob/master/CLAUDE.md).
 

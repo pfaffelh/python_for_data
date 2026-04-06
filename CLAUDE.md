@@ -287,3 +287,22 @@ Exercises were reviewed for prerequisite correctness and quality. Exercises requ
 - **Chapter 07** (11 exercises, unchanged count): Exercise 3 now references the `generations` dictionary from Exercise 6 and asks to add a `generation` column before filtering.
 
 Final exercise counts: ch02: 7, ch03: 13, ch04: 13, ch05: 7, ch06: 9, ch07: 11, ch08: 9, ch09: 12 (total: 81).
+
+### Cleanup, solutions, and notation (2026-04-06)
+
+- Deleted unused files `example.txt` and `example_utf8.txt` from the root directory (not referenced in any chapter).
+- Added PDF download link `[Download as PDF](python_for_data.pdf)` to `index.qmd`.
+- Renamed all prose occurrences of lowercase "python" to "Python" in chapters 02, 05, and index.qmd. Kept `jupyter: python3` (YAML), `{python}` (code blocks), and backtick-wrapped CLI commands unchanged.
+- Added GitHub and university GitLab (`https://gitlab.uni-freiburg.de/`) as options for version control in Chapter 10.
+- Created exercise solutions in `myFiles/solutions/` for chapters 02–09 (copied from `notebooks/`, exercises solved in-place).
+
+#### Prompts used
+
+1. "Brauche ich die data.pkl Datei?" → confirmed it's created by ch05 code, not a pre-staged resource.
+2. "Kannst Du alle Dateien, die für die Notebooks gebraucht werden, in einen Ordner ressources verschieben? Bitte auch das gerenderte pdf in Kapitel 1 ganz oben verlinken." → files already organized in `misc/`; added PDF link to index.qmd.
+3. "Ja, bitte aufräumen." → deleted unused `example.txt` and `example_utf8.txt`.
+4. "Brauche ich render_notebooks.sh?" → confirmed yes, it's the quarto post-render hook that generates .ipynb files.
+5. "Nimm alle notebooks aus 'notebooks'. Lege in myFiles/solutions Kopien an. In diesen Kopien bearbeitest Du bitte alle Übungsaufgaben." → copied notebooks, solved all 81 exercises.
+6. "I think person.db is not used in the text. If so, delete..." → confirmed it IS used in the SQL section (line 481).
+7. "Check if we use Python (not `python` or similar) throughout where it makes sense." → fixed 5 lowercase occurrences.
+8. "In ch 10, for git, say that students should use github or the gitlab from the university." → added both options with links.

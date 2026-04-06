@@ -5,14 +5,13 @@ format:
 jupyter: python3
 ---
 
-The third part of this course is a small data analysis project that you carry out in groups of 2. The goal is to apply the skills from chapters 02–09 to a topic of your choice. Use `git` and GitHub to share code within your group (see @sec-git for an introduction). The repository should be public so that the instructor can follow your progress. Here is the timeline:
+The third part of this course is a small data analysis project that you carry out in groups of 2. The goal is to apply the skills from chapters 02–09 to a topic of your choice. Use `git` and either [GitHub](https://github.com) or the [university GitLab](https://gitlab.uni-freiburg.de/) to share code within your group (see @sec-git for an introduction). The repository should be public (or shared with the instructor) so that the instructors can follow your progress. Here is the timeline:
 
-1. **Find a project.** Choose a dataset and a question you want to answer. The dataset can come from any source — public APIs (e.g. World Bank, Eurostat, OpenStreetMap), CSV files from the web, or data you collect yourself. The question should be concrete enough that you can answer it with a plot, a table, or a statistical test.
+1. **Find a project.** Choose a dataset and a question you want to answer. The dataset can come from any source — public APIs (e.g. World Bank, Eurostat, OpenStreetMap), CSV files from the web, or data you collect yourself. The question should be concrete enough that you can answer it with several plots, tables, and statistical tests.
 
-2. **Hand in your project idea (by Pentecost break).** Write a short description (half a page is enough) containing:
+2. **Hand in your project idea (by Pentecost -- Pfingsten -- break).** Write a short description (one to two pages are enough) containing:
     - What data will you use, and where does it come from?
-    - What question do you want to answer?
-    - What should the final outcome look like (e.g. a dashboard, a report with plots, a statistical analysis)?
+    - What question(s) do you want to answer?
 
 3. **Implement and present your project (last two or three sessions).** Build a Jupyter notebook that loads, cleans, analyzes, and visualizes your data. Each project will be presented briefly in class. Your presentation should cover:
     - The question and the data source.
@@ -20,10 +19,3 @@ The third part of this course is a small data analysis project that you carry ou
     - Your results (plots, tables, statistical findings).
     - Any difficulties you encountered and how you solved them.
 
-Some ideas for projects:
-
-- Analyze weather data for Freiburg over the last 10 years (temperature trends, precipitation patterns).
-- Compare population growth across European countries using World Bank data.
-- Explore a sports dataset (e.g. football results, marathon finishing times).
-- Investigate public transport data (delays, routes, usage patterns).
-- Analyze survey data from your own field of study.

@@ -6,8 +6,6 @@ format:
 jupyter: python3
 ---
 
-xxx count sum mean
-
 [Download notebook](notebooks/07_handling_data.ipynb).
 
 In this chapter we learn how to load data from various sources and how to handle tabular data using `pandas`. Before we start, we describe what a dataframe is, since it is the building block of many data science routines.
