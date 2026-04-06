@@ -11,7 +11,9 @@
       "Bash(grep -r \"{#sec-list}\" *.qmd)",
       "Bash(grep -n \"^\\\\* \\\\`\" /home/pfaffelh/Code/python_for_data/0[2-6]_*.qmd)",
       "Bash(grep -n \"unpacking\" /home/pfaffelh/Code/python_for_data/*.qmd)",
-      "Bash(grep -E \"^\\\\w+, \\\\w+ =\" /home/pfaffelh/Code/python_for_data/0[2-5]_*.qmd)"
+      "Bash(grep -E \"^\\\\w+, \\\\w+ =\" /home/pfaffelh/Code/python_for_data/0[2-5]_*.qmd)",
+      "Bash(ls /home/pfaffelh/Code/python_for_data/docs/*.pdf)",
+      "Bash(ls /home/pfaffelh/Code/python_for_data/*.pdf)"
     ],
     "additionalDirectories": [
       "/home/pfaffelh/Code/python_for_data"

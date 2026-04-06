@@ -6,6 +6,8 @@ format:
 jupyter: python3
 ---
 
+[Download as PDF](python_for_data.pdf).
+
 These are the materials which are used for a course on _Python for Data Analysis_ at the University of Freiburg in summer 2026. It does not assume any prior knowledge of Python (although this might help). The goal of the course is some literacy in Python, including basic knowledge such as data types and control flow, but also using libraries and APIs, reading and dealing with data, up to some methods such as PCA and regression.
 
 Basically, the course has three parts:
