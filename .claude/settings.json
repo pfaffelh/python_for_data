@@ -13,7 +13,13 @@
       "Bash(grep -n \"unpacking\" /home/pfaffelh/Code/python_for_data/*.qmd)",
       "Bash(grep -E \"^\\\\w+, \\\\w+ =\" /home/pfaffelh/Code/python_for_data/0[2-5]_*.qmd)",
       "Bash(ls /home/pfaffelh/Code/python_for_data/docs/*.pdf)",
-      "Bash(ls /home/pfaffelh/Code/python_for_data/*.pdf)"
+      "Bash(ls /home/pfaffelh/Code/python_for_data/*.pdf)",
+      "Bash(cp /home/pfaffelh/Code/python_for_data/notebooks/02_simple_data_types.ipynb /home/pfaffelh/Code/python_for_data/myFiles/solutions/)",
+      "Bash(cp /home/pfaffelh/Code/python_for_data/notebooks/03_loops_and_conditions.ipynb /home/pfaffelh/Code/python_for_data/myFiles/solutions/)",
+      "Bash(cp /home/pfaffelh/Code/python_for_data/notebooks/04_container_data_types.ipynb /home/pfaffelh/Code/python_for_data/myFiles/solutions/)",
+      "Bash(cp /home/pfaffelh/Code/python_for_data/notebooks/05_libraries.ipynb /home/pfaffelh/Code/python_for_data/myFiles/solutions/)",
+      "Bash(cp /home/pfaffelh/Code/python_for_data/notebooks/06_numerics.ipynb /home/pfaffelh/Code/python_for_data/myFiles/solutions/)",
+      "Bash(python3 -c \":*)"
     ],
     "additionalDirectories": [
       "/home/pfaffelh/Code/python_for_data"
