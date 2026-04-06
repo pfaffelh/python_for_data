@@ -210,7 +210,7 @@ Here are some important remarks on functions:
 * Sometimes, it is too much to define an own function for a very simple task. In this case, Python comes with **`lambda`-functions**, which are very quick: 
 `lambda x: x * x`. Most use cases are with container data types, and we will have one in @sec-list. 
 
-## Exception handling (`raise`, `try ... except`)
+## Exception handling (`raise`, `try ... except`) {#sec-exceptions}
 
 In code, various things happen, and some go wrong. **Raising** (throwing) errors, **catching** them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them: 
 
@@ -358,7 +358,7 @@ Python (since version 3.10) comes with `match`, which is useful for branching on
 ```
 
 **Exercise 8**
-The following function is supposed to compute the average of a list of numbers, but it contains a subtle bug. Find and fix it. (Hint: try it with a few inputs of different lengths and compare the result to what you expect. Debugging with `print` statements or the built-in debugger can help — see @sec-debugging.)
+The following function is supposed to compute the average of a list of numbers, but it contains a subtle bug. Find and fix it. (Hint: try it with a few inputs of different lengths and compare the result to what you expect. Debugging with `print` statements or the built-in debugger can help — see @sec-error-messages.)
 
 ```{python}
 def average(numbers):

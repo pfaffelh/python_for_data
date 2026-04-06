@@ -26,10 +26,12 @@ _General note: We avoid repeating the distinction between the commands `python` 
 
 **Starting a Jupyter notebook:**
 
-There are basically three ways `python` commands can be run: 
+There are basically three ways `python` commands can be run:
 1. In interactive mode on the command line by typing `python3` in your shell,
 2. In `python`-scripts, usually ending with `myScript.py`. You can run these using `python3 myScript.py`.
-3. Jupyter notebooks have the opportunity to mix usual text with `python` commands. We will use these in this course. 
+3. Jupyter notebooks have the opportunity to mix usual text with `python` commands.
+
+In this course, we will only use option 3.
 
 For Jupyter notebooks, there are at least two ways to run them: 
 
@@ -37,7 +39,7 @@ For Jupyter notebooks, there are at least two ways to run them:
 2. Use `vscode` as you IDE and work from there; see below.
 
 **Integrated Development Environment (IDE):**
-When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as [`vscode`](https://code.visualstudio.com/) or [pycharm](https://www.jetbrains.com/de-de/pycharm/). It is best to activate your virtual environment (see @sec-venv) using `source venv/bin/activate` before starting your IDE. For collaborative work and version control, we recommend using `git` (see @sec-git). In order to start vscode, go to the main folder of the course notes, and type `code .` E.g., vscode can be used for all three ways to write Python commands: 
+When programming, we need to type code. This is possible in a code editor, and best done in a more sophisticated environment such as [`vscode`](https://code.visualstudio.com/) or [pycharm](https://www.jetbrains.com/de-de/pycharm/). It is best to activate your virtual environment (see @sec-venv) using `source venv/bin/activate` before starting your IDE. In order to start vscode, go to the main folder of the course notes, and type `code .` E.g., vscode can be used for all three ways to write Python commands: 
 
 1. Use `Terminal -> New Terminal` in order to open a terminal, type `python3` and you are in interactive mode,
 2. Write a Python script and run it using the opened terminal,

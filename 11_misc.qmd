@@ -18,9 +18,7 @@ print("This line is not a comment.")
 ```
 
 ## Two equality signs
-In Python (and many other programming languages), there are assignments such as `x = 0`, which says that `x` should from now on have the value `0`, and `x == 0`. The latter is a condition, which results in `True` if `x` is indeed `0`, and `False otherwise. 
-
-
+In Python (and many other programming languages), there are assignments such as `x = 0`, which says that `x` should from now on have the value `0`, and `x == 0`. The latter is a condition, which results in `True` if `x` is indeed `0`, and `False` otherwise. There is also the `is` keyword, which checks whether two variables refer to the same object in memory (not just the same value). For example, `x is None` is the recommended way to check for `None`, but for comparing values you should always use `==`.
 
 ## User input
 
@@ -30,6 +28,7 @@ Sometimes, when operating on the command line, one wants to ask for user input. 
 name = input("What is your name?")
 print(f"Hello, {name}!")
 ```
+However, in the jupyter notebooks we are using in this course, one rather adds input direct to the code blocks. 
 
 ## Dot-notation {#sec-dot-notation}
 
@@ -54,17 +53,14 @@ print(square(5))
 
 ## Virtual environments and `pip` (`venv`, `pip`) {#sec-venv}
 
-_claude generated_
-
 When working on different Python projects, you may need different versions of the same library. Virtual environments solve this by creating an isolated Python installation per project. The `pip` tool installs packages into the active environment.
 
 * `python3 -m venv venv`: create a virtual environment in the folder `venv`.
-* `source venv/bin/activate`: activate the virtual environment (Linux/Mac). On Windows: `venv\Scripts\activate`.
+* `source venv/bin/activate`: activate the virtual environment (Linux/Mac). On Windows: `venv\Scripts\activate`. When the environment is active, your terminal prompt will be prefixed with `(venv)`, e.g. `(venv) user@host:~$`. You can also verify by running `which python`, which should point to `venv/bin/python` instead of the system Python.
 * `deactivate`: leave the virtual environment.
 * `pip install package`: install a package into the active environment.
 * `pip install -r requirements.txt`: install all packages listed in `requirements.txt`.
 * `pip freeze`: list all installed packages and their versions.
-* `pip freeze > requirements.txt`: save the current package list to a file, so others can reproduce your environment.
 
 ```
 # typical workflow when starting a new project
@@ -85,97 +81,33 @@ pip install -r requirements.txt
 
 Without a virtual environment, installing packages changes your system-wide Python installation, which can break other projects. It is good practice to always work inside a virtual environment.
 
-## Debugging (`print`, `breakpoint`) {#sec-debugging}
+## Reading error messages and debugging using `print` {#sec-error-messages}
 
-_claude generated_
+When your code raises an error, Python prints a **traceback** — a summary of what went wrong and where. Learning to read tracebacks is an important skills in programming. Here is an example:
 
-When code does not behave as expected, we need to find the bug. The simplest strategy is adding `print` statements to inspect variables at critical points. For more complex issues, Python has a built-in interactive debugger.
+```
+Traceback (most recent call last):
+  File "example.py", line 5, in <module>
+    result = divide(10, 0)
+  File "example.py", line 2, in divide
+    return a / b
+ZeroDivisionError: division by zero
+```
+
+Read a traceback from **bottom to top**:
+
+1. The **last line** tells you the error type and a short description (`ZeroDivisionError: division by zero`).
+2. The lines above show the **call stack**: which functions were called, in which file, and at which line number. The most recent call is at the bottom.
+3. The line of code that caused the error is shown directly below each location.
+
+For a list of common error types and how to handle them with `try`/`except`, see @sec-exceptions.
+
+When the error message alone is not enough to find the bug, you need to **debug** — i.e. inspect what your code is actually doing step by step.
 
 * `print(x)`: the simplest debugging tool. Print the value (and possibly the type) of a variable at a critical point.
 * `print(f"{x = }")`: a shorthand (since Python 3.8) that prints both the variable name and its value.
 * `type(x)`: check the type of a variable. Many bugs come from unexpected types.
-* `breakpoint()`: drop into the interactive debugger (`pdb`) at this point. You can then inspect variables, step through code, and continue execution.
-* In the debugger: `n` (next line), `s` (step into function), `c` (continue), `p x` (print `x`), `q` (quit).
-
-```{python}
-# using print for debugging
-def buggy_mean(values):
-    total = 0
-    for v in values:
-        total += v
-    print(f"{total = }, {len(values) = }")  # inspect intermediate values
-    return total / len(values)
-
-result = buggy_mean([10, 20, 30])
-print(f"{result = }")
-```
-```{python}
-# checking types
-x = "42"
-print(f"{x = }, {type(x) = }")
-# this would be a subtle bug: x is a string, not an int
-```
-
-Using `breakpoint()` is especially useful in scripts (not in notebooks). When Python hits `breakpoint()`, it opens an interactive prompt where you can inspect all variables. A typical workflow is:
-
-```
-# in your script:
-def process(data):
-    result = data * 2
-    breakpoint()       # execution pauses here
-    return result + 1
-```
-
-A general debugging strategy is:
-
-1. Read the error message carefully (especially the last line and the line number).
-2. Add `print` statements before the failing line to check variable values and types.
-3. If the issue is complex, use `breakpoint()` to explore interactively.
-4. Once fixed, remove the debugging statements.
-
-## Encoding and Unicode (`utf-8`, `encode`, `decode`) {#sec-encoding}
-
-_claude generated_
-
-Text in a computer is stored as a sequence of bytes. An **encoding** defines how characters are mapped to bytes. The most common encoding today is `utf-8`, which can represent all Unicode characters (including ä, ö, ü, é, 中, 🎉). Problems arise when a file was written in one encoding but read in another.
-
-* `s.encode("utf-8")`: convert a string to bytes using the given encoding.
-* `b.decode("utf-8")`: convert bytes back to a string.
-* `open(path, "r", encoding="utf-8")`: read a file with a specific encoding. If omitted, Python uses the system default (usually `utf-8` on modern systems, but not always).
-* `"latin-1"` (also called `"iso-8859-1"`): an older encoding common in Western European data. It can represent ä, ö, ü but not e.g. Chinese characters.
-
-```{python}
-s = "Üniversität Freiburg"
-b = s.encode("utf-8")
-print(f"string: {s}")
-print(f"bytes:  {b}")
-print(f"length of string: {len(s)}")
-print(f"length of bytes:  {len(b)}")
-```
-```{python}
-# decoding bytes back to a string
-print(b.decode("utf-8"))
-```
-```{python}
-# what goes wrong with the wrong encoding
-b_latin = s.encode("latin-1")
-print(f"latin-1 bytes: {b_latin}")
-# decoding latin-1 bytes as utf-8 would fail:
-try:
-    print(b_latin.decode("utf-8"))
-except UnicodeDecodeError as e:
-    print(f"Error: {e}")
-```
-```{python}
-# reading a file with explicit encoding
-with open("example_utf8.txt", "w", encoding="utf-8") as f:
-    f.write("Ä, Ö, Ü, ß\n")
-
-with open("example_utf8.txt", "r", encoding="utf-8") as f:
-    print(f.read())
-```
-
-When you encounter a `UnicodeDecodeError` while reading a file, the most common fix is to specify the correct encoding in `open(..., encoding="...")`. Common candidates are `"utf-8"`, `"latin-1"`, and `"cp1252"` (Windows). If you are unsure about the encoding of a file, the `chardet` library can help guess it.
+For more complex issues, Python has a built-in interactive debugger (`pdb`). Placing `breakpoint()` in your code pauses execution at that point and lets you inspect variables interactively. See the [Python debugger documentation](https://docs.python.org/3/library/pdb.html) for details.
 
 ## git and github {#sec-git}
 
@@ -226,18 +158,14 @@ git push
 
 **The `.gitignore` file** lists files and folders that git should ignore (e.g. `venv/`, `__pycache__/`, `.ipynb_checkpoints/`, data files). This prevents large or private files from being tracked.
 
-**For this course**, you only need `clone` and `pull`:
+**Getting the course materials:**
 
 ```
 git clone https://github.com/pfaffelh/python_for_data
 cd python_for_data
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 The course notes will be updated during the semester. To get the latest version, run `git pull`. There is one catch: if you have changed a course file locally, `git pull` will refuse to overwrite your changes. The best way to avoid this is to do all your work in the folder `myFiles` or only change the `.ipynb` files — these are excluded from updates via `.gitignore`.
-
-We recommend the following setup:
-
-1. Clone the repository using `git clone https://github.com/pfaffelh/python_for_data` and `cd python_for_data`.
-2. Create a virtual environment using `python3 -m venv venv` (see @sec-venv).
-3. Activate it by `source venv/bin/activate`.
-4. Install the libraries using `pip install -r requirements.txt`.
