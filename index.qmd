@@ -18,6 +18,20 @@ Basically, the course has three parts:
 
 Within the first two parts, you will be assigned homeworks, which you can find at the end of each section. For the third part, you will have to find a project by yourself. Chapter 11 collects miscellaneous topics (error messages, type hints, git, etc.) that are useful throughout the course.
 
+## How to get the Studienleistung?
+
+To obtain the Studienleistung for this course, two things are required:
+
+1. **A 45-minute multiple choice exam before Pentecost (Pfingsten).** The exam covers the Python basics from Chapters 2–5 (simple data types, control flow, container data types, and libraries). The exam is held on paper — **no computers** (and no books or notes) are allowed.
+
+2. **The project.** The third part of this course is a small data analysis project that you carry out in groups of 2. The goal is to apply the skills from Chapters 2–9 to a topic of your choice. Use `git` and either [GitHub](https://github.com) or the [university GitLab](https://gitlab.uni-freiburg.de/) to share code within your group (see @sec-git for an introduction). The repository should be public (or shared with the instructor) so that the instructors can follow your progress. The timeline is:
+
+    a. **Find a project.** Choose a dataset and a question you want to answer. The dataset can come from any source — public APIs (e.g. World Bank, Eurostat, OpenStreetMap), CSV files from the web, or data you collect yourself. The question should be concrete enough that you can answer it with several plots, tables, and statistical tests.
+
+    b. **Hand in your project idea (by the Pentecost break).** Write a short description (one to two pages are enough) containing what data you will use and where it comes from, and what question(s) you want to answer.
+
+    c. **Implement and present your project (last two or three sessions).** Build a Jupyter notebook that loads, cleans, analyzes, and visualizes your data. Each project will be presented briefly in class. Details on the presentation are given in Chapter 10.
+
 Let us discuss some preliminaries.
 
 **Your Python environment:**

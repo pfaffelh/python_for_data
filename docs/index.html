@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-067f8ab80d092ae3595f7402c2c9b667.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7e471ccb3c3609b40687e3330816b98a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b5c49d451f14625acf1737a92055c052.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -210,8 +210,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#how-to-get-the-studienleistung" id="toc-how-to-get-the-studienleistung" class="nav-link active" data-scroll-target="#how-to-get-the-studienleistung"><span class="header-section-number">0.1</span> How to get the Studienleistung?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -244,6 +250,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Project: choose data that interests you and create an analysis (Chapter 10)</li>
 </ol>
 <p>Within the first two parts, you will be assigned homeworks, which you can find at the end of each section. For the third part, you will have to find a project by yourself. Chapter 11 collects miscellaneous topics (error messages, type hints, git, etc.) that are useful throughout the course.</p>
+<section id="how-to-get-the-studienleistung" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="how-to-get-the-studienleistung"><span class="header-section-number">0.1</span> How to get the Studienleistung?</h2>
+<p>To obtain the Studienleistung for this course, two things are required:</p>
+<ol type="1">
+<li><p><strong>A 45-minute multiple choice exam before Pentecost (Pfingsten).</strong> The exam covers the Python basics from Chapters 2–5 (simple data types, control flow, container data types, and libraries). The exam is held on paper — <strong>no computers</strong> (and no books or notes) are allowed.</p></li>
+<li><p><strong>The project.</strong> The third part of this course is a small data analysis project that you carry out in groups of 2. The goal is to apply the skills from Chapters 2–9 to a topic of your choice. Use <code>git</code> and either <a href="https://github.com">GitHub</a> or the <a href="https://gitlab.uni-freiburg.de/">university GitLab</a> to share code within your group (see <a href="11_misc.html#sec-git" class="quarto-xref"><span>Section 11.8</span></a> for an introduction). The repository should be public (or shared with the instructor) so that the instructors can follow your progress. The timeline is:</p>
+<ol type="a">
+<li><p><strong>Find a project.</strong> Choose a dataset and a question you want to answer. The dataset can come from any source — public APIs (e.g.&nbsp;World Bank, Eurostat, OpenStreetMap), CSV files from the web, or data you collect yourself. The question should be concrete enough that you can answer it with several plots, tables, and statistical tests.</p></li>
+<li><p><strong>Hand in your project idea (by the Pentecost break).</strong> Write a short description (one to two pages are enough) containing what data you will use and where it comes from, and what question(s) you want to answer.</p></li>
+<li><p><strong>Implement and present your project (last two or three sessions).</strong> Build a Jupyter notebook that loads, cleans, analyzes, and visualizes your data. Each project will be presented briefly in class. Details on the presentation are given in Chapter 10.</p></li>
+</ol></li>
+</ol>
 <p>Let us discuss some preliminaries.</p>
 <p><strong>Your Python environment:</strong> We will assume that Python and Jupyter is installed on your system. These course notes are written with Python 3.13, but other versions might work as well. In addition to plain <code>python</code>, we will need some libraries. Which ones we need (including their versions) is written in the file <a href="https://github.com/pfaffelh/python_for_data/blob/master/requirements.txt"><code>requirements.txt</code></a>. Some Jupyter notebooks might not work if these are not installed on your system. (To be more precise, they must be installed on the Jupyter server which runs the notebooks.) It is recommended to use a virtual environment for managing your Python packages — see <a href="11_misc.html#sec-venv" class="quarto-xref"><span>Section 11.6</span></a> for details.</p>
 <p><em>General note: We avoid repeating the distinction between the commands <code>python</code> and <code>python3</code>, and will simply write Python in the sequel.</em></p>
@@ -261,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Click on some Jupyter notebook, and vscode starts the Jupyter server for you.</li>
 </ol>
 <p><strong>A first Python cell:</strong> Here is the first cell of Python-code:</p>
-<div id="44ed6568" class="cell" data-execution_count="1">
+<div id="9e30bbe8" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Hello, "</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"world!"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x<span class="op">+</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -275,6 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For these course notes, I have also used AI (ChatGPT, Gemini) in order to ask the AI which topics I should cover, and make concrete suggestions for a workflow. (While I have been programming in Python for some years now, my experience with <code>numpy</code> and <code>matplotlib</code> was still limited when I started to write the course, since I have used <code>R</code> for such topics in the past.) Not all suggestions from the AI were great. However, I think that the end result for this course is much better than without the help of AI. I hope this also helps the learning experience. In particular, an earlier version of Chapter 11 (generated with ChatGPT) served as a source of material: its content on <code>numpy</code>, <code>pandas</code>, and <code>scipy.stats</code> was integrated into Chapters 06, 07, 08, and 09 with the help of Claude Code. A detailed log of all AI-assisted edits (including the prompts used) is available in <a href="https://github.com/pfaffelh/python_for_data/blob/master/CLAUDE.md"><code>CLAUDE.md</code></a>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
