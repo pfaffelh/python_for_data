@@ -10,7 +10,7 @@ jupyter: python3
 
 ## Overview
 
-Every **variable** or other object in Python has a **type**. This is the kind of information which is stored insice the variable or object Here is an overview over the most important simple data types.
+Every **variable** or other object in Python has a **type**. This is the kind of information which is stored inside the variable or object. Here is an overview over the most important simple data types.
 
 
 | Type       | Example   | Description              |
@@ -123,7 +123,7 @@ In @sec-math, we will encounter that many more usual functions (like `sqrt`) can
 
 ## True-False variables (`bool`)
 
-There are exactly two **boolean** values, known as `True` and `False`. You can compute with them using `not`, `and`, `or` and 'xor'. In addition, `True` and `False` can be the result of a condition, such as the expression `1 == 2`. 
+There are exactly two **boolean** values, known as `True` and `False`. You can compute with them using `not`, `and`, `or` and `^` (xor). In addition, `True` and `False` can be the result of a condition, such as the expression `1 == 2` (see also @sec-equality on the difference between `=`, `==`, and `is`).
 
 ```{python}
 x = True
@@ -169,14 +169,15 @@ print("(z == z) =", z == z)
 
 ## Text (`string`)
 
-In many cases, **strings** are objects in quotation markes, such as in `"Hello, world!".
+In many cases, **strings** are objects in quotation marks, such as in `"Hello, world!"`.
 
-- **Operations on strings**: You can concencatenate strings using `+` as in `"Python " + "for " + "Data " + "Analysis" (but you cannot subtract strings). You can also repeat a string by multiplying it with an int.
+- **Operations on strings**: You can concatenate strings using `+` as in `"Python " + "for " + "Data " + "Analysis"` (but you cannot subtract strings). You can also repeat a string by multiplying it with an int.
 - **f-strings**: They were introduced in Python 3.6. They are the way to go if you want to mix description and variables. They are written as `f"Hello, {name}"`. The `f` introduces the f-string. Within curly braces, there is a variable, which should be printed instead of the variable name.
 - **Special characters**: There are many of them, we only mention `\t` (tabulator) and `\n` (new line) here.
-- **Multiline strings**: Usually, Python interprets a new line such that all commands are finished. However, if you want to use a sttring spanning multiple lines, you don't want this. Multiline strings start and end with `"""` (a triple quotation mark).
+- **Multiline strings**: Usually, Python interprets a new line such that all commands are finished. However, if you want to use a string spanning multiple lines, you don't want this. Multiline strings start and end with `"""` (a triple quotation mark).
 - **Quotation marks**: In various cases, you can use `'` instead of `"`. Sometimes this is useful when nesting quotation marks. 
-- **Substrings**: We will learn more about substrings, but here is already a way to see if a substring occurs within a string or not. The value of `"th" in "Python"` amount to `True`. 
+- **Indexing**: You can access individual characters of a string by position, starting at `0`. So, for `s = "Python"`, `s[0]` is `"P"` (the first letter), `s[1]` is `"y"` (the second letter), and so on. Negative indices count from the end: `s[-1]` is `"n"` (the last letter). We will come back to indexing (and slicing) in @sec-list.
+- **Substrings**: We will learn more about substrings, but here is already a way to see if a substring occurs within a string or not. The value of `"th" in "Python"` amount to `True`.
 
 
 ```{python}
@@ -207,6 +208,13 @@ Each line break is preserved."""
 print(text)
 ```
 ```{python}
+# indexing individual characters of a string
+s = "Python"
+print("s[0] =", s[0])
+print("s[1] =", s[1])
+print("s[-1] =", s[-1])
+```
+```{python}
 # determine if a given substring occurs within a string
 print("Is 'th' a substring of 'Python'? ", 'th' in 'Python')
 print("Is 'the' a substring of 'Python'? ", 'the' in 'Python')
@@ -227,7 +235,7 @@ For strings, there are various build-in functions. We mention some of them. Here
 * `str.isspace(s)`: Returns `True` if the string consists only empty spaces, and `False` otherwise.
 * `str.islower(s)`: Returns `True` if the string consists only of lower case letters, and `False` otherwise.
 * `str.isupper(s)`: Returns `True` if the string consists only of upper case letters, and `False` otherwise.
-* `str.count(s, "x")`: Counts how ofter `"x"` appears in `s`. 
+* `str.count(s, "x")`: Counts how often `"x"` appears in `s`. 
 
 Note that for a function `str.something(s,...)`, you can also write `s.something()`. For example, `s.strip()` is the same as `str.strip(s)`. This is called dot-notation and is explained in @sec-dot-notation. 
 
@@ -240,7 +248,7 @@ When printing numerical results, we often want to control the number of decimal 
 * `f"{x:.2e}"`: scientific notation with 2 decimal places.
 * `f"{x:>10}"`: right-align in a field of width 10.
 * `f"{x:<10}"`: left-align in a field of width 10.
-* `f"{n:,}"`: integer with thousands separator.
+* `f"{n:,}"`: integer with thousands separator (here the comma `,`).
 * `f"{x:.2%}"`: format as percentage with 2 decimal places.
 
 ```{python}

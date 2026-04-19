@@ -9,7 +9,7 @@ jupyter: python3
 [Download notebook](notebooks/05_libraries.ipynb).
 
 
-In this chapter, we take a little break. Although there are lots of things to learn, the material covered here has the role of helping to learn about the Python ecosystem and what is possible, rather than learn the details of various labraries. The first section, however, is central and will be needed in any Python project you will start. 
+In this chapter, we take a little break. Although there are lots of things to learn, the material covered here has the role of helping to learn about the Python ecosystem and what is possible, rather than learn the details of various libraries. The first section, however, is central and will be needed in any Python project you will start. 
 
 ## Loading modules (`import`)
 
@@ -164,7 +164,8 @@ text = "muller@gmail.com; muller@yahoo.com"
 emails = re.findall(r"\S+@\S+\.\S+", text)
 print(emails)
 ```
-Let us quickly break this down to some extent, looking at `"\S+@\S+\.\S+"`: 
+Let us quickly break this down to some extent, looking at `"\S+@\S+\.\S+"`:
+
 * `\S`: any non-whitespace character
 * `+`: one or more of the previous thing
 * `@`: exactly the `@` symbol
@@ -214,7 +215,8 @@ assert 2 + 2 == 5
 
 ## Using the operating system (`os`) 
 
-For the kind of projects we envision, we often must access files, which happens via the **operating system**. We might also want to see all files in some directory, access them one by one, etc. Here, `folder` is the string of the name of a folder, and `file` is the string for the name of a file. 
+For the kind of projects we envision, we often must access files, which happens via the **operating system**. We might also want to see all files in some directory, access them one by one, etc. Here, `folder` is the string of the name of a folder, and `file` is the string for the name of a file.
+
 * `os.getcwd()`: returns the current working directory.
 * `os.chdir(folder)`: this is a Python command for `cd`.
 * `os.path.join(folder", file)`: gives a complete path from the folder and file name.
@@ -249,7 +251,7 @@ for i, (root, dirs, files) in enumerate(os.walk(".")):
 
 ## Starting other programs (`subprocess`)
 
-Sometimes, you want to start some piece of software (a command line tool) from within your Python program, and collect the result. You could use a script for this, which starts the command line tool, and rus your Python script afterwards, but you can as well use Python for the whole setting. We only give a basic example:
+Sometimes, you want to start some piece of software (a command line tool) from within your Python program, and collect the result. You could use a script for this, which starts the command line tool, and runs your Python script afterwards, but you can as well use Python for the whole setting. We only give a basic example:
 
 ```
 import subprocess
@@ -328,6 +330,7 @@ Write a function `find_large_files(directory, min_size_mb=10)` that uses `os.wal
 **Exercise 7**
 A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.)
 Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year.
+
 * Compute the account balance _as usual_, i.e. keeping sub-cents at all days.
 * Compute the account balance using the above strategy, i.e. ignoring sub-cents at the end of each day.
 

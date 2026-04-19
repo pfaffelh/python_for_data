@@ -273,7 +273,7 @@ Prefer `itertuples` over `iterrows` when performance matters, since it avoids cr
 
 When exploring a dataset, you often want to know which values occur in a column and how frequently. This is especially useful for categorical data.
 
-* `df["col"].value_counts()`: count how often each value appears, sorted by frequency. (`df["col"].value_counts(normalize=True)` returns relative frequencies instead of absolute counts instead.)
+* `df["col"].value_counts()`: count how often each value appears, sorted by frequency. (`df["col"].value_counts(normalize=True)` returns relative frequencies instead of absolute counts.)
 * `df["col"].unique()`: return an array of all distinct values.
 * `df["col"].nunique()`: return the number of distinct values.
 

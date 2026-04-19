@@ -17,7 +17,7 @@ In Python, the key for a comment is #.
 print("This line is not a comment.")
 ```
 
-## Two equality signs
+## Two equality signs {#sec-equality}
 In Python (and many other programming languages), there are assignments such as `x = 0`, which says that `x` should from now on have the value `0`, and `x == 0`. The latter is a condition, which results in `True` if `x` is indeed `0`, and `False` otherwise. There is also the `is` keyword, which checks whether two variables refer to the same object in memory (not just the same value). For example, `x is None` is the recommended way to check for `None`, but for comparing values you should always use `==`.
 
 ## User input
@@ -83,7 +83,7 @@ Without a virtual environment, installing packages changes your system-wide Pyth
 
 ## Reading error messages and debugging using `print` {#sec-error-messages}
 
-When your code raises an error, Python prints a **traceback** — a summary of what went wrong and where. Learning to read tracebacks is an important skills in programming. Here is an example:
+When your code raises an error, Python prints a **traceback** — a summary of what went wrong and where. Learning to read tracebacks is an important skill in programming. Here is an example:
 
 ```
 Traceback (most recent call last):

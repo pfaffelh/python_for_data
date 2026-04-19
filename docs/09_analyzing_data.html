@@ -279,7 +279,7 @@ window.Quarto = {
 
 <p><a href="notebooks/09_analyzing_data.ipynb">Download notebook</a>.</p>
 <p>In this chapter, we learn about statistical analysis with <code>scipy.stats</code>, including descriptive statistics, probability distributions, statistical tests, and maximum likelihood estimation.</p>
-<div id="8c477928" class="cell" data-execution_count="1">
+<div id="d066a7c8" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -295,7 +295,7 @@ window.Quarto = {
 <li><code>stats.pearsonr(x, y)</code>: Pearson correlation coefficient and p-value.</li>
 <li><code>stats.spearmanr(x, y)</code>: Spearman rank correlation and p-value.</li>
 </ul>
-<div id="7bd25423" class="cell" data-execution_count="2">
+<div id="38a43bca" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stats.describe(data)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"count ="</span>, result.nobs)</span>
@@ -313,7 +313,7 @@ skewness = 0.0
 kurtosis = -1.2380952380952381</code></pre>
 </div>
 </div>
-<div id="2247e924" class="cell" data-execution_count="3">
+<div id="e0d8354d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([<span class="fl">2.3</span>, <span class="fl">4.1</span>, <span class="fl">3.7</span>, <span class="fl">5.2</span>, <span class="fl">4.8</span>, <span class="fl">3.3</span>])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"trimmed mean ="</span>, stats.tmean(data))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"std ="</span>, stats.tstd(data))</span>
@@ -324,7 +324,7 @@ std = 1.0488088481701514
 median = 3.9</code></pre>
 </div>
 </div>
-<div id="ba089dd0" class="cell" data-execution_count="4">
+<div id="72e0815c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rng.normal(size<span class="op">=</span><span class="dv">50</span>)</span>
@@ -350,7 +350,7 @@ median = 3.9</code></pre>
 </ul>
 <p>Each distribution takes its own parameters, e.g.&nbsp;<code>stats.norm(loc=mu, scale=sigma)</code>, <code>stats.poisson(mu=lam)</code>, <code>stats.binom(n=n, p=p)</code>. See the <code>scipy.stats</code> documentation for the full list.</p>
 <p>For continuous distributions, the location-scale convention is used: <code>stats.norm(loc=mu, scale=sigma)</code> gives <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span>.</p>
-<div id="41255a68" class="cell" data-execution_count="5">
+<div id="ba1f9799" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standard normal</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mean ="</span>, stats.norm.mean())</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"pdf(0) ="</span>, stats.norm.pdf(<span class="dv">0</span>))</span>
@@ -363,7 +363,7 @@ cdf(1.96) = 0.9750021048517795
 ppf(0.975) = 1.959963984540054</code></pre>
 </div>
 </div>
-<div id="7706fd75" class="cell" data-execution_count="6">
+<div id="f99f06b9" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># normal with given parameters</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">3</span>, scale<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> dist.rvs(size<span class="op">=</span><span class="dv">1000</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
@@ -380,7 +380,7 @@ empirical mean = 3.0386641116446507
 empirical variance = 3.8316199589260687</code></pre>
 </div>
 </div>
-<div id="fbd2bc0a" class="cell" data-execution_count="7">
+<div id="2527e055" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># exponential</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exp(1) mean ="</span>, stats.expon.mean())</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exp(1) samples:"</span>, stats.expon.rvs(size<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -389,14 +389,14 @@ empirical variance = 3.8316199589260687</code></pre>
 Exp(1) samples: [0.79587451 1.25593076 0.92322315 0.78720115 0.55104849]</code></pre>
 </div>
 </div>
-<div id="138fb1f6" class="cell" data-execution_count="8">
+<div id="e7ca783f" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poisson</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Poisson(3) pmf(2) ="</span>, stats.poisson.pmf(<span class="dv">2</span>, mu<span class="op">=</span><span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Poisson(3) pmf(2) = 0.22404180765538775</code></pre>
 </div>
 </div>
-<div id="a1a14f6a" class="cell" data-execution_count="9">
+<div id="e9f273a7" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># binomial</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Binom(10, 0.3) pmf(3) ="</span>, stats.binom.pmf(<span class="dv">3</span>, n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">0.3</span>))</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Binom(10, 0.3) mean ="</span>, stats.binom.mean(n<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span><span class="fl">0.3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -405,7 +405,7 @@ Exp(1) samples: [0.79587451 1.25593076 0.92322315 0.78720115 0.55104849]</code><
 Binom(10, 0.3) mean = 3.0</code></pre>
 </div>
 </div>
-<div id="7acce200" class="cell" data-execution_count="10">
+<div id="99741f10" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizing distributions</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">4</span>))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -447,7 +447,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <li><code>stats.chisquare(observed)</code>: chi-squared test (do observed frequencies match expected frequencies?).</li>
 <li><code>stats.kstest(data, 'norm')</code>: Kolmogorov-Smirnov test (does the data come from the given distribution?).</li>
 </ul>
-<div id="472ec2e1" class="cell" data-execution_count="11">
+<div id="01f5167e" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="fl">5.2</span>, scale<span class="op">=</span><span class="fl">1.0</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -458,7 +458,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <pre><code>t-statistic = 0.5225, p-value = 0.6053</code></pre>
 </div>
 </div>
-<div id="3bc6f898" class="cell" data-execution_count="12">
+<div id="7f912fae" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two-sample t-test</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sample1 <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="fl">5.0</span>, scale<span class="op">=</span><span class="fl">1.0</span>, size<span class="op">=</span><span class="dv">40</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sample2 <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="fl">5.5</span>, scale<span class="op">=</span><span class="fl">1.0</span>, size<span class="op">=</span><span class="dv">40</span>)</span>
@@ -469,7 +469,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <pre><code>t-statistic = -1.2000, p-value = 0.2338</code></pre>
 </div>
 </div>
-<div id="7b068d7a" class="cell" data-execution_count="13">
+<div id="8a3e3e52" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-squared test</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> np.array([<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">15</span>])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> stats.chisquare(observed)</span>
@@ -478,7 +478,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <pre><code>chi2-statistic = 2.9000, p-value = 0.5747</code></pre>
 </div>
 </div>
-<div id="9d2fc356" class="cell" data-execution_count="14">
+<div id="128a8ad3" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kolmogorov-Smirnov test</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> stats.kstest(data, <span class="st">'norm'</span>)</span>
@@ -497,7 +497,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 <li><code>dist.logpdf(x, ...)</code>: log-density, useful for computing the log-likelihood.</li>
 </ul>
 <p>For cases where no closed-form MLE exists, we use numerical optimization via <code>scipy.optimize.minimize</code> (see <a href="06_numerics.html#sec-optimization" class="quarto-xref"><span>Section 6.9</span></a>). When using <code>method='BFGS'</code>, the result includes an approximate inverse Hessian (<code>result.hess_inv</code>), whose diagonal entries are the asymptotic variances of the parameter estimates. Taking square roots gives the standard errors.</p>
-<div id="41c73dc2" class="cell" data-execution_count="15">
+<div id="708401d2" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MLE for the normal distribution</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>true_mu <span class="op">=</span> <span class="fl">3.0</span></span>
@@ -514,7 +514,7 @@ Binom(10, 0.3) mean = 3.0</code></pre>
 true sigma = 1.5, MLE sigma = 1.4418</code></pre>
 </div>
 </div>
-<div id="31b60c86" class="cell" data-execution_count="16">
+<div id="5b7db53c" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using scipy's fit method</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>mu_fit, sigma_fit <span class="op">=</span> stats.norm.fit(data)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"scipy fit: mu = </span><span class="sc">{</span>mu_fit<span class="sc">:.4f}</span><span class="ss">, sigma = </span><span class="sc">{</span>sigma_fit<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -522,7 +522,7 @@ true sigma = 1.5, MLE sigma = 1.4418</code></pre>
 <pre><code>scipy fit: mu = 3.0229, sigma = 1.4418</code></pre>
 </div>
 </div>
-<div id="32aebda0" class="cell" data-execution_count="17">
+<div id="9e8c8b73" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MLE for the exponential distribution</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For Exp(lambda) with density lambda * exp(-lambda * x), the MLE is </span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda_hat = 1 / x_bar</span></span>
@@ -536,7 +536,7 @@ true sigma = 1.5, MLE sigma = 1.4418</code></pre>
 <pre><code>true lambda = 2.0, MLE lambda = 1.7986</code></pre>
 </div>
 </div>
-<div id="8326cf50" class="cell" data-execution_count="18">
+<div id="c511859a" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MLE via numerical optimization (when no closed form exists)</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Gamma distribution</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> optimize</span>
@@ -571,7 +571,7 @@ std error of shape = 0.2061
 std error of scale = 0.0987</code></pre>
 </div>
 </div>
-<div id="08d4884e" class="cell" data-execution_count="19">
+<div id="295d26aa" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare with scipy's built-in fit</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># floc=0 fixes the location parameter to 0</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>a_fit, loc_fit, scale_fit <span class="op">=</span> stats.gamma.fit(data_gamma, floc<span class="op">=</span><span class="dv">0</span>)  </span>
@@ -580,7 +580,7 @@ std error of scale = 0.0987</code></pre>
 <pre><code>scipy fit: shape = 2.7227, scale = 1.1411</code></pre>
 </div>
 </div>
-<div id="51446286" class="cell" data-execution_count="20">
+<div id="dcdac7da" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizing the MLE fit</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x_grid <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">200</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -605,7 +605,7 @@ std error of scale = 0.0987</code></pre>
 </div>
 </div>
 <p>The following plot shows the log-likelihood as a function of the two parameters shape and scale (for the gamma distribution fitted above). To evaluate a function on a 2d grid of parameter values, we use <code>np.meshgrid</code>: given two 1d arrays <code>shape_grid</code> and <code>scale_grid</code> of lengths <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>, <code>np.meshgrid(shape_grid, scale_grid)</code> returns two <span class="math inline">\(n \times m\)</span> arrays <code>SHAPE</code> and <code>SCALE</code> such that <code>(SHAPE[i,j], SCALE[i,j])</code> is the point <code>(shape_grid[j], scale_grid[i])</code>. This allows evaluating the log-likelihood at every grid point with a simple loop (or vectorized). We store the results in an array created by <code>np.zeros_like(SHAPE)</code>, which returns an array of zeros with the same shape as <code>SHAPE</code>. The result is visualized with <code>plt.contourf</code>, which draws filled contour lines.</p>
-<div id="06819ac0" class="cell" data-execution_count="21">
+<div id="c572079a" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># log-likelihood surface for the Gamma distribution</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>shape_grid <span class="op">=</span> np.linspace(<span class="fl">1.5</span>, <span class="fl">4.0</span>, <span class="dv">100</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>scale_grid <span class="op">=</span> np.linspace(<span class="fl">0.7</span>, <span class="fl">2.0</span>, <span class="dv">100</span>)</span>
@@ -652,7 +652,7 @@ std error of scale = 0.0987</code></pre>
 <li><code>np.polyfit(x, y, deg)</code>: fit a polynomial of degree <code>deg</code> to the data. For <code>deg=1</code>, this gives the same result as linear regression.</li>
 <li><code>np.polyval(coeffs, x)</code>: evaluate a polynomial with the given coefficients at <code>x</code>.</li>
 </ul>
-<div id="23fb0846" class="cell" data-execution_count="22">
+<div id="bc71976b" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple linear regression</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">42</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
@@ -672,7 +672,7 @@ p-value = 0.000000
 std error of slope = 0.0734</code></pre>
 </div>
 </div>
-<div id="05a6ee55" class="cell" data-execution_count="23">
+<div id="d29ac4c2" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizing the fit</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, s<span class="op">=</span><span class="dv">20</span>, label<span class="op">=</span><span class="st">"data"</span>)</span>
@@ -697,7 +697,7 @@ std error of slope = 0.0734</code></pre>
 <ul>
 <li><code>np.linalg.lstsq(A, b, rcond=None)</code>: solve <span class="math inline">\(A \beta \approx b\)</span> in the least squares sense. Returns a tuple of four values: the coefficient vector <span class="math inline">\(\beta\)</span>, the sum of squared residuals (empty if <code>A</code> has fewer rows than columns), the rank of <code>A</code>, and its singular values.</li>
 </ul>
-<div id="d11b57fe" class="cell" data-execution_count="24">
+<div id="ca0947fe" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple linear regression: y = beta0 + beta1 * x1 + beta2 * x2</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
@@ -717,7 +717,7 @@ beta1 = 1.5215 (true: 1.5)
 beta2 = -1.9444 (true: -2.0)</code></pre>
 </div>
 </div>
-<div id="0ac3139d" class="cell" data-execution_count="25">
+<div id="eac1d323" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R-squared for the multiple regression</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> A <span class="op">@</span> beta</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>ss_res <span class="op">=</span> np.<span class="bu">sum</span>((y <span class="op">-</span> y_pred)<span class="op">**</span><span class="dv">2</span>)</span>
@@ -741,7 +741,7 @@ beta2 = -1.9444 (true: -2.0)</code></pre>
 <li><code>np.linalg.eigh(C)</code>: eigendecomposition of a symmetric matrix <span class="math inline">\(C\)</span>. This is a variant of <code>np.linalg.eig</code> (see <a href="06_numerics.html#sec-linalg" class="quarto-xref"><span>Section 6.6</span></a>) specialized for symmetric (Hermitian) matrices: it guarantees real eigenvalues and returns them sorted in ascending order. Returns eigenvalues and eigenvectors as columns.</li>
 <li>Projection: <code>X_centered @ V[:, :k]</code> computes <span class="math inline">\(X_k = \tilde{X} V_k\)</span>, i.e.&nbsp;projects the data onto the first <code>k</code> principal components (after reversing the order so that the largest eigenvalue comes first).</li>
 </ul>
-<div id="578ec72b" class="cell" data-execution_count="26">
+<div id="d9cebb6e" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate correlated 3d data</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">42</span>)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">200</span></span>
@@ -756,7 +756,7 @@ beta2 = -1.9444 (true: -2.0)</code></pre>
 <span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.5</span> <span class="op">*</span> z1 <span class="op">+</span> <span class="fl">0.3</span> <span class="op">*</span> z2 <span class="op">+</span> z3</span>
 <span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="8cec6202" class="cell" data-execution_count="27">
+<div id="367a61ac" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 1: center the data</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>X_centered <span class="op">=</span> X <span class="op">-</span> X.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -771,7 +771,7 @@ beta2 = -1.9444 (true: -2.0)</code></pre>
  [0.873 0.65  0.277]]</code></pre>
 </div>
 </div>
-<div id="db2620e3" class="cell" data-execution_count="28">
+<div id="b52a5e93" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 3: eigendecomposition</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>eigenvalues, eigenvectors <span class="op">=</span> np.linalg.eigh(C)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -786,7 +786,7 @@ beta2 = -1.9444 (true: -2.0)</code></pre>
 Variance explained (%): [92.   7.8  0.2]</code></pre>
 </div>
 </div>
-<div id="6fe98f36" class="cell" data-execution_count="29">
+<div id="2e376fc1" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 4: project onto the first 2 principal components</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> X_centered <span class="op">@</span> eigenvectors[:, :<span class="dv">2</span>]</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -804,7 +804,7 @@ Variance explained (%): [92.   7.8  0.2]</code></pre>
 </div>
 </div>
 </div>
-<div id="d8e43c67" class="cell" data-execution_count="30">
+<div id="e027d594" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scree plot: how much variance does each component explain?</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>plt.bar(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(eigenvalues) <span class="op">+</span> <span class="dv">1</span>), eigenvalues <span class="op">/</span> eigenvalues.<span class="bu">sum</span>() <span class="op">*</span> <span class="dv">100</span>)</span>
@@ -826,51 +826,51 @@ Variance explained (%): [92.   7.8  0.2]</code></pre>
 <section id="exercises" class="level2" data-number="9.7">
 <h2 data-number="9.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.7</span> Exercises</h2>
 <p><strong>Exercise 1</strong> Load the <a href="https://raw.githubusercontent.com/kirenz/datasets/master/Auto.csv">Auto MPG dataset</a> (originally from the <a href="https://archive.ics.uci.edu/dataset/9/auto+mpg">UCI Machine Learning Repository</a>) using <code>pd.read_csv</code>. Use <code>stats.describe</code> on the <code>mpg</code> column and compare the output with <code>df["mpg"].describe()</code>. Compute the Pearson and Spearman correlation between <code>weight</code> and <code>mpg</code>. Which is stronger? Why might they differ?</p>
-<div id="82362e78" class="cell" data-execution_count="31">
+<div id="a40cf6cd" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 2</strong> Generate 1000 samples from a <span class="math inline">\(\mathcal{N}(2, 3^2)\)</span> distribution. Plot a histogram together with the true density, the density of the MLE fit (<code>stats.norm.fit</code>), and the density of a fit where you deliberately set <span class="math inline">\(\mu = 0\)</span> (wrong mean). Add a legend.</p>
-<div id="d622b299" class="cell" data-execution_count="32">
+<div id="9111f3fa" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 3</strong> Load the <a href="https://raw.githubusercontent.com/kirenz/datasets/master/advertising.csv">Advertising dataset</a> (from the textbook <em>An Introduction to Statistical Learning</em> by James, Witten, Hastie, and Tibshirani) using <code>pd.read_csv</code>. Use <code>stats.linregress</code> to fit a simple linear regression of <code>sales</code> on <code>TV</code>. Report the slope, intercept, R-squared, and p-value. Plot the data as a scatter plot with the regression line. Then fit a multiple regression of <code>sales</code> on <code>TV</code>, <code>radio</code>, and <code>newspaper</code> using <code>np.linalg.lstsq</code>. Compare the R-squared values. Which predictor contributes least?</p>
-<div id="a8b78840" class="cell" data-execution_count="33">
+<div id="e91282c8" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 4</strong> Load the Auto MPG dataset (same URL as Exercise 1). Select the numeric columns <code>mpg</code>, <code>cylinders</code>, <code>displacement</code>, <code>horsepower</code>, <code>weight</code>, <code>acceleration</code>. Drop rows with missing values. Perform PCA on the standardized data. How much variance do the first two components explain? Plot the data projected onto the first two principal components, coloring points by <code>cylinders</code>. What structure do you see?</p>
-<div id="90792ab6" class="cell" data-execution_count="34">
+<div id="692f7f37" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 5</strong> Generate two samples of size 50: one from an exponential distribution with rate 1, the other from a normal distribution with mean 1 and standard deviation 1. Use a Kolmogorov-Smirnov test (<code>stats.kstest</code>) to test whether each sample could come from a normal distribution. Interpret the p-values. Then use a chi-squared test on binned data to test the same hypothesis.</p>
-<div id="a5cfae6b" class="cell" data-execution_count="35">
+<div id="30febc60" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 6</strong> A <strong>QQ-plot</strong> (quantile-quantile plot) compares the quantiles of a sample against the theoretical quantiles of a reference distribution. If the data follow the reference distribution, the points lie on a straight line. Use <code>stats.probplot(data, dist="norm", plot=plt)</code> to create QQ-plots for: (a) 200 samples from a standard normal, (b) 200 samples from an exponential distribution, (c) 200 samples from a <span class="math inline">\(t\)</span>-distribution with 3 degrees of freedom (<code>stats.t.rvs(df=3, size=200)</code>). Which sample deviates most from normality, and how does the deviation appear in the QQ-plot?</p>
-<div id="750682b0" class="cell" data-execution_count="36">
+<div id="3a6e38f9" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 7</strong> Generate two samples: <code>sample_a</code> from <span class="math inline">\(\mathcal{N}(5, 1)\)</span> (size 30) and <code>sample_b</code> from <span class="math inline">\(\mathcal{N}(5.5, 1)\)</span> (size 30). Perform a two-sample t-test. Then repeat this experiment 1000 times and count how often the test rejects at level <span class="math inline">\(\alpha = 0.05\)</span>. This is the empirical power of the test. How does it change if you increase the sample size to 100?</p>
-<div id="c3b43b0b" class="cell" data-execution_count="37">
+<div id="dd9ba0c3" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 8</strong> Using the <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation">World Bank API</a> (see <a href="07_handling_data.html#sec-loading-online" class="quarto-xref"><span>Section 7.9</span></a>), fetch GDP per capita (<code>NY.GDP.PCAP.CD</code>) and life expectancy (<code>SP.DYN.LE00.IN</code>) for all countries for the year 2022. Drop missing values. Use <code>stats.pearsonr</code> and <code>stats.spearmanr</code> to compute both correlation coefficients. Create a scatter plot of GDP per capita vs.&nbsp;life expectancy. Why does the Spearman correlation differ from the Pearson correlation? Hint: try plotting GDP on a log scale (<code>plt.xscale("log")</code>).</p>
-<div id="eff81a5d" class="cell" data-execution_count="38">
+<div id="a4080760" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 9</strong> Using the World Bank API, fetch Germany’s total population (<code>SP.POP.TOTL</code>) for each year from 1960 to 2023. Use <code>stats.linregress</code> to fit a linear trend to the data. Plot the population over time together with the regression line. Compute the residuals and plot them. Does a linear model fit well? What happens around 1990?</p>
-<div id="25033c2c" class="cell" data-execution_count="39">
+<div id="2aef904f" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 10</strong> Using the World Bank API, fetch GDP per capita (<code>NY.GDP.PCAP.CD</code>) for all countries for the years 2010 and 2020. Merge the two years into a single DataFrame so that each country has columns <code>gdp_2010</code> and <code>gdp_2020</code>. Drop rows with missing values. Use a paired t-test (<code>stats.ttest_rel</code>) to test whether GDP per capita has changed significantly. Then fit a normal distribution to the differences <code>gdp_2020 - gdp_2010</code> using <code>stats.norm.fit</code> and plot the histogram together with the fitted density.</p>
-<div id="14ab5e58" class="cell" data-execution_count="40">
+<div id="850cb5d9" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 11</strong> Generate 200 samples from a mixture of two normals: with probability 0.4 draw from <span class="math inline">\(\mathcal{N}(-2, 1)\)</span>, otherwise from <span class="math inline">\(\mathcal{N}(3, 0.5^2)\)</span>. Write a function that computes the negative log-likelihood of a two-component Gaussian mixture (with 5 parameters: <span class="math inline">\(\mu_1, \sigma_1, \mu_2, \sigma_2, p\)</span>). Use <code>scipy.optimize.minimize</code> to find the MLE. Plot the histogram and the fitted density.</p>
-<div id="e8cda65c" class="cell" data-execution_count="41">
+<div id="ac290f5c" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 12</strong> Using the World Bank API, fetch life expectancy (<code>SP.DYN.LE00.IN</code>) and GDP per capita (<code>NY.GDP.PCAP.CD</code>) for all countries for the year 2022. Drop missing values. Standardize both variables. Perform PCA on the two-dimensional data. What fraction of the variance is explained by the first principal component? Plot the data in the original and in the PCA coordinate system. Does PCA help here, given that there are only two features?</p>
-<div id="a30b5831" class="cell" data-execution_count="42">
+<div id="da1c9d82" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 

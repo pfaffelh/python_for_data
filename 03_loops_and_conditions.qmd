@@ -12,7 +12,7 @@ jupyter: python3
 Coding starts to become interesting when we can control how variables change, and repeat operations. 
 
 ## Conditions (`if ... elif ... else`)
-As a simple (mathematical) example, let us compute the minimum of two numbers., which works by an `if`-**condition**:
+As a simple (mathematical) example, let us compute the minimum of two numbers, which works by an `if`-**condition**:
 ```{python}
 a = 2
 b = 5
@@ -34,7 +34,7 @@ elif _condition3_:
 else:
     case_else
 ```
-Here, read `elif` alse `else if`, which means that the code jumps into this case if the respective condition is the first to hold. The `else` case only applied if both the `if` and all `elif` conditions do not apply. 
+Here, read `elif` as `else if`, which means that the code jumps into this case if the respective condition is the first to hold. The `else` case only applies if both the `if` and all `elif` conditions do not apply. 
 
 In fact, there are abbreviations in Python which are very handy. In particular, look at this piece of code.
 ```{python}
@@ -77,7 +77,7 @@ for _var_ in _iterable:
 ```
 
 ### Greatest common divisor I
-Let us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, `a` and `b`. A very simple algorithm is going through all numbers `1,...,` in order, and update result each time we encounter a number which divides both, `a` and `b`. (Here, `range(1,a+1)` is a synoym for the numbers `1,...,a`.)
+Let us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, `a` and `b`. A very simple algorithm is going through all numbers `1,...,` in order, and update result each time we encounter a number which divides both, `a` and `b`. (Here, `range(1,a+1)` is a synonym for the numbers `1,...,a`.)
 
 ```{python}
 # Basic algorithm for finding the gcd of two numbers
@@ -91,9 +91,10 @@ for i in range(1,a+1):
 print(f"The gcd of {a} and {b} is {res}.")
 ```
 
-Let us make some remarks on `for`-loops: 
-* In the last example, note that the instructios within the `for`-loop depend on `i`.
-* Within a `for`-loop, you can use `continue` in order to stop the execution of the current iteration, and immediately jump to the next `i`. 
+Let us make some remarks on `for`-loops:
+
+* In the last example, note that the instructions within the `for`-loop depend on `i`.
+* Within a `for`-loop, you can use `continue` in order to stop the execution of the current iteration, and immediately jump to the next `i`.
 * Within a `for`-loop, you can use `break` in order to stop the whole execution of the `for`-loop.
 
 ```{python}
@@ -165,7 +166,7 @@ print(f"The gcd of {a_input} and {b_input} is {b}.")
 
 ## Functions (`def`) {#sec-functions}
 
-Once we implement something, we wan to reuse it without re-writing the code. This means, we want to pack our code into its own **function** for reusing it. For Euclid's algorithm, this would look as follows:
+Once we implement something, we want to reuse it without re-writing the code. This means, we want to pack our code into its own **function** for reusing it. For Euclid's algorithm, this would look as follows:
 
 ```{python}
 a = 105
@@ -181,13 +182,13 @@ def gcd(a,b):
 
 print(f"The gcd of {a} and {b} is {gcd(a,b)}.")
 ```
-The general structure is 
-``` 
-def name_of_the_funcion(arg1, arg2, arg3 = default3, arg4=default4):
-    some instructions
-    return something
+The general structure is
 ```
-Not all functions return something. Those who don't usually produce some output. Here is an example 
+def name_of_the_function(arg1, arg2, arg3=default3, arg4=default4):
+    some instructions
+    [return something]
+```
+The `return something` is optional: not all functions return something. Those who don't usually produce some output instead. Here is an example
 ```{python}
 def greeting(name, prefix="Hello"):
     """ Return a greeting for name."""
@@ -200,7 +201,7 @@ greeting(prefix="Welcome", name="Charlie")
 
 Here are some important remarks on functions: 
 
-* Variables within functions are private to them. (There will be exceptions to this) In the gcd example, variable names `a` and `b` occur both, within and outside of the function. Although the variables `a` and `b`, which are private to the function, are changed within the function, the `print`-statement still knowns their value from before the function definition.
+* Variables within functions are private to them. (There will be exceptions to this.) In the gcd example, variable names `a` and `b` occur both, within and outside of the function. Although the variables `a` and `b`, which are private to the function, are changed within the function, the `print`-statement still knowns their value from before the function definition.
 * Variables which are given to functions might have **default values**, as the `prefix = "Hello"` in the `greeting` example.
 * For giving variables, there are two options: 
     - you can rely on the position they have in the definition of the function. (Example: `greeting("Bob", prefix="Hi")`, where you rely on `"Bob"` being in the `name` position.) These are called **positional variables**. 
@@ -212,7 +213,7 @@ Here are some important remarks on functions:
 
 ## Exception handling (`raise`, `try ... except`) {#sec-exceptions}
 
-In code, various things happen, and some go wrong. **Raising** (throwing) errors, **catching** them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them: 
+In code, various things happen, and some go wrong. **Raising** (throwing) errors, **catching** them, and dealing with them is the topic of this section. There are many error types implemented. Let us look at some of them (some examples refer to `list`s and `dict`s, which will be introduced in @sec-list and @sec-dict, or to `open`, which is covered in @sec-file-io):
 
 | Exception             | When it happens         | Example                |
 | --------------------- | ----------------------- | ---------------------- |
@@ -262,15 +263,16 @@ except TypeError:
     print("Calculation not possible, sorry")
 ```
 
-## File input and output, context management (`open`, `read`, `write`, `with`)
+## File input and output, context management (`open`, `read`, `write`, `with`) {#sec-file-io}
 
 Reading and writing files is one of the most common tasks in data analysis. Python's built-in `open` function, combined with the `with` statement, provides a clean way to handle files. The `with` **context manager** handles opening and closing files for you. More generall, our Python file (or notebook) must interact with other files or ressources (databases, other connections). In order to do this safely, we are using `with`, which guarantees that the ressource is entered (opened) and exited (closed) correctly. The general structure is as follows:
 ```
 with something as name:
     do_something()
 ```
-Specifically for input and output from and to files, let `f` be an open file object. Then, the following are useful: 
-* `open(path, mode)`: open a file. See below for some details on `mode`. 
+Specifically for input and output from and to files, let `f` be an open file object. Then, the following are useful:
+
+* `open(path, mode)`: open a file. See below for some details on `mode`.
 * `f.read()`: read the entire file as a single string.
 * `f.readline()`: read a single line.
 * `f.readlines()`: read all lines into a list of strings.
@@ -279,7 +281,7 @@ Specifically for input and output from and to files, let `f` be an open file obj
 
 ```{python}
 with open("hello.txt", "w") as f:
-    f.write("Hello")
+    f.write("Hello\n")
     f.write("This is a new line in the file!\n")
     print("File written.")
 ```
@@ -296,7 +298,8 @@ with open("hello.txt", "r") as f:
 with open("hello.txt", "r") as f:
     print(f.read())
 ```
-Here, `"hello.txt"` is closed at the end of the `with` block. The second argument of `open` comes with the following modes: 
+Here, `"hello.txt"` is closed at the end of the `with` block. The second argument of `open` comes with the following modes:
+
 * `r`: read (text mode)
 * `w`: (over-)write (text mode)
 * `a`: append (text mode)
