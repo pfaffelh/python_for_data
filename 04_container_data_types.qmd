@@ -12,13 +12,16 @@ When working with data, we usually not only have *one* int or *one* str, but man
 
 ## Lists (`list`) {#sec-list}
 
-A **list** is the most common container data type in Python. Two fundamental operations on lists are **indexing** and **slicing**. Indexing means accessing a single element by its position (starting at 0), and slicing means extracting a sublist using `start:stop` notation (where the element at position `stop` is excluded).
+A **list** is the most common container data type in Python. Two fundamental operations on lists are **indexing** and **slicing**. Indexing means accessing a single element by its position (starting at 0), and slicing means extracting a sublist using `start:stop` notation (where the element at position `stop` is excluded). Negative indices count from the end of the list, so `l[-1]` is the last element, `l[-2]` the second-to-last, and so on.
 
 ```{python}
 # Indexing: access a single element by position
 names = ["Alice", "Bob", "Charlie", "Donna"]
 print(names[0])
 print(names[2])
+# Negative indices count from the end
+print(names[-1])
+print(names[-2])
 ```
 
 ```{python}
@@ -113,6 +116,16 @@ Let us shortly describe two functions on a list of `bool`s `l`.
 
 * `all(l)` gives `True` if all entries of `l` are `True.
 * `any(l)` gives `True` if at least one entry of `l` is `True.
+
+A useful function that takes a list of strings and combines them into a single string is `str.join` (already mentioned briefly in @sec-strings). It is called on the separator string and takes the list as argument.
+
+* `"sep".join(l)`: joins the elements of the list of strings `l` into a single string, with `"sep"` placed between consecutive elements.
+
+```{python}
+names = ["Alice", "Bob", "Charlie"]
+print(", ".join(names))
+print(" and ".join(names))
+```
 
 ## Tuples (`tuple`) {#sec-tuple}
 

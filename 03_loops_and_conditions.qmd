@@ -126,8 +126,8 @@ Let us make two examples: finding $\sqrt{2}$ and computing the gcd using Euclid'
 
 ### Finding $\sqrt{2}$
 For finding $\sqrt{2}$, note that this is a fixed point for the iteration
-$$ x_{n+1} = \frac {x_n} 2 - \frac 1 {x_n}.$$
-(In order to see this, assume that $x = x_n = x_{n+1}$, and multiply the recursion by $x$.) We can use this as follows. Here, `abs()` is a built-in function returning the absolute value of a number.
+$$ x_{n+1} = \frac {x_n} 2 + \frac 1 {x_n}.$$
+(In order to see this, assume that $x = x_n = x_{n+1}$, and multiply the recursion by $x$.) This is in fact **Newton's method** applied to $f(x) = x^2 - 2$: the general iteration $x_{n+1} = x_n - f(x_n)/f'(x_n)$ becomes $x_{n+1} = \frac{x_n}{2} + \frac{1}{x_n}$ in this case. We will revisit Newton's method in a more general form in the exercises. We can use this as follows. Here, `abs()` is a built-in function returning the absolute value of a number.
 
 ```{python}
 x = 1

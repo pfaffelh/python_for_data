@@ -167,7 +167,7 @@ z = float("nan")
 print("(z == z) =", z == z)
 ```
 
-## Text (`string`)
+## Text (`string`) {#sec-strings}
 
 In many cases, **strings** are objects in quotation marks, such as in `"Hello, world!"`.
 
