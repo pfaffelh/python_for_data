@@ -173,12 +173,12 @@ Here are some functions on some `s` and `t`:
 * `s - t`: The difference of `s` and `t`.
 
 
-```{python3}
+```{python}
 l = [1,3,2,4,3,2]
 print(f"There are {len(set(l))} unique elements in {l}.")
 ```
 Unions, intersection, and set differences work as expected:
-```{python3}
+```{python}
 s = {1,2,3}
 t = {5,4,3}
 print(f"The union of {s} and {t} is {s | t}.")
