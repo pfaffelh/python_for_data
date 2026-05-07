@@ -22,7 +22,7 @@ Within the first two parts, you will be assigned homeworks, which you can find a
 
 To obtain the Studienleistung for this course, two things are required:
 
-1. **A 45-minute multiple choice exam on June 2nd.** The exam covers the Python basics from Chapters 2–5 (simple data types, control flow, container data types, and libraries). The exam is held on paper — **no computers** (and no books or notes) are allowed.
+1. **A 45-minute multiple choice exam on June 2nd, in class.** The exam covers the Python basics from Chapters 2–5 (simple data types, control flow, container data types, and libraries). The exam is held on paper — **no computers** (and no books or notes) are allowed. The list of possible questions is available at [pfaffelh.github.io/python_for_data_/exam/exam_questions.md](https://pfaffelh.github.io/python_for_data_/exam/exam_questions.md).
 
 2. **The project.** The third part of this course is a small data analysis project that you carry out in groups of 2. The goal is to apply the skills from Chapters 2–9 to a topic of your choice. Use `git` and either [GitHub](https://github.com) or the [university GitLab](https://gitlab.uni-freiburg.de/) to share code within your group (see @sec-git for an introduction). The repository should be public (or shared with the instructor) so that the instructors can follow your progress. The timeline is:
 
