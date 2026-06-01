@@ -6,3 +6,6 @@ myFiles/
 **/*.quarto_ipynb
 archive/
 solutions/
+# Generated exam (output of exam/generate_exam.py)
+exam/exam.*
+exam/exam_answers.txt
