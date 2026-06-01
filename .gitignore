@@ -9,3 +9,12 @@ solutions/
 # Generated exam (output of exam/generate_exam.py)
 exam/exam.*
 exam/exam_answers.txt
+# Quarto render output (built by .github/workflows/publish.yml)
+docs/
+notebooks/
+# Side effects of running code cells locally
+data.pkl
+hello.txt
+# LaTeX build artefacts
+latex/*.aux
+latex/*.log
