@@ -18,3 +18,5 @@ hello.txt
 # LaTeX build artefacts
 latex/*.aux
 latex/*.log
+# Private project notes (student emails etc.)
+projects/
