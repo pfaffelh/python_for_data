@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# notebooks/ is gitignored (built here, not checked in), so on a fresh CI
+# checkout the directory does not exist yet. Create it before copying into it.
+mkdir -p notebooks
 cp *.qmd notebooks/
 cp -r misc notebooks/
 cd notebooks
