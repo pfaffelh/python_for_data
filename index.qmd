@@ -8,7 +8,7 @@ jupyter: python3
 
 [Download notebook](notebooks/index.ipynb). [Download as PDF](python_for_data.pdf).
 
-These are the materials which are used for a course on _Python for Data Analysis_ at the University of Freiburg in summer 2026. It does not assume any prior knowledge of Python (although this might help). The goal of the course is some literacy in Python, including basic knowledge such as data types and control flow, but also using libraries and APIs, reading and dealing with data, up to some methods such as PCA and regression.
+These are the materials which are used for a course on _Python for Data Analysis_ at the University of Freiburg. It does not assume any prior knowledge of Python (although this might help). The goal of the course is some literacy in Python, including basic knowledge such as data types and control flow, but also using libraries and APIs, reading and dealing with data, up to some methods such as PCA and regression.
 
 Basically, the course has three parts:
 
@@ -22,13 +22,13 @@ Within the first two parts, you will be assigned homeworks, which you can find a
 
 To obtain the Studienleistung for this course, two things are required:
 
-1. **A 45-minute multiple choice exam on June 2nd, in class.** The exam covers the Python basics from Chapters 2–5 (simple data types, control flow, container data types, and libraries). The exam is held on paper — **no computers** (and no books or notes) are allowed. The list of possible questions is available [here](https://github.com/pfaffelh/python_for_data/blob/master/exam/exam_questions.md).
+1. **A 45-minute multiple choice exam on December 3rd, in class.** The exam covers the Python basics from Chapters 2–5 (simple data types, control flow, container data types, and libraries). The exam is held on paper — **no computers** (and no books or notes) are allowed. The list of possible questions is available [here](https://github.com/pfaffelh/python_for_data/blob/master/exam/exam_questions.md).
 
-2. **The project.** The third part of this course is a small data analysis project that you carry out in groups of 2. The goal is to apply the skills from Chapters 2–9 to a topic of your choice. Use `git` and either [GitHub](https://github.com) or the [university GitLab](https://gitlab.uni-freiburg.de/) to share code within your group (see @sec-git for an introduction). The repository should be public (or shared with the instructor) so that the instructors can follow your progress. Starting from June 18, there will be office hours every Thursday and Friday from 10–12 in room 231. Please use these for any help with your project. The timeline is:
+2. **The project.** The third part of this course is a small data analysis project that you carry out in groups of 2. The goal is to apply the skills from Chapters 2–9 to a topic of your choice. Use `git` and either [GitHub](https://github.com) or the [university GitLab](https://gitlab.uni-freiburg.de/) to share code within your group (see @sec-git for an introduction). The repository should be public (or shared with the instructor) so that the instructors can follow your progress. The timeline is:
 
     a. **Find a project.** Choose a dataset and a question you want to answer. The dataset can come from any source — public APIs (e.g. World Bank, Eurostat, OpenStreetMap), CSV files from the web, or data you collect yourself. The question should be concrete enough that you can answer it with several plots, tables, and statistical tests.
 
-    b. **Hand in your project idea (by the Pentecost break).** Write a short description (one to two pages are enough) containing what data you will use and where it comes from, and what question(s) you want to answer.
+    b. **Hand in your project idea (by the Christmas break).** Write a short description (one to two pages are enough) containing what data you will use and where it comes from, and what question(s) you want to answer.
 
     c. **Implement and present your project (last two or three sessions).** Build a Jupyter notebook that loads, cleans, analyzes, and visualizes your data. Each project will be presented briefly in class. Details on the presentation are given in Chapter 10.
 
