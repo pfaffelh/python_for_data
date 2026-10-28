@@ -117,7 +117,7 @@ print(float("nan"))
 On `float`, you can use many functions. We only name two at the moment, for some float `x`:
 
 * `abs(x)`: The absolute value of `x`.
-* `round(x)` and `round(x,n)`: Round `x` to the next `int`, or after `n` digits.
+* `round(x)` and `round(x,n)`: Round `x` to the next `int` or to `n` decimal places, respectively.
 
 In @sec-math, we will encounter that many more usual functions (like `sqrt`) can be used on floats, but we need to `import` the mathematical library for this. 
 
