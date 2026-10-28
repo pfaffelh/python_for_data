@@ -217,6 +217,7 @@ In code, various things happen, and some go wrong. **Raising** (throwing) errors
 
 | Exception             | When it happens         | Example                |
 | --------------------- | ----------------------- | ---------------------- |
+| `SyntaxError`         | Invalid Python syntax   | `if True print("Hi")`  |
 | `ValueError`          | Right type, wrong value | `int("abc")`           |
 | `TypeError`           | Wrong type used         | `"2" + 3`              |
 | `IndexError`          | Index out of range      | `[1,2][5]`             |
