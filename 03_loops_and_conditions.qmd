@@ -77,7 +77,7 @@ for _var_ in _iterable:
 ```
 
 ### Greatest common divisor I
-Let us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, `a` and `b`. A very simple algorithm is going through all numbers `1,...,` in order, and update result each time we encounter a number which divides both, `a` and `b`. (Here, `range(1,a+1)` is a synonym for the numbers `1,...,a`.)
+Let us look at a more interesting example, computing the greatest common divisor (gcd) of two numbers, `a` and `b`. A very simple algorithm is going through all numbers `1,...,a` in order, and update result each time we encounter a number which divides both, `a` and `b`. (Here, `range(1,a+1)` is a synonym for the numbers `1,...,a`.)
 
 ```{python}
 # Basic algorithm for finding the gcd of two numbers
