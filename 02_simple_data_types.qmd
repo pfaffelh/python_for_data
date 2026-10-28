@@ -167,6 +167,8 @@ z = float("nan")
 print("(z == z) =", z == z)
 ```
 
+*Note: NaN is unordered with respect to all numerical values, including itself.*
+
 ## Text (`string`) {#sec-strings}
 
 In many cases, **strings** are objects in quotation marks, such as in `"Hello, world!"`.
