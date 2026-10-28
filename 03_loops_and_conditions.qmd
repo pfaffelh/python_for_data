@@ -414,3 +414,23 @@ Write a function `caesar(s, k)` that shifts every letter in the string `s` by `k
 ```{python}
 # Exercise 13
 ```
+
+
+**Exercise 14**  
+Consider the following two ways of writing to a file in Python:
+
+```{python}
+# Without with
+f = open("hello.txt", "w")
+f.write("Hello World!")
+f.close()
+```
+
+```{python}
+# With with
+with open("hello.txt", "w") as f:
+    f.write("Hello World!")
+```
+
+Both approaches produce the same result. Research online what the differences between these two approaches are. In particular, explain why using `with` is generally preferred from a technical perspective. What happens if an exception occurs while writing to the file?
+
