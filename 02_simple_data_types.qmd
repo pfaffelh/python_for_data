@@ -281,6 +281,16 @@ print("(None == False) =", None == False)
 ```{python}
 print("(None == nan) =", None == float("nan"))
 ```
+*Use case:* Suppose we want to store a person's middle name. We can distinguish between a missing value, an empty string, and a known middle name:
+
+```{python}
+name1 = None
+name2 = ""
+name3 = "Tim"
+```
+
+Here, `None` indicates that the middle name is unknown or missing, while `""` indicates that the person has no middle name. Finally, `"Tim"` represents a known middle name.
+
 
 ## Exercises 
 
