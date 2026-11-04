@@ -166,7 +166,7 @@ print(" and ".join(names))
 
 ## Tuples (`tuple`) {#sec-tuple}
 
-At first glance, a **tuple** is like a `list`, but comes with normal brackets `()` instead of square brackets `[]`. So, `(1,2,3)` is the tuple of these three numbers, and `("Alice", "Bob", "Charlie") is a tuple of three names. For the tuple `l`, still, `l[0]` gives the first entry etc. The main difference between `tuple` and `list` is that `list`s are more flexible when adding or changing entries, and `tuple`s are fixed (**immutable**) once they have been created.
+At first glance, a **tuple** is like a `list`, but comes with normal brackets `()` instead of square brackets `[]`. So, `(1,2,3)` is the tuple of these three numbers, and `("Alice", "Bob", "Charlie")` is a tuple of three names. For the tuple `l`, still, `l[0]` gives the first entry etc. The main difference between `tuple` and `list` is that `list`s are more flexible when adding or changing entries, and `tuple`s are fixed (**immutable**) once they have been created.
 ```{python}
 l = ("Alice", "Bob", "Charlie")
 # The next line does not work, since l is immutable
