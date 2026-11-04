@@ -102,6 +102,7 @@ l = [3,2,1]
 print(sorted(l))
 ```
 
+
 ```{python}
 # Integers are immutable, so the original variable is not changed.
 def f(x):
@@ -109,23 +110,34 @@ def f(x):
 
 a = 5
 f(a)
-print(a)
+print(a)  # 5
 
-# To change a, we need to assign the return value.
-def f(x):
-    return x + 1
+# Without a return statement, the function returns None.
+print(f(a))       # None
+# print(f(a) + 2)  # TypeError: unsupported operand types
 
-a = f(a)
-print(a)
+# To change a, we need to return the new value and assign it.
+def g(x):
+    x += 1
+    return x
+
+a = g(a)
+print(a)  # 6
 
 # In contrast, lists are mutable and can be modified directly.
-def g(x):
+# No return statement is needed.
+def h(x):
     x.append(4)
 
 l = [1, 2, 3]
-g(l)
-print(l)
+h(l)
+print(l)  # [1, 2, 3, 4]
+
+# The function still returns None, but the list has been modified.
+print(h(l))  # None
+print(l)     # [1, 2, 3, 4, 4]
 ```
+
 Assume you want to sort a `list` not as usual. In this situation, you will find out about the `key`-parameter in `sorted`. It takes a function, which sorts the list according to the values of this function. Here, we use `lambda` to define short anonymous functions inline: `lambda x: expression` creates a function that takes `x` and returns `expression` (see also @sec-functions in Chapter 3). As an example, assume we want to sort a list of `int`s according to their absolute value:
 ```{python}
 l = [5, -4, 0, 7, -3, 2]
