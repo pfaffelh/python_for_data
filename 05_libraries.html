@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,14 +75,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./04_container_data_types.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f2948d131a78982d1dc884087c2e9838.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d506a4370fcbc2ec5df21b187dec1326.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,17 +115,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_libraries.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_libraries.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some useful libraries/packages/modules</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -135,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -215,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
@@ -233,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -320,7 +321,7 @@ print(f"My constant is {myName.myConst()}.")</code></pre>
 <li><p>You want to use functions from a built-in library. Then, a simple <code>import module</code> is often the best choice. We will see examples in <a href="#sec-math" class="quarto-xref"><span>Section 5.2</span></a>.</p></li>
 <li><p>You want to use functions from a library, which needs to be installed. Here, before the <code>import module</code> even works, you need to install the module in your Python environment. In a terminal, within your Python environment, use</p></li>
 </ol>
-<div id="4918ac03" class="cell" data-execution_count="1">
+<div id="9943aec0" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the next line and run the cell for installation.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This only needs to be done once for every package.</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If pip3 does not work, use pip instead. </span></span>
@@ -344,12 +345,12 @@ print(f"My constant is {myName.myConst()}.")</code></pre>
 <li><code>tzinfo</code> and <code>timezone</code>: handling timezones</li>
 </ul>
 <p>We will here use</p>
-<div id="22359507" class="cell" data-execution_count="2">
+<div id="98b72545" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>at the cost that <code>datetime</code>-objects are only accessible by saying <code>datetime.datetime</code> (the first <code>datetime</code> being the package, the second <code>datetime</code> being the class/submodule).</p>
 <p>Let us create a <code>datetime</code>-object`:</p>
-<div id="078648c4" class="cell" data-execution_count="3">
+<div id="0688cc08" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime(<span class="dv">2026</span>, <span class="dv">4</span>, <span class="dv">21</span>, <span class="dv">12</span>, <span class="dv">15</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"year: </span><span class="sc">{</span>dt<span class="sc">.</span>year<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -376,7 +377,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the starting time of the first session in this course. As we see here, we can extract year,…, microseconds from the <code>datetime</code>-object.</p>
 <p>Often, we are given strings such as <code>"21.4.26, 12:15"</code>, and want to convert this into a <code>datetime</code> object. For this, we have <code>datetime.datetime.strptime</code>:</p>
-<div id="ac0cddc6" class="cell" data-execution_count="4">
+<div id="9d31d393" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"21.4.26, 12:15"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime.strptime(s, <span class="st">"%y.%m.</span><span class="sc">%d</span><span class="st">, %H:%M"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s <span class="op">+</span> <span class="ss">f" is converted to </span><span class="sc">{</span>dt<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -386,7 +387,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>(For the correct way to place %, y, m, d etc., it is in fact best to consult your favourite AI.)</p>
 <p>Reversely, we want to print a <code>datetime</code>-object in a certain way. For this, we have <code>datetime.datetime.strftime</code>:</p>
-<div id="9389b4e4" class="cell" data-execution_count="5">
+<div id="d9670da6" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt.strftime(<span class="st">"%-m/</span><span class="sc">%-d</span><span class="st">/%y, %H:%M"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4/26/21, 12:15</code></pre>
@@ -394,7 +395,7 @@ time: 12:15:00</code></pre>
 </div>
 <p>which is the US-style output.</p>
 <p>Next, assume we want to compute the same time 12 weeks from now. For this, we use <code>datetime.timedelta</code>.</p>
-<div id="9a0d4a7f" class="cell" data-execution_count="6">
+<div id="b9d061c6" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt <span class="op">+</span> datetime.timedelta(days<span class="op">=</span><span class="dv">84</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2021-07-19 12:15:00</code></pre>
@@ -410,14 +411,14 @@ time: 12:15:00</code></pre>
 <section id="decimal-numbers-decimal" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="decimal-numbers-decimal"><span class="header-section-number">5.4</span> Decimal numbers (<code>decimal</code>)</h2>
 <p>We already saw that:</p>
-<div id="a0890b55" class="cell" data-execution_count="7">
+<div id="500dbc01" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rounding error: 0.2 + 0.1 = </span><span class="sc">{</span><span class="fl">0.2</span> <span class="op">+</span> <span class="fl">0.1</span><span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rounding error: 0.2 + 0.1 = 0.30000000000000004.</code></pre>
 </div>
 </div>
 <p>The reason is that computers in general use a base of 2 for all computations, and 0.3 has a bad representation in this system. While this small <strong>rounding error</strong> is acceptable often, it is not in some contexts (above all, finance). In this case, we can use the <code>decimal</code> library. Within <code>decimal</code>, a base of 10 is used, but calculations are slower than for <code>float</code>s.</p>
-<div id="fb4d5f61" class="cell" data-execution_count="8">
+<div id="b26a5521" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> decimal <span class="im">import</span> Decimal</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Exact calculation: 0.2 + 0.1 = </span><span class="sc">{</span>Decimal(<span class="st">'0.2'</span>) <span class="op">+</span> Decimal(<span class="st">'0.1'</span>)<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -428,7 +429,7 @@ time: 12:15:00</code></pre>
 <section id="sec-re" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="sec-re"><span class="header-section-number">5.5</span> Regular expressions (<code>re</code>)</h2>
 <p>Sometimes, you need to find <strong>patterns</strong> in a string. In data science, this happens if some field contains unstructured text, and you want to extract information. As an example, assume you load data from a csv-file, and one columns contains all email-adresses of the corresponding item. If you read this, you have something like <code>"muller@gmail.com; muller@yahoo.com"</code>. However, you want to separate the two addresses, and store them in a <code>list</code>. One way to approach this is using a <strong>regular expression</strong> (which in this case reads <code>"\S+@\S+\.\S+"</code>):</p>
-<div id="a12c9068" class="cell" data-execution_count="9">
+<div id="6a08b8db" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"muller@gmail.com; muller@yahoo.com"</span></span>
@@ -451,7 +452,7 @@ time: 12:15:00</code></pre>
 <section id="storing-and-restoring-objects-pickle" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="storing-and-restoring-objects-pickle"><span class="header-section-number">5.6</span> Storing and restoring objects (<code>pickle</code>)</h2>
 <p>Sometimes, you want to store intermediate objects. One way is to write them out in files, but you can also use the <code>pickle</code>-library in order to <strong>pickle</strong> (i.e.&nbsp;serialize) Python objects to disc. Here is an example:</p>
-<div id="265d9cf0" class="cell" data-execution_count="10">
+<div id="1f62f854" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
@@ -472,7 +473,7 @@ time: 12:15:00</code></pre>
 </section>
 <section id="testing-code-pytest" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="testing-code-pytest"><span class="header-section-number">5.7</span> Testing code (<code>pytest</code>)</h2>
-<div id="4b57e61c" class="cell" data-execution_count="11">
+<div id="55e4d7f2" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the next line and run the cell for installation.</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If pip3 does not work, use pip instead. </span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip3 install pytest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -480,7 +481,7 @@ time: 12:15:00</code></pre>
 <p>When starting to code, producing reliable programs is both important and difficult. One – not the best – way to approach this is to rely on the program until something breaks. It is actually better to <em>test</em> the code, i.e.&nbsp;to write <strong>tests</strong>. This means that you tell your program that you expect a certain behavior.</p>
 <p>A simple and powerful library for this is <code>pytest</code>. When working with <code>.py</code>-files, you usually separate such tests in a separate file. Every test-case is within a function with name starting with <code>test_</code>. In a terminal, you can run <code>pytest</code> on that file, which performs all tests, and reports any error.</p>
 <p>However, we are working with Jupyter notebooks here, so we cannot run <code>pytest</code> on separate files. Although there are workarounds (the package <code>ipytest</code>), we will only go through some basics here, without importing <code>pytest</code>. This means we are introducing <code>assert</code>.</p>
-<div id="ea83ede9" class="cell" data-execution_count="12">
+<div id="03614031" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">4</span></span>
@@ -512,7 +513,7 @@ time: 12:15:00</code></pre>
 <li><code>os.walk(folder)</code>: gives the triple <code>(root, dirs, files)</code>, where <code>root</code> is the absolute path of the folder, <code>dirs</code> are all direct subfolders in that folder, and <code>files</code> are the files in that folder. If folder has subfolders, it returns a list of triples for all subfolders.</li>
 </ul>
 <p>The string method <code>.endswith(suffix)</code> checks whether a string ends with the given suffix and returns <code>True</code> or <code>False</code>.</p>
-<div id="0619a045" class="cell" data-execution_count="13">
+<div id="2cf9b238" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Print all ipynb-files in the current folder</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> os.listdir(<span class="st">"."</span>):</span>
@@ -520,7 +521,7 @@ time: 12:15:00</code></pre>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">file</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The built-in function <code>enumerate(iterable)</code> returns pairs <code>(index, element)</code> for each element, which is useful when you need both the position and the value during iteration.</p>
-<div id="5ac6b019" class="cell" data-execution_count="14">
+<div id="ef2cca95" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print folders and files (only first 5 entries of os.walk)</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (root, dirs, files) <span class="kw">in</span> <span class="bu">enumerate</span>(os.walk(<span class="st">"."</span>)):</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
@@ -536,19 +537,19 @@ DIRS: ['.quarto', '04_container_data_types_files', 'docs', '03_loops_and_conditi
 FILES: ['hello.txt', 'render_notebooks.sh', 'data.pkl', '.gitignore', '07_handling_data.qmd'] ...
 
 ROOT: ./.quarto
-DIRS: ['quarto-session-temp1c00c3b1037250b5', '_freeze', 'idx', 'cites', 'project-cache'] ...
+DIRS: ['quarto-session-tempb6fb1b232c07d447', '_freeze', 'idx', 'cites', 'project-cache'] ...
 FILES: [] 
 
-ROOT: ./.quarto/quarto-session-temp1c00c3b1037250b5
-DIRS: ['sass'] 
-FILES: ['3312f6c2ba10c1a1', '44db75a1e6f357c4', 'c5104376cf480c11-f2948d131a78982d1dc884087c2e9838.css', 'fa2bf4a7059008c', 'c1ff3a378f92d019'] ...
-
-ROOT: ./.quarto/quarto-session-temp1c00c3b1037250b5/sass
+ROOT: ./.quarto/quarto-session-tempb6fb1b232c07d447
 DIRS: [] 
-FILES: ['35004f6218fac8a961bf6e73bcd1a3b2.css.map', 'sass.kv-wal', 'sass.kv-shm', 'sass.kv', '35004f6218fac8a961bf6e73bcd1a3b2.css'] 
+FILES: [] 
 
 ROOT: ./.quarto/_freeze
 DIRS: ['04_container_data_types', 'index', '03_loops_and_conditions', '02_simple_data_types'] 
+FILES: [] 
+
+ROOT: ./.quarto/_freeze/04_container_data_types
+DIRS: ['execute-results'] 
 FILES: [] 
 
 ... (truncated)</code></pre>
@@ -575,19 +576,19 @@ except FileNotFoundError:
 <section id="exercises" class="level2" data-number="5.10">
 <h2 data-number="5.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.10</span> Exercises</h2>
 <p><strong>Exercise 1</strong> What is your age in seconds/minutes/hours/days/months?</p>
-<div id="f4955a45" class="cell" data-execution_count="15">
+<div id="5b621301" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 2</strong> Write a function <code>days_until_birthday(birthday_str)</code> that takes a date string like <code>"1990-03-15"</code> and returns the number of days until the next occurrence of that birthday. (Hint: use <code>datetime.date</code>.)</p>
-<div id="d71893b4" class="cell" data-execution_count="16">
+<div id="c5dbd748" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 3</strong> Write a function <code>extract_emails(text)</code> that uses a regular expression to find all email addresses in a string. Test it on <code>"Contact us at info@example.com or support@example.org, but not at wrong-email."</code>. (Hint: a simple pattern like <code>r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"</code> is a good starting point.)</p>
-<div id="e23a0ad7" class="cell" data-execution_count="17">
+<div id="dce0500b" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 4</strong> Create some <code>txt</code>-files in the current working directory. Then, write a Python program that iterates through all such files, creates <code>all.txt</code>, where the content of all your <code>txt</code>-files is appended. If <code>all.txt</code> already exists, the program should give a warning that this file is overridden. (Hint: you can generate fake text files using the <code>faker</code> library, e.g.&nbsp;<code>from faker import Faker; fake = Faker(); fake.text()</code>.)</p>
-<div id="8dae0db2" class="cell" data-execution_count="18">
+<div id="848e92f1" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 5</strong> Below are some sales dates and quantities.</p>
@@ -595,7 +596,7 @@ except FileNotFoundError:
 <li>Write a function, with <code>start</code> and <code>end</code> as <code>datetime</code> as input, which gives you the total amount of sales during this time. (You will need to convert <code>date</code> as given in the data to <code>datetime</code>. Note that <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code> work for <code>datetime</code> as expected.)</li>
 <li>Write a function, with a date <code>date</code> and a number days <code>days</code> as input, which returns the average amount of sales per day during the last <code>days</code> since <code>date</code>.</li>
 </ul>
-<div id="4dc22ee3" class="cell" data-execution_count="19">
+<div id="a17b5a6d" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"2026-01-01"</span>, <span class="dv">120</span>),</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"2026-01-02"</span>, <span class="dv">135</span>),</span>
@@ -604,11 +605,11 @@ except FileNotFoundError:
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"2026-02-01"</span>, <span class="dv">210</span>),</span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"2026-02-03"</span>, <span class="dv">215</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="9f239c06" class="cell" data-execution_count="20">
+<div id="8cf90e07" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 6</strong> Write a function <code>find_large_files(directory, min_size_mb=10)</code> that uses <code>os.walk</code> to find all files in <code>directory</code> (and subdirectories) that are larger than <code>min_size_mb</code> megabytes. Return a list of <code>(path, size_mb)</code> tuples, sorted by size descending.</p>
-<div id="527a4f4c" class="cell" data-execution_count="21">
+<div id="3e0f46a4" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Exercise 7</strong> A bank manager has an idea: Interests should be computed daily (as usual), but rounded to cents (round up if last digit is 5 or above) at the end of the day. (So, sub-cents are not kept for computing the account balance.) Assume someone has invested 1 Euro on January 1st, 0 (birth of christ) with an interest rate of 5% per year.</p>
@@ -616,7 +617,7 @@ except FileNotFoundError:
 <li>Compute the account balance <em>as usual</em>, i.e.&nbsp;keeping sub-cents at all days.</li>
 <li>Compute the account balance using the above strategy, i.e.&nbsp;ignoring sub-cents at the end of each day.</li>
 </ul>
-<div id="c1c90299" class="cell" data-execution_count="22">
+<div id="2f45d757" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise 7</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
@@ -702,7 +703,8 @@ except FileNotFoundError:
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -711,8 +713,69 @@ except FileNotFoundError:
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -726,6 +789,7 @@ except FileNotFoundError:
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -888,44 +952,54 @@ except FileNotFoundError:
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1024,7 +1098,10 @@ except FileNotFoundError:
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
       <a href="./04_container_data_types.html" class="pagination-link" aria-label="Container data types">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Container data types</span></span>
