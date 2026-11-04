@@ -200,7 +200,7 @@ print(f"Its first and only element is {thisisatuple[0]}.")
 
 ## Sets (`set`) {#sec-set}
 
-As in mathematics, **set**s have no special order, and there are noduplicates within a set. In Python, they can be created using curly brackets, so e.g. `{1,2,3}` as well as `{1,3,2,3,1}` is the set of the numbers `1,2,3`. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a `list`, which can contain duplicates, `list(set(l))` is the same list (maybe the order changed) but with duplicates removed.
+As in mathematics, **set**s have no special order, and there are noduplicates within a set. In Python, they can be created using curly brackets, so e.g. `{1,2,3}` as well as `{1,3,2,3,1}` is the set of the numbers `1,2,3`. Although there are functions for updating sets (as for lists), the most frequent application is for removing duplicates. For example, if you have a list `l`, which can contain duplicates, `list(set(l))` returns a new list with duplicates removed (possibly in a different order).
 
 Here are some functions on some `s` and `t`:
 
