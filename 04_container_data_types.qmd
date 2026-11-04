@@ -101,6 +101,31 @@ print(f"l = {l}")
 l = [3,2,1]
 print(sorted(l))
 ```
+
+```{python}
+# Integers are immutable, so the original variable is not changed.
+def f(x):
+    x += 1
+
+a = 5
+f(a)
+print(a)
+
+# To change a, we need to assign the return value.
+def f(x):
+    return x + 1
+
+a = f(a)
+print(a)
+
+# In contrast, lists are mutable and can be modified directly.
+def g(x):
+    x.append(4)
+
+l = [1, 2, 3]
+g(l)
+print(l)
+```
 Assume you want to sort a `list` not as usual. In this situation, you will find out about the `key`-parameter in `sorted`. It takes a function, which sorts the list according to the values of this function. Here, we use `lambda` to define short anonymous functions inline: `lambda x: expression` creates a function that takes `x` and returns `expression` (see also @sec-functions in Chapter 3). As an example, assume we want to sort a list of `int`s according to their absolute value:
 ```{python}
 l = [5, -4, 0, 7, -3, 2]
