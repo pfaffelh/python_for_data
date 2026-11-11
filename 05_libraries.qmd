@@ -219,7 +219,7 @@ For the kind of projects we envision, we often must access files, which happens 
 
 * `os.getcwd()`: returns the current working directory.
 * `os.chdir(folder)`: this is a Python command for `cd`.
-* `os.path.join(folder", file)`: gives a complete path from the folder and file name.
+* `os.path.join(folder, file)`: gives a complete path from the folder and file name.
 * `os.listdir(folder)`: returns a list of files within the folder.
 * `os.path.exists(file)`: returns true or false if the file exists or not.
 * `os.walk(folder)`: gives the triple `(root, dirs, files)`, where `root` is the absolute path of the folder, `dirs` are all direct subfolders in that folder, and `files` are the files in that folder. If folder has subfolders, it returns a list of triples for all subfolders.
