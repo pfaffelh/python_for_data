@@ -27,7 +27,7 @@ Generally, there are **packages** (folders), **modules** (a `.py`-file within a 
 
 There are three cases: 
 
-1. You wrote some code in file `one.py` (e.g. some functions) which you want to use in file `two.py`. (Note, btw, that the first digit in `one.py` must be a letter.) Assume `one.py` is as follows: 
+1. You wrote some code in file `one.py` (e.g. some functions) which you want to use in file `two.py`. (Note that the filename must start with a letter or an underscore to be imported with `import`. Here, `one.py` is perfectly fine.) Assume `one.py` is as follows: 
 
 ```
 # File: one.py
