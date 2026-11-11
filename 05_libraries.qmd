@@ -112,7 +112,7 @@ print(f"microsecond: {dt.microsecond}")
 print(f"date: {dt.date()}")
 print(f"time: {dt.time()}")
 ```
-which is the starting time of the first session in this course. As we see here, we can extract year,..., microseconds from the `datetime`-object. 
+As we see here, we can extract year,..., microseconds from the `datetime`-object. 
 
 Often, we are given strings such as `"21.4.26, 12:15"`, and want to convert this into a `datetime` object. For this, we have `datetime.datetime.strptime`:
 ```{python}
